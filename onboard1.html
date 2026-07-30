@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0,
+        maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CAMBA 온보딩</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100vh%;
+            height: 100dvh%
+            min-height: 100vh;
+            overflow:hidden;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #ffffff;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+        }
+
+        button {
+            border: 0;
+            background: none;
+            font: inherit;
+        }
+
+        .onboarding {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 812px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .text-area {
+            position: absolute;
+            top: 103px;
+            left: 24px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .title {
+            color: #3d558a;
+            font-size: 29px;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -1.5px;
+        }
+
+        .title-small {
+            color: #6b83bc;
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: -1.3px;
+        }
+
+        .description {
+            margin-top: 24px;
+            color: #9caed8;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -0.8px;
+        }
+
+        .visual-area {
+            position: absolute;
+            top: 348px;
+            left: 0;
+            width: 100%;
+            height: 290px;
+            overflow: hidden;
+        }
+
+        .visual-background {
+            position: absolute;
+            top: 27px;
+            left: 81px;
+            width: 390px;
+            height: 254px;
+            border-radius: 55% 0 0 55%;
+            background-color: #f0f2f9;
+            transform: rotate(-7deg);
+        }
+
+        .visual-image {
+            position: absolute;
+            left: 72px;
+            bottom: 0;
+            width: 259px;
+            height: auto;
+            display: block;
+        }
+
+        .pagination {
+            position: absolute;
+            left: 50%;
+            bottom: 137px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transform: translateX(-50%);
+        }
+
+        .pagination span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #edf0f7;
+        }
+
+        .pagination .active {
+            background-color: #5b78bd;
+        }
+
+        .start-button {
+            position: absolute;
+            left: 24px;
+            bottom: 34px;
+            width: calc(100% - 48px);
+            height: 49px;
+            border-radius: 11px;
+            background-color: #5875b9;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        a{text-decoration: none; color: white;}
+        a:hover{text-decoration: underline;}
+    </style>
+</head>
+
+<body>
+    <main class="onboarding">
+
+        <section class="text-area">
+            <h1 class="title">
+                차박<br>
+                어디로
+                <span class="title-small">떠나야 할지 모르겠나요</span>
+            </h1>
+
+            <p class="description">
+                지도기반 위치 앱 및 키워드 검색으로 내가 원<br>
+                하는 장소를 한번에
+            </p>
+        </section>
+
+        <section class="visual-area">
+            <div class="visual-background"></div>
+
+            <img
+                class="visual-image"
+                src="./images/work1ill.svg"
+                alt="스마트폰으로 차박 장소를 찾는 곰 캐릭터"
+            >
+        </section>
+
+        <div class="pagination">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <button type="button" class="start-button">
+            <a href="./login.html">시작하기</a>
+        </button>
+
+    </main>
+    <script>
+    setTimeout(function () {
+        window.location.href = "./onboard2.html";
+    }, 3000);
+</script>
+</body>
+</html>
