@@ -21,7 +21,7 @@
         html,
         body {
             width: 100%;
-            height: 100vh%;
+            height: 100%;
         }
 
         body {
@@ -36,21 +36,32 @@
             font: inherit;
         }
 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         .onboarding {
             position: relative;
+            display: flex;
+            flex-direction: column;
             width: 100%;
+
+            /* 구형 브라우저용 기본값 */
             height: 100vh;
-            height: 100dvh;
+
+            /* 주소창과 하단 도구 모음이 표시된 작은 화면 높이 */
+            height: 100svh;
+
             overflow: hidden;
             background-color: #ffffff;
         }
 
         .text-area {
-            position: absolute;
-            top: 103px;
-            left: 24px;
-            right: 20px;
-            z-index: 2;
+            position: relative;
+            z-index: 3;
+            flex-shrink: 0;
+            padding: clamp(38px, 10svh, 82px) 20px 0 24px;
         }
 
         .title {
@@ -78,42 +89,51 @@
         }
 
         .visual-area {
-            position: absolute;
-            top: 348px;
-            left: 0;
+            position: relative;
+            flex: 1;
             width: 100%;
-            height: 290px;
+            min-height: 230px;
+            margin-top: 20px;
             overflow: hidden;
         }
 
         .visual-background {
             position: absolute;
-            top: 27px;
+            top: 50%;
             left: 81px;
             width: 390px;
             height: 254px;
             border-radius: 55% 0 0 55%;
             background-color: #f0f2f9;
-            transform: rotate(-7deg);
+            transform: translateY(-50%) rotate(-7deg);
         }
 
         .visual-image {
             position: absolute;
-            left: 72px;
+            left: 50%;
             bottom: 0;
-            width: 259px;
-            height: auto;
             display: block;
+            width: min(69.06vw, 259px);
+            height: auto;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .bottom-area {
+            position: relative;
+            z-index: 4;
+            flex-shrink: 0;
+            width: 100%;
+            padding: 22px 24px 18px;
+            background-color: #ffffff;
         }
 
         .pagination {
-            position: absolute;
-            left: 50%;
-            bottom: 137px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 16px;
-            transform: translateX(-50%);
+            margin-bottom: clamp(24px, 6svh, 48px);
         }
 
         .pagination span {
@@ -129,10 +149,8 @@
         }
 
         .start-button {
-            position: absolute;
-            left: 24px;
-            bottom: max(18px, env(safe-area-inset-bottom));
-            width: calc(100% - 48px);
+            display: block;
+            width: 100%;
             height: 49px;
             border-radius: 11px;
             background-color: #5875b9;
@@ -141,8 +159,14 @@
             font-weight: 700;
             cursor: pointer;
         }
-        a{text-decoration: none; color: white;}
-        a:hover{text-decoration: underline;}
+
+        .start-button a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -153,7 +177,9 @@
             <h1 class="title">
                 차박<br>
                 어디로
-                <span class="title-small">떠나야 할지 모르겠나요</span>
+                <span class="title-small">
+                    떠나야 할지 모르겠나요
+                </span>
             </h1>
 
             <p class="description">
@@ -172,21 +198,24 @@
             >
         </section>
 
-        <div class="pagination">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
+        <div class="bottom-area">
+            <div class="pagination">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <button type="button" class="start-button">
+                <a href="./login.html">시작하기</a>
+            </button>
         </div>
 
-        <button type="button" class="start-button">
-            <a href="./login.html">시작하기</a>
-        </button>
-
     </main>
+
     <script>
-    setTimeout(function () {
-        window.location.href = "./onboard2.html";
-    }, 3000);
-</script>
+        setTimeout(function () {
+            window.location.href = "./onboard2.html";
+        }, 3000);
+    </script>
 </body>
 </html>

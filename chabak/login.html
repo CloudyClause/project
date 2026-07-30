@@ -47,19 +47,30 @@
 
         .login-page {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
+
+            /* 구형 모바일 브라우저 대체값 */
             height: 100vh;
-            min-height: 812px;
-            overflow: hidden;
+
+            /* 모바일 Chrome 주소창과 하단 도구 모음 반영 */
+            height: 100svh;
+
+            padding:
+                clamp(45px, 10svh, 82px)
+                24px
+                max(24px, env(safe-area-inset-bottom));
+
+            overflow-x: hidden;
+            overflow-y: auto;
             background-color: #ffffff;
         }
 
         .logo-area {
-            position: absolute;
-            top: 103px;
-            left: 50%;
+            flex-shrink: 0;
             width: 135px;
-            transform: translateX(-50%);
         }
 
         .logo-area img {
@@ -69,10 +80,9 @@
         }
 
         .login-form {
-            position: absolute;
-            top: 247px;
-            left: 24px;
-            width: calc(100% - 48px);
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: clamp(48px, 8svh, 78px);
         }
 
         .input-group {
@@ -94,6 +104,7 @@
             height: 35px;
             padding: 0 2px;
             border-bottom: 1px solid #d7d7d7;
+            border-radius: 0;
             color: #333333;
             font-size: 15px;
             font-weight: 400;
@@ -109,11 +120,12 @@
         }
 
         .button-area {
-            margin-top: 32px;
+            margin-top: clamp(24px, 4svh, 32px);
         }
 
         .login-button,
         .join-button {
+            display: block;
             width: 100%;
             height: 48px;
             border-radius: 11px;
@@ -141,10 +153,11 @@
             margin-top: 15px;
             color: #50679d;
             font-size: 13px;
+            white-space: nowrap;
         }
 
         .account-menu a {
-            padding: 0 14px;
+            padding: 0 12px;
         }
 
         .account-menu span {
@@ -152,7 +165,8 @@
         }
 
         .social-login {
-            margin-top: 35px;
+            margin-top: clamp(28px, 5svh, 35px);
+            padding-bottom: 10px;
         }
 
         .social-title {
@@ -191,8 +205,9 @@
 
         .social-button img {
             display: block;
-            max-width: 24px;
-            max-height: 24px;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
     </style>
 </head>

@@ -30,26 +30,36 @@
             font-family: Arial, "Noto Sans KR", sans-serif;
         }
 
-        button {
-            border: 0;
-            font: inherit;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .onboarding {
             position: relative;
+            display: flex;
+            flex-direction: column;
             width: 100%;
+
+            /* 구형 브라우저 대체값 */
             height: 100vh;
-            min-height: 812px;
+
+            /* 모바일 Chrome의 주소창과 도구 모음이 보이는 높이 */
+            height: 100svh;
+
             overflow: hidden;
             background-color: #ffffff;
         }
 
         .text-area {
-            position: absolute;
-            top: 103px;
-            left: 24px;
-            right: 20px;
+            position: relative;
             z-index: 3;
+            flex-shrink: 0;
+            padding:
+                clamp(38px, 10svh, 82px)
+                20px
+                0
+                24px;
         }
 
         .title {
@@ -75,43 +85,56 @@
         }
 
         .visual-area {
-            position: absolute;
-            top: 332px;
-            left: 0;
+            position: relative;
+            flex: 1;
             width: 100%;
-            height: 291px;
+            min-height: 220px;
+            margin-top: 18px;
             overflow: hidden;
         }
 
         .visual-background {
             position: absolute;
-            top: 0;
+            top: 50%;
             left: -42px;
             width: 470px;
             height: 252px;
-            border-radius: 48% 52% 42% 36% / 23% 34% 28% 34%;
+            border-radius:
+                48% 52% 42% 36% /
+                23% 34% 28% 34%;
             background-color: #f0f2f9;
-            transform: rotate(2deg);
+            transform: translateY(-50%) rotate(2deg);
         }
 
         .visual-image {
             position: absolute;
-            left: 78px;
-            bottom: 8px;
-            width: 225px;
-            height: auto;
-            display: block;
+            left: 50%;
+            bottom: 4px;
             z-index: 2;
+            display: block;
+            width: min(60vw, 225px);
+            height: auto;
+            transform: translateX(-50%);
+        }
+
+        .bottom-area {
+            position: relative;
+            z-index: 4;
+            flex-shrink: 0;
+            width: 100%;
+            padding:
+                20px
+                24px
+                max(18px, env(safe-area-inset-bottom));
+            background-color: #ffffff;
         }
 
         .pagination {
-            position: absolute;
-            left: 50%;
-            bottom: 137px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 16px;
-            transform: translateX(-50%);
+            margin-bottom: clamp(24px, 6svh, 48px);
         }
 
         .pagination-dot {
@@ -127,20 +150,17 @@
         }
 
         .start-button {
-            position: absolute;
-            left: 24px;
-            bottom: 34px;
-            width: calc(100% - 48px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
             height: 49px;
             border-radius: 11px;
             background-color: #5875b9;
             color: #ffffff;
             font-size: 16px;
             font-weight: 700;
-            cursor: pointer;
         }
-        a{text-decoration: none; color: white;}
-        a:hover{text-decoration: underline;}        
     </style>
 </head>
 
@@ -150,7 +170,10 @@
         <section class="text-area">
             <h1 class="title">
                 차박<br>
-                어디로 <strong>떠나야 할지 모르겠나<br>요</strong>
+                어디로
+                <strong>
+                    떠나야 할지 모르겠나<br>요
+                </strong>
             </h1>
 
             <p class="description">
@@ -168,21 +191,30 @@
             >
         </section>
 
-        <div class="pagination" aria-label="온보딩 진행 상태">
-            <span class="pagination-dot"></span>
-            <span class="pagination-dot active"></span>
-            <span class="pagination-dot"></span>
+        <div class="bottom-area">
+            <div
+                class="pagination"
+                aria-label="온보딩 진행 상태"
+            >
+                <span class="pagination-dot"></span>
+                <span class="pagination-dot active"></span>
+                <span class="pagination-dot"></span>
+            </div>
+
+            <a
+                class="start-button"
+                href="./login.html"
+            >
+                시작하기
+            </a>
         </div>
 
-        <button type="button" class="start-button">
-            <a href="./login.html">시작하기</a>
-        </button>
-
     </main>
+
     <script>
-    setTimeout(function () {
-        window.location.href = "./onboard3.html";
-    }, 3000);
-</script>
+        setTimeout(function () {
+            window.location.href = "./onboard3.html";
+        }, 3000);
+    </script>
 </body>
 </html>

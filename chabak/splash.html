@@ -32,7 +32,13 @@
         .splash {
             position: relative;
             width: 100%;
+
+            /* 구형 모바일 브라우저 대체값 */
             height: 100vh;
+
+            /* 모바일 Chrome의 주소창과 하단 도구 모음이 보이는 높이 */
+            height: 100svh;
+
             overflow: hidden;
             background-color: #ffffff;
         }
@@ -57,10 +63,11 @@
             alt="camba"
         >
     </main>
+
     <script>
-    setTimeout(function () {
-        window.location.href = "./onboard1.html";
-    }, 3000);
-</script>
+        setTimeout(function () {
+            window.location.href = "./onboard1.html";
+        }, 3000);
+    </script>
 </body>
 </html>
