@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0,
+        minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CAMBA 온보딩 2</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #ffffff;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+        }
+
+        button {
+            border: 0;
+            font: inherit;
+        }
+
+        .onboarding {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 812px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .text-area {
+            position: absolute;
+            top: 103px;
+            left: 24px;
+            right: 20px;
+            z-index: 3;
+        }
+
+        .title {
+            color: #6782c0;
+            font-size: 29px;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -1.5px;
+        }
+
+        .title strong {
+            color: #354d82;
+            font-weight: 700;
+        }
+
+        .description {
+            margin-top: 25px;
+            color: #9caed8;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -0.8px;
+        }
+
+        .visual-area {
+            position: absolute;
+            top: 332px;
+            left: 0;
+            width: 100%;
+            height: 291px;
+            overflow: hidden;
+        }
+
+        .visual-background {
+            position: absolute;
+            top: 0;
+            left: -42px;
+            width: 470px;
+            height: 252px;
+            border-radius: 48% 52% 42% 36% / 23% 34% 28% 34%;
+            background-color: #f0f2f9;
+            transform: rotate(2deg);
+        }
+
+        .visual-image {
+            position: absolute;
+            left: 78px;
+            bottom: 8px;
+            width: 225px;
+            height: auto;
+            display: block;
+            z-index: 2;
+        }
+
+        .pagination {
+            position: absolute;
+            left: 50%;
+            bottom: 137px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transform: translateX(-50%);
+        }
+
+        .pagination-dot {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #edf0f7;
+        }
+
+        .pagination-dot.active {
+            background-color: #5a76bd;
+        }
+
+        .start-button {
+            position: absolute;
+            left: 24px;
+            bottom: 34px;
+            width: calc(100% - 48px);
+            height: 49px;
+            border-radius: 11px;
+            background-color: #5875b9;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="onboarding">
+
+        <section class="text-area">
+            <h1 class="title">
+                차박<br>
+                어디로 <strong>떠나야 할지 모르겠나<br>요</strong>
+            </h1>
+
+            <p class="description">
+                차박에 필요한 물품들을 용도별로 둘러봐요
+            </p>
+        </section>
+
+        <section class="visual-area">
+            <div class="visual-background"></div>
+
+            <img
+                class="visual-image"
+                src="./images/work2ill.svg"
+                alt="차박용품 상자를 들고 있는 곰 캐릭터"
+            >
+        </section>
+
+        <div class="pagination" aria-label="온보딩 진행 상태">
+            <span class="pagination-dot"></span>
+            <span class="pagination-dot active"></span>
+            <span class="pagination-dot"></span>
+        </div>
+
+        <button type="button" class="start-button">
+            시작하기
+        </button>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0,
+        minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CAMBA 온보딩 3</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #ffffff;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+        }
+
+        button {
+            border: 0;
+            font: inherit;
+        }
+
+        .onboarding {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 812px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .text-area {
+            position: absolute;
+            top: 101px;
+            left: 24px;
+            right: 20px;
+            z-index: 3;
+        }
+
+        .title {
+            color: #6883c0;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.48;
+            letter-spacing: -1.4px;
+        }
+
+        .title strong {
+            color: #344a7c;
+            font-size: 29px;
+            font-weight: 700;
+            letter-spacing: -1.6px;
+        }
+
+        .description {
+            margin-top: 22px;
+            color: #9caed8;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -0.8px;
+        }
+
+        .visual-area {
+            position: absolute;
+            top: 376px;
+            left: 0;
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+        }
+
+        .visual-background {
+            position: absolute;
+            top: 0;
+            right: 78px;
+            width: 390px;
+            height: 205px;
+            border-radius: 0 48% 48% 0;
+            background-color: #f0f2f9;
+            transform: rotate(2deg);
+        }
+
+        .visual-image {
+            position: absolute;
+            left: 73px;
+            bottom: 3px;
+            width: 230px;
+            height: auto;
+            display: block;
+            z-index: 2;
+        }
+
+        .pagination {
+            position: absolute;
+            left: 50%;
+            bottom: 137px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transform: translateX(-50%);
+        }
+
+        .pagination-dot {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #edf0f7;
+        }
+
+        .pagination-dot.active {
+            background-color: #5a76bd;
+        }
+
+        .start-button {
+            position: absolute;
+            left: 24px;
+            bottom: 34px;
+            width: calc(100% - 48px);
+            height: 49px;
+            border-radius: 11px;
+            background-color: #5875b9;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="onboarding">
+
+        <section class="text-area">
+            <h1 class="title">
+                일상이 바쁠땐 실시간<br>
+                <strong>라이브로 대리만족</strong> 하세요
+            </h1>
+
+            <p class="description">
+                라이브로 나를 뽐내고 시청자들과 소통하는<br>
+                즐거움!
+            </p>
+        </section>
+
+        <section class="visual-area">
+            <div class="visual-background"></div>
+
+            <img
+                class="visual-image"
+                src="./images/work3ill.svg"
+                alt="캠프파이어 앞에서 라이브 방송을 하는 곰 캐릭터"
+            >
+        </section>
+
+        <div class="pagination" aria-label="온보딩 진행 상태">
+            <span class="pagination-dot"></span>
+            <span class="pagination-dot"></span>
+            <span class="pagination-dot active"></span>
+        </div>
+
+        <button type="button" class="start-button">
+            시작하기
+        </button>
+
+    </main>
+</body>
+</html>
