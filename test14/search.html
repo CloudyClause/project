@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이어타고 - 검색</title>
+
+  <style>
+    :root {
+      --primary-navy: #061a3d;
+      --primary-blue: #005bff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-gray: #697386;
+      --light-border: #e5e7eb;
+      --surface-white: #ffffff;
+
+      --space-8: 8px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+
+      --radius-card: 12px;
+      --tabbar-height: 94px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--surface-white);
+      font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    a {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      padding: 53px 23px calc(var(--tabbar-height) + 18px);
+      background: var(--surface-white);
+    }
+
+    /* 상단 검색 영역 */
+    .search-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .back-button {
+      position: relative;
+      width: 40px;
+      height: 44px;
+      flex-shrink: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .back-button::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      width: 19px;
+      height: 19px;
+      border-left: 2px solid var(--primary-navy);
+      border-bottom: 2px solid var(--primary-navy);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .back-button::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      width: 28px;
+      height: 2px;
+      background: var(--primary-navy);
+      transform: translateY(-50%);
+    }
+
+    .search-form {
+      position: relative;
+      width: 100%;
+      height: 63px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 54px 0 16px;
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      background: var(--surface-white);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 24px;
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-secondary);
+      opacity: 1;
+    }
+
+    .search-input:focus {
+      border: 2px solid var(--primary-blue);
+    }
+
+    .search-button {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      width: 44px;
+      height: 44px;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-button img {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+
+    /* 검색 유형 탭 */
+    .search-category {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 18px;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .category-button {
+      position: relative;
+      min-height: 50px;
+      border: 0;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 22px;
+      line-height: 28px;
+      font-weight: 800;
+    }
+
+    .category-button.active {
+      color: var(--primary-blue);
+    }
+
+    .category-button.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-blue);
+    }
+
+    /* 필터 칩 */
+    .filter-list {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 36px;
+    }
+
+    .filter-chip {
+      height: 36px;
+      padding: 0 14px;
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      background: var(--surface-white);
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .filter-chip.active {
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+    }
+
+    /* 검색 결과 */
+    .result-section {
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .section-title {
+      color: var(--text-primary);
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .result-list {
+      width: 100%;
+      margin-top: 14px;
+      padding: 0 8px;
+      border: 1px solid var(--border-gray);
+      border-radius: 16px;
+      background: var(--surface-white);
+      overflow: hidden;
+    }
+
+    .result-item {
+      width: 100%;
+      min-height: 64px;
+      padding: 8px 0;
+      border: 0;
+      border-bottom: 1px solid var(--border-gray);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+
+    .result-item:last-child {
+      border-bottom: 0;
+    }
+
+    .station-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .station-icon img {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+
+    .station-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .station-name {
+      display: block;
+      color: var(--text-primary);
+      font-size: 17px;
+      line-height: 22px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .station-line {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+    }
+
+    .station-distance {
+      flex-shrink: 0;
+      margin-left: 12px;
+      padding-right: 5px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+
+    /* 하단 CTA */
+    .issue-button {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 18px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    .issue-button:active {
+      background: #0048cc;
+    }
+
+    /* 공통 하단 탭바 */
+    .bottom-tabbar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      width: 100%;
+      height: var(--tabbar-height);
+      padding: 12px 14px 13px;
+      border-top: 1px solid var(--border-gray);
+      background: var(--surface-white);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tab-item {
+      min-width: 0;
+      min-height: 60px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .tab-item img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .tab-label {
+      font-size: 11px;
+      line-height: 14px;
+      font-weight: 500;
+    }
+
+    .tab-item.active {
+      color: var(--primary-blue);
+    }
+
+    .tab-item.active .tab-label {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="search-header">
+      <button
+        type="button"
+        class="back-button"
+        aria-label="이전 화면으로 이동"
+      ></button>
+
+      <form class="search-form">
+        <input
+          type="search"
+          class="search-input"
+          placeholder="역명, 장소, 주소 검색"
+          aria-label="역명, 장소, 주소 검색"
+        />
+
+        <button
+          type="submit"
+          class="search-button"
+          aria-label="검색"
+        >
+          <img
+            src="./icons/search.svg"
+            alt="검색"
+          />
+        </button>
+      </form>
+    </header>
+
+    <nav class="search-category" aria-label="검색 유형">
+      <button type="button" class="category-button active">
+        역
+      </button>
+
+      <button type="button" class="category-button">
+        장소
+      </button>
+
+      <button type="button" class="category-button">
+        랜드마크
+      </button>
+    </nav>
+
+    <div class="filter-list" aria-label="경로 필터">
+      <button type="button" class="filter-chip active">
+        최단 시간
+      </button>
+
+      <button type="button" class="filter-chip">
+        최소 환승
+      </button>
+
+      <button type="button" class="filter-chip">
+        저렴한 요금
+      </button>
+
+      <button type="button" class="filter-chip">
+        도보 적음
+      </button>
+    </div>
+
+    <section class="result-section">
+      <h1 class="section-title">검색 결과</h1>
+
+      <div class="result-list">
+        <button type="button" class="result-item">
+          <span class="station-icon">
+            <img
+              src="./icons/location.svg"
+              alt="위치 아이콘"
+            />
+          </span>
+
+          <span class="station-info">
+            <span class="station-name">강남역</span>
+            <span class="station-line">2호선, 신분당선</span>
+          </span>
+
+          <span class="station-distance">1.2km</span>
+        </button>
+
+        <button type="button" class="result-item">
+          <span class="station-icon">
+            <img
+              src="./icons/location.svg"
+              alt="위치 아이콘"
+            />
+          </span>
+
+          <span class="station-info">
+            <span class="station-name">역삼역</span>
+            <span class="station-line">2호선</span>
+          </span>
+
+          <span class="station-distance">1.8km</span>
+        </button>
+
+        <button type="button" class="result-item">
+          <span class="station-icon">
+            <img
+              src="./icons/location.svg"
+              alt="위치 아이콘"
+            />
+          </span>
+
+          <span class="station-info">
+            <span class="station-name">선릉역</span>
+            <span class="station-line">2호선, 분당선</span>
+          </span>
+
+          <span class="station-distance">2.3km</span>
+        </button>
+
+        <button type="button" class="result-item">
+          <span class="station-icon">
+            <img
+              src="./icons/location.svg"
+              alt="위치 아이콘"
+            />
+          </span>
+
+          <span class="station-info">
+            <span class="station-name">삼성역</span>
+            <span class="station-line">2호선</span>
+          </span>
+
+          <span class="station-distance">2.7km</span>
+        </button>
+
+        <button type="button" class="result-item">
+          <span class="station-icon">
+            <img
+              src="./icons/location.svg"
+              alt="위치 아이콘"
+            />
+          </span>
+
+          <span class="station-info">
+            <span class="station-name">교대역</span>
+            <span class="station-line">2호선, 3호선</span>
+          </span>
+
+          <span class="station-distance">3.1km</span>
+        </button>
+      </div>
+    </section>
+
+    <button type="button" class="issue-button">
+      이 경로로 발급 준비
+    </button>
+  </main>
+
+  <!-- 공통 하단 탭바 -->
+  <nav class="bottom-tabbar" aria-label="주요 메뉴">
+    <a href="./home.html" class="tab-item">
+      <img src="./icons/homedeactive.svg" alt="홈 화면" />
+      <span class="tab-label">홈</span>
+    </a>
+
+    <a href="./prepare.html" class="tab-item active">
+      <img src="./icons/ticketactive.svg" alt="발급준비" />
+      <span class="tab-label">발급준비</span>
+    </a>
+
+    <a href="./route.html" class="tab-item">
+      <img src="./icons/routedeactive.svg" alt="경로안내" />
+      <span class="tab-label">경로안내</span>
+    </a>
+
+    <a href="./myinfo.html" class="tab-item">
+      <img src="./icons/userdeactive.svg" alt="내 정보" />
+      <span class="tab-label">내 정보</span>
+    </a>
+  </nav>
+  <script>
+    const backButton = document.querySelector(".back-button");
+    const issueButton = document.querySelector(".issue-button");
+
+    backButton.addEventListener("click", function () {
+      window.history.back();
+    });
+
+    issueButton.addEventListener("click", function () {
+      window.location.href = "./prepare.html";
+    });
+  </script>
+</body>
+</html>
