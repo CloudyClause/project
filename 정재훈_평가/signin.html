@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이어타고 - 회원가입</title>
+
+  <style>
+    :root {
+      --primary-navy: #061a3d;
+      --primary-blue: #005bff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-gray: #687386;
+      --surface-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--surface-white);
+      font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    a {
+      font: inherit;
+    }
+
+    button,
+    a,
+    label {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      padding: 75px 21px 40px;
+      background: var(--surface-white);
+    }
+
+    .signup-header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .signup-title {
+      color: var(--primary-navy);
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .signup-description {
+      margin-top: 12px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+    }
+
+    .signup-form {
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .input-group {
+      position: relative;
+      width: 100%;
+      height: 56px;
+    }
+
+    .input-group + .input-group {
+      margin-top: 16px;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 100%;
+      padding: 0 52px 0 54px;
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      background: var(--surface-white);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 24px;
+      outline: none;
+    }
+
+    .input-field::placeholder {
+      color: var(--text-secondary);
+      opacity: 1;
+    }
+
+    .input-field:focus {
+      border: 2px solid var(--primary-blue);
+    }
+
+    .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      width: 22px;
+      height: 22px;
+      transform: translateY(-50%);
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .password-toggle img {
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
+    }
+
+    .agreement-list {
+      width: 100%;
+      margin-top: 25px;
+      padding: 0 8px;
+    }
+
+    .agreement-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 40px;
+      cursor: pointer;
+    }
+
+    .agreement-item + .agreement-item {
+      margin-top: 0;
+    }
+
+    .agreement-item input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .custom-checkbox {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      border: 2px solid var(--primary-blue);
+      border-radius: 3px;
+      background: var(--surface-white);
+    }
+
+    .custom-checkbox::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      transform: rotate(-45deg);
+      opacity: 0;
+    }
+
+    .agreement-item input:checked + .custom-checkbox {
+      background: var(--primary-blue);
+    }
+
+    .agreement-item input:checked + .custom-checkbox::after {
+      opacity: 1;
+    }
+
+    .agreement-text {
+      margin-left: 18px;
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+    }
+
+    .signup-button {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 28px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .signup-button:active {
+      background: #0048cc;
+    }
+
+    .login-link-wrap {
+      width: 100%;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .login-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      color: var(--primary-blue);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    a{text-decoration: none; color: white;}
+    a:hover{text-decoration: underline;}
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="signup-header">
+      <h1 class="signup-title">회원가입</h1>
+
+      <p class="signup-description">
+        이용을 위해<br />
+        정보를 입력해주세요.
+      </p>
+    </header>
+
+    <form class="signup-form">
+      <div class="input-group">
+        <img
+          src="./icons/userdeactive.svg"
+          alt="유저아이콘"
+          class="input-icon"
+        />
+
+        <input
+          type="text"
+          class="input-field"
+          placeholder="이름"
+          aria-label="이름"
+        />
+      </div>
+
+      <div class="input-group">
+        <img
+          src="./icons/mail.svg"
+          alt="메일아이콘"
+          class="input-icon"
+        />
+
+        <input
+          type="text"
+          class="input-field"
+          placeholder="이메일 또는 아이디"
+          aria-label="이메일 또는 아이디"
+        />
+      </div>
+
+      <div class="input-group">
+        <img
+          src="./icons/lock.svg"
+          alt="잠금아이콘"
+          class="input-icon"
+        />
+
+        <input
+          type="password"
+          class="input-field"
+          placeholder="비밀번호"
+          aria-label="비밀번호"
+        />
+
+        <button
+          type="button"
+          class="password-toggle"
+          aria-label="비밀번호 표시"
+        >
+          <img
+            src="./icons/hidden.svg"
+            alt="가리기아이콘"
+          />
+        </button>
+      </div>
+
+      <div class="input-group">
+        <img
+          src="./icons/lock.svg"
+          alt="잠금아이콘"
+          class="input-icon"
+        />
+
+        <input
+          type="password"
+          class="input-field"
+          placeholder="비밀번호 확인"
+          aria-label="비밀번호 확인"
+        />
+
+        <button
+          type="button"
+          class="password-toggle"
+          aria-label="비밀번호 확인 표시"
+        >
+          <img
+            src="./icons/hidden.svg"
+            alt="가리기아이콘"
+          />
+        </button>
+      </div>
+
+      <div class="agreement-list">
+        <label class="agreement-item">
+          <input type="checkbox" checked />
+          <span class="custom-checkbox"></span>
+          <span class="agreement-text">이용약관 동의 (필수)</span>
+        </label>
+
+        <label class="agreement-item">
+          <input type="checkbox" checked />
+          <span class="custom-checkbox"></span>
+          <span class="agreement-text">
+            개인정보 수집 및 이용 동의 (필수)
+          </span>
+        </label>
+
+        <label class="agreement-item">
+          <input type="checkbox" checked />
+          <span class="custom-checkbox"></span>
+          <span class="agreement-text">만 14세 이상입니다 (필수)</span>
+        </label>
+      </div>
+
+      <button type="submit" class="signup-button">
+        <a href="./login.html" class="login-button">가입하기</a>
+      </button>
+    </form>
+
+    <div class="login-link-wrap">
+      <a href="./login.html" class="login-link">
+        로그인으로 돌아가기
+      </a>
+    </div>
+  </main>
+</body>
+</html>
