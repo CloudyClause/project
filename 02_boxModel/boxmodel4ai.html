@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>박스 모델</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #ffffff;
+    }
+
+    /* 위쪽 DIV 박스 모델 */
+    .div-model {
+      display: flex;
+      gap: 20px;
+
+      width: 1000px;
+      height: 300px;
+
+      margin: 0 auto;
+
+      border: 5px solid #000000;
+      background-color: #ffffff;
+    }
+
+    .div-model div {
+      flex: 1;
+      height: 100%;
+      background-color: #eef7ff;
+    }
+
+    /* 아래쪽 순서 없는 목록 박스 모델 */
+    .list-model {
+      display: flex;
+      gap: 20px;
+
+      width: 1000px;
+      height: 300px;
+
+      margin: -5px auto 0;
+      padding: 0;
+
+      border: 5px solid #000000;
+      background-color: #ffffff;
+
+      list-style: none;
+    }
+
+    .list-model li {
+      flex: 1;
+      height: 100%;
+      background-color: #ffb8c5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- DIV 태그로 구현한 위쪽 박스 모델 -->
+  <div class="div-model">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- 순서 없는 목록으로 구현한 아래쪽 박스 모델 -->
+  <ul class="list-model">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+</body>
+</html>

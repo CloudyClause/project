@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>박스 레이아웃</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #ffffff;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+
+      width: 1000px;
+      height: 300px;
+
+      margin: 0 auto;
+
+      border: 5px solid #000000;
+      background-color: #ffffff;
+    }
+
+    .box {
+      flex: 1;
+      height: 100%;
+
+      background-color: #ffff00;
+      font-size: 14px;
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">박스1</div>
+    <div class="box">박스2</div>
+    <div class="box">박스3</div>
+  </div>
+</body>
+</html>
