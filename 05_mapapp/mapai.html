@@ -25,7 +25,7 @@
     html,
     body {
       width: 100%;
-      height: 100%;
+      min-height: 100svh;
       overflow: hidden;
       background: #ffffff;
       color: #111111;
@@ -56,7 +56,6 @@
       position: relative;
       width: 100%;
       height: 100svh;
-      min-height: 700px;
       overflow: hidden;
       background: #ffffff;
     }
@@ -85,7 +84,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: 100%;
+      height: 100svh;
       background: #ffffff;
     }
 
@@ -293,7 +292,7 @@
       position: relative;
       display: none;
       width: 100%;
-      height: 100%;
+      height: 100svh;
       overflow: hidden;
       background: #eeeeee;
     }
@@ -307,7 +306,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 182px);
+      height: calc(100% - 236px);
       background: #dce6e9;
     }
 
@@ -333,7 +332,7 @@
     .location-button {
       position: absolute;
       right: 23px;
-      bottom: 198px;
+      bottom: 252px;
       z-index: 20;
       display: flex;
       align-items: center;
@@ -355,20 +354,24 @@
     /* =========================
        지도 하단 장소 카드
     ========================= */
-    .selected-place-panel {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      z-index: 25;
-      display: grid;
-      grid-template-columns: 100px minmax(0, 1fr) 34px;
-      column-gap: 14px;
-      width: 100%;
-      height: 182px;
-      padding: 24px 24px 30px;
-      background: #ffffff;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.04);
-    }
+  .selected-place-panel {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 25;
+
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr) 34px;
+    column-gap: 14px;
+    row-gap: 18px;
+
+    width: 100%;
+    min-height: 236px;
+    padding: 24px 24px 28px;
+
+    background: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.04);
+  }
 
     .selected-place-panel .place-address {
       min-height: 38px;
@@ -376,6 +379,45 @@
 
     .selected-place-panel .place-meta {
       margin-top: 12px;
+    }
+
+    .route-button {
+      grid-column: 1 / -1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      width: 100%;
+      height: 48px;
+      padding: 0 20px;
+
+      border: 0;
+      border-radius: 10px;
+      background: #4968bb;
+      color: #ffffff;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .route-button img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    .route-button:active {
+      opacity: 0.85;
+    }
+
+    .route-button:disabled {
+      cursor: default;
+      opacity: 0.55;
     }
 
     /* =========================
@@ -626,6 +668,18 @@
             alt=""
           >
         </button>
+
+        <button
+          id="routeButton"
+          type="button"
+          class="route-button"
+        >
+          <img
+            src="./images/navi.svg"
+            alt=""
+          >
+          <span>현재 위치에서 길찾기</span>
+        </button>
       </article>
     </section>
   </main>
@@ -744,6 +798,8 @@
       document.getElementById("currentLocationButton");
     const selectedBookmarkButton =
       document.getElementById("selectedBookmarkButton");
+    const routeButton = 
+      document.getElementById("routeButton");
 
 
     /* ==================================================
@@ -754,6 +810,7 @@
     let placeOverlay = null;
     let currentLocationMarker = null;
     let selectedPlace = null;
+    let currentUserPosition = null;
 
     let kakaoSdkState = "idle";
     let kakaoSdkPromise = null;
@@ -1071,65 +1128,135 @@
       }
     }
 
+    function getCurrentPosition() {
+      return new Promise(function (resolve, reject) {
+        if (!navigator.geolocation) {
+          reject(
+            new Error("현재 브라우저에서는 위치 정보를 지원하지 않습니다.")
+          );
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const location = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            };
+
+            currentUserPosition = location;
+            resolve(location);
+          },
+
+          function (error) {
+            let message = "현재 위치를 확인하지 못했습니다.";
+
+            if (error.code === error.PERMISSION_DENIED) {
+              message =
+                "위치 권한이 거부되었습니다. 브라우저 설정에서 위치 권한을 허용해 주세요.";
+            } else if (error.code === error.POSITION_UNAVAILABLE) {
+              message =
+                "현재 위치 정보를 사용할 수 없습니다.";
+            } else if (error.code === error.TIMEOUT) {
+              message =
+                "현재 위치 확인 시간이 초과되었습니다.";
+            }
+
+            reject(new Error(message));
+          },
+
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 30000
+          }
+        );
+      });
+    }
 
     /* ==================================================
        12. 현재 위치 표시
     ================================================== */
-    function moveToCurrentLocation() {
+    async function moveToCurrentLocation() {
       if (!kakaoMap) {
-        return;
-      }
-
-      if (!navigator.geolocation) {
-        alert("현재 브라우저에서는 위치 정보를 지원하지 않습니다.");
         return;
       }
 
       currentLocationButton.disabled = true;
 
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
+      try {
+        const location = await getCurrentPosition();
 
-          const currentPosition =
-            new kakao.maps.LatLng(latitude, longitude);
+        const currentPosition = new kakao.maps.LatLng(
+          location.latitude,
+          location.longitude
+        );
 
-          if (currentLocationMarker) {
-            currentLocationMarker.setMap(null);
-          }
-
-          currentLocationMarker = new kakao.maps.Marker({
-            map: kakaoMap,
-            position: currentPosition,
-            title: "현재 위치"
-          });
-
-          kakaoMap.panTo(currentPosition);
-          kakaoMap.setLevel(4);
-
-          currentLocationButton.disabled = false;
-        },
-
-        function (error) {
-          currentLocationButton.disabled = false;
-
-          let message = "현재 위치를 확인하지 못했습니다.";
-
-          if (error.code === error.PERMISSION_DENIED) {
-            message =
-              "위치 권한이 거부되었습니다. 브라우저 설정에서 위치 권한을 허용해 주세요.";
-          }
-
-          alert(message);
-        },
-
-        {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 30000
+        if (currentLocationMarker) {
+          currentLocationMarker.setMap(null);
         }
-      );
+
+        currentLocationMarker = new kakao.maps.Marker({
+          map: kakaoMap,
+          position: currentPosition,
+          title: "현재 위치"
+        });
+
+        kakaoMap.panTo(currentPosition);
+        kakaoMap.setLevel(4);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        currentLocationButton.disabled = false;
+      }
+    }
+
+    async function openRouteFromCurrentLocation() {
+      if (!selectedPlace) {
+        alert("길찾기를 실행할 장소가 선택되지 않았습니다.");
+        return;
+      }
+
+      routeButton.disabled = true;
+
+      const routeButtonText =
+        routeButton.querySelector("span");
+
+      const originalButtonText =
+        routeButtonText.textContent;
+
+      routeButtonText.textContent =
+        "현재 위치 확인 중";
+
+      try {
+        const location =
+          currentUserPosition ||
+          await getCurrentPosition();
+
+        const startName = "현재 위치";
+        const destinationName = selectedPlace.name;
+
+        const routeURL =
+          "https://map.kakao.com/link/by/car/" +
+          encodeURIComponent(startName) +
+          "," +
+          location.latitude +
+          "," +
+          location.longitude +
+          "/" +
+          encodeURIComponent(destinationName) +
+          "," +
+          selectedPlace.latitude +
+          "," +
+          selectedPlace.longitude;
+
+        window.location.href = routeURL;
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        routeButton.disabled = false;
+        routeButtonText.textContent = originalButtonText;
+      }
     }
 
 
@@ -1216,6 +1343,11 @@
           toggleBookmark(selectedPlace.id);
         }
       }
+    );
+
+    routeButton.addEventListener(
+      "click",
+      openRouteFromCurrentLocation
     );
 
 
