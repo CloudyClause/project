@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>이어타고 - 검색 및 경로 지도</title>
+
+  <link rel="stylesheet" href="./css/search.css" />
+
+  <!-- 카카오 JavaScript 키 입력 -->
+    <script
+        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=ff903ba5afd1fcd44c239001c7ce94a6&autoload=false"
+    ></script>
+</head>
+
+<body>
+  <!-- ==================================================
+       검색 화면
+  =================================================== -->
+  <section
+    class="screen search-screen"
+    id="searchScreen"
+  >
+    <main class="search-app">
+      <header class="search-header">
+        <button
+          type="button"
+          class="icon-button search-back-button"
+          aria-label="이전 화면으로 이동"
+        >
+          <img
+            src="./images/arrow-left.svg"
+            alt=""
+          />
+        </button>
+
+        <form class="search-form">
+          <input
+            type="search"
+            class="search-input"
+            placeholder="역명, 장소, 주소 검색"
+            aria-label="역명, 장소, 주소 검색"
+          />
+
+          <button
+            type="submit"
+            class="search-button"
+            aria-label="검색"
+          >
+            <img
+              src="./images/search.svg"
+              alt=""
+            />
+          </button>
+        </form>
+      </header>
+
+      <nav
+        class="search-category"
+        aria-label="검색 유형"
+      >
+        <button
+          type="button"
+          class="category-button active"
+        >
+          역
+        </button>
+
+        <button
+          type="button"
+          class="category-button"
+        >
+          장소
+        </button>
+
+        <button
+          type="button"
+          class="category-button"
+        >
+          랜드마크
+        </button>
+      </nav>
+
+      <div
+        class="filter-list"
+        aria-label="경로 필터"
+      >
+        <button
+          type="button"
+          class="filter-chip active"
+        >
+          최단 시간
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+        >
+          최소 환승
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+        >
+          저렴한 요금
+        </button>
+
+        <button
+          type="button"
+          class="filter-chip"
+        >
+          도보 적음
+        </button>
+      </div>
+
+      <section class="result-section">
+        <h1 class="section-title">
+          검색 결과
+        </h1>
+
+        <div class="result-list">
+          <button
+            type="button"
+            class="result-item"
+            data-name="강남역"
+            data-line="2호선, 신분당선"
+            data-address="서울 강남구 강남대로 지하 396"
+            data-latitude="37.497952"
+            data-longitude="127.027619"
+          >
+            <span class="station-icon">
+              <img
+                src="./images/location.svg"
+                alt="위치 아이콘"
+              />
+            </span>
+
+            <span class="station-info">
+              <span class="station-name">
+                강남역
+              </span>
+
+              <span class="station-line">
+                2호선, 신분당선
+              </span>
+            </span>
+
+            <span class="station-distance">
+              1.2km
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="result-item"
+            data-name="역삼역"
+            data-line="2호선"
+            data-address="서울 강남구 테헤란로 지하 156"
+            data-latitude="37.500658"
+            data-longitude="127.036430"
+          >
+            <span class="station-icon">
+              <img
+                src="./images/location.svg"
+                alt="위치 아이콘"
+              />
+            </span>
+
+            <span class="station-info">
+              <span class="station-name">
+                역삼역
+              </span>
+
+              <span class="station-line">
+                2호선
+              </span>
+            </span>
+
+            <span class="station-distance">
+              1.8km
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="result-item"
+            data-name="선릉역"
+            data-line="2호선, 수인분당선"
+            data-address="서울 강남구 테헤란로 지하 340"
+            data-latitude="37.504503"
+            data-longitude="127.049008"
+          >
+            <span class="station-icon">
+              <img
+                src="./images/location.svg"
+                alt="위치 아이콘"
+              />
+            </span>
+
+            <span class="station-info">
+              <span class="station-name">
+                선릉역
+              </span>
+
+              <span class="station-line">
+                2호선, 수인분당선
+              </span>
+            </span>
+
+            <span class="station-distance">
+              2.3km
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="result-item"
+            data-name="삼성역"
+            data-line="2호선"
+            data-address="서울 강남구 테헤란로 지하 538"
+            data-latitude="37.508844"
+            data-longitude="127.063160"
+          >
+            <span class="station-icon">
+              <img
+                src="./images/location.svg"
+                alt="위치 아이콘"
+              />
+            </span>
+
+            <span class="station-info">
+              <span class="station-name">
+                삼성역
+              </span>
+
+              <span class="station-line">
+                2호선
+              </span>
+            </span>
+
+            <span class="station-distance">
+              2.7km
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="result-item"
+            data-name="교대역"
+            data-line="2호선, 3호선"
+            data-address="서울 서초구 서초대로 지하 294"
+            data-latitude="37.493415"
+            data-longitude="127.014080"
+          >
+            <span class="station-icon">
+              <img
+                src="./images/location.svg"
+                alt="위치 아이콘"
+              />
+            </span>
+
+            <span class="station-info">
+              <span class="station-name">
+                교대역
+              </span>
+
+              <span class="station-line">
+                2호선, 3호선
+              </span>
+            </span>
+
+            <span class="station-distance">
+              3.1km
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <button
+        type="button"
+        class="issue-button search-issue-button"
+      >
+        이 경로로 발급 준비
+      </button>
+    </main>
+
+    <nav
+      class="bottom-tabbar"
+      aria-label="주요 메뉴"
+    >
+      <a href="./home.html" class="tab-item">
+        <img
+          src="./images/homedeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">홈</span>
+      </a>
+
+      <a
+        href="./prepare.html"
+        class="tab-item active"
+      >
+        <img
+          src="./images/ticketactive.svg"
+          alt=""
+        />
+        <span class="tab-label">발급준비</span>
+      </a>
+
+      <a href="./route.html" class="tab-item">
+        <img
+          src="./images/routedeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">경로안내</span>
+      </a>
+
+      <a href="./myinfo.html" class="tab-item">
+        <img
+          src="./images/userdeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">내 정보</span>
+      </a>
+    </nav>
+  </section>
+
+  <!-- ==================================================
+       지도 경로 화면
+  =================================================== -->
+  <section
+    class="screen route-map-screen hidden"
+    id="routeMapScreen"
+  >
+    <main class="route-map-app">
+      <header class="route-map-header">
+        <button
+          type="button"
+          class="icon-button route-back-button"
+          aria-label="검색 화면으로 돌아가기"
+        >
+          <img
+            src="./images/arrow-left.svg"
+            alt=""
+          />
+        </button>
+
+        <h1 class="route-map-title">
+          경로 지도
+        </h1>
+      </header>
+
+      <section class="route-summary-card">
+        <div class="station-summary">
+          <div class="station-summary-block">
+            <span class="station-type">
+              출발지
+            </span>
+
+            <strong
+              class="summary-station-name"
+              id="startName"
+            >
+              현재 위치
+            </strong>
+          </div>
+
+          <span
+            class="summary-arrow"
+            aria-hidden="true"
+          >
+            →
+          </span>
+
+          <div
+            class="
+              station-summary-block
+              destination-summary-block
+            "
+          >
+            <span class="station-type">
+              목적지
+            </span>
+
+            <strong
+              class="summary-station-name"
+              id="destinationName"
+            >
+              강남역
+            </strong>
+          </div>
+        </div>
+
+        <div class="route-metrics">
+          <div class="metric-item">
+            <span class="metric-label">
+              예상
+            </span>
+
+            <strong
+              class="metric-value"
+              id="durationValue"
+            >
+              계산 중
+            </strong>
+          </div>
+
+          <span class="metric-divider"></span>
+
+          <div class="metric-item">
+            <span class="metric-label">
+              총 거리
+            </span>
+
+            <strong
+              class="metric-value"
+              id="distanceValue"
+            >
+              계산 중
+            </strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section">
+        <div
+          id="kakaoMap"
+          class="kakao-map"
+          aria-label="현재 위치에서 목적지까지의 지도"
+        ></div>
+
+        <p
+          class="map-loading"
+          id="mapLoading"
+          aria-live="polite"
+        >
+          현재 위치와 지도를 불러오는 중입니다.
+        </p>
+
+        <div class="zoom-control">
+          <button
+            type="button"
+            class="zoom-button"
+            id="zoomInButton"
+            aria-label="지도 확대"
+          >
+            <img
+              src="./images/ic_baseline-plus.svg"
+              alt=""
+            />
+          </button>
+
+          <button
+            type="button"
+            class="zoom-button"
+            id="zoomOutButton"
+            aria-label="지도 축소"
+          >
+            <img
+              src="./images/ic_baseline-minus.svg"
+              alt=""
+            />
+          </button>
+        </div>
+      </section>
+
+      <section class="place-card">
+        <div class="place-card-content">
+          <h2
+            class="place-name"
+            id="placeName"
+          >
+            강남역
+          </h2>
+
+          <p
+            class="place-address"
+            id="placeAddress"
+          >
+            서울 강남구 강남대로 지하 396
+          </p>
+
+          <p
+            class="place-line"
+            id="placeLine"
+          >
+            2호선 · 신분당선
+          </p>
+
+          <p
+            class="place-distance"
+            id="placeDistance"
+          >
+            현재 위치에서 거리 계산 중
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="place-detail-button"
+          id="placeDetailButton"
+        >
+          <span>상세보기</span>
+
+          <img
+            src="./images/right.svg"
+            alt=""
+          />
+        </button>
+      </section>
+
+      <button
+        type="button"
+        class="issue-button route-issue-button"
+      >
+        이 경로로 발급 준비
+      </button>
+    </main>
+
+    <nav
+      class="bottom-tabbar"
+      aria-label="주요 메뉴"
+    >
+      <a href="./home.html" class="tab-item">
+        <img
+          src="./images/homedeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">홈</span>
+      </a>
+
+      <a
+        href="./prepare.html"
+        class="tab-item"
+      >
+        <img
+          src="./images/ticketdeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">발급준비</span>
+      </a>
+
+      <a
+        href="./route.html"
+        class="tab-item active"
+      >
+        <img
+          src="./images/routeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">경로안내</span>
+      </a>
+
+      <a href="./myinfo.html" class="tab-item">
+        <img
+          src="./images/userdeactive.svg"
+          alt=""
+        />
+        <span class="tab-label">내 정보</span>
+      </a>
+    </nav>
+  </section>
+
+  <script src="./js/search.js"></script>
+</body>
+</html>
