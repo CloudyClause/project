@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이어타고 - 결제 확인</title>
+
+  <style>
+    :root {
+      --primary-navy: #061a3d;
+      --primary-blue: #005bff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-gray: #687386;
+      --surface-white: #ffffff;
+
+      --radius-card: 16px;
+      --tabbar-height: 94px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--surface-white);
+      font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    a {
+      font: inherit;
+    }
+
+    button,
+    a,
+    label {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      padding: 58px 24px calc(var(--tabbar-height) + 18px);
+      background: var(--surface-white);
+    }
+
+    /* 상단 제목 */
+    .page-header {
+      position: relative;
+      width: 100%;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 0;
+      left: -8px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+    }
+
+    .back-button::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      width: 18px;
+      height: 18px;
+      border-left: 2px solid var(--primary-navy);
+      border-bottom: 2px solid var(--primary-navy);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .back-button::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      width: 27px;
+      height: 2px;
+      background: var(--primary-navy);
+      transform: translateY(-50%);
+    }
+
+    .page-title {
+      color: var(--primary-navy);
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    /* 결제 금액 */
+    .amount-card {
+      width: 100%;
+      min-height: 82px;
+      margin-top: 19px;
+      padding: 10px 15px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+    }
+
+    .amount-label {
+      color: var(--text-primary);
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    .amount-value {
+      margin-top: 3px;
+      color: var(--primary-blue);
+      font-size: 31px;
+      line-height: 36px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .amount-unit {
+      margin-left: 4px;
+      color: var(--primary-navy);
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 700;
+    }
+
+    /* 공통 선택 행 */
+    .select-row {
+      width: 100%;
+      min-height: 56px;
+      margin-top: 22px;
+      padding: 0 15px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+
+    .select-label {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+    }
+
+    .select-value {
+      margin-left: auto;
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+    }
+
+    .chevron {
+      position: relative;
+      width: 20px;
+      height: 44px;
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+
+    .chevron::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      width: 9px;
+      height: 9px;
+      border-top: 2px solid var(--text-secondary);
+      border-right: 2px solid var(--text-secondary);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* 티켓 정보 */
+    .ticket-card {
+      width: 100%;
+      margin-top: 28px;
+      padding: 14px 15px 7px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+    }
+
+    .ticket-title {
+      color: var(--text-primary);
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 800;
+    }
+
+    .ticket-list {
+      margin-top: 8px;
+    }
+
+    .ticket-item {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticket-icon {
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .ticket-text {
+      margin-left: 15px;
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+    }
+
+    .ticket-text.strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* 쿠폰 */
+    .coupon-row {
+      margin-top: 21px;
+    }
+
+    /* 동의 체크 */
+    .agreement {
+      position: relative;
+      width: 100%;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 2px;
+      cursor: pointer;
+    }
+
+    .agreement input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .custom-checkbox {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      border: 2px solid var(--primary-blue);
+      border-radius: 2px;
+      background: var(--surface-white);
+    }
+
+    .custom-checkbox::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      transform: rotate(-45deg);
+      opacity: 0;
+    }
+
+    .agreement input:checked + .custom-checkbox {
+      background: var(--primary-blue);
+    }
+
+    .agreement input:checked + .custom-checkbox::after {
+      opacity: 1;
+    }
+
+    .agreement-text {
+      margin-left: 18px;
+      margin-top: 16px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 19px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+    }
+
+    /* 결제 버튼 */
+    .payment-button {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    .payment-button:active {
+      background: #0048cc;
+    }
+
+    /* 공통 하단 탭바 */
+    .bottom-tabbar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      width: 100%;
+      height: var(--tabbar-height);
+      padding: 12px 14px 13px;
+      border-top: 1px solid var(--border-gray);
+      background: var(--surface-white);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tab-item {
+      min-width: 0;
+      min-height: 60px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .tab-item img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .tab-label {
+      font-size: 11px;
+      line-height: 14px;
+      font-weight: 500;
+    }
+
+    .tab-item.active {
+      color: var(--primary-blue);
+    }
+
+    .tab-item.active .tab-label {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="page-header">
+      <button
+        type="button"
+        class="back-button"
+        aria-label="이전 화면으로 이동"
+      ></button>
+
+      <h1 class="page-title">결제 확인</h1>
+    </header>
+
+    <section class="amount-card">
+      <p class="amount-label">결제 금액</p>
+
+      <p class="amount-value">
+        2,150<span class="amount-unit">원</span>
+      </p>
+    </section>
+
+    <button type="button" class="select-row payment-method-button">
+      <span class="select-label">결제 수단</span>
+      <span class="select-value">신용/체크카드</span>
+      <span class="chevron"></span>
+    </button>
+
+    <section class="ticket-card">
+      <h2 class="ticket-title">티켓 정보</h2>
+
+      <div class="ticket-list">
+        <div class="ticket-item">
+          <img
+            src="./icons/locationblack.svg"
+            alt="목적지"
+            class="ticket-icon"
+          />
+          <span class="ticket-text strong">서울역 → 강남역</span>
+        </div>
+
+        <div class="ticket-item">
+          <img
+            src="./icons/transfer.svg"
+            alt="환승"
+            class="ticket-icon"
+          />
+          <span class="ticket-text">2호선 환승 1회</span>
+        </div>
+
+        <div class="ticket-item">
+          <img
+            src="./icons/calendar.svg"
+            alt="일자"
+            class="ticket-icon"
+          />
+          <span class="ticket-text">2025.05.20 (화) 14:30</span>
+        </div>
+
+        <div class="ticket-item">
+          <img
+            src="./icons/userdeactive.svg"
+            alt="승객"
+            class="ticket-icon"
+          />
+          <span class="ticket-text">성인 1명 · 일반 티켓</span>
+        </div>
+      </div>
+    </section>
+
+    <button type="button" class="select-row coupon-row">
+      <span class="select-label">쿠폰/할인</span>
+      <span class="select-value">사용 안 함</span>
+      <span class="chevron"></span>
+    </button>
+
+    <label class="agreement">
+      <input type="checkbox" checked />
+
+      <span class="custom-checkbox"></span>
+
+      <span class="agreement-text">
+        결제 내용을 확인했으며<br />
+        이에 동의합니다. (필수)
+      </span>
+    </label>
+
+    <button type="button" class="payment-button">
+      결제 진행
+    </button>
+  </main>
+
+  <!-- 공통 하단 탭바 -->
+  <nav class="bottom-tabbar" aria-label="주요 메뉴">
+    <a href="./home.html" class="tab-item">
+      <img src="./icons/homedeactive.svg" alt="홈 화면" />
+      <span class="tab-label">홈</span>
+    </a>
+
+    <a href="./prepare.html" class="tab-item active">
+      <img src="./icons/ticketactive.svg" alt="발급준비" />
+      <span class="tab-label">발급준비</span>
+    </a>
+
+    <a href="./route.html" class="tab-item">
+      <img src="./icons/routedeactive.svg" alt="경로안내" />
+      <span class="tab-label">경로안내</span>
+    </a>
+
+    <a href="./myinfo.html" class="tab-item">
+      <img src="./icons/userdeactive.svg" alt="내 정보" />
+      <span class="tab-label">내 정보</span>
+    </a>
+  </nav>
+    <script>
+    const backButton = document.querySelector(".back-button");
+    const paymentMethodButton = document.querySelector(
+        ".payment-method-button"
+    );
+    const paymentButton = document.querySelector(".payment-button");
+
+    backButton.addEventListener("click", function () {
+        window.history.back();
+    });
+
+    paymentMethodButton.addEventListener("click", function () {
+        window.location.href = "./paymethod.html";
+    });
+
+    paymentButton.addEventListener("click", function () {
+        window.location.href = "./complete.html";
+    });
+</script>
+</body>
+</html>
