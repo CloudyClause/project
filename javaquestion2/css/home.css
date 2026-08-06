@@ -1,0 +1,876 @@
+:root {
+  --primary-navy: #061a3d;
+  --primary-blue: #005bff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-gray: #697386;
+  --light-border: #e5e7eb;
+  --surface-white: #ffffff;
+  --danger: #ef4444;
+
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+
+  --radius-card: 12px;
+  --tabbar-height: 94px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: var(--surface-white);
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    "Apple SD Gothic Neo",
+    Arial,
+    sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button,
+input,
+a {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 전체 앱 */
+.app {
+  width: 100%;
+  min-height: 100svh;
+  padding:
+    24px
+    23px
+    calc(var(--tabbar-height) + 28px);
+  background: var(--surface-white);
+}
+
+/* ==================================================
+   상단 헤더
+=================================================== */
+
+.home-header {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-button {
+  width: 28px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.menu-button img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+}
+
+.location-button {
+  min-width: 0;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-navy);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 800;
+}
+
+.location-arrow {
+  width: 0;
+  height: 0;
+  flex-shrink: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 13px solid var(--primary-navy);
+}
+
+.notification-button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.notification-button img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+
+/* ==================================================
+   검색창
+=================================================== */
+
+.search-form {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  margin-top: 11px;
+}
+
+.search-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 54px 0 15px;
+  border: 1px solid var(--border-gray);
+  border-radius: 9px;
+  background: var(--surface-white);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 24px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+.search-input:focus {
+  border: 2px solid var(--primary-blue);
+}
+
+.search-button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* ==================================================
+   공통 섹션
+=================================================== */
+
+.home-section {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.section-header {
+  width: 100%;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title {
+  color: var(--text-primary);
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.section-action {
+  min-height: 44px;
+  margin: -8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+/* ==================================================
+   최근 검색
+=================================================== */
+
+.recent-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.recent-chip {
+  min-width: 0;
+  flex: 1;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--border-gray);
+  border-radius: 12px;
+  background: var(--surface-white);
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ==================================================
+   메인 배너 Swiper
+=================================================== */
+
+.main-banner-section {
+  margin-top: 20px;
+}
+
+.main-banner-swiper {
+  width: 100%;
+  aspect-ratio: 327 / 128;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f9ff;
+}
+
+.main-banner-swiper .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.main-banner-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-slide-button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  display: block;
+  overflow: hidden;
+}
+
+.banner-slide-button img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Swiper 페이지 표시 점 */
+.main-banner-swiper .swiper-pagination {
+  bottom: 7px;
+}
+
+.main-banner-swiper
+.swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  margin: 0 3px;
+  background: #aab4c4;
+  opacity: 0.7;
+}
+
+.main-banner-swiper
+.swiper-pagination-bullet-active {
+  width: 15px;
+  border-radius: 999px;
+  background: var(--primary-blue);
+  opacity: 1;
+}
+
+/* ==================================================
+   빠른 메뉴
+=================================================== */
+
+.quick-menu-section {
+  margin-top: 22px;
+}
+
+.quick-menu-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 14px;
+}
+
+.quick-menu-card {
+  min-width: 0;
+  height: 109px;
+  padding: 14px 6px 10px;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  background: var(--surface-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-primary);
+}
+
+.quick-menu-card img {
+  width: 43px;
+  height: 43px;
+  object-fit: contain;
+}
+
+.quick-menu-label {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+/* ==================================================
+   추천 경로
+=================================================== */
+
+.route-card {
+  width: calc(100% - 10px);
+  min-height: 90px;
+  margin: 12px auto 0;
+  padding: 15px 14px;
+  border: 1px solid var(--border-gray);
+  border-radius: 12px;
+  background: var(--surface-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.route-info {
+  min-width: 0;
+}
+
+.route-name {
+  display: block;
+  color: var(--primary-navy);
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.route-description {
+  display: block;
+  margin-top: 10px;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.route-summary {
+  flex-shrink: 0;
+  margin-left: 12px;
+  color: #000000;
+  text-align: right;
+}
+
+.route-time,
+.route-price {
+  font-size: 25px;
+  line-height: 29px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+}
+
+/* ==================================================
+   바로가기
+=================================================== */
+
+.shortcut-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 14px;
+}
+
+.shortcut-card {
+  min-width: 0;
+  height: 71px;
+  padding: 0 14px;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  background: var(--surface-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: var(--text-primary);
+}
+
+.shortcut-card img {
+  width: 41px;
+  height: 41px;
+  object-fit: contain;
+}
+
+.shortcut-card span {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ==================================================
+   공통 하단 탭바
+=================================================== */
+
+.bottom-tabbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
+  height: var(--tabbar-height);
+  padding: 12px 14px 13px;
+  border-top: 1px solid var(--border-gray);
+  background: var(--surface-white);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.tab-item {
+  min-width: 0;
+  min-height: 60px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.tab-item img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.tab-label {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+.tab-item.active {
+  color: var(--primary-blue);
+}
+
+.tab-item.active .tab-label {
+  font-weight: 700;
+}
+
+/* ==================================================
+   모바일 슬라이드 메뉴
+=================================================== */
+
+/*
+  메뉴가 열렸을 때 홈 화면의 세로 스크롤을 막습니다.
+*/
+body.menu-open {
+  overflow: hidden;
+}
+
+/*
+  홈 화면 오른쪽을 덮는 반투명 배경입니다.
+
+  처음에는 투명하고 클릭되지 않는 상태입니다.
+*/
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  width: 100%;
+  height: 100svh;
+  background: rgba(6, 26, 61, 0.55);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+/*
+  JavaScript에서 is-open 클래스가 붙으면
+  어두운 배경이 표시됩니다.
+*/
+.menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/*
+  왼쪽 슬라이드 메뉴 본체입니다.
+
+  375px 화면 기준 약 304px 너비입니다.
+  화면이 더 좁더라도 오른쪽에 최소한의 배경이 남도록
+  max-width를 함께 적용했습니다.
+*/
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 210;
+
+  width: 304px;
+  max-width: calc(100% - 71px);
+  height: 100svh;
+
+  background: var(--surface-white);
+
+  /*
+    기본 상태에서는 메뉴의 전체 너비만큼
+    화면 왼쪽 바깥에 숨겨집니다.
+  */
+  transform: translateX(-100%);
+  visibility: hidden;
+
+  transition:
+    transform 0.32s ease,
+    visibility 0.32s ease;
+
+  box-shadow:
+    8px 0 24px rgba(6, 26, 61, 0.12);
+}
+
+/*
+  메뉴가 열렸을 때 화면 안으로 이동합니다.
+*/
+.mobile-menu.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/*
+  메뉴 내부만 별도로 세로 스크롤됩니다.
+*/
+.mobile-menu-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+
+  padding:
+    22px
+    21px
+    16px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==================================================
+   메뉴 상단
+=================================================== */
+
+.mobile-menu-header {
+  width: 100%;
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-brand {
+  min-width: 0;
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+}
+
+.menu-brand:hover {
+  text-decoration: none;
+}
+
+.menu-brand-logo {
+  width: 126px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.menu-close-button {
+  width: 44px;
+  height: 44px;
+
+  margin-right: -8px;
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-close-button img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+}
+
+/* ==================================================
+   프로필 카드
+=================================================== */
+
+.menu-profile-card {
+  width: 100%;
+  min-height: 82px;
+
+  margin-top: 16px;
+  padding: 14px 12px;
+
+  border: 1px solid var(--light-border);
+  border-radius: 12px;
+
+  background: var(--surface-white);
+
+  display: flex;
+  align-items: center;
+
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.menu-profile-card:hover {
+  text-decoration: none;
+}
+
+.menu-profile-card:active {
+  background: #f7f9fc;
+}
+
+.menu-profile-image {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-profile-image img {
+  width: 42px;
+  height: 42px;
+  display: block;
+  object-fit: contain;
+}
+
+.menu-profile-text {
+  min-width: 0;
+  flex: 1;
+
+  margin-left: 10px;
+}
+
+.menu-profile-name {
+  display: block;
+
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+
+/* ==================================================
+   메뉴 공통 섹션
+=================================================== */
+
+.menu-section {
+  width: 100%;
+  margin-top: 26px;
+}
+
+.menu-section-divided {
+  padding-top: 13px;
+  border-top: 1px solid var(--light-border);
+}
+
+.menu-section-title {
+  margin-bottom: 8px;
+  padding-left: 9px;
+
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.menu-list {
+  width: 100%;
+}
+
+.menu-list-item {
+  width: 100%;
+  min-height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.menu-list-item:hover {
+  text-decoration: none;
+}
+
+.menu-list-item:active {
+  background: #f7f9fc;
+  border-radius: 7px;
+}
+
+.menu-item-icon {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+
+  display: block;
+  object-fit: contain;
+}
+
+.menu-item-label {
+  min-width: 0;
+  flex: 1;
+
+  margin-left: 14px;
+
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.menu-chevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  display: block;
+  object-fit: contain;
+}
+
+/* ==================================================
+   앱 설정 버튼과 버전
+=================================================== */
+
+.menu-setting-button {
+  width: 100%;
+  min-height: 40px;
+
+  padding: 0 12px;
+
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.menu-setting-button:hover {
+  text-decoration: none;
+}
+
+.menu-setting-button:active {
+  background: #f7f9fc;
+}
+
+.app-version {
+  margin-top: 9px;
+  padding-left: 10px;
+
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+}
