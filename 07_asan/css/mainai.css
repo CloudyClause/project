@@ -1,0 +1,297 @@
+/* =========================
+   기본 초기화
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #ffffff;
+  font-family:
+    Pretendard,
+    "Noto Sans KR",
+    "Apple SD Gothic Neo",
+    Arial,
+    sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+
+/* =========================
+   모바일 앱 전체 영역
+========================= */
+.app {
+  width: 100%;
+  min-height: 100svh;
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   상단 헤더
+========================= */
+.app-header {
+  position: relative;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 44px;
+  padding: 0 10px;
+
+  background-color: #343640;
+}
+
+
+/* 헤더 좌우 버튼 */
+.header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+}
+
+
+/* 헤더 공통 아이콘 */
+.header-icon {
+  display: block;
+  object-fit: contain;
+}
+
+
+/* 햄버거 메뉴 아이콘 */
+.menu-icon {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* 검색 아이콘 */
+.search-icon {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* 중앙 로고 링크 */
+.header-logo-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* 중앙 로고 이미지 */
+.header-logo {
+  width: 96px;
+  height: 30px;
+  object-fit: contain;
+}
+
+
+/* =========================
+   메인 콘텐츠
+========================= */
+.app-main {
+  width: 100%;
+  min-height: calc(100svh - 44px);
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   메인 배너 영역
+========================= */
+.main-banner-section {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+
+/*
+  원본 모바일 홈 화면의 배너는
+  약 1.85 : 1 비율입니다.
+
+  전체 화면 높이를 배너가 차지하지 않고,
+  이미지 비율만큼만 높이가 생성됩니다.
+*/
+.main-banner-swiper {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1.85 / 1;
+
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+
+/* 각각의 슬라이드 */
+.main-banner-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+/* 배너 링크 */
+.banner-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 배너 이미지 */
+.banner-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================
+   Swiper 이전·다음 버튼
+========================= */
+.main-banner-swiper .swiper-button-prev,
+.main-banner-swiper .swiper-button-next {
+  top: 50%;
+
+  width: 34px;
+  height: 56px;
+  margin-top: 0;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  transform: translateY(-50%);
+}
+
+
+/* Swiper 기본 화살표 모양 */
+.main-banner-swiper .swiper-button-prev::after,
+.main-banner-swiper .swiper-button-next::after {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+
+/* 왼쪽 화살표 위치 */
+.main-banner-swiper .swiper-button-prev {
+  left: 5px;
+}
+
+
+/* 오른쪽 화살표 위치 */
+.main-banner-swiper .swiper-button-next {
+  right: 5px;
+}
+
+
+/* 터치 시 표시 */
+.main-banner-swiper .swiper-button-prev:active,
+.main-banner-swiper .swiper-button-next:active {
+  opacity: 0.55;
+}
+
+
+/* =========================
+   Swiper 페이지네이션
+========================= */
+.main-banner-swiper .swiper-pagination {
+  bottom: 9px;
+}
+
+
+/* 기본 페이지 점 */
+.main-banner-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+
+  background-color: rgba(55, 57, 108, 0.55);
+  opacity: 1;
+}
+
+
+/* 현재 활성 페이지 점 */
+.main-banner-swiper .swiper-pagination-bullet-active {
+  background-color: #0088ff;
+}
+
+
+/* =========================
+   배너 아래 흰색 공백
+========================= */
+.empty-content {
+  width: 100%;
+
+  /*
+    헤더와 배너를 제외한 나머지 화면 높이를
+    흰색 공백으로 채웁니다.
+  */
+  min-height: calc(100svh - 44px - (100vw / 1.85));
+
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   키보드 접근성
+========================= */
+.header-button:focus-visible,
+.header-logo-link:focus-visible,
+.banner-link:focus-visible,
+.swiper-button-prev:focus-visible,
+.swiper-button-next:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -2px;
+}
