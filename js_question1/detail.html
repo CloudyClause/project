@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이어타고 - 티켓 상세</title>
+
+  <style>
+    :root {
+      --primary-navy: #061a3d;
+      --primary-blue: #005bff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-gray: #687386;
+      --surface-white: #ffffff;
+
+      --radius-card: 14px;
+      --tabbar-height: 94px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--surface-white);
+      font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      padding: 39px 22px calc(var(--tabbar-height) + 18px);
+      background: var(--surface-white);
+    }
+
+    /* 상단 헤더 */
+    .page-header {
+      position: relative;
+      width: 100%;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 0;
+      left: -7px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+    }
+
+    .back-button::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 11px;
+      width: 18px;
+      height: 18px;
+      border-left: 2px solid var(--primary-navy);
+      border-bottom: 2px solid var(--primary-navy);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .back-button::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 11px;
+      width: 27px;
+      height: 2px;
+      background: var(--primary-navy);
+      transform: translateY(-50%);
+    }
+
+    .page-title {
+      color: var(--primary-navy);
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    /* 공통 카드 */
+    .card {
+      width: 100%;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+    }
+
+    /* 모바일 티켓 카드 */
+    .ticket-card {
+      margin-top: 16px;
+      padding: 10px 13px 12px;
+      text-align: center;
+    }
+
+    .ticket-label {
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+    }
+
+    .qr-box {
+      width: 96px;
+      height: 96px;
+      margin: 7px auto 8px;
+      padding: 8px;
+      border: 1px solid var(--border-gray);
+      border-radius: 16px;
+      background: var(--surface-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .ticket-number {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+    }
+
+    /* 유효 시간 카드 */
+    .timer-card {
+      margin-top: 16px;
+      padding: 7px 16px 8px;
+      text-align: center;
+    }
+
+    .timer-title {
+      color: var(--text-primary);
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: 800;
+    }
+
+    .timer-value {
+      margin-top: 2px;
+      color: var(--primary-navy);
+      font-size: 31px;
+      line-height: 38px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+    }
+
+    .timer-description {
+      margin-top: 2px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 500;
+    }
+
+    /* 정보 카드 */
+    .info-card {
+      margin-top: 16px;
+      padding: 8px 12px 10px;
+    }
+
+    .card-title {
+      color: var(--primary-navy);
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .route-list {
+      margin-top: 4px;
+    }
+
+    .route-row {
+      min-height: 27px;
+      display: flex;
+      align-items: center;
+      color: var(--primary-navy);
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 700;
+    }
+
+    .payment-list {
+      margin-top: 4px;
+    }
+
+    .payment-row {
+      min-height: 29px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      align-items: center;
+    }
+
+    .payment-label {
+      color: var(--primary-navy);
+      font-size: 16px;
+      line-height: 23px;
+      font-weight: 700;
+    }
+
+    .payment-value {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 23px;
+      font-weight: 600;
+    }
+
+    /* 경로 안내 버튼 */
+    .route-button {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 17px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    .route-button:active {
+      background: #0048cc;
+    }
+
+    /* 공통 하단 탭바 */
+    .bottom-tabbar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      width: 100%;
+      height: var(--tabbar-height);
+      padding: 12px 14px 13px;
+      border-top: 1px solid var(--border-gray);
+      background: var(--surface-white);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tab-item {
+      min-width: 0;
+      min-height: 60px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .tab-item img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .tab-label {
+      font-size: 11px;
+      line-height: 14px;
+      font-weight: 500;
+    }
+
+    .tab-item.active {
+      color: var(--primary-blue);
+    }
+
+    .tab-item.active .tab-label {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="page-header">
+      <button
+        type="button"
+        class="back-button"
+        aria-label="이전 화면으로 이동"
+      ></button>
+
+      <h1 class="page-title">티켓 상세</h1>
+    </header>
+
+    <section class="card ticket-card">
+      <p class="ticket-label">모바일 티켓</p>
+
+      <div class="qr-box">
+        <img
+          src="./icons/qrcode.svg"
+          alt="모바일 티켓 QR 코드"
+          class="qr-image"
+        />
+      </div>
+
+      <p class="ticket-number">
+        티켓 번호&nbsp; 1234-5678-9012-3456
+      </p>
+    </section>
+
+    <section class="card timer-card">
+      <h2 class="timer-title">남은 유효 시간</h2>
+      <p class="timer-value">01:25:30</p>
+      <p class="timer-description">(탑승 후 2시간 이내)</p>
+    </section>
+
+    <section class="card info-card">
+      <h2 class="card-title">경로 정보</h2>
+
+      <div class="route-list">
+        <p class="route-row">서울역 → 강남역</p>
+        <p class="route-row">2024.05.24 (금) 10:30</p>
+        <p class="route-row">성인 1명</p>
+      </div>
+    </section>
+
+    <section class="card info-card">
+      <h2 class="card-title">결제 정보</h2>
+
+      <div class="payment-list">
+        <div class="payment-row">
+          <span class="payment-label">결제수단</span>
+          <span class="payment-value">신용/체크카드</span>
+        </div>
+
+        <div class="payment-row">
+          <span class="payment-label">결제금액</span>
+          <span class="payment-value">2,150원</span>
+        </div>
+      </div>
+    </section>
+
+    <button type="button" class="route-button">
+      경로 안내
+    </button>
+  </main>
+
+  <!-- 공통 하단 탭바 -->
+  <nav class="bottom-tabbar" aria-label="주요 메뉴">
+    <a href="./home.html" class="tab-item">
+      <img src="./icons/homedeactive.svg" alt="홈 화면" />
+      <span class="tab-label">홈</span>
+    </a>
+
+    <a href="./prepare.html" class="tab-item active">
+      <img src="./icons/ticketactive.svg" alt="발급준비" />
+      <span class="tab-label">발급준비</span>
+    </a>
+
+    <a href="./route.html" class="tab-item">
+      <img src="./icons/routedeactive.svg" alt="경로안내" />
+      <span class="tab-label">경로안내</span>
+    </a>
+
+    <a href="./myinfo.html" class="tab-item">
+      <img src="./icons/userdeactive.svg" alt="내 정보" />
+      <span class="tab-label">내 정보</span>
+    </a>
+  </nav>
+<script>
+    const backButton = document.querySelector(".back-button");
+    const routeButton = document.querySelector(".route-button");
+    const timerElement = document.querySelector(".timer-value");
+
+    backButton.addEventListener("click", function () {
+      window.history.back();
+    });
+
+    routeButton.addEventListener("click", function () {
+      window.location.href = "./route.html";
+    });
+
+    let hours = 1;
+    let minutes = 25;
+    let seconds = 30;
+
+    const timer = setInterval(function () {
+      if (hours === 0 && minutes === 0 && seconds === 0) {
+        clearInterval(timer);
+        timerElement.textContent = "00:00:00";
+        return;
+      }
+
+      if (seconds === 0) {
+        seconds = 59;
+
+        if (minutes === 0) {
+          minutes = 59;
+          hours -= 1;
+        } else {
+          minutes -= 1;
+        }
+      } else {
+        seconds -= 1;
+      }
+
+      const formattedHours = String(hours).padStart(2, "0");
+      const formattedMinutes = String(minutes).padStart(2, "0");
+      const formattedSeconds = String(seconds).padStart(2, "0");
+
+      timerElement.textContent =
+        `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
