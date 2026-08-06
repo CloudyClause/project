@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>이어타고 - 홈</title>
+
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+  />
+
+  <!-- 홈 화면 CSS -->
+  <link rel="stylesheet" href="./css/home.css" />
+</head>
+
+<body>
+  <main class="app">
+    <!-- 상단 헤더 -->
+    <header class="home-header">
+      <div class="header-left">
+        <!-- 새로 추가한 햄버거 메뉴만 icons 경로 사용 -->
+        <button
+          type="button"
+          class="menu-button"
+          aria-label="전체 메뉴 열기"
+        >
+          <img
+            src="./icons/menu.svg"
+            alt=""
+          />
+        </button>
+
+        <button
+          type="button"
+          class="location-button"
+          aria-label="출발 위치 선택"
+        >
+          <span>서울역</span>
+          <span
+            class="location-arrow"
+            aria-hidden="true"
+          ></span>
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="notification-button"
+        aria-label="알림 확인"
+      >
+        <img
+          src="./icons/belldeactive.svg"
+          alt="알림아이콘"
+        />
+
+        <span
+          class="notification-dot"
+          aria-hidden="true"
+        ></span>
+      </button>
+    </header>
+
+    <!-- 검색창 -->
+    <form class="search-form">
+      <input
+        type="search"
+        class="search-input"
+        placeholder="어디로 이동하시나요?"
+        aria-label="목적지 검색"
+      />
+
+      <button
+        type="submit"
+        class="search-button"
+        aria-label="검색"
+      >
+        <img
+          src="./icons/search.svg"
+          alt="검색아이콘"
+        />
+      </button>
+    </form>
+
+    <!-- 최근 검색 -->
+    <section class="home-section recent-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          최근 검색
+        </h2>
+
+        <button
+          type="button"
+          class="section-action clear-recent-button"
+        >
+          전체 삭제
+        </button>
+      </div>
+
+      <div class="recent-list">
+        <button
+          type="button"
+          class="recent-chip"
+        >
+          강남역
+        </button>
+
+        <button
+          type="button"
+          class="recent-chip"
+        >
+          홍대입구역
+        </button>
+
+        <button
+          type="button"
+          class="recent-chip"
+        >
+          잠실역
+        </button>
+
+        <button
+          type="button"
+          class="recent-chip"
+        >
+          부산역
+        </button>
+      </div>
+    </section>
+
+    <!-- 메인 배너 Swiper -->
+    <section
+      class="home-section main-banner-section"
+      aria-label="이어타고 주요 서비스 안내"
+    >
+      <div class="swiper main-banner-swiper">
+        <div class="swiper-wrapper">
+          <!-- 배너 1 -->
+          <div class="swiper-slide">
+            <button
+              type="button"
+              class="banner-slide-button banner-prepare-button"
+              aria-label="결제 후 QR 티켓 발급 준비 안내"
+            >
+              <img
+                src="./images/main1.png"
+                alt="결제 후 바로 발급되는 QR 티켓 안내"
+              />
+            </button>
+          </div>
+
+          <!-- 배너 2 -->
+          <div class="swiper-slide">
+            <button
+              type="button"
+              class="banner-slide-button banner-guide-button"
+              aria-label="개찰구부터 승강장까지 경로 안내"
+            >
+              <img
+                src="./images/main2.png"
+                alt="티켓만 보여주는 앱이 아닌 이동 경로 안내"
+              />
+            </button>
+          </div>
+
+          <!-- 배너 3 -->
+          <div class="swiper-slide">
+            <button
+              type="button"
+              class="banner-slide-button banner-search-button"
+              aria-label="목적지 검색 안내"
+            >
+              <img
+                src="./images/main3.png"
+                alt="검색부터 탑승까지 이어지는 이동 안내"
+              />
+            </button>
+          </div>
+        </div>
+
+        <!-- 현재 슬라이드 표시 -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- 빠른 메뉴 -->
+    <section class="home-section quick-menu-section">
+      <h2 class="section-title">
+        빠른 메뉴
+      </h2>
+
+      <div class="quick-menu-list">
+        <button
+          type="button"
+          class="quick-menu-card prepare-menu-button"
+        >
+          <img
+            src="./icons/document.svg"
+            alt="발급준비"
+          />
+
+          <span class="quick-menu-label">
+            발급 준비
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="quick-menu-card ticket-detail-menu-button"
+        >
+          <img
+            src="./icons/qrcode.svg"
+            alt="티켓상세"
+          />
+
+          <span class="quick-menu-label">
+            티켓 상세
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="quick-menu-card route-guide-menu-button"
+        >
+          <img
+            src="./icons/routedeactive.svg"
+            alt="경로안내"
+          />
+
+          <span class="quick-menu-label">
+            경로 안내
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 추천 경로 -->
+    <section class="home-section">
+      <h2 class="section-title">
+        추천 경로
+      </h2>
+
+      <button
+        type="button"
+        class="route-card"
+      >
+        <span class="route-info">
+          <span class="route-name">
+            서울역 → 강남역
+          </span>
+
+          <span class="route-description">
+            2호선 이용 · 환승 1회
+          </span>
+        </span>
+
+        <span class="route-summary">
+          <span class="route-time">
+            34분
+          </span>
+
+          <br />
+
+          <span class="route-price">
+            2,150원
+          </span>
+        </span>
+      </button>
+    </section>
+
+    <!-- 바로가기 -->
+    <section class="home-section">
+      <h2 class="section-title">
+        바로가기
+      </h2>
+
+      <div class="shortcut-list">
+        <button
+          type="button"
+          class="shortcut-card"
+        >
+          <img
+            src="./icons/star.svg"
+            alt="즐겨찾기"
+          />
+
+          <span>즐겨찾기</span>
+        </button>
+
+        <button
+          type="button"
+          class="shortcut-card"
+        >
+          <img
+            src="./icons/clock.svg"
+            alt="이용 내역"
+          />
+
+          <span>이용 내역</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 공통 하단 탭바 -->
+  <nav
+    class="bottom-tabbar"
+    aria-label="주요 메뉴"
+  >
+    <a
+      href="./home.html"
+      class="tab-item active"
+    >
+      <img
+        src="./icons/homeactive.svg"
+        alt="홈화면"
+      />
+
+      <span class="tab-label">
+        홈
+      </span>
+    </a>
+
+    <a
+      href="./prepare.html"
+      class="tab-item"
+    >
+      <img
+        src="./icons/ticketdeactive.svg"
+        alt="발급준비"
+      />
+
+      <span class="tab-label">
+        발급준비
+      </span>
+    </a>
+
+    <a
+      href="./route.html"
+      class="tab-item"
+    >
+      <img
+        src="./icons/routedeactive.svg"
+        alt="경로안내"
+      />
+
+      <span class="tab-label">
+        경로안내
+      </span>
+    </a>
+
+    <a
+      href="./myinfo.html"
+      class="tab-item"
+    >
+      <img
+        src="./icons/userdeactive.svg"
+        alt="내 정보"
+      />
+
+      <span class="tab-label">
+        내 정보
+      </span>
+    </a>
+  </nav>
+
+  <!-- Swiper JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+  <!-- 홈 화면 JavaScript -->
+  <script src="./js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이어타고 - 온보딩 1</title>
+
+  <style>
+    :root {
+      --primary-navy: #061a3d;
+      --primary-blue: #005bff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-gray: #e5e7eb;
+      --surface-white: #ffffff;
+      --indicator-gray: #d9d9d9;
+      --radius-card: 16px;
+      --radius-button: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--surface-white);
+      font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      background: var(--surface-white);
+      display: flex;
+      flex-direction: column;
+      padding: 74px 24px 44px;
+    }
+
+    .onboarding-header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .page-title {
+      color: var(--primary-navy);
+      font-size: 24px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .page-description {
+      margin-top: 12px;
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+    }
+
+    .visual-card {
+      width: 100%;
+      margin-top: 32px;
+      border: 2px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+      overflow: hidden;
+    }
+
+    .visual-image-wrap {
+      width: 100%;
+      aspect-ratio: 327 / 274;
+      background: #f5faff;
+      overflow: hidden;
+    }
+
+    .visual-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .visual-content {
+      width: 100%;
+      min-height: 112px;
+      padding: 16px 20px 14px;
+      text-align: center;
+      background: var(--surface-white);
+    }
+
+    .visual-title {
+      color: var(--primary-navy);
+      font-size: 22px;
+      line-height: 1.4;
+      font-weight: 800;
+      letter-spacing: -0.7px;
+    }
+
+    .visual-description {
+      margin-top: 12px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 500;
+      letter-spacing: -0.35px;
+    }
+
+    .page-indicator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 32px;
+    }
+
+    .indicator-dot {
+      width: 20px;
+      height: 20px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--indicator-gray);
+    }
+
+    .indicator-dot.active {
+      background: var(--primary-blue);
+    }
+
+    .onboarding-actions {
+      width: 100%;
+      margin-top: auto;
+      padding-top: 34px;
+    }
+
+    .next-button {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: var(--radius-button);
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .next-button:active {
+      background: #0048cc;
+    }
+
+    .skip-button {
+      width: 100%;
+      min-height: 44px;
+      margin-top: 12px;
+      border: 0;
+      background: transparent;
+      color: var(--primary-blue);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="onboarding-header">
+      <h1 class="page-title">간편한 경로 검색</h1>
+
+      <p class="page-description">
+        출발지와 도착지만 입력하면<br />
+        최적의 경로를 빠르게 찾아드려요.
+      </p>
+    </header>
+
+    <section class="visual-card">
+      <div class="visual-image-wrap">
+        <img
+          class="visual-image"
+          src="./images/Onboardimg1.svg"
+          alt="지도와 위치 핀, 경로 검색창 일러스트"
+        />
+      </div>
+
+      <div class="visual-content">
+        <h2 class="visual-title">빠른 경로 찾기</h2>
+
+        <p class="visual-description">
+          환승, 소요시간, 요금 정보를<br />
+          한눈에 확인할 수 있어요.
+        </p>
+      </div>
+    </section>
+
+    <div class="page-indicator" aria-label="온보딩 진행 상태">
+      <span class="indicator-dot active"></span>
+      <span class="indicator-dot"></span>
+      <span class="indicator-dot"></span>
+    </div>
+
+    <div class="onboarding-actions">
+      <button type="button" class="next-button">다음</button>
+      <button type="button" class="skip-button">건너뛰기</button>
+    </div>
+  </main>
+  <script>
+  const nextButton = document.querySelector(".next-button");
+  const skipButton = document.querySelector(".skip-button");
+
+  const autoMoveTimer = setTimeout(function () {
+    window.location.href = "./onboarding2.html";
+  }, 2000);
+
+  nextButton.addEventListener("click", function () {
+    clearTimeout(autoMoveTimer);
+    window.location.href = "./onboarding2.html";
+  });
+
+  skipButton.addEventListener("click", function () {
+    clearTimeout(autoMoveTimer);
+    window.location.href = "./login.html";
+  });
+  </script>
+</body>
+</html>

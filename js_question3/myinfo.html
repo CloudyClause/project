@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이어타고 - 내 정보</title>
+
+  <style>
+    :root {
+      --primary-navy: #061a3d;
+      --primary-blue: #005bff;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-gray: #687386;
+      --surface-white: #ffffff;
+      --profile-gray: #8b8b8b;
+
+      --radius-card: 14px;
+      --tabbar-height: 94px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--surface-white);
+      font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100svh;
+      padding: 43px 24px calc(var(--tabbar-height) + 24px);
+      background: var(--surface-white);
+    }
+
+    /* 화면 제목 */
+    .page-header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .page-title {
+      color: var(--primary-navy);
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    /* 프로필 카드 */
+    .profile-card {
+      width: 100%;
+      min-height: 120px;
+      margin-top: 34px;
+      padding: 20px 20px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+
+    .profile-image {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .profile-name {
+      margin-left: 38px;
+      color: #000000;
+      font-size: 23px;
+      line-height: 30px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+    }
+
+    .profile-chevron,
+    .menu-chevron {
+      position: relative;
+      width: 24px;
+      height: 44px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .profile-chevron::after,
+    .menu-chevron::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid var(--text-secondary);
+      border-right: 2px solid var(--text-secondary);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* 메뉴 카드 */
+    .menu-card {
+      width: 100%;
+      margin-top: 41px;
+      border: 1px solid var(--border-gray);
+      border-radius: var(--radius-card);
+      background: var(--surface-white);
+      overflow: hidden;
+    }
+
+    .menu-item {
+      width: 100%;
+      min-height: 72px;
+      padding: 0 17px;
+      border: 0;
+      border-bottom: 1px solid var(--border-gray);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+
+    .menu-item:last-child {
+      border-bottom: 0;
+    }
+
+    .menu-icon {
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .menu-label {
+      margin-left: 17px;
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      letter-spacing: -0.35px;
+    }
+
+    /* 공통 하단 탭바 */
+    .bottom-tabbar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      width: 100%;
+      height: var(--tabbar-height);
+      padding: 12px 14px 13px;
+      border-top: 1px solid var(--border-gray);
+      background: var(--surface-white);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tab-item {
+      min-width: 0;
+      min-height: 60px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .tab-item img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .tab-label {
+      font-size: 11px;
+      line-height: 14px;
+      font-weight: 500;
+    }
+
+    .tab-item.active {
+      color: var(--primary-blue);
+    }
+
+    .tab-item.active .tab-label {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="page-header">
+      <h1 class="page-title">내 정보</h1>
+    </header>
+
+    <button type="button" class="profile-card">
+      <img
+        src="./icons/usercircle.svg"
+        alt="기본 프로필"
+        class="profile-image"
+      />
+
+      <span class="profile-name">익명 사용자</span>
+      <span class="profile-chevron"></span>
+    </button>
+
+    <section class="menu-card">
+      <button type="button" class="menu-item purchase-history-button">
+        <img
+          src="./icons/documentdeactive.svg"
+          alt="구매내역"
+          class="menu-icon"
+        />
+        <span class="menu-label">구매내역</span>
+        <span class="menu-chevron"></span>
+      </button>
+
+      <button type="button" class="menu-item">
+        <img
+          src="./icons/payment.svg"
+          alt="결제수단관리"
+          class="menu-icon"
+        />
+        <span class="menu-label">결제수단 관리</span>
+        <span class="menu-chevron"></span>
+      </button>
+
+      <button type="button" class="menu-item">
+        <img
+          src="./icons/setting.svg"
+          alt="앱 설정"
+          class="menu-icon"
+        />
+        <span class="menu-label">앱 설정</span>
+        <span class="menu-chevron"></span>
+      </button>
+
+      <button type="button" class="menu-item">
+        <img
+          src="./icons/service.svg"
+          alt="고객센터"
+          class="menu-icon"
+        />
+        <span class="menu-label">고객센터</span>
+        <span class="menu-chevron"></span>
+      </button>
+
+      <button type="button" class="menu-item logout-button">
+        <img
+          src="./icons/logout.svg"
+          alt="로그아웃"
+          class="menu-icon"
+        />
+        <span class="menu-label">로그아웃</span>
+        <span class="menu-chevron"></span>
+      </button>
+    </section>
+  </main>
+
+  <!-- 공통 하단 탭바 -->
+  <nav class="bottom-tabbar" aria-label="주요 메뉴">
+    <a href="./home.html" class="tab-item">
+      <img src="./icons/homedeactive.svg" alt="홈 화면" />
+      <span class="tab-label">홈</span>
+    </a>
+
+    <a href="./prepare.html" class="tab-item">
+      <img src="./icons/ticketdeactive.svg" alt="발급준비" />
+      <span class="tab-label">발급준비</span>
+    </a>
+
+    <a href="./route.html" class="tab-item">
+      <img src="./icons/routedeactive.svg" alt="경로안내" />
+      <span class="tab-label">경로안내</span>
+    </a>
+
+    <a href="./myinfo.html" class="tab-item active">
+      <img src="./icons/useractive.svg" alt="내 정보" />
+      <span class="tab-label">내 정보</span>
+    </a>
+  </nav>
+  <script>
+  const purchaseHistoryButton = document.querySelector(
+    ".purchase-history-button"
+  );
+  const logoutButton = document.querySelector(".logout-button");
+
+  purchaseHistoryButton.addEventListener("click", function () {
+    window.location.href = "./detail.html";
+  });
+
+  logoutButton.addEventListener("click", function () {
+    window.location.href = "./login.html";
+  });
+  </script>
+</body>
+</html>
