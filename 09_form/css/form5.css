@@ -1,0 +1,13 @@
+@charset "utf-8"
+body{
+    font-family: "맑은고딕", "malgun gothic", sans-serif;
+}
+*{margin: 0; padding: 0;}
+
+h1{
+    margin-top: 32px;
+    margin-left: 32px;
+}
+select{
+    margin: 32px;
+}

@@ -1,0 +1,13 @@
+@charset "utf-8"
+body{
+    font-family: "맑은고딕", "malgun gothic", sans-serif;
+}
+*{margin: 0; padding: 0 ;}
+
+ul{
+    list-style: none;
+}
+
+ul li{
+    margin: 32px;
+}

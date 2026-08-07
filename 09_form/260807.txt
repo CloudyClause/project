@@ -1,0 +1,33 @@
+260807
+
+*** form tag ***
+사용자로부터 데이터를 받아들여서 데이터베이스에 저장하는 tag
+<form태그와 관련된 태그>
+
+***ai가 마음대로 만듦 8**
+index.html
+style.css -> main.css
+script.js -> main.js
+
+*** form 태그와 관련된 요소 ***
+1. <input type="text">, <input type="password">
+2. <input type="radio"> 남녀를 하나의 묶음 변수명으로 통일시킨다 여러개중에서
+			하나만 선택할때
+3.<input type="checkbox">
+(체크박스 - 다중 선택 가능)
+
+4.<select name="" id=""> _> <option value=""></option>
+(드롭다운 리스트)
+
+5.<textarea name="" id="" cols="" rows="">
+(메시지 입력창)
+
+6. 날짜로 받을때 <input type=date> 
+시간을 받을때 <input type=time>
+동시에 받을때<input type=datetime-local">
+
+
+*** CSS display:flex ***
+
+
+*** javascript 변수 ***
