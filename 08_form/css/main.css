@@ -1,0 +1,464 @@
+@charset "utf-8";
+/* ==================================================
+   초기화
+================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  overflow-x: auto;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #102f66 0%,
+      #061936 45%,
+      #020b19 100%
+    );
+
+  color: #ffffff;
+}
+
+
+/* ==================================================
+   전체 게임기
+================================================== */
+
+.tetris-machine {
+  width: 520px;
+
+  user-select: none;
+}
+
+
+/* ==================================================
+   메인 파란 프레임
+================================================== */
+
+.machine-frame {
+  display: flex;
+
+  padding: 8px;
+
+  border: 3px solid #043d93;
+
+  border-radius: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0879e9 0%,
+      #38a8ff 15%,
+      #0964c7 35%,
+      #034da9 70%,
+      #1d85df 100%
+    );
+
+  box-shadow:
+    0 0 0 2px #0ca5ff,
+    0 0 0 5px #052860,
+    0 0 30px rgba(0, 114, 255, 0.65);
+}
+
+
+/* ==================================================
+   왼쪽 플레이 영역
+================================================== */
+
+.play-area {
+  flex: 1;
+
+  padding: 6px;
+
+  border:
+    3px solid #062d6e;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0c67c5,
+      #1e91ec,
+      #0960bd
+    );
+
+  box-shadow:
+    inset 0 0 0 2px #52b9ff;
+}
+
+
+/* ==================================================
+   게임판 프레임
+================================================== */
+
+.board-frame {
+  position: relative;
+
+  width: 304px;
+  height: 604px;
+
+  margin: 0 auto;
+
+  border: 2px solid #021638;
+
+  background: #071329;
+
+  box-shadow:
+    inset 0 0 8px #000000,
+    0 0 0 2px #005fc5;
+}
+
+
+/* ==================================================
+   게임 Canvas
+================================================== */
+
+#tetris {
+  display: block;
+
+  width: 300px;
+  height: 600px;
+
+  background:
+    linear-gradient(
+      #081730,
+      #061329
+    );
+}
+
+
+/* ==================================================
+   게임 오버 / 일시정지
+================================================== */
+
+.game-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: none;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  text-align: center;
+
+  background:
+    rgba(0, 10, 35, 0.88);
+}
+
+.game-overlay.show {
+  display: flex;
+}
+
+.game-overlay h2 {
+  margin: 0 0 10px;
+
+  color: #75d9ff;
+
+  font-size: 27px;
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 0 8px #009cff;
+}
+
+.game-overlay p {
+  margin: 0;
+
+  color: #d2eaff;
+
+  font-size: 13px;
+}
+
+
+/* ==================================================
+   오른쪽 사이드 패널
+================================================== */
+
+.side-panel {
+  width: 150px;
+
+  margin-left: 7px;
+
+  padding: 5px;
+
+  border: 3px solid #063476;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1476cb,
+      #28a5f4,
+      #0966bc
+    );
+
+  box-shadow:
+    inset 0 0 0 2px #61c8ff;
+}
+
+
+/* ==================================================
+   타이머
+================================================== */
+
+.timer-box {
+  height: 58px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 7px;
+
+  border: 3px solid #092962;
+
+  background:
+    linear-gradient(
+      #193778,
+      #10245c
+    );
+
+  box-shadow:
+    inset 0 0 0 2px #2b8cda;
+}
+
+#timer {
+  font-size: 25px;
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  color: #cbff61;
+
+  text-shadow:
+    0 0 5px #77ff00,
+    2px 2px 0 #07345a;
+}
+
+
+/* ==================================================
+   NEXT 제목
+================================================== */
+
+.next-title {
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 5px;
+
+  border:
+    2px solid #07306e;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  color: #8deaff;
+
+  text-shadow:
+    1px 1px 0 #07488d,
+    0 0 5px #1ae7ff;
+
+  background:
+    linear-gradient(
+      #0a6cc8,
+      #0753a6
+    );
+}
+
+
+/* ==================================================
+   다음 블록 박스
+================================================== */
+
+.next-box {
+  height: 73px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 5px;
+
+  border: 3px solid #07306d;
+
+  background:
+    linear-gradient(
+      #10275f,
+      #0b1f54
+    );
+
+  box-shadow:
+    inset 0 0 0 1px #2289d3;
+}
+
+.main-next {
+  height: 87px;
+}
+
+.next-box canvas {
+  display: block;
+
+  background:
+    transparent;
+}
+
+
+/* ==================================================
+   점수 정보
+================================================== */
+
+.status-box {
+  margin-top: 5px;
+
+  padding: 6px 7px;
+
+  border: 2px solid #06306b;
+
+  background:
+    linear-gradient(
+      #0c2864,
+      #071c4e
+    );
+}
+
+.status-name {
+  display: block;
+
+  margin-bottom: 2px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  color: #7bdcff;
+}
+
+.status-box strong {
+  display: block;
+
+  text-align: right;
+
+  font-size: 15px;
+
+  color: #dcff5b;
+
+  letter-spacing: 1px;
+}
+
+
+/* ==================================================
+   하단 버튼
+================================================== */
+
+.control-panel {
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.control-panel button {
+  flex: 1;
+
+  height: 42px;
+
+  border:
+    2px solid #0a96ec;
+
+  border-radius: 3px;
+
+  font-size: 13px;
+  font-weight: 900;
+
+  color: #d9f4ff;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      #176bc5,
+      #083e8b
+    );
+
+  box-shadow:
+    inset 0 0 0 2px #082662,
+    0 3px 0 #02183d;
+}
+
+.control-panel button:hover {
+  filter: brightness(1.15);
+}
+
+.control-panel button:active {
+  transform: translateY(2px);
+
+  box-shadow:
+    inset 0 0 0 2px #082662,
+    0 1px 0 #02183d;
+}
+
+
+/* ==================================================
+   조작 설명
+================================================== */
+
+.key-guide {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 6px 12px;
+
+  margin-top: 13px;
+
+  color: #74c8ff;
+
+  font-size: 11px;
+}
+
+
+/* ==================================================
+   작은 화면
+================================================== */
+
+@media (max-width: 570px) {
+
+  body {
+    padding: 15px 5px;
+
+    justify-content: flex-start;
+  }
+
+  .tetris-machine {
+    transform-origin: top left;
+  }
+
+}
