@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <style>
+    /* ========================================
+   기본 설정
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    Arial,
+    "Noto Sans KR",
+    sans-serif;
+
+  color: #333;
+  background-color: #ffffff;
+}
+
+
+/* ========================================
+   전체 로그인 영역
+======================================== */
+
+.login-wrap {
+  padding: 10px;
+}
+
+
+/* ========================================
+   외곽 박스
+======================================== */
+
+.login-box {
+  width: 100%;
+  height: 563px;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+
+  background-color: #ffffff;
+
+  padding-top: 45px;
+}
+
+
+/* ========================================
+   로그인 제목
+======================================== */
+
+.login-title {
+  margin: 0 0 34px;
+
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  color: #444444;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   로그인 폼
+======================================== */
+
+.login-form {
+  width: 420px;
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   입력 항목
+======================================== */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: #333333;
+}
+
+
+/* ========================================
+   입력창
+======================================== */
+
+.form-group input {
+  display: block;
+
+  width: 100%;
+  height: 68px;
+
+  padding: 0 14px;
+
+  border: 1px solid #cccccc;
+  border-radius: 0;
+
+  background-color: #ffffff;
+
+  font-size: 18px;
+  color: #333333;
+
+  outline: none;
+}
+
+
+/* ========================================
+   로그인 버튼
+======================================== */
+
+.login-btn {
+  display: block;
+
+  width: 100%;
+  height: 64px;
+
+  margin-top: 27px;
+
+  border: 0;
+
+  background-color: #2d2d2d;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #ffffff;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+  </style>
+</head>
+
+<body>
+
+  <main class="login-wrap">
+
+    <section class="login-box">
+
+      <h1 class="login-title">로그인</h1>
+
+      <form class="login-form">
+
+        <div class="form-group">
+          <label for="user-id">아이디</label>
+          <input
+            type="text"
+            id="user-id"
+            name="user-id"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="user-password">비밀번호</label>
+          <input
+            type="password"
+            id="user-password"
+            name="user-password"
+          >
+        </div>
+
+        <button type="submit" class="login-btn">
+          로그인
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
