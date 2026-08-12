@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/project/real-model-landingdata/static/css/main.47eb6e5f.css",
+    "main.js": "/project/real-model-landingdata/static/js/main.4cbec222.js",
+    "index.html": "/project/real-model-landingdata/index.html",
+    "main.47eb6e5f.css.map": "/project/real-model-landingdata/static/css/main.47eb6e5f.css.map",
+    "main.4cbec222.js.map": "/project/real-model-landingdata/static/js/main.4cbec222.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47eb6e5f.css",
+    "static/js/main.4cbec222.js"
+  ]
+}
