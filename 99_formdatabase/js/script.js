@@ -1,33 +1,26 @@
-const scriptURL =
-
-"https://script.google.com/macros/s/AKfycbwJxzK2Bl7lQr0jbUDC1vqkfjiWsus09mRlzkunuHtrJCSdAR7NswqP16DPdFIbZf9E/exec"; // 자신의 app스크립트 주소 링크 넣는 위치
+const scriptURL = 
+    "https://script.google.com/macros/s/AKfycbwJxzK2Bl7lQr0jbUDC1vqkfjiWsus09mRlzkunuHtrJCSdAR7NswqP16DPdFIbZf9E/exec"; // 자신의 Apps Script 웹 앱 주소 링크 넣는 위치
 
 const form = document.forms["submit-to-google-sheet"];
-
 const msg = document.getElementById("msg");
 
-​
-
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-e.preventDefault();
+  fetch(scriptURL, {
+    method: "POST",
+    body: new FormData(form),
+  })
+    .then((response) => {
+      msg.innerHTML = "Message sent successfully";
 
-fetch(scriptURL, { method: "POST", body: new FormData(form) })
+      setTimeout(function () {
+        msg.innerHTML = "";
+      }, 5000);
 
-.then((response) => {
-
-msg.innerHTML = "Message sent successfully";
-
-setTimeout(function () {
-
-msg.innerHTML = "";
-
-}, 5000);
-
-form.reset();
-
-})
-
-.catch((error) => console.error("Error!", error.message));
-
+      form.reset();
+    })
+    .catch((error) => {
+      console.error("Error!", error.message);
+    });
 });
