@@ -1,0 +1,44 @@
+@charset "utf-8";
+body{
+    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+}
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+.parent{
+    width: 1180px;
+    height: 160px;
+    background-color: gold;
+    margin: 0 auto;
+    display: flex;
+}
+
+.parent div{
+    width: 393.33px;
+    height: 100%;
+    padding: 30px;
+
+}
+.parent .box1{
+    background: #907354 url("../images/speed_menu_icon_02.png") no-repeat 234px center;
+}
+
+.parent .box2{
+    background: #434343 url("../images/speed_menu_icon_03.png") no-repeat 234px center;
+}
+
+.parent .box3{
+    background: #c30606 url("../images/speed_menu_icon_04.png") no-repeat 234px center;
+}
+
+.parent div h2{
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.parent div p{
+    font-size: 16px;
+    color: white;
+}

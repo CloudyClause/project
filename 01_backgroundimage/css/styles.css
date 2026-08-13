@@ -1,0 +1,41 @@
+@charset "utf-8";
+body{
+    font-family: "malgun gothic", "malgun gothic" , sans-serif;
+}
+*{
+    margin: 0; padding: 0;
+    /* padding 값이나 테두리선 값으로 늘어나지 않게 */
+    box-sizing: border-box;
+}
+div{
+    width: 100%;
+    height: 700px;
+    background-color: gold;
+    /* ./현재 폴더에서 */
+    /* ../ 상위폴더로 이동 */
+    background-image: url("../images/icon.png");
+    /* 반복을 가로방향으로만 채움 */
+    background-repeat: repeat-x;
+    /* 반복을 세로방향으로만 채움 */
+    background-repeat: repeat-y;
+    /* 반복 없이 이미지 하나만 삽입 */
+    background-repeat: no-repeat;
+    /* 배경이미지를 원하는 위치에 배치(레이아웃) */
+    /* left, center, right, top, center, bottom */
+    background-position: left top;
+    /* px단위로 배치 */
+    background-position: 100px 200px;
+    /* %단위로 배치 */
+    background-position: left top;
+    background-position: 50% 100px;
+
+    /* 개발자 shorthand(줄임말) 방식으로 코딩 */
+    /* border 1px #000 solid; */
+    /* 배경색은 회색에 배경이미지는 아이콘이미지 반복안하고 가로가운데 세로가운데 */
+    background-color: gray;
+    background-image: url("../images/icon.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    background: gray url("../images/icon.png") no-repeat center center;
+}
