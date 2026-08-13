@@ -109,7 +109,7 @@ a {
     font-weight: 700;
     line-height: 1;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 .service-text p {
@@ -118,7 +118,7 @@ a {
     color: #ffffff;
 
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
 }
 
