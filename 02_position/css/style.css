@@ -1,0 +1,80 @@
+@charset "utf-8";
+body{
+    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+}
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+div{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.box1{
+    background: #ff0000;
+    /* 해당 요소를 공중에 띄우겠다  */
+    position: absolute ;
+    /* 배치할 위치를 설정 */
+    left: 0;
+    top: 0;
+    /* 공중에 띄운거 해제 */
+    position: static;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* 레이어 순서 변경하기 */
+    z-index: 6;
+    position: static;
+}
+.box2{
+    background: #028002;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index: 7;
+    position: static;
+}
+.box2 div{
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+}
+.box2 .child1{
+    background: #ffcc01;
+    position: relative;
+    left: 30px;
+    top: 30px;
+}
+
+.box2 .child2{
+    background: #ff67ff;
+    position: relative;
+    left:90px;
+}
+
+.box3{
+    background: #0000fe;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: 10;
+    position: static;
+}
+.box4{
+    background: #00ccff;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    position: static;
+}
+.ai{
+    border: none;
+    position: fixed;
+    right: 10%;
+    bottom: 20%;
+
+}
+
