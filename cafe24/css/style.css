@@ -2179,3 +2179,1085 @@ background-color: #f5e7cf;
 
   line-height: 1;
 }
+
+/* =========================================================
+   Responsive - Mobile
+   기준: 767px 이하
+   첨부 모바일 시안 기준
+========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Common
+  ======================================== */
+  html,
+  body {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: Arial, "Noto Sans KR", sans-serif;
+  }
+
+  /* ========================================
+     Header
+  ======================================== */
+  .header {
+    width: 100%;
+    height: 56px;
+    background-color: #fffdf9;
+  }
+
+  .header-inner {
+    position: relative;
+    width: 100%;
+    height: 56px;
+    margin: 0;
+    padding: 0 20px;
+    background-color: #fffdf9;
+  }
+
+  .logo img {
+    width: 110px;
+    height: auto;
+  }
+
+  .gnb,
+  .header-util {
+    display: none;
+  }
+
+  /* 현재 HTML 수정 없이 모바일 메뉴 아이콘 표시 */
+  .header-inner::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 22px;
+    height: 16px;
+    transform: translateY(-50%);
+    background:
+      linear-gradient(#563522, #563522) 0 0 / 22px 2px no-repeat,
+      linear-gradient(#563522, #563522) 0 7px / 22px 2px no-repeat,
+      linear-gradient(#563522, #563522) 0 14px / 22px 2px no-repeat;
+  }
+
+  /* ========================================
+     Hero
+  ======================================== */
+  .hero {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-inner {
+    width: 100%;
+    height: 360px;
+    margin: 0;
+    padding: 0 20px;
+    background-position: 60% center;
+    background-size: cover;
+  }
+
+  .hero-content {
+    width: 56%;
+    padding-top: 52px;
+  }
+
+  .hero-badge {
+    height: 25px;
+    padding: 0 9px;
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .hero-title {
+    margin-top: 16px;
+    font-size: 28px;
+    line-height: 1.22;
+    letter-spacing: -1.4px;
+  }
+
+  .hero-description {
+    margin-top: 18px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: -0.3px;
+  }
+
+  .hero-buttons {
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 25px;
+  }
+
+  .hero-btn {
+    height: 31px;
+    padding: 0 10px;
+    gap: 5px;
+    border-radius: 5px;
+    font-size: 9px;
+  }
+
+  .hero-btn-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* ========================================
+     Intro
+  ======================================== */
+  .intro {
+    width: 100%;
+    height: auto;
+  }
+
+  .intro-inner {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 48px 20px 46px;
+    background-color: #f5e7cf;
+  }
+
+  .intro-symbol {
+    height: auto;
+  }
+
+  .intro-symbol img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .intro-title {
+    margin-top: 15px;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.9px;
+  }
+
+  .intro-description {
+    max-width: 330px;
+    margin: 16px auto 0;
+    font-size: 10px;
+    line-height: 1.75;
+    letter-spacing: -0.2px;
+  }
+
+  .intro-description br {
+    display: none;
+  }
+
+  .intro-feature-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    margin-top: 34px;
+  }
+
+  .intro-feature-item {
+    width: 100%;
+    min-height: 116px;
+    padding: 12px 5px;
+  }
+
+  .intro-feature-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .intro-feature-item:nth-child(odd) {
+    border-right: 1px solid rgba(122, 97, 72, 0.16);
+  }
+
+  .intro-feature-item:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(122, 97, 72, 0.16);
+  }
+
+  .feature-icon {
+    height: 48px;
+  }
+
+  .feature-icon img {
+    width: 43px;
+    height: 43px;
+  }
+
+  .feature-text {
+    margin-top: 10px;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  /* ========================================
+     Best Menu
+  ======================================== */
+  .best-menu {
+    width: 100%;
+    height: auto;
+  }
+
+  .best-menu-inner {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 48px 20px 50px;
+    background-color: #fffdfa;
+  }
+
+  .best-menu-title {
+    font-size: 22px;
+    letter-spacing: -0.9px;
+  }
+
+  .best-menu-more {
+    right: 0;
+    font-size: 8px;
+  }
+
+  .best-menu-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .best-menu-card {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    padding: 11px 11px 16px;
+    border-radius: 6px;
+  }
+
+  /* 모바일 시안은 4개 메뉴 카드 구성 */
+  .best-menu-card:nth-child(5) {
+    display: none;
+  }
+
+  .menu-visual {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .menu-image-wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  .menu-badge {
+    top: -6px;
+    left: -6px;
+    min-width: 36px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 7px;
+  }
+
+  .menu-info {
+    padding-top: 12px;
+  }
+
+  .menu-name {
+    font-size: 12px;
+  }
+
+  .menu-caption {
+    margin-top: 6px;
+    font-size: 8px;
+    white-space: normal;
+  }
+
+  .menu-price {
+    margin-top: 9px;
+    font-size: 12px;
+  }
+
+/* ========================================
+   How To Use
+======================================== */
+
+.howtouse {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ========================================
+   How To Use Inner
+======================================== */
+
+.howtouse-inner {
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+
+  /*
+    기존 좌우 12px padding을 제거합니다.
+    제목과 스크롤 영역에서 각각
+    필요한 좌우 여백을 관리합니다.
+  */
+  padding: 44px 0 46px;
+
+  background-color: #f5e7cf;
+}
+
+
+/* ========================================
+   How To Use Heading
+======================================== */
+
+.howtouse-heading {
+  width: 100%;
+
+  padding: 0 20px;
+
+  text-align: center;
+}
+
+
+.howtouse-title {
+  font-size: 22px;
+
+  letter-spacing: -0.9px;
+}
+
+
+/* ========================================
+   How To Use Horizontal Scroll Area
+======================================== */
+
+.howtouse-content {
+  display: flex;
+
+  align-items: center;
+
+  /*
+    기존 space-between을 사용하면
+    스크롤 콘텐츠가 화면 안에서
+    억지로 분산될 수 있으므로
+    왼쪽부터 순서대로 배치합니다.
+  */
+  justify-content: flex-start;
+
+  width: 100%;
+
+  margin: 30px 0 0;
+
+  /*
+    좌우 콘텐츠 여백 20px
+    하단 12px은 스크롤바와 카드 사이의 공간
+  */
+  padding: 0 20px 12px;
+
+  /*
+    카드와 화살표 사이 간격
+  */
+  gap: 8px;
+
+  /*
+    핵심:
+    가로 방향으로 넘치는 콘텐츠를
+    좌우 스크롤 가능하게 합니다.
+  */
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /*
+    모바일 Safari 등에서
+    자연스러운 관성 스크롤 지원
+  */
+  -webkit-overflow-scrolling: touch;
+
+  /*
+    카드 시작점 근처에서
+    자연스럽게 정렬되도록 합니다.
+  */
+  scroll-snap-type: x proximity;
+
+  scroll-padding-left: 20px;
+
+  /*
+    모바일에서 가로 스와이프뿐 아니라
+    일반적인 세로 페이지 스크롤도
+    브라우저가 자연스럽게 처리합니다.
+  */
+  touch-action: auto;
+
+  /*
+    Firefox 스크롤바
+  */
+  scrollbar-width: thin;
+  scrollbar-color:
+    #9b806d
+    rgba(86, 53, 34, 0.12);
+}
+
+
+/* ========================================
+   How To Use Scrollbar
+   Chrome / Edge / Safari
+======================================== */
+
+.howtouse-content::-webkit-scrollbar {
+  height: 5px;
+}
+
+
+.howtouse-content::-webkit-scrollbar-track {
+  background-color: rgba(86, 53, 34, 0.12);
+
+  border-radius: 20px;
+}
+
+
+.howtouse-content::-webkit-scrollbar-thumb {
+  background-color: #9b806d;
+
+  border-radius: 20px;
+}
+
+
+.howtouse-content::-webkit-scrollbar-thumb:hover {
+  background-color: #6f5140;
+}
+
+
+/* ========================================
+   Step Card
+======================================== */
+
+.step-card {
+  position: relative;
+
+  /*
+    기존:
+    width: calc((100% - 40px) / 5);
+
+    화면 안에 5개를 모두 넣지 않고
+    카드 자체의 가독성을 유지합니다.
+
+    flex-shrink: 0 역할까지 포함합니다.
+  */
+  flex: 0 0 118px;
+
+  width: 118px;
+  height: 108px;
+
+  padding: 10px 8px 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  border-radius: 6px;
+
+  /*
+    해당 카드 시작 위치를
+    스크롤 스냅 기준으로 사용합니다.
+  */
+  scroll-snap-align: start;
+}
+
+
+/* ========================================
+   Step Number
+======================================== */
+
+.step-number {
+  position: absolute;
+
+  top: 5px;
+  left: 5px;
+
+  width: 17px;
+  height: 17px;
+
+  font-size: 8px;
+}
+
+
+/* ========================================
+   Step Icon
+======================================== */
+
+.step-icon {
+  width: 38px;
+  height: 38px;
+
+  margin: 6px 0 0;
+}
+
+
+.step-icon img {
+  width: 34px;
+  height: 34px;
+}
+
+
+/* ========================================
+   Step Information
+======================================== */
+
+.step-info {
+  margin: 7px 0 0;
+
+  text-align: center;
+}
+
+
+.step-title {
+  font-size: 10px;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+}
+
+
+.step-caption {
+  margin-top: 5px;
+
+  font-size: 7px;
+
+  line-height: 1.4;
+
+  white-space: normal;
+}
+
+
+/* ========================================
+   Step Arrow
+======================================== */
+
+.step-arrow {
+  /*
+    화살표도 flex 영역에서
+    줄어들지 않도록 고정합니다.
+  */
+  flex: 0 0 14px;
+
+  width: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.step-arrow img {
+  display: block;
+
+  width: 9px;
+  height: 9px;
+
+  object-fit: contain;
+}
+
+  /* ========================================
+     Benefit
+     모바일 시안: 세로 나열 + 중앙 정렬
+  ======================================== */
+  .benefit {
+    width: 100%;
+    height: auto;
+  }
+
+  .benefit-inner {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 48px 20px 52px;
+    background-color: #fffdf9;
+  }
+
+  .benefit-title {
+    font-size: 22px;
+    letter-spacing: -0.9px;
+  }
+
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 34px;
+  }
+
+  .benefit-item {
+    width: 100%;
+    min-height: 0;
+    padding: 0 0 34px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .benefit-item + .benefit-item {
+    padding-top: 4px;
+  }
+
+  .benefit-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .benefit-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .benefit-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .benefit-icon img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .benefit-info {
+    margin-top: 11px;
+    text-align: center;
+  }
+
+  .benefit-card-title {
+    font-size: 13px;
+    white-space: normal;
+  }
+
+  .benefit-description {
+    margin-top: 7px;
+    font-size: 9px;
+    line-height: 1.55;
+  }
+
+  /* ========================================
+     Store
+  ======================================== */
+  .store {
+    width: 100%;
+    height: auto;
+  }
+
+  .store-inner {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 48px 20px 0;
+    background-color: #f5e7cf;
+  }
+
+  .store-title {
+    font-size: 22px;
+    letter-spacing: -0.9px;
+  }
+
+  .store-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 30px auto 0;
+    gap: 18px;
+  }
+
+  .store-card {
+    width: 100%;
+    height: auto;
+    padding: 24px 18px;
+    border-radius: 6px;
+  }
+
+  .store-card-header {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .store-card-title {
+    font-size: 14px;
+  }
+
+  .store-status {
+    height: 21px;
+    padding: 0 7px;
+    font-size: 8px;
+  }
+
+  .store-info-list {
+    margin-top: 20px;
+  }
+
+  .store-info-item {
+    gap: 8px;
+  }
+
+  .store-info-item + .store-info-item {
+    margin-top: 13px;
+  }
+
+  .store-info-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .store-info-item p {
+    font-size: 9px;
+    white-space: normal;
+  }
+
+  .store-buttons {
+    gap: 7px;
+    margin-top: 20px;
+  }
+
+  .store-btn {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 9px;
+    border-radius: 5px;
+  }
+
+  .store-map {
+    width: calc(100% + 40px);
+    height: 250px;
+    margin-left: -20px;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ========================================
+     FAQ
+  ======================================== */
+  .faq {
+    width: 100%;
+    height: auto;
+  }
+
+  .faq-inner {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 48px 20px 50px;
+    background-color: #fffdfa;
+  }
+
+  .faq-title {
+    font-size: 22px;
+    letter-spacing: -0.9px;
+  }
+
+  .faq-more {
+    right: 0;
+    font-size: 8px;
+  }
+
+  .faq-list {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 9px;
+    margin-top: 28px;
+  }
+
+  .faq-question {
+    height: 44px;
+    padding: 0 13px;
+    border-radius: 5px;
+  }
+
+  .faq-question-text {
+    font-size: 9px;
+  }
+
+  .faq-arrow {
+    margin-left: 10px;
+  }
+
+  .faq-arrow img {
+    width: 14px;
+    height: 14px;
+  }
+
+/* ========================================
+   Banner
+======================================== */
+
+.banner {
+  width: 100%;
+  height: auto;
+
+  padding: 0 20px 38px;
+
+  background-color: #fffdfa;
+}
+
+
+/* ========================================
+   Banner Inner
+======================================== */
+
+.banner-inner {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: 148px;
+
+  margin: 0;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  /* 모바일에서는 원본 이미지의 왼쪽 커피잔을 노출 */
+  background-position: 18% center;
+  background-size: cover;
+}
+
+
+/* ========================================
+   Banner Content
+======================================== */
+
+.banner-content {
+  position: absolute;
+
+  top: 28px;
+  left: 42%;
+
+  width: 54%;
+
+  margin: 0;
+
+  transform: none;
+
+  z-index: 2;
+}
+
+
+/* ========================================
+   Banner Title
+======================================== */
+
+.banner-title {
+  width: 100%;
+
+  max-width: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  line-height: 1.35;
+
+  letter-spacing: -0.6px;
+
+  white-space: normal;
+
+  word-break: keep-all;
+}
+
+
+/* ========================================
+   Banner Subtitle
+======================================== */
+
+.banner-subtitle {
+  width: 100%;
+
+  max-width: none;
+
+  margin-top: 7px;
+
+  font-size: 8px;
+
+  line-height: 1.45;
+
+  white-space: normal;
+
+  word-break: keep-all;
+}
+
+
+/* ========================================
+   Banner Buttons
+======================================== */
+
+.banner-buttons {
+  position: absolute;
+
+  right: auto;
+
+  bottom: 17px;
+  left: 42%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin: 0;
+
+  z-index: 2;
+}
+
+
+/* ========================================
+   Banner Button
+======================================== */
+
+.banner-btn {
+  height: 28px;
+
+  padding: 0 7px;
+
+  gap: 4px;
+
+  border-radius: 4px;
+
+  font-size: 7px;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   Banner Button Icon
+======================================== */
+
+.banner-btn-icon {
+  width: 11px;
+  height: 11px;
+}
+
+  /* ========================================
+     Footer
+     모바일 시안: 상단 메뉴명 + 중앙 브랜드/SNS
+  ======================================== */
+  .footer {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 28px 20px 26px;
+  }
+
+  .footer-nav {
+    order: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .footer-menu {
+    width: 100%;
+    padding: 0;
+    border-left: 0;
+    text-align: center;
+  }
+
+  .footer-menu-title {
+    font-size: 8px;
+    font-weight: 400;
+    color: #eadccf;
+  }
+
+  /* 모바일 시안에서는 상세 푸터 목록을 접은 형태로 표현 */
+  .footer-menu-list,
+  .footer-download-text {
+    display: none;
+  }
+
+  .footer-brand {
+    order: 2;
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .footer-logo {
+    display: inline-block;
+  }
+
+  .footer-logo img {
+    width: 118px;
+  }
+
+  .footer-brand-text {
+    margin-top: 16px;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+
+  .footer-sns-list {
+    justify-content: center;
+    gap: 11px;
+    margin-top: 18px;
+  }
+
+  .footer-sns-list a,
+  .footer-sns-list img {
+    width: 27px;
+    height: 27px;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    height: 50px;
+  }
+
+  .footer-copyright {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   Small Mobile Fine Tuning
+   420px 이하
+========================================================= */
+@media screen and (max-width: 420px) {
+  .hero-inner {
+    height: 350px;
+    background-position: 62% center;
+  }
+
+  .hero-content {
+    width: 58%;
+  }
+
+  .hero-title {
+    font-size: 26px;
+  }
+
+  .howtouse-inner {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .step-card {
+    width: calc((100% - 32px) / 5);
+  }
+
+  .step-arrow {
+    width: 8px;
+  }
+}
