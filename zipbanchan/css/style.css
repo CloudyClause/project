@@ -1,0 +1,4077 @@
+@charset "UTF-8";
+
+
+/* ========================================
+   Reset
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    Arial,
+    sans-serif;
+
+  color: #222;
+  background-color: #fff;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* 접근성용 숨김 텍스트 */
+
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ========================================
+   Header
+======================================== */
+
+.header {
+  width: 100%;
+  height: 150px;
+
+  background-color: #fff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+/* ----------------------------------------
+   Header Inner
+
+   이후 다른 섹션에서도
+   동일한 1200px 기준을 사용할 수 있도록
+   독립적으로 구성
+---------------------------------------- */
+
+.header__inner {
+  position: relative;
+
+  width: 1200px;
+  height: 150px;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   Search
+======================================== */
+
+.header__search {
+  position: absolute;
+
+  left: 0;
+  top: 50px;
+}
+
+
+.search-form {
+  display: flex;
+  align-items: center;
+
+  width: 350px;
+  height: 51px;
+
+  border: 1px solid #dddddd;
+  border-radius: 9px;
+
+  overflow: hidden;
+}
+
+
+.search-form input {
+  flex: 1;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0 10px;
+
+  border: 0;
+  outline: none;
+
+  font-size: 14px;
+  color: #333;
+}
+
+
+.search-form input::placeholder {
+  color: #c8c8c8;
+}
+
+
+.search-form__button {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 43px;
+  height: 43px;
+
+  margin-right: 7px;
+
+  border-radius: 9px;
+
+  background-color: #09651b;
+}
+
+
+.search-form__button img {
+  width: 24px;
+  height: 24px;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   Logo
+======================================== */
+
+.header__logo {
+  position: absolute;
+
+  left: 50%;
+  top: 41px;
+
+  transform: translateX(-50%);
+
+  line-height: 1;
+}
+
+
+.header__logo a {
+  display: block;
+}
+
+
+.header__logo img {
+  width: 170px;
+  height: auto;
+}
+
+
+/* ========================================
+   Header Right
+======================================== */
+
+.header__right {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+
+  width: 400px;
+  height: 100%;
+}
+
+
+/* ========================================
+   Utility Menu
+======================================== */
+
+.utility-menu {
+  position: absolute;
+
+  right: 0;
+  top: 37px;
+}
+
+
+.utility-menu ul {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+}
+
+
+.utility-menu a {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   Mobile Menu Button
+   Desktop Hidden
+======================================== */
+
+.header__mobile-menu {
+  display: none;
+}
+
+
+/* ========================================
+   Main Menu
+======================================== */
+
+.main-menu {
+  position: absolute;
+
+  right: 0;
+  top: 88px;
+}
+
+
+.main-menu ul {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.main-menu li {
+  flex-shrink: 0;
+}
+
+
+.main-menu a {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+
+  white-space: nowrap;
+}
+
+
+.main-menu img {
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+
+  opacity: 0.55;
+}
+
+
+/* ========================================
+   Menu Hover
+
+   요청사항:
+   메뉴 글자에 마우스를 올리면 굵게
+======================================== */
+
+.utility-menu a:hover,
+.main-menu a:hover {
+  font-weight: 700;
+}
+
+
+/* 키보드 접근 시에도 동일하게 표시 */
+
+.utility-menu a:focus-visible,
+.main-menu a:focus-visible {
+  font-weight: 700;
+  outline: 2px solid #09651b;
+  outline-offset: 3px;
+}
+
+/* ========================================
+   Hero Section
+======================================== */
+
+.hero {
+  width: 100%;
+  height: 500px;
+
+  background-image: url("../images/imgi_31_banner_6c144415eb989c40b109a3f1fdfc276e.jfif");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto 500px;
+
+  background-color: #f3f1ec;
+}
+
+
+/* ----------------------------------------
+   Hero Inner
+---------------------------------------- */
+
+.hero__inner {
+  width: 1200px;
+  height: 500px;
+
+  margin: 0 auto;
+}
+
+/* ========================================
+   BEST Section
+======================================== */
+
+.best {
+  width: 100%;
+  height: 1256px;
+
+  background-color: #fff;
+}
+
+
+/* ========================================
+   BEST Inner
+======================================== */
+
+.best__inner {
+  width: 1200px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding-top: 72px;
+}
+
+
+/* ========================================
+   BEST Heading
+======================================== */
+
+.best__heading {
+  text-align: center;
+
+  margin-bottom: 38px;
+}
+
+
+.best__title {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #111;
+}
+
+
+.best__subtitle {
+  margin-top: 12px;
+
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #555;
+}
+
+
+/* ========================================
+   BEST Product List
+======================================== */
+
+.best__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  row-gap: 38px;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ========================================
+   Product Card
+======================================== */
+
+.product-card {
+  flex: 0 0 280px;
+
+  width: 280px;
+}
+
+
+.product-card__link {
+  display: block;
+
+  width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   Product Card Image
+======================================== */
+
+.product-card__image {
+  width: 280px;
+  height: 360px;
+
+  overflow: hidden;
+
+  background-color: #f5f3ef;
+}
+
+
+.product-card__image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* ----------------------------------------
+   Product Image Hover
+---------------------------------------- */
+
+.product-card:hover .product-card__image img {
+  transform: scale(1.2);
+}
+
+
+/* ========================================
+   Product Card Content
+======================================== */
+
+.product-card__content {
+  padding-top: 14px;
+}
+
+
+/* ========================================
+   Product Badge
+======================================== */
+
+.product-card__badge {
+  display: inline-block;
+
+  margin-bottom: 8px;
+  padding: 3px 5px;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+
+  border-radius: 2px;
+}
+
+
+.product-card__badge--new {
+  color: #dd4a42;
+  background-color: #fde9e7;
+}
+
+
+.product-card__badge--best {
+  color: #568349;
+  background-color: #e8f1e5;
+}
+
+
+/* ========================================
+   Product Title
+======================================== */
+
+.product-card__title {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  color: #222;
+}
+
+
+/* ========================================
+   Product Caption
+======================================== */
+
+.product-card__caption {
+  margin-top: 7px;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #888;
+}
+
+
+/* ========================================
+   Product Price
+======================================== */
+
+.product-card__price {
+  display: flex;
+  align-items: center;
+
+  margin-top: 7px;
+
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+
+.product-card__price strong {
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #111;
+}
+
+
+.product-card__discount {
+  margin-right: 4px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #e2372f;
+}
+
+
+/* ========================================
+   Product Original Price
+======================================== */
+
+.product-card__original-price {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  color: #aaa;
+}
+
+/* ========================================
+   BEST More Button
+   Desktop Hidden
+======================================== */
+
+.best__more-wrap {
+  display: none;
+}
+
+/* ========================================
+   Daily Section
+======================================== */
+
+.daily {
+  width: 100%;
+  height: 689px;
+
+  background-color: #fff;
+}
+
+
+/* ========================================
+   Daily Inner
+======================================== */
+
+.daily__inner {
+  width: 1200px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding-top: 38px;
+}
+
+
+/* ========================================
+   Daily Heading
+======================================== */
+
+.daily__heading {
+  margin-bottom: 18px;
+
+  text-align: center;
+}
+
+
+.daily__title {
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #111;
+}
+
+
+.daily__subtitle {
+  margin-top: 10px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #777;
+}
+
+
+/* ========================================
+   Daily Product List
+======================================== */
+
+.daily__list {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ========================================
+   Daily Product Card
+======================================== */
+
+.daily-card {
+  flex: 0 0 280px;
+
+  width: 280px;
+}
+
+
+.daily-card__link {
+  display: block;
+
+  width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   Daily Product Image
+======================================== */
+
+.daily-card__image {
+  position: relative;
+
+  width: 280px;
+  height: 382px;
+
+  overflow: hidden;
+
+  background-color: #f5f3ef;
+}
+
+
+.daily-card__image > img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* ========================================
+   Daily Product Image Hover
+======================================== */
+
+.daily-card:hover .daily-card__image > img {
+  transform: scale(1.2);
+}
+
+
+/* ========================================
+   Daily Sale Badge
+======================================== */
+
+.daily-card__sale {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #fff;
+  background-color: #c8241e;
+
+  z-index: 2;
+}
+
+
+/* ========================================
+   Daily Cart Button
+======================================== */
+
+.daily-card__cart {
+  position: absolute;
+
+  right: 16px;
+  bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 13px;
+
+  background-color: rgba(77, 77, 73, 0.75);
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+
+.daily-card__cart img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   Daily Product Content
+======================================== */
+
+.daily-card__content {
+  padding-top: 14px;
+}
+
+
+/* ========================================
+   Daily Product Badges
+======================================== */
+
+.daily-card__badges {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  margin-bottom: 8px;
+}
+
+
+.daily-card__badge {
+  display: inline-block;
+
+  margin-bottom: 8px;
+  padding: 4px 5px;
+
+  border-radius: 2px;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+
+.daily-card__badges .daily-card__badge {
+  margin-bottom: 0;
+}
+
+
+.daily-card__badge--new {
+  color: #d74a42;
+  background-color: #fde3df;
+}
+
+
+.daily-card__badge--soldout {
+  color: #a97922;
+  background-color: #f3dfaa;
+}
+
+
+/* ========================================
+   Daily Product Title
+======================================== */
+
+.daily-card__title {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  color: #191919;
+}
+
+
+/* ========================================
+   Daily Product Caption
+======================================== */
+
+.daily-card__caption {
+  margin-top: 6px;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: #888;
+}
+
+
+/* ========================================
+   Daily Product Price
+======================================== */
+
+.daily-card__price {
+  display: flex;
+  align-items: center;
+
+  margin-top: 7px;
+
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+
+.daily-card__discount {
+  margin-right: 14px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #d62d28;
+}
+
+
+.daily-card__price strong {
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #111;
+}
+
+
+/* ========================================
+   Daily Original Price
+======================================== */
+
+.daily-card__original-price {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  color: #aaa;
+}
+
+/* ========================================
+   Daily Mobile Extra Cards
+   Desktop Hidden
+======================================== */
+
+.daily-card--mobile-extra {
+  display: none;
+}
+
+
+/* ========================================
+   Daily More Button
+   Desktop Hidden
+======================================== */
+
+.daily__more-wrap {
+  display: none;
+}
+
+/* ========================================
+   Recommend Section
+======================================== */
+
+.recommend {
+  width: 100%;
+  height: 740px;
+
+  background-color: #fff;
+}
+
+
+/* ========================================
+   Recommend Inner
+======================================== */
+
+.recommend__inner {
+  width: 1200px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding-top: 38px;
+}
+
+
+/* ========================================
+   Recommend Heading
+======================================== */
+
+.recommend__heading {
+  text-align: center;
+
+  margin-bottom: 39px;
+}
+
+
+.recommend__title {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #111;
+}
+
+
+/* ========================================
+   Recommend Tabs
+======================================== */
+
+.recommend__tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 34px;
+}
+
+
+.recommend__tab {
+  min-width: 136px;
+  height: 52px;
+
+  padding: 0 25px;
+
+  border: 0;
+  border-radius: 30px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #333;
+  background-color: #f5f5f5;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.recommend__tab:hover {
+  font-weight: 700;
+
+  color: #fff;
+  background-color: #0b641d;
+}
+
+
+.recommend__tab--active {
+  color: #fff;
+  background-color: #0b641d;
+}
+
+
+/* ========================================
+   Recommend Content
+======================================== */
+
+.recommend__content {
+  display: flex;
+  align-items: stretch;
+
+  gap: 26px;
+
+  width: 100%;
+}
+
+
+/* ========================================
+   Recommend Main Image
+======================================== */
+
+.recommend__main-image {
+  flex: 0 0 470px;
+
+  width: 470px;
+  height: 490px;
+
+  overflow: hidden;
+
+  background-color: #f4efe7;
+}
+
+
+.recommend__main-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ========================================
+   Recommend Right Area
+======================================== */
+
+.recommend__right {
+  flex: 1;
+
+  width: 704px;
+}
+
+
+/* ========================================
+   Recommend Customer Card
+======================================== */
+
+.recommend__customer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 146px;
+
+  padding: 24px 25px 20px 18px;
+
+  background-color: #f7f7f7;
+}
+
+
+.recommend__customer-text {
+  flex: 1;
+}
+
+
+.recommend__customer-title {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  color: #333;
+}
+
+
+.recommend__customer-caption {
+  margin-top: 10px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+
+  color: #555;
+}
+
+
+.recommend__customer-image {
+  flex: 0 0 135px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: 135px;
+  height: 100%;
+}
+
+
+.recommend__customer-image img {
+  display: block;
+
+  max-width: 100%;
+  max-height: 135px;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   Recommend Product List
+======================================== */
+
+.recommend__list {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin: 16px 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ========================================
+   Recommend Product Card
+======================================== */
+
+.recommend-card {
+  flex: 0 0 128px;
+
+  width: 128px;
+}
+
+
+.recommend-card__link {
+  display: block;
+
+  width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   Recommend Product Image
+======================================== */
+
+.recommend-card__image {
+  position: relative;
+
+  width: 128px;
+  height: 130px;
+
+  overflow: hidden;
+
+  background-color: #f5f3ef;
+}
+
+
+.recommend-card__image > img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* ========================================
+   Recommend Product Image Hover
+======================================== */
+
+.recommend-card:hover .recommend-card__image > img {
+  transform: scale(1.2);
+}
+
+
+/* ========================================
+   Recommend Cart Button
+======================================== */
+
+.recommend-card__cart {
+  position: absolute;
+
+  right: 6px;
+  bottom: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 10px;
+
+  background-color: rgba(78, 78, 74, 0.8);
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+
+.recommend-card__cart img {
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   Recommend Product Content
+======================================== */
+
+.recommend-card__content {
+  padding-top: 12px;
+}
+
+
+/* ========================================
+   Recommend Product Badge
+======================================== */
+
+.recommend-card__badge {
+  display: inline-block;
+
+  margin-bottom: 8px;
+  padding: 3px 5px;
+
+  border-radius: 2px;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+
+  color: #e08b18;
+  background-color: #fff0d3;
+}
+
+
+/* ========================================
+   Recommend Product Title
+======================================== */
+
+.recommend-card__title {
+  margin: 0;
+
+  overflow: hidden;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+
+  color: #222;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* ========================================
+   Recommend Product Caption
+======================================== */
+
+.recommend-card__caption {
+  margin-top: 6px;
+
+  overflow: hidden;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: #999;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* ========================================
+   Recommend Product Price
+======================================== */
+
+.recommend-card__price {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #111;
+}
+
+
+/* ========================================
+   Recommend Bottom
+======================================== */
+
+.recommend__bottom {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 33px;
+}
+
+
+/* ========================================
+   Recommend Add All Button
+======================================== */
+
+.recommend__add-all {
+  width: 318px;
+  height: 48px;
+
+  border: 1px solid #0b641d;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #0b641d;
+  background-color: #fff;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+.recommend__add-all:hover {
+  font-weight: 700;
+
+  color: #fff;
+  background-color: #0b641d;
+}
+
+/* ========================================
+   Recommend Mobile
+   Desktop Hidden
+======================================== */
+
+.recommend-mobile {
+  display: none;
+}
+
+
+/* ========================================
+   Banner Section
+======================================== */
+
+.banner {
+  width: 100%;
+  height: 200px;
+
+  background-color: #fff;
+}
+
+
+/* ========================================
+   Banner Inner
+======================================== */
+
+.banner__inner {
+  display: flex;
+  align-items: center;
+
+  width: 1200px;
+  height: 100%;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   Banner List
+======================================== */
+
+.banner__list {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ========================================
+   Banner Item
+======================================== */
+
+.banner__item {
+  flex: 0 0 390px;
+
+  width: 390px;
+}
+
+
+/* ========================================
+   Banner Link
+======================================== */
+
+.banner__link {
+  display: block;
+
+  width: 100%;
+}
+
+
+/* ========================================
+   Banner Image
+======================================== */
+
+.banner__link img {
+  display: block;
+
+  width: 390px;
+  height: auto;
+
+  object-fit: cover;
+}
+
+/* ========================================
+   MD Section
+======================================== */
+
+.md {
+  width: 100%;
+  height: 1308px;
+
+  background-color: #fff;
+}
+
+
+/* ========================================
+   MD Inner
+======================================== */
+
+.md__inner {
+  width: 1200px;
+  height: 100%;
+
+  margin: 0 auto;
+  padding-top: 32px;
+}
+
+
+/* ========================================
+   MD Heading
+======================================== */
+
+.md__heading {
+  text-align: center;
+}
+
+
+.md__title {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #111;
+}
+
+
+.md__subtitle {
+  margin-top: 14px;
+
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #555;
+}
+
+
+/* ========================================
+   MD Category Buttons
+======================================== */
+
+.md__categories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 38px;
+  margin-bottom: 36px;
+}
+
+
+.md__category {
+  min-width: 78px;
+  height: 50px;
+
+  padding: 0 24px;
+
+  border: 0;
+  border-radius: 25px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #333;
+  background-color: #f5f5f5;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+/* ========================================
+   MD Category Hover
+======================================== */
+
+.md__category:hover {
+  color: #fff;
+  background-color: #0b641d;
+}
+
+
+/* ========================================
+   MD Category Active
+======================================== */
+
+.md__category--active {
+  color: #fff;
+  background-color: #0b641d;
+}
+
+
+/* ========================================
+   MD Product List
+======================================== */
+
+.md__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  row-gap: 48px;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ========================================
+   MD Product Card
+======================================== */
+
+.md-card {
+  flex: 0 0 280px;
+
+  width: 280px;
+}
+
+
+.md-card__link {
+  display: block;
+
+  width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   MD Product Image
+======================================== */
+
+.md-card__image {
+  width: 280px;
+  height: 360px;
+
+  overflow: hidden;
+
+  background-color: #f5f3ef;
+}
+
+
+.md-card__image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* ========================================
+   MD Product Image Hover
+======================================== */
+
+.md-card:hover .md-card__image img {
+  transform: scale(1.2);
+}
+
+
+/* ========================================
+   MD Product Content
+======================================== */
+
+.md-card__content {
+  padding-top: 14px;
+}
+
+
+/* ========================================
+   MD Product Badge
+======================================== */
+
+.md-card__badge {
+  display: inline-block;
+
+  margin-bottom: 8px;
+  padding: 3px 5px;
+
+  border-radius: 2px;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+
+/* ========================================
+   MD New Badge
+======================================== */
+
+.md-card__badge--new {
+  color: #d94a43;
+  background-color: #fde8e6;
+}
+
+
+/* ========================================
+   MD Popular Badge
+======================================== */
+
+.md-card__badge--popular {
+  color: #57874c;
+  background-color: #e5efe1;
+}
+
+
+/* ========================================
+   MD Product Title
+======================================== */
+
+.md-card__title {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  color: #222;
+}
+
+
+/* ========================================
+   MD Product Caption
+======================================== */
+
+.md-card__caption {
+  margin-top: 6px;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #999;
+}
+
+
+/* ========================================
+   MD Product Price
+======================================== */
+
+.md-card__price {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #111;
+}
+
+
+/* ========================================
+   MD Discount Price Row
+======================================== */
+
+.md-card__price-row {
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  margin-top: 7px;
+}
+
+
+.md-card__price-row .md-card__price {
+  margin-top: 0;
+}
+
+
+/* ========================================
+   MD Discount
+======================================== */
+
+.md-card__discount {
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #df302a;
+}
+
+/* ========================================
+   MD Mobile Extra Cards
+   Desktop Hidden
+======================================== */
+
+.md-card--mobile-extra {
+  display: none;
+}
+
+
+/* ========================================
+   MD Mobile More Button
+   Desktop Hidden
+======================================== */
+
+.md__more-wrap {
+  display: none;
+}
+
+/* ========================================
+   Footer
+======================================== */
+
+.footer {
+  width: 100%;
+  height: 240px;
+
+  background-color: #fff;
+}
+
+
+/* ========================================
+   Footer Inner
+======================================== */
+
+.footer__inner {
+  display: flex;
+  align-items: flex-start;
+
+  width: 1200px;
+  min-height: 240px;
+
+  margin: 0 auto;
+  padding-top: 48px;
+  padding-bottom: 40px;
+}
+
+
+/* ========================================
+   Footer Common Text
+======================================== */
+
+.footer p,
+.footer a,
+.footer span {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   Footer Customer Center
+======================================== */
+
+.footer__customer {
+  flex: 0 0 410px;
+
+  width: 410px;
+}
+
+
+/* ========================================
+   Footer Customer Label
+======================================== */
+
+.footer__label {
+  margin: 0;
+
+  color: #222;
+}
+
+
+/* ========================================
+   Footer Phone
+======================================== */
+
+.footer__phone {
+  margin: 0;
+
+  color: #111;
+}
+
+
+/* ========================================
+   Footer Email
+======================================== */
+
+.footer__email {
+  margin: 0;
+
+  color: #222;
+}
+
+
+/* ========================================
+   Footer Customer Information
+======================================== */
+
+.footer__customer-info {
+  margin-top: 14px;
+}
+
+
+.footer__customer-info p {
+  margin: 0;
+
+  color: #777;
+}
+
+
+/* ========================================
+   Footer Company Information
+======================================== */
+
+.footer__company {
+  flex: 1;
+
+  width: 790px;
+}
+
+
+/* ========================================
+   Footer Company Name
+======================================== */
+
+.footer__company-name {
+  margin: 0 0 14px;
+
+  color: #777;
+}
+
+
+/* ========================================
+   Footer Company Detail
+======================================== */
+
+.footer__company-info p {
+  margin: 0;
+
+  color: #555;
+}
+
+
+.footer__company-info span {
+  margin-left: 12px;
+
+  color: #555;
+}
+
+
+/* ========================================
+   Footer Policy Links
+======================================== */
+
+.footer__policy {
+  display: flex;
+  align-items: center;
+
+  margin-top: 12px;
+}
+
+
+.footer__policy a {
+  position: relative;
+
+  color: #bbb;
+}
+
+
+/* ========================================
+   Footer Policy Separator
+======================================== */
+
+.footer__policy a + a {
+  margin-left: 12px;
+}
+
+
+.footer__policy a + a::before {
+  content: "";
+
+  position: absolute;
+
+  left: -6px;
+  top: 50%;
+
+  width: 1px;
+  height: 10px;
+
+  background-color: #ddd;
+
+  transform: translateY(-50%);
+}
+
+
+/* ========================================
+   Footer Policy Hover
+======================================== */
+
+.footer__policy a:hover {
+  color: #777;
+}
+
+
+/* ========================================
+   Footer Copyright
+======================================== */
+
+.footer__copyright {
+  margin: 0;
+
+  color: #ccc;
+}
+
+/* ========================================
+   Header Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Header
+  ======================================== */
+
+  .header {
+    width: 100%;
+    height: 65px;
+
+    background-color: #fff;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+
+  /* ========================================
+     Header Inner
+  ======================================== */
+
+  .header__inner {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 90px minmax(0, 1fr) auto;
+    grid-template-rows: 30px 25px;
+
+    column-gap: 10px;
+
+    width: calc(100% - 20px);
+    height: 65px;
+
+    margin: 0 auto;
+    padding: 5px 0;
+  }
+
+
+  /* ========================================
+     Header Logo
+  ======================================== */
+
+  .header__logo {
+    position: static;
+
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    align-self: center;
+
+    margin: 0;
+
+    transform: none;
+  }
+
+
+  .header__logo a {
+    display: block;
+  }
+
+
+  .header__logo img {
+    display: block;
+
+    width: 90px;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+
+  /* ========================================
+     Header Search
+  ======================================== */
+
+  .header__search {
+    position: static;
+
+    grid-column: 2 / 4;
+    grid-row: 2;
+
+    align-self: end;
+
+    width: 100%;
+
+    margin: 0;
+  }
+
+
+  .search-form {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 23px;
+
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+
+    overflow: hidden;
+  }
+
+
+  .search-form input {
+    flex: 1;
+
+    min-width: 0;
+    height: 100%;
+
+    padding: 0 7px;
+
+    border: 0;
+    outline: none;
+
+    font-size: 9px;
+  }
+
+
+  .search-form input::placeholder {
+    color: #cccccc;
+  }
+
+
+  .search-form__button {
+    flex: 0 0 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 23px;
+    height: 23px;
+
+    margin: 0;
+
+    border-radius: 0;
+
+    background-color: #09651b;
+  }
+
+
+  .search-form__button img {
+    width: 13px;
+    height: 13px;
+
+    object-fit: contain;
+  }
+
+
+  /* ========================================
+     Header Right
+  ======================================== */
+
+  .header__right {
+    position: static;
+
+    grid-column: 2 / 4;
+    grid-row: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: auto;
+    height: 30px;
+
+    margin: 0;
+  }
+
+
+  /* ========================================
+     Utility Menu
+  ======================================== */
+
+  .utility-menu {
+    position: static;
+
+    margin: 0;
+  }
+
+
+  .utility-menu ul {
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+  }
+
+
+  .utility-menu li {
+    display: none;
+  }
+
+
+  /* 로그인만 출력 */
+
+  .utility-menu li:first-child {
+    display: block;
+  }
+
+
+  .utility-menu a {
+    display: block;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    color: #666;
+
+    white-space: nowrap;
+  }
+
+
+  /* ========================================
+     Main Menu
+  ======================================== */
+/* ========================================
+   Main Menu - Mobile
+======================================== */
+
+.main-menu {
+  position: static;
+
+  display: block;
+
+  margin-left: 8px;
+}
+
+
+.main-menu ul {
+  display: flex;
+  align-items: center;
+
+  gap: 0;
+}
+
+
+.main-menu li {
+  display: none;
+}
+
+
+/* 장바구니만 모바일에서 표시 */
+
+.main-menu li.main-menu__cart {
+  display: block;
+}
+
+
+.main-menu li.main-menu__cart a {
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  color: #666;
+
+  white-space: nowrap;
+}
+
+
+.main-menu li.main-menu__cart img {
+  display: block;
+
+  width: 10px;
+  height: 10px;
+
+  object-fit: contain;
+
+  opacity: 0.7;
+}
+
+
+  .main-menu .main-menu__cart a {
+    display: flex;
+    align-items: center;
+
+    gap: 2px;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    color: #666;
+
+    white-space: nowrap;
+  }
+
+
+  .main-menu .main-menu__cart img {
+    width: 10px;
+    height: 10px;
+
+    object-fit: contain;
+
+    opacity: 0.65;
+  }
+
+
+  /* ========================================
+     Mobile Menu Button
+  ======================================== */
+
+  .header__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    width: 18px;
+    height: 20px;
+
+    margin-left: 8px;
+    padding: 0;
+
+    border: 0;
+
+    background-color: transparent;
+
+    cursor: pointer;
+  }
+
+
+  .header__mobile-menu span {
+    display: block;
+
+    width: 13px;
+    height: 1px;
+
+    margin: 0;
+
+    background-color: #999;
+  }
+
+}
+
+/* ========================================
+   Hero Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Hero Section
+  ======================================== */
+
+  .hero {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 375 / 284;
+
+    background-image: url("../images/imgi_31_banner_6c144415eb989c40b109a3f1fdfc276e.jfif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    background-color: #f3f1ec;
+  }
+
+
+  /* ========================================
+     Hero Inner
+  ======================================== */
+
+  .hero__inner {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+  }
+
+}
+
+/* ========================================
+   BEST Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     BEST Section
+  ======================================== */
+
+  .best {
+    width: 100%;
+    height: auto;
+
+    background-color: #fff;
+  }
+
+
+  /* ========================================
+     BEST Inner
+  ======================================== */
+
+  .best__inner {
+    width: calc(100% - 32px);
+    height: auto;
+
+    margin: 0 auto;
+
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+
+  /* ========================================
+     BEST Heading
+  ======================================== */
+
+  .best__heading {
+    margin-bottom: 18px;
+
+    text-align: center;
+  }
+
+
+  .best__title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    color: #111;
+  }
+
+
+  .best__subtitle {
+    margin-top: 5px;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    color: #888;
+  }
+
+
+  /* ========================================
+     BEST Product List
+  ======================================== */
+
+  .best__list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 10px;
+    row-gap: 20px;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+
+  /* ========================================
+     BEST Product Card
+  ======================================== */
+
+  .product-card {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .product-card__link {
+    display: block;
+
+    width: 100%;
+  }
+
+
+  /* ========================================
+     BEST Product Image
+  ======================================== */
+
+  .product-card__image {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background-color: #f5f3ef;
+  }
+
+
+  .product-card__image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+
+  /* ========================================
+     BEST Product Content
+  ======================================== */
+
+  .product-card__content {
+    padding-top: 7px;
+  }
+
+
+  /* ========================================
+     BEST Badge
+  ======================================== */
+
+  .product-card__badge {
+    margin-bottom: 4px;
+
+    padding: 2px 4px;
+
+    font-size: 8px;
+  }
+
+
+  /* ========================================
+     BEST Product Title
+  ======================================== */
+
+  .product-card__title {
+    margin: 0;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: #222;
+  }
+
+
+  /* ========================================
+     BEST Product Caption
+  ======================================== */
+
+  .product-card__caption {
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    font-size: 8px;
+    line-height: 1.4;
+
+    color: #999;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+  /* ========================================
+     BEST Product Price
+  ======================================== */
+
+  .product-card__price {
+    margin-top: 4px;
+
+    font-size: 11px;
+  }
+
+
+  .product-card__price strong {
+    font-size: 11px;
+  }
+
+
+  .product-card__discount {
+    margin-right: 3px;
+
+    font-size: 11px;
+  }
+
+
+  /* ========================================
+     BEST Original Price
+  ======================================== */
+
+  .product-card__original-price {
+    margin-top: 2px;
+
+    font-size: 8px;
+  }
+
+
+  /* ========================================
+     BEST Hidden Product Cards
+  ======================================== */
+
+  .product-card.best-card--hidden {
+    display: none;
+  }
+
+
+  /* ========================================
+     BEST More Button
+  ======================================== */
+
+  .best__more-wrap {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 22px;
+  }
+
+
+  .best__more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 205px;
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    color: #555;
+    background-color: #fff;
+
+    cursor: pointer;
+  }
+
+
+  .best__more-arrow {
+    display: inline-block;
+
+    font-size: 11px;
+
+    transition: transform 0.25s ease;
+  }
+
+
+  /* ========================================
+     BEST More Button Open State
+  ======================================== */
+
+  .best__more-button.is-open
+  .best__more-arrow {
+    transform: rotate(180deg);
+  }
+
+}
+
+/* ========================================
+   Daily Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Daily Section
+  ======================================== */
+
+  .daily {
+    width: 100%;
+    height: auto;
+
+    background-color: #fff;
+  }
+
+
+  /* ========================================
+     Daily Inner
+  ======================================== */
+
+  .daily__inner {
+    width: calc(100% - 32px);
+    height: auto;
+
+    margin: 0 auto;
+
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+
+  /* ========================================
+     Daily Heading
+  ======================================== */
+
+  .daily__heading {
+    margin-bottom: 18px;
+
+    text-align: center;
+  }
+
+
+  .daily__title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    color: #111;
+  }
+
+
+  .daily__subtitle {
+    margin-top: 5px;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    color: #888;
+  }
+
+
+  /* ========================================
+     Daily Product List
+  ======================================== */
+
+  .daily__list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 10px;
+    row-gap: 22px;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+
+  /* ========================================
+     Daily Product Card
+  ======================================== */
+
+  .daily-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  .daily-card__link {
+    display: block;
+
+    width: 100%;
+
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+  /* ========================================
+     Daily Product Image
+  ======================================== */
+
+  .daily-card__image {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background-color: #f5f3ef;
+  }
+
+
+  .daily-card__image > img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+
+  /* ========================================
+     Daily Sale Badge
+  ======================================== */
+
+  .daily-card__sale {
+    top: 7px;
+    left: 7px;
+
+    width: 28px;
+    height: 28px;
+
+    font-size: 8px;
+    font-weight: 700;
+  }
+
+
+  /* ========================================
+     Daily Cart Button
+  ======================================== */
+
+  .daily-card__cart {
+    right: 6px;
+    bottom: 6px;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 8px;
+  }
+
+
+  .daily-card__cart img {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  /* ========================================
+     Daily Product Content
+  ======================================== */
+
+  .daily-card__content {
+    padding-top: 7px;
+  }
+
+
+  /* ========================================
+     Daily Product Badges
+  ======================================== */
+
+  .daily-card__badge {
+    margin-bottom: 4px;
+    padding: 2px 4px;
+
+    font-size: 8px;
+  }
+
+
+  .daily-card__badges {
+    gap: 3px;
+
+    margin-bottom: 4px;
+  }
+
+
+  .daily-card__badges .daily-card__badge {
+    margin-bottom: 0;
+  }
+
+
+  /* ========================================
+     Daily Product Title
+  ======================================== */
+
+  .daily-card__title {
+    margin: 0;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: #222;
+  }
+
+
+  /* ========================================
+     Daily Product Caption
+  ======================================== */
+
+  .daily-card__caption {
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    font-size: 8px;
+    line-height: 1.4;
+
+    color: #999;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+  /* ========================================
+     Daily Product Price
+  ======================================== */
+
+  .daily-card__price {
+    display: flex;
+    align-items: center;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+  }
+
+
+  .daily-card__discount {
+    margin-right: 4px;
+
+    font-size: 11px;
+  }
+
+
+  .daily-card__price strong {
+    font-size: 11px;
+  }
+
+
+  /* ========================================
+     Daily Original Price
+  ======================================== */
+
+  .daily-card__original-price {
+    margin-top: 2px;
+
+    font-size: 8px;
+  }
+
+
+  /* ========================================
+     Daily Mobile Extra Cards
+  ======================================== */
+
+  .daily-card--mobile-extra {
+    display: none;
+  }
+
+
+  .daily-card--mobile-extra.is-visible {
+    display: block;
+  }
+
+
+  /* ========================================
+     Daily More Button
+  ======================================== */
+
+  .daily__more-wrap {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 22px;
+  }
+
+
+  .daily__more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 205px;
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    color: #555;
+    background-color: #fff;
+
+    cursor: pointer;
+  }
+
+
+  /* ========================================
+     Daily More Arrow
+  ======================================== */
+
+  .daily__more-arrow {
+    display: inline-block;
+
+    font-size: 11px;
+
+    transition: transform 0.25s ease;
+  }
+
+
+  /* ========================================
+     Daily More Open State
+  ======================================== */
+
+  .daily__more-button.is-open
+  .daily__more-arrow {
+    transform: rotate(180deg);
+  }
+
+}
+
+/* ========================================
+   Recommend Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Recommend Section
+  ======================================== */
+
+  .recommend {
+    width: 100%;
+    height: auto;
+
+    background-color: #fff;
+  }
+
+
+  /* ========================================
+     Recommend Desktop Content Hidden
+  ======================================== */
+
+  .recommend > .recommend__inner {
+    display: none;
+  }
+
+
+  /* ========================================
+     Recommend Mobile
+  ======================================== */
+
+  .recommend-mobile {
+    display: block;
+
+    width: 100%;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Inner
+  ======================================== */
+
+  .recommend-mobile__inner {
+    width: calc(100% - 32px);
+
+    margin: 0 auto;
+
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Heading
+  ======================================== */
+
+  .recommend-mobile__heading {
+    margin-bottom: 18px;
+
+    text-align: center;
+  }
+
+
+  .recommend-mobile__title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    color: #111;
+  }
+
+
+  .recommend-mobile__subtitle {
+    margin-top: 5px;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    color: #888;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product List
+  ======================================== */
+
+  .recommend-mobile__list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 10px;
+    row-gap: 22px;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product Card
+  ======================================== */
+
+  .recommend-mobile-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product Image
+  ======================================== */
+
+  .recommend-mobile-card__image {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background-color: #f5f3ef;
+  }
+
+
+  .recommend-mobile-card__image > a {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .recommend-mobile-card__image > a > img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Cart Button
+  ======================================== */
+
+  .recommend-mobile-card__cart {
+    position: absolute;
+
+    right: 6px;
+    bottom: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 8px;
+
+    background-color: rgba(75, 75, 72, 0.78);
+
+    cursor: pointer;
+
+    z-index: 2;
+  }
+
+
+  .recommend-mobile-card__cart img {
+    display: block;
+
+    width: 13px;
+    height: 13px;
+
+    object-fit: contain;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product Content
+  ======================================== */
+
+  .recommend-mobile-card__content {
+    padding-top: 7px;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Badge
+  ======================================== */
+
+  .recommend-mobile-card__badge {
+    display: inline-block;
+
+    margin-bottom: 4px;
+    padding: 2px 4px;
+
+    border-radius: 2px;
+
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 1;
+
+    color: #df8a17;
+    background-color: #fff0d3;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product Title
+  ======================================== */
+
+  .recommend-mobile-card__title {
+    margin: 0;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: #222;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product Caption
+  ======================================== */
+
+  .recommend-mobile-card__caption {
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    color: #999;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+  /* ========================================
+     Recommend Mobile Product Price
+  ======================================== */
+
+  .recommend-mobile-card__price {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
+
+    color: #111;
+  }
+
+
+  /* ========================================
+     Recommend Hidden Cards
+  ======================================== */
+
+  .recommend-mobile-card.recommend-mobile-card--hidden {
+    display: none;
+  }
+
+
+  /* ========================================
+     Recommend More
+  ======================================== */
+
+  .recommend-mobile__more-wrap {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 22px;
+  }
+
+
+  .recommend-mobile__more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 205px;
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid #ddd;
+    border-radius: 16px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    color: #555;
+    background-color: #fff;
+
+    cursor: pointer;
+  }
+
+
+  .recommend-mobile__more-arrow {
+    display: inline-block;
+
+    font-size: 11px;
+
+    transition: transform 0.25s ease;
+  }
+
+
+  /* ========================================
+     Recommend More Open State
+  ======================================== */
+
+  .recommend-mobile__more-button.is-open
+  .recommend-mobile__more-arrow {
+    transform: rotate(180deg);
+  }
+
+}
+
+/* ========================================
+   Banner Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Banner Section
+  ======================================== */
+
+  .banner {
+    width: 100%;
+    height: auto;
+
+    background-color: #fff;
+  }
+
+
+  /* ========================================
+     Banner Inner
+  ======================================== */
+
+  .banner__inner {
+    width: calc(100% - 32px);
+    height: auto;
+
+    margin: 0 auto;
+
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+
+  /* ========================================
+     Banner List
+  ======================================== */
+
+  .banner__list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    column-gap: 6px;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+
+  /* ========================================
+     Banner Item
+  ======================================== */
+
+  .banner__item {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* ========================================
+     Banner Link
+  ======================================== */
+
+  .banner__link {
+    display: block;
+
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  /* ========================================
+     Banner Image
+  ======================================== */
+
+  .banner__link img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+}
+
+/* ========================================
+   MD Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     MD Section
+  ======================================== */
+
+  .md {
+    width: 100%;
+    height: auto;
+
+    background-color: #fff;
+  }
+
+
+  /* ========================================
+     MD Inner
+  ======================================== */
+
+  .md__inner {
+    width: calc(100% - 32px);
+    height: auto;
+
+    margin: 0 auto;
+
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+
+  /* ========================================
+     MD Heading
+  ======================================== */
+
+  .md__heading {
+    text-align: center;
+  }
+
+
+  .md__title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    color: #111;
+  }
+
+
+  .md__subtitle {
+    margin-top: 5px;
+
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    color: #888;
+  }
+
+
+  /* ========================================
+     MD Categories
+  ======================================== */
+
+  .md__categories {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    margin-top: 22px;
+    margin-bottom: 18px;
+
+    padding-bottom: 3px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .md__categories::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* ========================================
+     MD Category Button
+  ======================================== */
+
+  .md__category {
+    flex: 0 0 auto;
+
+    min-width: auto;
+    height: 30px;
+
+    padding: 0 13px;
+
+    border-radius: 16px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    white-space: nowrap;
+  }
+
+
+  /* ========================================
+     MD Product List
+  ======================================== */
+
+  .md__list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 10px;
+    row-gap: 22px;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+
+  /* ========================================
+     MD Product Card
+  ======================================== */
+
+  .md-card {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .md-card__link {
+    display: block;
+
+    width: 100%;
+
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+  /* ========================================
+     MD Product Image
+  ======================================== */
+
+  .md-card__image {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background-color: #f5f3ef;
+  }
+
+
+  .md-card__image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+
+  /* ========================================
+     MD Product Content
+  ======================================== */
+
+  .md-card__content {
+    padding-top: 7px;
+  }
+
+
+  /* ========================================
+     MD Product Badge
+  ======================================== */
+
+  .md-card__badge {
+    margin-bottom: 4px;
+
+    padding: 2px 4px;
+
+    font-size: 8px;
+  }
+
+
+  /* ========================================
+     MD Product Title
+  ======================================== */
+
+  .md-card__title {
+    margin: 0;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: #222;
+  }
+
+
+  /* ========================================
+     MD Product Caption
+  ======================================== */
+
+  .md-card__caption {
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    font-size: 8px;
+    line-height: 1.4;
+
+    color: #999;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+
+  /* ========================================
+     MD Product Price
+  ======================================== */
+
+  .md-card__price {
+    margin-top: 4px;
+
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+
+  .md-card__discount {
+    font-size: 11px;
+  }
+
+
+  .md-card__price-row {
+    gap: 3px;
+
+    margin-top: 4px;
+  }
+
+
+  .md-card__price-row .md-card__price {
+    margin-top: 0;
+  }
+
+
+  /* ========================================
+     MD Mobile Extra Cards
+  ======================================== */
+
+  .md-card--mobile-extra {
+    display: none;
+  }
+
+
+  .md-card--mobile-extra.is-visible {
+    display: block;
+  }
+
+
+  /* ========================================
+     MD More Button
+  ======================================== */
+
+  .md__more-wrap {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 24px;
+  }
+
+
+  .md__more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 205px;
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid #ddd;
+    border-radius: 16px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    color: #555;
+    background-color: #fff;
+
+    cursor: pointer;
+  }
+
+
+  /* ========================================
+     MD More Arrow
+  ======================================== */
+
+  .md__more-arrow {
+    display: inline-block;
+
+    font-size: 11px;
+
+    transition: transform 0.25s ease;
+  }
+
+
+  /* ========================================
+     MD More Open State
+  ======================================== */
+
+  .md__more-button.is-open
+  .md__more-arrow {
+    transform: rotate(180deg);
+  }
+
+}
+
+/* ========================================
+   Footer Responsive - Mobile
+======================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* ========================================
+     Footer
+  ======================================== */
+
+  .footer {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+
+    background-color: #fff;
+    border-top: 1px solid #eeeeee;
+  }
+
+
+  /* ========================================
+     Footer Inner
+  ======================================== */
+
+  .footer__inner {
+    display: block;
+
+    width: calc(100% - 32px);
+    height: auto;
+    min-height: 0;
+
+    margin: 0 auto;
+
+    padding-top: 26px;
+    padding-bottom: 32px;
+  }
+
+
+  /* ========================================
+     Footer Common Text
+  ======================================== */
+
+  .footer p,
+  .footer a,
+  .footer span {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+
+  /* ========================================
+     Footer Customer
+  ======================================== */
+
+  .footer__customer {
+    width: 100%;
+  }
+
+
+  /* ========================================
+     Footer Customer Label
+  ======================================== */
+
+  .footer__label {
+    margin: 0;
+
+    color: #222;
+  }
+
+
+  /* ========================================
+     Footer Phone
+  ======================================== */
+
+  .footer__phone {
+    margin: 0;
+
+    color: #111;
+  }
+
+
+  /* ========================================
+     Footer Email
+  ======================================== */
+
+  .footer__email {
+    margin: 0;
+
+    color: #222;
+  }
+
+
+  /* ========================================
+     Footer Customer Info
+  ======================================== */
+
+  .footer__customer-info {
+    margin-top: 12px;
+  }
+
+
+  .footer__customer-info p {
+    margin: 0;
+
+    color: #777;
+  }
+
+
+  /* ========================================
+     Footer Company
+  ======================================== */
+
+  .footer__company {
+    width: 100%;
+
+    margin-top: 24px;
+  }
+
+
+  /* ========================================
+     Footer Company Name
+  ======================================== */
+
+  .footer__company-name {
+    margin: 0 0 10px;
+
+    color: #777;
+  }
+
+
+  /* ========================================
+     Footer Company Info
+  ======================================== */
+
+  .footer__company-info p {
+    margin: 0;
+
+    color: #555;
+  }
+
+
+  .footer__company-info span {
+    display: inline;
+
+    margin-left: 0;
+
+    color: #555;
+  }
+
+
+  /* ========================================
+     Footer Policy
+  ======================================== */
+
+  .footer__policy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    margin-top: 12px;
+  }
+
+
+  .footer__policy a {
+    position: relative;
+
+    color: #aaa;
+  }
+
+
+  /* ========================================
+     Footer Policy Separator
+  ======================================== */
+
+  .footer__policy a + a {
+    margin-left: 10px;
+  }
+
+
+  .footer__policy a + a::before {
+    content: "";
+
+    position: absolute;
+
+    left: -5px;
+    top: 50%;
+
+    width: 1px;
+    height: 8px;
+
+    background-color: #ddd;
+
+    transform: translateY(-50%);
+  }
+
+
+  /* ========================================
+     Footer Copyright
+  ======================================== */
+
+  .footer__copyright {
+    margin-top: 3px;
+
+    color: #ccc;
+  }
+
+}
