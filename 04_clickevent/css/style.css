@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+/* ========================================
+   기본 설정
+======================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 8px;
+  font-family: Arial, "Malgun Gothic", sans-serif;
+  color: #000;
+}
+
+
+/* ========================================
+   전체 영역
+======================================== */
+.wrap {
+  width: 100%;
+}
+
+
+/* ========================================
+   제목
+======================================== */
+h1 {
+  margin: 0 0 22px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   메서드 목록
+======================================== */
+.method-list {
+  margin: 0 0 15px 40px;
+  padding-left: 0;
+}
+
+.method-list li {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+
+/* ========================================
+   버튼
+======================================== */
+.button-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.button-wrap button {
+  height: 22px;
+  padding: 0 8px;
+
+  border: 1px solid #aaa;
+  background-color: #f4f4f4;
+
+  font-size: 13px;
+  color: #000;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   구분선
+======================================== */
+hr {
+  margin: 0 0 8px;
+  border: 0;
+  border-top: 1px solid #999;
+}
+
+
+/* ========================================
+   박스 부모
+======================================== */
+.box-group {
+  width: 640px;
+
+  display: flex;
+  gap: 20px;
+
+  border: 5px solid #ccc;
+}
+
+
+/* 하단 그룹 여백 */
+.bottom-group {
+  margin-top: 50px;
+}
+
+
+/* ========================================
+   공통 박스
+======================================== */
+.box {
+  width: 200px;
+  height: 200px;
+
+  padding: 4px 2px;
+
+  font-size: 16px;
+}
+
+
+/* ========================================
+   박스별 색상
+======================================== */
+
+/* fadeIn / fadeOut */
+.fade-box {
+  background-color: red;
+}
+
+
+/* fadeToggle */
+.fade-toggle-box {
+  background-color: green;
+}
+
+
+/* slideUp / slideDown */
+.slide-box {
+  background-color: #ffca05;
+}
+
+
+/* slideToggle */
+.slide-toggle-box {
+  background-color: #c8ff00;
+}
+
+
+/* Animation */
+.animation-box {
+  background-color: #11bee8;
+
+  position: relative;
+}

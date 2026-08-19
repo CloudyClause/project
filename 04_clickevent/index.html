@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery 애니메이션 관련 메서드</title>
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <main class="wrap">
+
+    <!-- 제목 -->
+    <h1>[ jQuery 애니메이션 관련 메서드 ]</h1>
+
+    <!-- 메서드 목록 -->
+    <ol class="method-list">
+      <li>$('#대상').fadeIn();</li>
+      <li>$('#대상').fadeOut();</li>
+      <li>$('#대상').fadeToggle();</li>
+      <li>$('#대상').slideUp();</li>
+      <li>$('#대상').slideDown();</li>
+      <li>$('#대상').slideToggle();</li>
+      <li>$('#대상').animate();</li>
+    </ol>
+
+    <!-- 버튼 영역 -->
+    <div class="button-wrap">
+        <button type="button" class="fade-in-btn">fadeIn</button>
+        <button type="button" class="fade-out-btn">fadeOut</button>
+        <button type="button" class="fade-toggle-btn">fadeToggle</button>
+        <button type="button" class="slide-up-btn">slideUp</button>
+        <button type="button" class="slide-down-btn">slideDown</button>
+        <button type="button" class="slide-toggle-btn">slideToggle</button>
+        <button type="button" class="ani1-btn">ani1</button>
+        <button type="button" class="ani2-btn">ani2</button>
+    </div>
+
+    <hr>
+
+    <!-- 상단 박스 그룹 -->
+    <div class="box-group">
+      <div class="box fade-box">
+        fadeIn / fadeOut
+      </div>
+
+      <div class="box fade-toggle-box">
+        fadeToggle
+      </div>
+    </div>
+
+    <!-- 하단 박스 그룹 -->
+    <div class="box-group bottom-group">
+      <div class="box slide-box">
+        slideUp / slideDown
+      </div>
+
+      <div class="box slide-toggle-box">
+        slideToggle
+      </div>
+
+      <div class="box animation-box">
+        Animation
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  
+  <script src="./js/script.js"></script>
+
+</body>
+</html>
