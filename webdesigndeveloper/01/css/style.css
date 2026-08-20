@@ -72,8 +72,44 @@ header nav .gnb li:hover{
 .contents .board{
     width: 400px;
     height: 200px;
-    background: pink;
+    /* background: pink; */
 }
+
+.contents .board .tab{
+    width: 100%;
+    height: 50px;
+    /* background: gold; */
+    display: flex;
+    border-bottom: 1px solid #333;
+    align-items: center;
+    padding: 0 10px;   
+}
+
+.contents .board .notice{
+    width: 100%;
+    height: 150px;
+    padding: 0 10px;
+}
+
+.contents .board .notice li{
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contents .board .gallery{
+    width: 100%;
+    height: 150px;
+    background: gold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
 
 .contents .banner{
     width: 400px;
