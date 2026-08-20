@@ -1,0 +1,524 @@
+@charset "UTF-8";
+
+
+/* ========================================
+   Reset
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #111;
+  background-color: #fff;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ========================================
+   Header
+======================================== */
+
+.header {
+  position: relative;
+
+  width: 100%;
+  height: 111px;
+
+  background-color: #fff;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  z-index: 100;
+}
+
+
+/* Header Inner */
+
+.header-inner {
+  position: relative;
+
+  width: 1140px;
+  height: 111px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* ========================================
+   Logo
+======================================== */
+
+.logo {
+  flex-shrink: 0;
+
+  width: 190px;
+}
+
+.logo a {
+  display: block;
+}
+
+.logo img {
+  width: auto;
+  height: auto;
+
+  max-width: 190px;
+}
+
+
+/* ========================================
+   Main Navigation
+======================================== */
+
+.gnb {
+  width: 780px;
+  height: 111px;
+
+  margin-left: auto;
+}
+
+
+/* Menu List */
+
+.gnb-list {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: stretch;
+}
+
+
+/* Menu Item */
+
+.gnb-item {
+  position: relative;
+
+  width: 100%;
+  height: 111px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Main Menu Text */
+
+.gnb-item > a {
+  position: relative;
+
+  height: 111px;
+
+  padding: 0 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   Main Menu Hover Bottom Line
+======================================== */
+
+/*
+  기본 상태에서는 선이 없습니다.
+*/
+
+.gnb-item > a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 19px;
+
+  width: 0;
+  height: 4px;
+
+  background-color: #f05a14;
+
+  transform: translateX(-50%);
+
+  transition:
+    width 0.25s ease;
+}
+
+
+/*
+  현재 마우스를 올린 메뉴에만
+  주황색 밑줄 표시
+*/
+
+.gnb-item:hover > a::after {
+  width: 100%;
+}
+
+
+/* ========================================
+   Mega Menu
+======================================== */
+
+.mega-menu {
+  position: fixed;
+
+  top: 111px;
+  left: 0;
+
+  width: 100%;
+  height: 306px;
+
+  background-color: #fff;
+
+  border-bottom: 1px solid #eeeeee;
+
+  /*
+    처음에는 위쪽으로 숨겨둡니다.
+  */
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-25px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s ease,
+    visibility 0.35s ease;
+
+  z-index: 99;
+}
+
+
+/* ========================================
+   Mega Menu Show
+======================================== */
+
+/*
+  주메뉴 영역에 마우스를 올리면
+  전체 2단 메뉴를 표시합니다.
+*/
+
+.gnb:hover ~ .mega-menu,
+.mega-menu:hover {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+
+/* ========================================
+   Mega Menu Inner
+======================================== */
+
+.mega-inner {
+  width: 1140px;
+  height: 306px;
+
+  margin: 0 auto;
+}
+
+
+/*
+  상단 로고가 차지하는 공간만큼
+  왼쪽 공간을 확보하여
+
+  2단 메뉴가 각각의 주메뉴 아래에
+  위치하도록 만듭니다.
+*/
+
+.depth2-wrap {
+  width: 780px;
+  height: 100%;
+
+  margin-left: auto;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  align-items: start;
+
+  padding-top: 25px;
+}
+
+
+/* ========================================
+   Depth2
+======================================== */
+
+.depth2 {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* 각 메뉴 폭 설정 */
+
+
+
+
+/* Depth2 Item */
+
+.depth2 li {
+  margin-bottom: 17px;
+}
+
+
+/* Depth2 Text */
+
+.depth2 a {
+  display: inline-block;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: #777;
+
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+
+/* Depth2 Hover */
+
+.depth2 a:hover {
+  color: #000;
+}
+
+
+/* 첫 번째 메뉴 강조 제거
+   필요하다면 아래 CSS 자체를 삭제하지 않고
+   모든 메뉴를 동일하게 유지합니다.
+*/
+
+.depth2 a {
+  font-weight: 400;
+}
+
+
+/* ========================================
+   Desktop Minimum Width
+======================================== */
+
+@media screen and (max-width: 1140px) {
+
+  .header-inner,
+  .mega-inner {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
+/* ========================================
+   Main Visual
+======================================== */
+
+.main-visual {
+  width: 100%;
+  height: 600px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   Swiper
+======================================== */
+
+.main-visual-swiper {
+  width: 100%;
+  height: 600px;
+}
+
+
+/* ========================================
+   Main Slide
+======================================== */
+
+.main-slide {
+  position: relative;
+
+  width: 100%;
+  height: 600px;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+/* ========================================
+   Slide Background Images
+======================================== */
+
+/* Slide 01 */
+.main-slide-01 {
+  background-image: url("../images/slide1.jpg");
+}
+
+
+/* Slide 02 */
+.main-slide-02 {
+  background-image: url("../images/slide2.jpg");
+}
+
+
+/* Slide 03 */
+.main-slide-03 {
+  background-image: url("../images/slide3.jpg");
+}
+
+
+/* ========================================
+   Slide Inner
+======================================== */
+
+
+/* ========================================
+   Main Visual Navigation
+======================================== */
+
+.main-prev,
+.main-next {
+  width: 50px;
+  height: 70px;
+
+  top: 50%;
+
+  margin-top: 0;
+  padding: 0;
+
+  transform: translateY(-50%);
+
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 20;
+}
+
+
+/* Swiper 기본 화살표 제거 */
+.main-prev::after,
+.main-next::after {
+  display: none;
+}
+
+
+/* ========================================
+   Navigation Image Size
+======================================== */
+
+.main-prev img,
+.main-next img {
+  display: block;
+
+  width: 22px;
+  height: 38px;
+
+  object-fit: contain;
+}
+
+/* ========================================
+   Previous Button Position
+======================================== */
+
+.main-prev {
+  left: calc(50% - 600px);
+}
+
+
+/* ========================================
+   Next Button Position
+======================================== */
+
+.main-next {
+  right: calc(50% - 600px);
+}
+
+
+/* ========================================
+   Fraction Pagination
+======================================== */
+
+.main-pagination {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  width: auto;
+
+  transform: translateX(-50%);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  z-index: 20;
+}
+
+
+/* 현재 슬라이드 번호 */
+.main-pagination .swiper-pagination-current {
+  color: #fff;
+  font-weight: 700;
+}
+
+
+/* 전체 슬라이드 번호 */
+.main-pagination .swiper-pagination-total {
+  color: rgba(255, 255, 255, 0.65);
+}
