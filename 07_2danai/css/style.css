@@ -1,0 +1,638 @@
+/* ========================================
+   Google Web Font
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+
+/* ========================================
+   Reset
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #333;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ========================================
+   Header
+======================================== */
+
+.header {
+  position: absolute;
+
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1100px;
+  height: 66px;
+
+  background: #fff;
+
+  z-index: 1000;
+}
+
+
+/* Header Inner */
+
+.header-inner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ========================================
+   Logo
+======================================== */
+
+.logo {
+  flex-shrink: 0;
+
+  width: 170px;
+
+  padding-left: 30px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 105px;
+  height: auto;
+}
+
+
+/* ========================================
+   GNB
+======================================== */
+
+.gnb {
+  height: 100%;
+  flex: 1;
+}
+
+.gnb-list {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 주메뉴 각각 */
+
+.gnb-item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+
+/*
+  메뉴별 너비
+  시안과 비슷한 비율 유지
+*/
+
+.gnb-item:nth-child(1) {
+  width: 105px;
+}
+
+.gnb-item:nth-child(2) {
+  width: 128px;
+}
+
+.gnb-item:nth-child(3) {
+  width: 118px;
+}
+
+.gnb-item:nth-child(4) {
+  width: 118px;
+}
+
+.gnb-item:nth-child(5) {
+  width: 118px;
+}
+
+.gnb-item:nth-child(6) {
+  width: 118px;
+}
+
+.gnb-item:nth-child(7) {
+  width: 84px;
+}
+
+
+/* 메뉴 사이 세로 구분선 */
+
+.gnb-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 1px;
+  height: 28px;
+
+  background: #d9d9d9;
+}
+
+
+/* 주메뉴 글자 */
+
+.gnb-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  color: #444;
+
+  transition: color 0.2s;
+}
+
+
+/* ========================================
+   Main Menu Hover
+======================================== */
+
+.gnb-item:hover > .gnb-link {
+  color: #1473bc;
+}
+
+
+/* 주메뉴 아래 파란 선 */
+
+.gnb-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 21px;
+
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 2px;
+
+  background: #1473bc;
+
+  transition: width 0.2s;
+}
+
+.gnb-item:hover > .gnb-link::after {
+  width: 100%;
+}
+
+
+/* ========================================
+   2Depth Menu
+======================================== */
+
+.depth2 {
+  position: absolute;
+
+  top: 66px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 206px;
+
+  background: #fff;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
+
+  z-index: 100;
+}
+
+
+/* 주메뉴 hover시 2단 메뉴 표시 */
+
+.gnb-item:hover .depth2 {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* 2단 메뉴 li */
+
+.depth2 li {
+  width: 100%;
+  height: 42px;
+
+  text-align: center;
+}
+
+
+/* 2단 메뉴 링크 */
+
+.depth2 li a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  color: #555;
+
+  background: #fff;
+
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+
+/* ========================================
+   2Depth Hover
+======================================== */
+
+.depth2 li:hover a {
+  color: #fff;
+  background: #2581c4;
+}
+
+
+/* hover 시 왼쪽 화살표 표시 */
+
+.depth2 li a::before {
+  content: "›";
+
+  display: none;
+
+  margin-right: 8px;
+
+  font-size: 22px;
+  line-height: 1;
+
+  color: #fff;
+}
+
+.depth2 li:hover a::before {
+  display: inline-block;
+}
+
+
+/* HTML에 직접 작성된 화살표는 숨김 */
+
+.depth2 .arrow {
+  display: none;
+}
+
+
+/* ========================================
+   ENG
+======================================== */
+
+.language {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 64px;
+
+  flex-shrink: 0;
+}
+
+.language a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 34px;
+  height: 21px;
+
+  border: 1px solid #d8d8d8;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  color: #999;
+
+  transition: 0.2s;
+}
+
+.language a:hover {
+  border-color: #1473bc;
+  color: #1473bc;
+}
+
+
+/* ========================================
+   Main Visual
+======================================== */
+
+.main-visual {
+  position: relative;
+
+  width: 100%;
+  height: 960px;
+
+  /*
+    요청사항:
+    배경 이미지 원본 규격 1920 × 960px
+  */
+
+  background-image: url("../images/mainslide_img01.jpg");
+
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   Visual Inner
+======================================== */
+
+.visual-inner {
+  position: relative;
+
+  width: 1100px;
+  height: 100%;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   Main Visual Text
+======================================== */
+
+.visual-text {
+  position: absolute;
+
+  top: 195px;
+  left: 60px;
+
+  z-index: 10;
+}
+
+
+/* 첫 번째 제목 */
+
+.visual-text h2 {
+  margin-bottom: 2px;
+
+  font-size: 29px;
+  line-height: 1.45;
+
+  font-weight: 700;
+
+  color: #333;
+}
+
+
+/* 두 번째 큰 문장 */
+
+.visual-title {
+  margin-bottom: 19px;
+
+  font-size: 29px;
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  letter-spacing: -1.5px;
+
+  color: #333;
+}
+
+
+/* 설명 */
+
+.visual-description {
+  margin-bottom: 20px;
+}
+
+.visual-description p {
+  font-size: 16px;
+  line-height: 1.7;
+
+  font-weight: 400;
+
+  color: #555;
+}
+
+
+/* ========================================
+   Company Button
+======================================== */
+
+.company-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 145px;
+  height: 42px;
+
+  padding: 0 10px;
+
+  border: 1px solid #555;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  color: #444;
+
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.company-btn span {
+  margin-left: 6px;
+
+  font-size: 16px;
+}
+
+
+/* 버튼 hover */
+
+.company-btn:hover {
+  color: #fff;
+  background: #2581c4;
+  border-color: #2581c4;
+}
+
+
+/* ========================================
+   Scroll Guide
+======================================== */
+
+.scroll-guide {
+  position: absolute;
+
+  left: 50%;
+  bottom: 125px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 185px;
+  height: 36px;
+
+  border-radius: 20px;
+
+  background: rgba(40, 40, 40, 0.55);
+
+  font-size: 12px;
+
+  color: #fff;
+}
+
+
+/* 마우스 모양 */
+
+.mouse-icon {
+  position: relative;
+
+  width: 13px;
+  height: 19px;
+
+  margin-right: 8px;
+
+  border: 1px solid #fff;
+
+  border-radius: 8px;
+}
+
+.mouse-icon::before {
+  content: "";
+
+  position: absolute;
+
+  top: 4px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 2px;
+  height: 4px;
+
+  background: #fff;
+
+  border-radius: 2px;
+}
+
+
+/* ========================================
+   Slide Control
+======================================== */
+
+.slide-control {
+  position: absolute;
+
+  left: 50%;
+  bottom: 58px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+}
+
+
+/* dot */
+
+.dot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.dot.active {
+  background: #fff;
+}
+
+
+/* play */
+
+.play-btn {
+  margin-left: 10px;
+
+  font-size: 13px;
+
+  color: #fff;
+}
