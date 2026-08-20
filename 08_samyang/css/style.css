@@ -189,6 +189,52 @@ img {
   width: 100%;
 }
 
+/* ========================================
+   2단 메뉴 Hover 시
+   해당 주메뉴 밑줄 유지 및 이동
+======================================== */
+
+/* 회사소개 2단 메뉴 */
+.header-inner:has(.depth2:nth-child(1):hover)
+.gnb-item:nth-child(1) > a::after {
+  width: 100%;
+}
+
+
+/* 홍보관 2단 메뉴 */
+.header-inner:has(.depth2:nth-child(2):hover)
+.gnb-item:nth-child(2) > a::after {
+  width: 100%;
+}
+
+
+/* 지속가능경영 2단 메뉴 */
+.header-inner:has(.depth2:nth-child(3):hover)
+.gnb-item:nth-child(3) > a::after {
+  width: 100%;
+}
+
+
+/* 브랜드 2단 메뉴 */
+.header-inner:has(.depth2:nth-child(4):hover)
+.gnb-item:nth-child(4) > a::after {
+  width: 100%;
+}
+
+
+/* 제품 2단 메뉴 */
+.header-inner:has(.depth2:nth-child(5):hover)
+.gnb-item:nth-child(5) > a::after {
+  width: 100%;
+}
+
+
+/* 고객지원 2단 메뉴 */
+.header-inner:has(.depth2:nth-child(6):hover)
+.gnb-item:nth-child(6) > a::after {
+  width: 100%;
+}
+
 
 /* ========================================
    Mega Menu
