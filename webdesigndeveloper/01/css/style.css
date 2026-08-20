@@ -1,0 +1,107 @@
+@charset "utf-8";
+body{
+    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+    background-color: white;
+    color: #333;
+}
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+/* header Design */
+header{
+    width: 1200px;
+    height: 100px;
+    /* background: gold; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav .gnb{
+    width: 600px;
+    height: 40px;
+    /* background: pink; */
+    display: flex;
+}
+
+header nav .gnb li{
+    width: 150px;
+    height: 40px;
+    /* border: 1px solid #112633 ; */
+    text-align: center;
+    line-height: 40px;
+}
+
+header nav .gnb li a{
+    /* inline태그는 크기 지정 불가 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+header nav .gnb li:hover{
+    background:#cfba9f ;
+}
+
+.slide{
+    width: 1200px;
+    height: 300px;
+    margin: 0 auto;
+    /* 박스 크기 안에서만 보이기 초과는 숨김 */
+    overflow: hidden;
+}
+
+.contents{
+    width: 1200px;
+    height: 200px;
+    /* background: gold; */
+    margin: 0 auto;
+    display: flex;
+}
+
+.contents .board{
+    width: 400px;
+    height: 200px;
+    background: pink;
+}
+
+.contents .banner{
+    width: 400px;
+    height: 200px;
+}
+
+.contents .go{
+    width: 400px;
+    height: 200px;
+}
+
+footer{
+    width: 1200px;
+    height: 100px;
+    /* background: antiquewhite; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #cfba9f;
+}
+
+footer .sns{
+    display: flex;
+    gap: 20px;
+}
+footer .sns a{
+    color: #333;
+}
+
+
