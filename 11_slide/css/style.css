@@ -1,0 +1,756 @@
+/* ========================================
+   기본 설정
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  font-family: Arial, "Noto Sans KR", sans-serif;
+}
+
+
+/* ========================================
+   Main Slide Section
+
+   전체 가로 : 100%
+   높이 : 480px
+======================================== */
+
+.main-slide {
+  position: relative;
+
+  width: 100%;
+  height: 480px;
+
+  margin-top: 160px;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   Swiper
+======================================== */
+
+.main-slide-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 각각의 슬라이드 */
+.main-slide-swiper .swiper-slide {
+  width: 100%;
+  height: 480px;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   슬라이드 이미지
+
+   화면 전체 너비를 채우도록 설정
+   중앙을 기준으로 이미지를 보여줌
+======================================== */
+
+.main-slide-swiper .swiper-slide img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* ========================================
+   컨트롤 Inner
+
+   시안 기준 inner width : 1250px
+
+   이전/다음 버튼과 카운터를
+   이 영역 안에서 배치
+======================================== */
+
+.slide-control-inner {
+  position: absolute;
+
+  left: 50%;
+  bottom: 20px;
+
+  transform: translateX(-50%);
+
+  width: 1250px;
+  height: 40px;
+
+  /* 실제 Swiper 이미지보다 위에 표시 */
+  z-index: 10;
+
+  /* 내부 요소를 양 끝으로 배치 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /*
+    부모 전체에는 클릭을 막고
+    실제 버튼에만 pointer-events를 활성화합니다.
+  */
+  pointer-events: none;
+}
+
+
+/* ========================================
+   이전 / 다음 버튼 영역
+======================================== */
+
+.slide-navigation {
+  display: flex;
+
+  /* 시안처럼 두 버튼 사이 간격 */
+  gap: 12px;
+
+  pointer-events: auto;
+}
+
+
+/* ========================================
+   이전 / 다음 공통 버튼
+
+   요청 사이즈 : 40 × 40px
+======================================== */
+
+.slide-btn {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 0;
+
+  /* 완전한 원형 */
+  border-radius: 50%;
+
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* ========================================
+   버튼 내부 화살표 이미지
+
+   요청 사이즈 : 16 × 16px
+======================================== */
+
+.slide-btn img {
+  width: 24px;
+  height: 24px;
+
+  object-fit: contain;
+
+  /* 슬라이드 이미지 CSS 영향 방지 */
+  display: block;
+}
+
+
+/* 버튼 Hover */
+.slide-btn:hover {
+  background-color: #f7f7f7;
+}
+
+
+/* 버튼 클릭 효과 */
+.slide-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* ========================================
+   슬라이드 번호 Counter
+
+   요청 사이즈 : 52 × 27px
+======================================== */
+
+.slide-counter {
+  width: 52px;
+  height: 27px;
+
+  border-radius: 14px;
+
+  /*
+    첨부 시안의 회색 배경과
+    비슷한 색상
+  */
+  background-color: rgba(91, 91, 86, 0.75);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: auto;
+}
+
+
+/* ========================================
+   카운터 숫자
+
+   요청 크기 : 12px
+======================================== */
+
+.slide-counter span {
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   카운터 가운데 세로 구분선
+======================================== */
+
+.counter-line {
+  display: block;
+
+  width: 1px;
+  height: 11px;
+
+  margin: 0 7px;
+
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+
+
+
+/* ========================================
+   화면이 1250px보다 작아질 경우
+
+   Inner가 화면 밖으로 튀어나가는 현상을 방지
+======================================== */
+
+@media screen and (max-width: 1290px) {
+
+  .slide-control-inner {
+    width: calc(100% - 40px);
+  }
+
+}
+
+/* ========================================
+   Product Banner Slide Section
+======================================== */
+
+.product-banner-section {
+  width: 100%;
+  height: 800px;
+
+  background-color: #fff;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   Inner
+
+   요청사항 : 1250px
+======================================== */
+
+.product-banner-inner {
+  width: 1250px;
+  height: 100%;
+
+  margin: 0 auto;
+
+  padding-top: 65px;
+}
+
+
+/* ========================================
+   상단 제목 영역
+======================================== */
+
+.product-banner-header {
+  position: relative;
+
+  width: 1180px;
+  height: 96px;
+
+  margin: 0 auto 20px;
+}
+
+
+/* 가운데 제목 영역 */
+.product-banner-title-box {
+  text-align: center;
+}
+
+
+/* ========================================
+   주제목
+
+   요청사항 : 40px
+======================================== */
+
+.product-banner-title-box h2 {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  color: #111;
+}
+
+
+/* ========================================
+   부제목
+
+   요청사항 : 18px
+======================================== */
+
+.product-banner-title-box p {
+  margin-top: 8px;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: #777;
+}
+
+
+/* ========================================
+   전체보기
+
+   시안처럼 제목 우측 하단에 배치
+======================================== */
+
+.product-view-all {
+  position: absolute;
+
+  right: 0;
+  bottom: 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  color: #333;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  text-decoration: none;
+}
+
+
+/* ========================================
+   전체보기 옆 원형 버튼
+
+   요청사항 : 18 × 18px
+======================================== */
+
+/* ========================================
+   전체보기 옆 아이콘
+
+   버튼 전체가 하나의 이미지
+   요청 규격 : 18 × 18px
+======================================== */
+
+.view-all-icon {
+  display: block;
+
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   Swiper 전체 영역
+
+   카드 280 × 4
+   gap 20 × 3
+
+   1120 + 60 = 1180px
+======================================== */
+
+.product-slider-area {
+  position: relative;
+
+  width: 1180px;
+
+  margin: 0 auto;
+}
+
+
+/* Swiper */
+.product-banner-swiper {
+  width: 1180px;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   각각의 상품 Slide
+======================================== */
+
+.product-banner-swiper .swiper-slide {
+  width: 280px;
+
+  height: auto;
+}
+
+
+/* ========================================
+   상품 카드 전체
+
+   이미지 : 280 × 380
+   텍스트 : 280 × 140
+======================================== */
+
+.product-card {
+  width: 280px;
+}
+
+
+/* ========================================
+   상품 이미지 영역
+
+   요청사항 : 280 × 380px
+======================================== */
+
+.product-image-box {
+  position: relative;
+
+  width: 280px;
+  height: 380px;
+
+  overflow: hidden;
+
+  background-color: #f5f5f5;
+}
+
+
+/* 상품 이미지 */
+.product-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ========================================
+   장바구니 버튼
+
+   요청사항 : 48 × 48px
+======================================== */
+
+.product-cart {
+  position: absolute;
+
+  right: 12px;
+  bottom: 12px;
+
+  width: 48px;
+  height: 48px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 16px;
+
+  background-color: rgba(75, 75, 75, 0.78);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   장바구니 내부 이미지
+
+   요청사항 : 28 × 28px
+======================================== */
+
+.product-cart img {
+  display: block;
+
+  width: 28px;
+  height: 28px;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   상품 텍스트 영역
+
+   요청사항 : 280 × 140px
+======================================== */
+
+.product-info {
+  width: 280px;
+  height: 140px;
+
+  padding-top: 18px;
+}
+
+
+/* ========================================
+   태그 영역
+======================================== */
+
+.product-tags {
+  display: flex;
+  align-items: center;
+
+  min-height: 18px;
+
+  gap: 4px;
+
+  margin-bottom: 4px;
+}
+
+
+/* 상품 태그 공통 */
+.product-tags .tag {
+  display: inline-flex;
+  align-items: center;
+
+  height: 18px;
+
+  padding: 0 4px;
+
+  border-radius: 2px;
+
+  font-size: 11px;
+  line-height: 18px;
+}
+
+
+/* 주황 태그 */
+.product-tags .orange {
+  color: #ff8500;
+
+  background-color: #fff0df;
+}
+
+
+/* 파란 태그 */
+.product-tags .blue {
+  color: #2688c9;
+
+  background-color: #e7f4fb;
+}
+
+
+/* 빨간 태그 */
+.product-tags .red {
+  color: #e85454;
+
+  background-color: #fde9e9;
+}
+
+
+/* ========================================
+   상품 주제목
+
+   요청사항 : 18px
+======================================== */
+
+.product-info h3 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  color: #111;
+}
+
+
+/* ========================================
+   상품 부제목
+
+   요청사항 : 14px
+======================================== */
+
+.product-description {
+  margin-top: 5px;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #777;
+
+  /* 너무 길 경우 한 줄 말줄임 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ========================================
+   상품 가격
+
+   요청사항 : 18px
+======================================== */
+
+.product-price {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: #111;
+}
+
+
+/* ========================================
+   좌우 슬라이드 버튼 공통
+
+   요청사항 : 40 × 40px
+======================================== */
+
+.product-slide-btn {
+  position: absolute;
+
+  top: 170px;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ========================================
+   버튼 내부 화살표
+
+   요청사항 : 24 × 24px
+======================================== */
+
+.product-slide-btn img {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  object-fit: contain;
+}
+
+
+/* 이전 버튼 */
+.product-slide-prev {
+  left: -20px;
+}
+
+
+/* 다음 버튼 */
+.product-slide-next {
+  right: -20px;
+}
+
+
+/* ========================================
+   버튼 Hover
+======================================== */
+
+.product-slide-btn:hover {
+  background-color: #f8f8f8;
+}
+
+
+/* ========================================
+   Swiper 비활성 버튼의 기본 opacity 제거
+
+   loop를 사용하기 때문에 사실상
+   disable 상태는 발생하지 않지만
+   기존 Swiper 기본값 간섭 방지
+======================================== */
+
+.product-slide-btn.swiper-button-disabled {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+/* ========================================
+   1250px 이하 화면 보호
+
+   현재 작업은 PC 기준이지만
+   가로 스크롤이 불필요하게 발생하지 않도록 처리
+======================================== */
+
+@media screen and (max-width: 1290px) {
+
+  .product-banner-inner {
+    width: calc(100% - 40px);
+  }
+
+  .product-banner-header,
+  .product-slider-area,
+  .product-banner-swiper {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 반응형 화면 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Swiper Main Slide</title>
+
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  >
+
+  <!-- 사용자 CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <!-- ========================================
+       Main Slide Section
+  ========================================= -->
+  <section class="main-slide">
+
+    <!-- Swiper -->
+    <div class="swiper main-slide-swiper">
+
+      <!-- 슬라이드 목록 -->
+      <div class="swiper-wrapper">
+
+        <!-- Slide 01 -->
+        <div class="swiper-slide">
+          <img
+            src="./images/slide1.jpg"
+            alt="메인 슬라이드 1"
+          >
+        </div>
+
+        <!-- Slide 02 -->
+        <div class="swiper-slide">
+          <img
+            src="./images/slide2.jpg"
+            alt="메인 슬라이드 2"
+          >
+        </div>
+
+        <!-- Slide 03 -->
+        <div class="swiper-slide">
+          <img
+            src="./images/slide3.jpg"
+            alt="메인 슬라이드 3"
+          >
+        </div>
+
+        <!-- Slide 04 -->
+        <div class="swiper-slide">
+          <img
+            src="./images/slide4.png"
+            alt="메인 슬라이드 4"
+          >
+        </div>
+
+        <!-- Slide 05 -->
+        <div class="swiper-slide">
+          <img
+            src="./images/slide5.png"
+            alt="메인 슬라이드 5"
+          >
+        </div>
+
+        <!-- Slide 06 -->
+        <div class="swiper-slide">
+          <img
+            src="./images/slide6.png"
+            alt="메인 슬라이드 6"
+          >
+        </div>
+
+      </div>
+      <!-- //swiper-wrapper -->
+
+    </div>
+    <!-- //Swiper -->
+
+
+    <!-- ========================================
+         슬라이드 컨트롤 영역
+         이미지와 별도로 위에 겹쳐서 배치
+    ========================================= -->
+    <div class="slide-control-inner">
+
+      <!-- 좌측 이전 / 다음 버튼 -->
+      <div class="slide-navigation">
+
+        <!-- 이전 버튼 -->
+        <button
+          type="button"
+          class="slide-btn slide-prev"
+          aria-label="이전 슬라이드"
+        >
+          <img
+            src="./images/icon-arrow-left-a3a3a3-24.svg"
+            alt=""
+          >
+        </button>
+
+        <!-- 다음 버튼 -->
+        <button
+          type="button"
+          class="slide-btn slide-next"
+          aria-label="다음 슬라이드"
+        >
+          <img
+            src="./images/icon-arrow-right-a3a3a3-24.svg"
+            alt=""
+          >
+        </button>
+
+      </div>
+
+
+      <!-- 우측 슬라이드 번호 -->
+      <div class="slide-counter">
+
+        <!-- 현재 슬라이드 번호 -->
+        <span class="current-slide">1</span>
+
+        <!-- 구분선 -->
+        <span class="counter-line"></span>
+
+        <!-- 전체 슬라이드 개수 -->
+        <span class="total-slide">6</span>
+
+      </div>
+
+    </div>
+    <!-- //slide-control-inner -->
+
+  </section>
+  <!-- //main-slide -->
+
+  <!-- ========================================
+     Product Banner Slide Section
+========================================= -->
+<section class="product-banner-section">
+
+  <div class="product-banner-inner">
+
+    <!-- ========================================
+         상단 제목 영역
+    ========================================= -->
+    <div class="product-banner-header">
+
+      <!-- 가운데 제목 -->
+      <div class="product-banner-title-box">
+        <h2>여름휴가도, 집반찬</h2>
+        <p>막바지 휴가준비도 간편하게!</p>
+      </div>
+
+      <!-- 우측 전체보기 -->
+      <a href="#" class="product-view-all">
+        <span>전체보기</span>
+
+        <!-- 전체보기 버튼 아이콘 -->
+        <img
+        src="./images/icon-arrow-right-background-d9d9d9-18.svg"
+        alt="전체보기"
+        class="view-all-icon"
+        >
+      </a>
+
+    </div>
+    <!-- //product-banner-header -->
+
+
+    <!-- ========================================
+         상품 Swiper 영역
+    ========================================= -->
+    <div class="product-slider-area">
+
+      <!-- Swiper -->
+      <div class="swiper product-banner-swiper">
+
+        <div class="swiper-wrapper">
+
+
+          <!-- ==================================
+               GROUP A - 상품 1
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <!-- 상품 이미지 -->
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card1.jpg"
+                  alt="깻잎무생채"
+                  class="product-image"
+                >
+
+                <!-- 장바구니 버튼 -->
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="깻잎무생채 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <!-- 상품 설명 -->
+              <div class="product-info">
+
+                <!-- 상품 태그 -->
+                <div class="product-tags">
+                  <span class="tag orange">맵지않음</span>
+                </div>
+
+                <h3>깻잎무생채</h3>
+
+                <p class="product-description">
+                  깻잎 향 솔솔, 아삭한 무채가 입맛을 깨워요!
+                </p>
+
+                <strong class="product-price">
+                  2,800원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP A - 상품 2
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card2.jpg"
+                  alt="마늘쫑채 장아찌"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="마늘쫑채 장아찌 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags"></div>
+
+                <h3>마늘쫑채 장아찌</h3>
+
+                <p class="product-description">
+                  간장에 촉촉이 절여진 마늘쫑, 밥 한 공기 뚝딱!
+                </p>
+
+                <strong class="product-price">
+                  3,300원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP A - 상품 3
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card3.jpg"
+                  alt="맑은 한우 배추국 냉동"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="맑은 한우 배추국 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags">
+                  <span class="tag red">신제품</span>
+                  <span class="tag blue">냉동</span>
+                </div>
+
+                <h3>맑은 한우 배추국_냉동</h3>
+
+                <p class="product-description">
+                  담백하고 개운한, 배추와 한우의 깊은 맛
+                </p>
+
+                <strong class="product-price">
+                  9,900원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP A - 상품 4
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card4.jpg"
+                  alt="콩나물 황태국 냉동"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="콩나물 황태국 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags">
+                  <span class="tag blue">냉동</span>
+                  <span class="tag orange">맵지않음</span>
+                </div>
+
+                <h3>콩나물 황태국(냉동)</h3>
+
+                <p class="product-description">
+                  시원하고 담백한
+                </p>
+
+                <strong class="product-price">
+                  9,900원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP B - 상품 5
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card5.jpg"
+                  alt="한돈 사태김치찜"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label=""
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags"></div>
+
+                <h3>한돈 사태김치찜</h3>
+
+                <p class="product-description">
+                  깊은 맛이 사태에 푹 배어, 진짜 집밥 느낌!
+                </p>
+
+                <strong class="product-price">
+                  10,800원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP B - 상품 6
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card6.jpg"
+                  alt="상품 6"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="상품 6 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags"></div>
+
+                <h3>매콤 한돈 사태찜</h3>
+
+                <p class="product-description">
+                  맛있게 매운맛에 부드러운 채소까지, 밥도둑 등극!
+                </p>
+
+                <strong class="product-price">
+                  10,800원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP B - 상품 7
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card7.jpg"
+                  alt="상품 7"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="상품 7 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags"></div>
+
+                <h3>양파고추 장아찌</h3>
+
+                <p class="product-description">
+                  고기와 먹으면 찰떡궁합
+                </p>
+
+                <strong class="product-price">
+                  3,900원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          <!-- ==================================
+               GROUP B - 상품 8
+          =================================== -->
+          <div class="swiper-slide">
+
+            <article class="product-card">
+
+              <div class="product-image-box">
+
+                <img
+                  src="./images/card8.jpg"
+                  alt="상품 8"
+                  class="product-image"
+                >
+
+                <button
+                  type="button"
+                  class="product-cart"
+                  aria-label="상품 8 장바구니 담기"
+                >
+                  <img
+                    src="./images/icon-cart-fafafa-42.svg"
+                    alt=""
+                  >
+                </button>
+
+              </div>
+
+              <div class="product-info">
+
+                <div class="product-tags"></div>
+
+                <h3>참치마요 주먹밥</h3>
+
+                <p class="product-description">
+                  주먹밥재료로 안성맞춤
+                </p>
+
+                <strong class="product-price">
+                  7,500원
+                </strong>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+        <!-- //swiper-wrapper -->
+
+      </div>
+      <!-- //product-banner-swiper -->
+
+
+      <!-- ========================================
+           슬라이드 이전 버튼
+      ========================================= -->
+      <button
+        type="button"
+        class="product-slide-btn product-slide-prev"
+        aria-label="이전 상품 보기"
+      >
+        <img
+          src="./images/icon-arrow-left-a3a3a3-24.svg"
+          alt=""
+        >
+      </button>
+
+
+      <!-- ========================================
+           슬라이드 다음 버튼
+      ========================================= -->
+      <button
+        type="button"
+        class="product-slide-btn product-slide-next"
+        aria-label="다음 상품 보기"
+      >
+        <img
+          src="./images/icon-arrow-right-a3a3a3-24.svg"
+          alt=""
+        >
+      </button>
+
+    </div>
+    <!-- //product-slider-area -->
+
+  </div>
+  <!-- //product-banner-inner -->
+
+</section>
+<!-- //product-banner-section -->
+
+
+  <!-- Swiper JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- 사용자 JavaScript -->
+  <script src="./js/script.js"></script>
+
+</body>
+</html>
