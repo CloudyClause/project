@@ -33,6 +33,58 @@
 <body>
 
   <!-- ========================================
+       팝업창 전체 영역
+       페이지 로딩 시 화면 중앙에 표시됩니다.
+  ========================================= -->
+  <div class="popup-wrap" id="popupWrap">
+
+    <!-- 팝업창 본체 -->
+    <div class="popup">
+
+      <!-- ==============================
+           팝업 이미지 영역
+           원하는 이미지로 교체하면 됩니다.
+           예:
+           ./images/popup.jpg
+      =============================== -->
+      <div class="popup-image">
+        <img
+          src="./images/popup.jpg"
+          alt="이벤트 팝업 이미지"
+        >
+      </div>
+
+      <!-- ==============================
+           팝업창 하단 영역
+      =============================== -->
+      <div class="popup-bottom">
+
+        <!-- 오늘 하루 열지 않기 -->
+        <label class="today-close">
+          <input
+            type="checkbox"
+            id="todayClose"
+          >
+          <span>오늘 하루 이 창을 열지 않음</span>
+        </label>
+
+        <!-- 팝업 닫기 버튼 -->
+        <button
+          type="button"
+          class="popup-close"
+          id="popupClose"
+        >
+          [닫기]
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================
        Header
   ======================================== -->
   <header class="header">
@@ -1073,6 +1125,20 @@
     </div>
 
   </footer>
+
+  <!-- ========================================
+     TOP 버튼
+     클릭하면 페이지 맨 위로 이동합니다.
+======================================== -->
+<button type="button" class="top-btn" id="topBtn">
+
+  <!-- 위쪽 화살표 -->
+  <span class="top-arrow"></span>
+
+  <!-- TOP 글자 -->
+  <span class="top-text">TOP</span>
+
+</button>
 
 
 <!-- ========================================
