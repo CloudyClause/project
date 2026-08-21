@@ -60,3 +60,88 @@ const mainVisualSwiper = new Swiper(".main-visual-swiper", {
   },
 
 });
+
+/* ========================================
+   Brand Tab
+======================================== */
+
+/*
+  모든 탭 버튼을 가져옵니다.
+*/
+const brandTabs =
+  document.querySelectorAll(".brand-tab");
+
+
+/*
+  모든 제품 콘텐츠를 가져옵니다.
+*/
+const brandContents =
+  document.querySelectorAll(".brand-content");
+
+
+/* ========================================
+   Tab Click Event
+======================================== */
+
+brandTabs.forEach(function (tab) {
+
+  tab.addEventListener("click", function () {
+
+    /*
+      클릭한 탭의 data-tab 값을 가져옵니다.
+    */
+    const targetTab =
+      this.getAttribute("data-tab");
+
+
+    /* ----------------------------------------
+       모든 탭의 active 제거
+    ---------------------------------------- */
+
+    brandTabs.forEach(function (item) {
+      item.classList.remove("active");
+    });
+
+
+    /* ----------------------------------------
+       모든 제품 콘텐츠 숨김
+    ---------------------------------------- */
+
+    brandContents.forEach(function (content) {
+      content.classList.remove("active");
+    });
+
+
+    /* ----------------------------------------
+       클릭한 탭 활성화
+    ---------------------------------------- */
+
+    this.classList.add("active");
+
+
+    /* ----------------------------------------
+       클릭한 탭에 해당하는 제품 표시
+    ---------------------------------------- */
+
+    const targetContent =
+      document.getElementById(targetTab);
+
+    if (targetContent) {
+      targetContent.classList.add("active");
+    }
+
+  });
+
+});
+
+$(function () {
+
+  $(".family-button").on("click", function () {
+
+    $(".family-list").stop().slideToggle(300);
+
+    $(".family-wrap").toggleClass("active");
+
+  });
+
+});
