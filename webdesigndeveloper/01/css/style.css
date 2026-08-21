@@ -209,15 +209,16 @@ header nav .gnb> li> .depth2 li:hover{
     position: relative;
 }
 
-.contents .banner h3{
-    width: 60%;
+.contents .banner h2{
+    width: 70%;
     position: absolute;
     left: 50%;
     top: 50%;
     color: #fff;
-    transform: translate(-30%, -90%);
+    transform: translate(-35%, -90%);
     text-align: center;
     border: 1px solid #fff;
+    font-size: 20px;
 }
 
 .contents .go{
@@ -226,8 +227,8 @@ header nav .gnb> li> .depth2 li:hover{
     position: relative;
 }
 
-.contents .go h3{
-    width: 60%;
+.contents .go h2{
+    width: 70%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -235,6 +236,7 @@ header nav .gnb> li> .depth2 li:hover{
     transform: translate(-50%, -70%);
     text-align: center;
     border: 1px solid #fff;
+    font-size: 20px;
 }
 
 footer{
