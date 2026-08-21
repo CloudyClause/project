@@ -14,6 +14,42 @@ a{
 li{
     list-style: none;
 }
+/* 팝업창 디자인 */
+.popup{
+    width: 400px;
+    height: 400px;
+    border: 1px solid #333;
+    background: #fff;
+    position: fixed;
+    left:50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -200px;
+    padding: 24px;
+    display: none;
+    z-index: 102;
+}
+
+.popup h2{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 48px;
+}
+
+.popup p{
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.popup button{
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    cursor: pointer;
+}
+
+
+
 
 /* header Design */
 header{
@@ -33,15 +69,16 @@ header nav .gnb{
     display: flex;
 }
 
-header nav .gnb li{
+header nav .gnb> li{
     width: 150px;
     height: 40px;
     /* border: 1px solid #112633 ; */
     text-align: center;
     line-height: 40px;
+    position: relative;
 }
 
-header nav .gnb li a{
+header nav .gnb> li> a{
     /* inline태그는 크기 지정 불가 */
     display: block;
     width: 100%;
@@ -49,16 +86,47 @@ header nav .gnb li a{
     color: #333;
 }
 
-header nav .gnb li:hover{
+header nav .gnb> li:hover{
     background:#cfba9f ;
 }
+
+/* 2단 메뉴 */
+header nav .gnb> li> .depth2{
+    position: absolute;
+    left: 0;
+    top: 40;
+    background: #d3cacb;
+    width: 100%;
+    height: 160px;
+    display: none;
+    z-index: 101;
+}
+
+header nav .gnb> li> .depth2 a{
+    color: #333;
+}
+
+header nav .gnb> li> .depth2 li:hover{
+    background: #cfba9f;
+}
+
+
 
 .slide{
     width: 1200px;
     height: 300px;
     margin: 0 auto;
+    position: relative;
     /* 박스 크기 안에서만 보이기 초과는 숨김 */
     overflow: hidden;
+}
+
+.slide ul{
+    position: absolute;
+    top: 0;
+    width: 1200px;
+    height: 900px;
+    z-index: 100;
 }
 
 .contents{
@@ -82,7 +150,28 @@ header nav .gnb li:hover{
     display: flex;
     border-bottom: 1px solid #333;
     align-items: center;
-    padding: 0 10px;   
+    padding: 0 10px;
+    gap: 10px;   
+}
+
+.contents .board .tab li{
+    height: 100%;
+    line-height: 50px;
+}
+
+.contents .board .tab li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    /* background: beige; */
+}
+
+.contents .board .tab li.on a{
+    color: #112633;
+    border-bottom: 3px solid #112633;
 }
 
 .contents .board .notice{
@@ -103,22 +192,49 @@ header nav .gnb li:hover{
 .contents .board .gallery{
     width: 100%;
     height: 150px;
-    background: gold;
+    /* background: gold; */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
+}
+.list2{
+    display: none;
 }
 
 
 .contents .banner{
     width: 400px;
     height: 200px;
+    position: relative;
+}
+
+.contents .banner h3{
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    transform: translate(-30%, -90%);
+    text-align: center;
+    border: 1px solid #fff;
 }
 
 .contents .go{
     width: 400px;
     height: 200px;
+    position: relative;
+}
+
+.contents .go h3{
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    transform: translate(-50%, -70%);
+    text-align: center;
+    border: 1px solid #fff;
 }
 
 footer{

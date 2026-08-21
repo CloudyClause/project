@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <!-- 팝업창 -->
+     <div class="popup">
+        <h2>후기 적립금 안내</h2>
+        <p>
+            #적립금 챙겨가세요!<br>
+
+            #후기만 남겨도 적립금이 빵빵!<br>
+
+            JUST 회원님들의 구매 후 솔직한 의견을<br>
+
+            남겨주시는 구매후기 입니다. 구매하신<br>
+
+            상품을 착용하시고 사진을 찍어 구매후기<br>
+
+            를 작성해주시기 바랍니다.<br><br>
+
+
+
+            - 적립금은 작성후 2~7일 이내 지급<br>
+
+            - 의도적인 비방글, 도배, 욕설등은 사전<br>
+
+            공지없이 자동삭제되며 형법규정에 따<br>
+
+            라 형사처벌을 받으실 수 있습니다.
+
+        </p>
+        <button>닫기</button>
+     </div>
     <header>
         <h1>
             <a href="index.html">
@@ -15,10 +44,42 @@
         </h1>
         <nav>
             <ul class="gnb">
-                <li><a href="#">탑</a></li>
-                <li><a href="#">아우터</a></li>
-                <li><a href="#">팬츠</a></li>
-                <li><a href="#">악세서리</a></li>
+                <li>
+                    <a href="#">탑</a>
+                    <ul class="depth2">
+                        <li><a href="#">블라우스</a></li>
+                        <li><a href="#">티</a></li>
+                        <li><a href="#">셔츠</a></li>
+                        <li><a href="#">니트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">아우터</a>
+                    <ul class="depth2">
+                        <li><a href="#">자켓</a></li>
+                        <li><a href="#">코트</a></li>
+                        <li><a href="#">가디건</a></li>
+                        <li><a href="#">머플러</a></li>                       
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">팬츠</a>
+                    <ul class="depth2">
+                        <li><a href="#">청바지</a></li>
+                        <li><a href="#">짧은바지</a></li>
+                        <li><a href="#">긴바지</a></li>
+                        <li><a href="#">레깅스</a></li>                       
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">악세서리</a>
+                    <ul class="depth2">
+                        <li><a href="#">귀고리</a></li>
+                        <li><a href="#">목걸이</a></li>
+                        <li><a href="#">반지</a></li>
+                        <li><a href="#">팔찌</a></li>                       
+                    </ul>                    
+                </li>
             </ul>
         </nav>
     </header>
@@ -34,27 +95,40 @@
     <div class="contents">
         <div class="board">
             <ul class="tab">
-                <li><a href="#">공지사항</a></li>
+                <li class="on"><a href="#">공지사항</a></li>
                 <li><a href="#">갤러리</a></li>
             </ul>
-            <ul class="notice">
-                <li><a href="#">JUST MALL 사이트 후기 적립금 안내 </a><span>2021.03.05</span></li>
-                <li><a href="#">주문 후 배송전취소/반품/상품교환 유의사항 </a><span>2021.03.02</span></li>
-                <li><a href="#">교환 및 반품 Q&A </a><span>2021.02.11</span></li>
-                <li><a href="#">설 연휴 휴무 및 배송안내 </a><span>2021.01.15</span></li>
-                <li><a href="#">롯제택배 파업관련 발송 대책 공지 </a><span>2021.01.11</span></li>
-            </ul>
-            <ul class="gallery">
-                <li><a href="#"><img src="./images/gallery1.png" alt="갤러리1"></a></li>
-                <li><a href="#"><img src="./images/gallery2.png" alt="갤러리2"></a></li>
-                <li><a href="#"><img src="./images/gallery3.png" alt="갤러리3"></a></li>
-            </ul>
+            <div class="wrap">
+                <ul class="notice">
+                    <li class="first"><a href="#">JUST MALL 사이트 후기 적립금 안내 </a><span>2021.03.05</span></li>
+                    <li><a href="#">주문 후 배송전취소/반품/상품교환 유의사항 </a><span>2021.03.02</span></li>
+                    <li><a href="#">교환 및 반품 Q&A </a><span>2021.02.11</span></li>
+                    <li><a href="#">설 연휴 휴무 및 배송안내 </a><span>2021.01.15</span></li>
+                    <li><a href="#">롯제택배 파업관련 발송 대책 공지 </a><span>2021.01.11</span></li>
+                </ul>
+            </div>
+            <div class="wrap list2">
+                <ul class="gallery">
+                    <li><a href="#"><img src="./images/gallery1.png" alt="갤러리1"></a></li>
+                    <li><a href="#"><img src="./images/gallery2.png" alt="갤러리2"></a></li>
+                    <li><a href="#"><img src="./images/gallery3.png" alt="갤러리3"></a></li>
+                </ul>
+            </div>
         </div>
         <div class="banner">
             <img src="./images/banner.png" alt="카드배너">
+            <h3>
+                카드 무이자할부 이벤트<br>
+                무이자 2~5개월
+            </h3>
         </div>
         <div class="go">
             <img src="./images/go.png" alt="샵바로가기">
+            <h3>
+                청바지 바겐세일<br>
+                25900원<br>
+                SHOP NOW →
+            </h3>
         </div>
     </div>
 
