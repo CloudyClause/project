@@ -1,0 +1,380 @@
+@charset "utf-8";
+
+
+/* ========================================
+   기본 설정
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #111;
+  font-family: "Noto Sans KR", Arial, sans-serif;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+
+
+/* ========================================
+   설화수 추천 Section
+======================================== */
+
+.recommend-section {
+  width: 100%;
+  height: 950px;
+  background: #fff;
+}
+
+
+/* 전체 inner 영역 */
+.recommend-inner {
+  position: relative;
+
+  width: 1440px;
+  height: 100%;
+
+  margin: 0 auto;
+
+  padding-top: 72px;
+}
+
+
+/* 섹션 제목 */
+.recommend-title {
+  margin-bottom: 28px;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+
+/* ========================================
+   Swiper 전체 영역
+======================================== */
+
+.recommend-slider-wrap {
+  position: relative;
+
+  width: 100%;
+  height: 600px;
+}
+
+
+/* 실제 Swiper */
+.recommend-swiper {
+  width: 100%;
+  height: 600px;
+
+  overflow: hidden;
+}
+
+
+/* 각각의 슬라이드 */
+.recommend-swiper .swiper-slide {
+  height: 600px;
+}
+
+
+
+/* ========================================
+   제품 카드
+======================================== */
+
+.product-card {
+  width: 100%;
+  height: 100%;
+
+  text-align: center;
+}
+
+
+/* 제품 이미지 박스 */
+.product-image {
+  width: 100%;
+  height: 440px;
+
+  overflow: hidden;
+
+  background: #f1f1f1;
+}
+
+
+/* 실제 제품 이미지 */
+.product-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* 제품 설명 영역 */
+.product-info {
+  padding-top: 20px;
+
+  text-align: center;
+}
+
+
+/* 제품명 */
+.product-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+/* 영문 제품명 */
+.product-en {
+  margin-top: 7px;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+/* 가격 */
+.product-price {
+  margin-top: 14px;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+
+/* ========================================
+   좌 / 우 슬라이드 버튼
+======================================== */
+
+/*
+  슬라이드 전체 영역을
+  좌우 버튼의 기준점으로 사용
+*/
+.recommend-slider-wrap {
+  position: relative;
+
+  width: 100%;
+  height: 600px;
+}
+
+
+/*
+  화살표 버튼 자체를
+  이미지 위에 떠 있는 독립 블록으로 만듭니다.
+*/
+.recommend-arrow {
+  position: absolute;
+
+  /*
+    반드시 상품 이미지보다 위에 표시
+  */
+  z-index: 100;
+
+  /*
+    상품 이미지 영역 높이 440px의 중앙
+  */
+  top: 220px;
+
+  /*
+    원본처럼 눈에 보이는
+    넉넉한 버튼 영역
+  */
+  width: 70px;
+  height: 70px;
+
+  /*
+    화살표를 정확히 중앙 배치
+  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*
+    원본의 밝은 사각 버튼 영역
+    !important는 기존 button { background:none; }
+    등의 영향을 확실히 차단하기 위함
+  */
+  background: rgba(255, 255, 255, 0.82) !important;
+
+  /*
+    테두리는 사용하지 않음
+  */
+  border: 0;
+
+  /*
+    버튼 자체의 세로 중심을
+    이미지 중앙에 맞춤
+  */
+  transform: translateY(-50%);
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   실제 화살표 이미지
+======================================== */
+
+.recommend-arrow img {
+  display: block;
+
+  /*
+    지금보다 작게 하지 않고
+    오히려 충분히 크게 표시
+  */
+  width: 46px;
+  height: 46px;
+
+  object-fit: contain;
+
+  /*
+    이미지가 마우스 이벤트를 가져가지 않고
+    버튼이 클릭을 받도록 처리
+  */
+  pointer-events: none;
+}
+
+
+/* ========================================
+   왼쪽 버튼
+======================================== */
+
+.recommend-prev {
+  /*
+    첫 번째 카드의 안쪽에 걸쳐서 표시
+  */
+  left: 0;
+}
+
+
+/* ========================================
+   오른쪽 버튼
+======================================== */
+
+.recommend-next {
+  /*
+    세 번째 카드의 안쪽에 걸쳐서 표시
+  */
+  right: 0;
+}
+
+/* ========================================
+   하단 진행바 / 컨트롤
+======================================== */
+
+.slide-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 38px;
+}
+
+
+/* 진행바 전체 */
+.progress-bar {
+  position: relative;
+
+  width: 400px;
+  height: 3px;
+
+  overflow: hidden;
+
+  background: #d9d9d9;
+}
+
+
+/* 현재 진행 상태 */
+.progress-fill {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 16.6667%;
+  height: 100%;
+
+  background: #111;
+
+  transition: width 0.4s ease;
+}
+
+
+
+/* ========================================
+   재생 / 일시정지 버튼
+======================================== */
+
+.play-control {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 원본처럼 사각형 테두리 추가 */
+  border: 1px solid #222;
+
+  background: #fff;
+
+  padding: 0;
+
+  cursor: pointer;
+}
+
+
+/* 버튼 안쪽 실제 이미지 */
+.play-control img {
+  display: block;
+
+  /* 기존보다 조금 작게 */
+  width: 12px;
+  height: 12px;
+
+  object-fit: contain;
+}
+
+
+/* 기본 상태 */
+.play-control .play-icon {
+  display: none;
+}
+
+
+/* 자동재생 중 = pause 아이콘 표시 */
+.play-control.pause .pause-icon {
+  display: block;
+}
+
+.play-control.pause .play-icon {
+  display: none;
+}
+
+
+/* 일시정지 상태 = play 아이콘 표시 */
+.play-control.play .pause-icon {
+  display: none;
+}
+
+.play-control.play .play-icon {
+  display: block;
+}
