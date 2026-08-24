@@ -2229,3 +2229,127 @@ li:not(:last-child)::after {
 
   object-fit: contain;
 }
+
+/* ==================================================
+   TOP BUTTON
+
+   - 최초 로딩 시 숨김
+   - 일정 거리 스크롤 후 표시
+   - 우측 하단 고정
+================================================== */
+
+.top-btn {
+  position: fixed;
+
+  /*
+    브라우저 화면 오른쪽 / 아래 기준 위치
+  */
+  right: 30px;
+  bottom: 30px;
+
+  /*
+    원형 버튼 크기
+  */
+  width: 50px;
+  height: 50px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  /*
+    요청 색상
+  */
+  background: #00a1b4;
+  color: #ffffff;
+
+  font-family: "Pretendard", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  /*
+    TOP 글자를 정확히 가운데 배치
+  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*
+    일반 콘텐츠 위에 표시하지만
+    Header(z-index: 1000)보다는 아래
+  */
+  z-index: 900;
+
+  cursor: pointer;
+
+  /*
+    최초 로딩 시 숨김
+  */
+  opacity: 0;
+  visibility: hidden;
+
+  /*
+    숨김 상태에서는 클릭도 막음
+  */
+  pointer-events: none;
+
+  /*
+    처음에는 아래쪽으로 10px 내려간 상태
+  */
+  transform: translateY(10px);
+
+  /*
+    나타나고 사라지는 모션
+  */
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease,
+    background 0.2s ease;
+}
+
+
+/* ==================================================
+   TOP BUTTON 활성화
+
+   JavaScript에서 .show 클래스를 붙이면
+   버튼이 화면에 나타납니다.
+================================================== */
+
+.top-btn.show {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+
+/* ==================================================
+   TOP BUTTON HOVER
+================================================== */
+
+.top-btn:hover {
+  background: #008f9f;
+}
+
+
+/* ==================================================
+   TOP BUTTON CLICK
+================================================== */
+
+.top-btn:active {
+  transform: translateY(1px);
+}
+
+
+/* ==================================================
+   키보드 접근성
+================================================== */
+
+.top-btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}

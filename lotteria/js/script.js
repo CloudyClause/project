@@ -514,3 +514,87 @@ $(function () {
   });
 
 });
+
+/* ==================================================
+   TOP BUTTON
+================================================== */
+
+
+/*
+  TOP 버튼 가져오기
+*/
+const topBtn =
+  document.querySelector("#topBtn");
+
+
+/* ==================================================
+   Scroll Event
+
+   페이지를 400px 이상 내리면
+   TOP 버튼에 show 클래스를 추가합니다.
+
+   400px보다 위로 올라오면
+   show 클래스를 제거합니다.
+================================================== */
+
+window.addEventListener(
+  "scroll",
+  function () {
+
+    /*
+      현재 페이지의 세로 스크롤 위치
+    */
+    const scrollPosition =
+      window.scrollY;
+
+
+    /*
+      400px 이상 스크롤
+    */
+    if (scrollPosition >= 400) {
+
+      topBtn.classList.add("show");
+
+    }
+
+
+    /*
+      400px 미만
+    */
+    else {
+
+      topBtn.classList.remove("show");
+
+    }
+
+  }
+);
+
+
+/* ==================================================
+   TOP BUTTON CLICK
+
+   클릭하면 페이지 최상단으로
+   부드럽게 이동합니다.
+================================================== */
+
+topBtn.addEventListener(
+  "click",
+  function () {
+
+    window.scrollTo({
+
+      /*
+        페이지 맨 위
+      */
+      top: 0,
+
+      /*
+        부드러운 스크롤 이동
+      */
+      behavior: "smooth"
+
+    });
+
+  }
+);
