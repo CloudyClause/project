@@ -1,0 +1,2186 @@
+/* ========================================
+   Pretendard Web Font
+======================================== */
+
+@import url(
+  "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+);
+
+
+/* ========================================
+   Reset
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    "Pretendard",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+body {
+  color: #111;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: "Pretendard", sans-serif;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 130px;
+
+  background: #fff;
+
+  z-index: 1000;
+}
+
+
+/* ========================================
+   HEADER INNER
+======================================== */
+
+.header-inner {
+  width: 1140px;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   상단 유틸리티 영역
+   높이 : 40px
+======================================== */
+
+.header-util {
+  width: 100%;
+  height: 40px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.util-inner {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  height: 40px;
+}
+
+.util-menu {
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+.util-menu a {
+  color: #666;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  transition: color 0.25s ease;
+}
+
+.util-menu a:hover {
+  color: #00a1b4;
+}
+
+
+/* ========================================
+   HEADER MAIN
+   높이 : 90px
+======================================== */
+
+.header-main {
+  width: 100%;
+  height: 90px;
+
+  background: #fff;
+}
+
+.main-inner {
+  display: grid;
+
+  grid-template-columns:
+    130px
+    585px
+    1fr;
+
+  align-items: center;
+
+  height: 90px;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.logo {
+  width: 100%;
+}
+
+.logo a {
+  display: block;
+
+  width: 75px;
+}
+
+.logo img {
+  width: 75px;
+  height: auto;
+}
+
+
+/* ========================================
+   GNB
+======================================== */
+
+.gnb-wrap {
+  width: 585px;
+  height: 90px;
+}
+
+.gnb {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 117px);
+
+  width: 100%;
+  height: 100%;
+}
+
+.gnb-item {
+  height: 90px;
+}
+
+.gnb-link {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 90px;
+
+  border-bottom: 0;
+
+  color: #111;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  transition: color 0.25s ease;
+}
+
+.gnb-link:hover,
+.gnb-item:hover .gnb-link {
+  color: #00a1b4;
+}
+
+
+/* ========================================
+   HEADER ACTION
+======================================== */
+
+.header-actions {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  height: 90px;
+
+  gap: 36px;
+}
+
+
+/* ========================================
+   CART BUTTON
+======================================== */
+
+.cart-btn {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+}
+
+.cart-btn img {
+  width: 24px;
+  height: 24px;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   ORDER BUTTON
+======================================== */
+
+.order-btn {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 45px;
+
+  padding: 0 20px;
+
+  border-radius: 25px;
+
+  background: #00a1b4;
+
+  box-shadow:
+    0 7px 13px
+    rgba(0, 161, 180, 0.25);
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  gap: 8px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.order-btn img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+.order-btn:hover {
+  background: #008fa0;
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   MEGA MENU
+======================================== */
+
+.mega-menu {
+  position: absolute;
+
+  top: 130px;
+  left: 0;
+
+  width: 100%;
+  height: 295px;
+
+  border-top: 1px solid #f3f3f3;
+
+  background: #fff;
+
+  box-shadow:
+    0 8px 15px
+    rgba(0, 0, 0, 0.025);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-10px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.header.menu-open .mega-menu {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+
+/* ========================================
+   MEGA INNER
+======================================== */
+
+.mega-inner {
+  display: grid;
+
+  grid-template-columns:
+    130px
+    repeat(5, 117px)
+    1fr;
+
+  width: 1140px;
+  height: 295px;
+
+  margin: 0 auto;
+}
+
+.mega-logo-space {
+  width: 130px;
+}
+
+.mega-column {
+  padding-top: 0;
+}
+
+.mega-column ul {
+  padding-top: 0;
+}
+
+.mega-column li {
+  margin-bottom: 13px;
+}
+
+.mega-column a,
+.mega-column a.active {
+  display: inline-block;
+
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+.mega-column a:hover,
+.mega-column a.active:hover {
+  color: #00a1b4;
+}
+
+.mega-action-space {
+  height: 100%;
+}
+
+
+/* ==================================================
+   MAIN CONTENT
+================================================== */
+
+.main-content {
+  width: 100%;
+
+  padding-top: 130px;
+}
+
+
+/* ==================================================
+   MAIN SLIDE SECTION
+================================================== */
+
+.main-slide-section {
+  width: 100%;
+  height: 510px;
+
+  background: #fff;
+}
+
+.main-slide-inner {
+  display: flex;
+
+  align-items: flex-start;
+
+  width: 1110px;
+  height: 510px;
+
+  margin: 0 auto;
+
+  padding-top: 34px;
+
+  gap: 20px;
+}
+
+.main-slide-left {
+  width: 800px;
+}
+
+
+/* ==================================================
+   MAIN SWIPER
+================================================== */
+
+.main-banner-swiper {
+  position: relative;
+
+  width: 800px;
+  height: 336px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+
+/* ==================================================
+   MAIN SLIDE
+================================================== */
+
+.main-banner-slide {
+  position: relative;
+
+  width: 800px;
+  height: 336px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* ==================================================
+   MAIN SLIDE BACKGROUND
+================================================== */
+
+.banner01 {
+  background-image:
+    url("../images/imgi_100_20260810082109141_0.jpg");
+}
+
+.banner02 {
+  background-image:
+    url("../images/imgi_101_20260820173017968_9.webp");
+}
+
+.banner03 {
+  background-image:
+    url("../images/imgi_102_2026082109513164_5.webp");
+}
+
+
+/* ==================================================
+   MAIN SLIDE TEXT
+================================================== */
+
+.banner-copy {
+  position: absolute;
+
+  top: 42px;
+  left: 42px;
+
+  z-index: 10;
+
+  color: #fff;
+}
+
+.banner-title-row {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 16px;
+
+  gap: 8px;
+}
+
+.banner-title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+
+  letter-spacing: -0.5px;
+}
+
+.banner-title-icon {
+  width: 30px;
+  height: 30px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.banner-desc {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  letter-spacing: -0.2px;
+}
+
+
+/* ==================================================
+   MAIN SLIDE 03
+================================================== */
+
+.banner-copy-type03 {
+  top: 34px;
+  left: 28px;
+}
+
+.banner-title-row-type03 {
+  margin-bottom: 4px;
+
+  gap: 10px;
+}
+
+.banner-title-type03 {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.banner-title-second {
+  margin-bottom: 18px;
+
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.banner-copy-type03 .banner-desc {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+
+/* ==================================================
+   MAIN BANNER CONTROLS
+================================================== */
+
+.main-banner-controls {
+  position: absolute;
+
+  right: 24px;
+  bottom: 18px;
+
+  z-index: 20;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0;
+}
+
+.banner-prev,
+.banner-next,
+.banner-play-toggle {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 36px;
+
+  padding: 0;
+
+  border: 0;
+
+  background:
+    rgba(93, 0, 10, 0.72);
+
+  cursor: pointer;
+}
+
+.banner-prev {
+  border-radius: 18px 0 0 18px;
+}
+
+.banner-play-toggle {
+  border-radius: 0 18px 18px 0;
+}
+
+.banner-prev img,
+.banner-next img {
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+}
+
+
+/* ==================================================
+   MAIN BANNER COUNTER
+================================================== */
+
+.banner-counter {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 36px;
+
+  padding: 0 3px;
+
+  background:
+    rgba(93, 0, 10, 0.72);
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  gap: 4px;
+}
+
+.banner-total {
+  opacity: 0.7;
+}
+
+
+/* ==================================================
+   MAIN BANNER PLAY / PAUSE
+================================================== */
+
+.banner-play-toggle img {
+  width: 16px;
+  height: 16px;
+
+  object-fit: contain;
+}
+
+.play-icon {
+  display: none;
+}
+
+.banner-play-toggle.is-paused .pause-icon {
+  display: none;
+}
+
+.banner-play-toggle.is-paused .play-icon {
+  display: block;
+}
+
+
+/* ==================================================
+   MAIN BANNER MORE
+================================================== */
+
+.banner-more {
+  width: 36px;
+  height: 36px;
+
+  margin-left: 8px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background:
+    rgba(93, 0, 10, 0.85);
+
+  color: #fff;
+
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.banner-more:hover {
+  background: #70000c;
+
+  transform: rotate(90deg);
+}
+
+
+/* ==================================================
+   ORDER TYPE BOX
+================================================== */
+
+.order-type-box {
+  display: grid;
+
+  grid-template-columns:
+    205px
+    repeat(3, 1fr);
+
+  width: 800px;
+  height: 84px;
+
+  margin-top: 18px;
+
+  padding: 13px;
+
+  border: 1px solid #e4e4e4;
+  border-radius: 20px;
+
+  background: #fff;
+
+  gap: 5px;
+}
+
+.order-brand-select {
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 16px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #333;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  gap: 8px;
+}
+
+.order-brand-logo {
+  width: 55px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.order-select-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 23px;
+  height: 23px;
+
+  border-radius: 50%;
+
+  background: #444;
+
+  color: #fff;
+
+  font-size: 10px;
+}
+
+.order-type-item {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 58px;
+
+  border-radius: 13px;
+
+  background: #08a6b9;
+
+  color: #fff;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  gap: 8px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.order-type-item img {
+  width: 21px;
+  height: 21px;
+
+  object-fit: contain;
+}
+
+.order-type-item:hover {
+  background: #008fa2;
+
+  transform: translateY(-1px);
+}
+
+
+/* ==================================================
+   EATZ MILE BOX
+================================================== */
+
+.eatz-mile-box {
+  width: 290px;
+  height: 354px;
+
+  padding: 27px 24px 24px;
+
+  border-radius: 20px;
+
+  background: #444;
+
+  color: #fff;
+}
+
+.mile-title {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 18px;
+
+  color: #fff;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  gap: 6px;
+}
+
+.mile-title img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+.mile-title-arrow {
+  margin-left: 2px;
+
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+/* ==================================================
+   MILE TAB
+================================================== */
+
+.mile-tabs {
+  display: flex;
+
+  width: 242px;
+  height: 43px;
+
+  margin-bottom: 8px;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background: #5b5b5b;
+}
+
+.mile-tab {
+  position: relative;
+
+  width: 50%;
+  height: 43px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.mile-tab:first-child::after {
+  content: "";
+
+  position: absolute;
+
+  top: 11px;
+  right: 0;
+
+  width: 1px;
+  height: 21px;
+
+  background: #454545;
+}
+
+.mile-tab.active {
+  font-weight: 600;
+}
+
+.mile-tab-content {
+  position: relative;
+
+  display: none;
+
+  width: 242px;
+  height: 212px;
+
+  padding: 14px 12px;
+
+  border-radius: 9px;
+
+  background: #595959;
+}
+
+.mile-tab-content.active {
+  display: block;
+}
+
+.mile-grade-title {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.mile-grade-title strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mile-grade-title a {
+  color: #aaa;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.mile-login-title {
+  margin-bottom: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: underline;
+}
+
+.mile-login-caption {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+/* ==================================================
+   MILE BRAND GROUP
+================================================== */
+
+.mile-brands {
+  position: absolute;
+
+  left: 12px;
+  bottom: 13px;
+}
+
+.mile-brand-group {
+  display: block;
+
+  width: 86px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* ==================================================
+   COUPON SLIDE SECTION
+================================================== */
+
+.coupon-slide-section {
+  width: 100%;
+  height: 500px;
+
+  background: #f4f5f6;
+}
+
+.coupon-slide-inner {
+  width: 1150px;
+  height: 500px;
+
+  margin: 0 auto;
+
+  padding-top: 48px;
+}
+
+
+/* ==================================================
+   COUPON TITLE
+================================================== */
+
+.coupon-slide-title {
+  display: flex;
+
+  align-items: center;
+
+  width: 1110px;
+
+  margin: 0 auto 22px;
+
+  color: #111;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  gap: 6px;
+}
+
+.coupon-title-arrow {
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+
+/* ==================================================
+   COUPON SLIDER WRAP
+================================================== */
+
+.coupon-slider-wrap {
+  position: relative;
+
+  width: 1110px;
+  height: 273px;
+
+  margin: 0 auto;
+}
+
+.coupon-swiper {
+  width: 1110px;
+  height: 273px;
+
+  overflow: hidden;
+}
+
+
+/* ==================================================
+   COUPON CARD
+================================================== */
+
+.coupon-card {
+  position: relative;
+
+  width: 268.5px !important;
+  height: 273px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.coupon-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 18px
+    rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==================================================
+   COUPON PRODUCT IMAGE
+================================================== */
+
+.coupon-image-box {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 120px;
+}
+
+.coupon-image-box img {
+  width: 120px;
+  height: 90px;
+
+  object-fit: contain;
+}
+
+
+/* ==================================================
+   COUPON INFO
+================================================== */
+
+.coupon-info {
+  padding: 4px 24px 0;
+}
+
+.coupon-brand {
+  margin-bottom: 6px;
+
+  color: #ff2b22;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.coupon-name {
+  margin-bottom: 8px;
+
+  overflow: hidden;
+
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.coupon-price-row {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 4px;
+}
+
+.coupon-discount {
+  color: #ff2b22;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.coupon-price {
+  color: #111;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.coupon-original-price {
+  color: #999;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+/* ==================================================
+   COUPON DOWNLOAD
+================================================== */
+
+.coupon-download {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
+
+  border-top: 1px dashed #e2e2e2;
+
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  gap: 5px;
+}
+
+
+/* ==================================================
+   COUPON DOWNLOAD ICON
+   실제 이미지 아이콘
+================================================== */
+
+.coupon-download-icon {
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+
+/* ==================================================
+   COUPON CARD TICKET HOLE
+================================================== */
+
+.coupon-card::before,
+.coupon-card::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 35px;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: #f4f5f6;
+
+  z-index: 2;
+}
+
+.coupon-card::before {
+  left: -14px;
+}
+
+.coupon-card::after {
+  right: -14px;
+}
+
+
+/* ==================================================
+   COUPON PREV / NEXT
+   ★ 이번 수정 핵심
+
+   원형 테두리 + 화살표가
+   하나의 40×40 이미지 자체입니다.
+
+   버튼에는 border/background를 만들지 않습니다.
+================================================== */
+
+.coupon-prev,
+.coupon-next {
+  position: absolute;
+
+  top: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  z-index: 20;
+
+  /*
+    버튼 영역 밖에서 발생하는
+    불필요한 이미지 흐름을 방지합니다.
+  */
+  overflow: hidden;
+}
+
+
+/* ==================================================
+   COUPON PREV POSITION
+================================================== */
+
+.coupon-prev {
+  left: -20px;
+}
+
+
+/* ==================================================
+   COUPON NEXT POSITION
+================================================== */
+
+.coupon-next {
+  right: -20px;
+}
+
+
+/* ==================================================
+   COUPON ARROW IMAGE COMMON
+   ★ 기본/hover 이미지를 같은 좌표에 완전히 겹침
+================================================== */
+
+.coupon-prev img,
+.coupon-next img {
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  width: 40px;
+  height: 40px;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+
+  /*
+    이미지 자체가 레이아웃 높이를
+    변화시키지 않도록 고정
+  */
+  pointer-events: none;
+
+  transition: opacity 0.2s ease;
+}
+
+
+/* ==================================================
+   DEFAULT ARROW
+================================================== */
+
+.coupon-arrow-default {
+  opacity: 1;
+}
+
+
+/* ==================================================
+   HOVER ARROW
+================================================== */
+
+.coupon-arrow-hover {
+  opacity: 0;
+}
+
+
+/* ==================================================
+   COUPON ARROW HOVER
+
+   버튼 위치는 절대 변경하지 않고
+   opacity만 교체합니다.
+================================================== */
+
+.coupon-prev:hover .coupon-arrow-default,
+.coupon-next:hover .coupon-arrow-default {
+  opacity: 0;
+}
+
+.coupon-prev:hover .coupon-arrow-hover,
+.coupon-next:hover .coupon-arrow-hover {
+  opacity: 1;
+}
+
+
+/* ==================================================
+   COUPON BUTTON FOCUS
+
+   키보드 접근 시에도 동일한 활성 아이콘 표시
+================================================== */
+
+.coupon-prev:focus-visible .coupon-arrow-default,
+.coupon-next:focus-visible .coupon-arrow-default {
+  opacity: 0;
+}
+
+.coupon-prev:focus-visible .coupon-arrow-hover,
+.coupon-next:focus-visible .coupon-arrow-hover {
+  opacity: 1;
+}
+
+
+/* ==================================================
+   HOT MENU TAB SECTION
+================================================== */
+
+.hotmenu-section {
+  width: 100%;
+  height: 516px;
+
+  background: #fff;
+}
+
+.hotmenu-inner {
+  width: 1150px;
+  height: 516px;
+
+  margin: 0 auto;
+
+  padding-top: 46px;
+}
+
+
+/* ==================================================
+   HOT MENU TITLE
+================================================== */
+
+.hotmenu-title {
+  margin-bottom: 18px;
+
+  color: #111;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* ==================================================
+   HOT MENU TAB
+================================================== */
+
+.hotmenu-tabs {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.hotmenu-tab {
+  position: relative;
+
+  padding: 0 18px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #777;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+.hotmenu-tab:first-child {
+  padding-left: 0;
+}
+
+.hotmenu-tab:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  right: 0;
+
+  width: 1px;
+  height: 12px;
+
+  background: #ddd;
+
+  transform: translateY(-50%);
+}
+
+.hotmenu-tab.active {
+  color: #111;
+
+  font-weight: 700;
+}
+
+
+/* ==================================================
+   HOT MENU CONTENT
+================================================== */
+
+.hotmenu-content {
+  display: none;
+
+  align-items: flex-start;
+
+  gap: 30px;
+}
+
+.hotmenu-content.active {
+  display: flex;
+}
+
+
+/* ==================================================
+   HOT MENU PROMO
+================================================== */
+
+.hotmenu-promo {
+  position: relative;
+
+  width: 180px;
+  height: 290px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+.hotmenu-promo img {
+  width: 180px;
+  height: 290px;
+
+  object-fit: cover;
+}
+
+.hotmenu-promo-text {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 150px;
+
+  color: #fff;
+
+  text-align: center;
+
+  transform:
+    translate(-50%, -35%);
+}
+
+.hotmenu-promo-text strong {
+  display: block;
+
+  margin-bottom: 16px;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.hotmenu-promo-text span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* ==================================================
+   HOT MENU PRODUCTS
+================================================== */
+
+.hotmenu-products {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  flex: 1;
+
+  gap: 10px;
+}
+
+.hotmenu-item {
+  min-width: 0;
+}
+
+.hotmenu-image-box {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 172px;
+
+  margin-bottom: 12px;
+
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+.hotmenu-image-box img {
+  width: 140px;
+  height: 120px;
+
+  object-fit: contain;
+}
+
+
+/* ==================================================
+   HOT MENU BADGE
+================================================== */
+
+.hotmenu-badge {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  padding: 2px 6px;
+
+  border-radius: 8px;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  z-index: 5;
+}
+
+.hotmenu-badge.new {
+  border: 1px solid #ff3b30;
+
+  background: #fff;
+
+  color: #ff3b30;
+}
+
+.hotmenu-badge.best {
+  background: #ff3b30;
+
+  color: #fff;
+}
+
+.hotmenu-badge.angel-badge {
+  background: #79624e;
+
+  color: #fff;
+}
+
+.hotmenu-badge.angel-best {
+  border: 1px solid #79624e;
+
+  background: #fff;
+
+  color: #79624e;
+}
+
+.hotmenu-badge.krispy-best {
+  background: #009d57;
+
+  color: #fff;
+}
+
+
+/* ==================================================
+   HOT MENU TEXT
+================================================== */
+
+.hotmenu-name {
+  min-height: 36px;
+
+  margin: 0 6px 4px;
+
+  color: #111;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.hotmenu-price {
+  display: block;
+
+  margin: 0 6px;
+
+  color: #111;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* ==================================================
+   EATZ TV SECTION
+================================================== */
+
+.eatz-tv-section {
+  width: 100%;
+  height: 420px;
+
+  background: #192127;
+}
+
+.eatz-tv-inner {
+  width: 1150px;
+  height: 420px;
+
+  margin: 0 auto;
+
+  padding-top: 66px;
+}
+
+
+/* ==================================================
+   EATZ TV TITLE
+================================================== */
+
+.eatz-tv-title {
+  margin-bottom: 20px;
+
+  color: #fff;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.eatz-tv-title a {
+  display: inline-flex;
+
+  align-items: center;
+
+  color: #fff;
+
+  gap: 5px;
+}
+
+.eatz-tv-title-arrow {
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+
+/* ==================================================
+   EATZ TV LIST
+================================================== */
+
+.eatz-tv-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 269px);
+
+  justify-content: space-between;
+
+  align-items: start;
+}
+
+.eatz-tv-item {
+  width: 269px;
+}
+
+.eatz-tv-item a {
+  display: block;
+}
+
+
+/* ==================================================
+   EATZ TV IMAGE
+================================================== */
+
+.eatz-tv-image {
+  width: 269px;
+  height: 203px;
+
+  margin-bottom: 12px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+.eatz-tv-image img {
+  width: 269px;
+  height: 203px;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.eatz-tv-item:hover
+.eatz-tv-image img {
+  transform: scale(1.04);
+}
+
+.eatz-tv-name {
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  word-break: keep-all;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.footer {
+  width: 100%;
+  height: 432px;
+
+  border-top: 1px solid #333;
+
+  background: #f7f7f8;
+
+  color: #555;
+
+  font-size: 12px;
+}
+
+.footer-inner {
+  position: relative;
+
+  width: 1150px;
+  height: 432px;
+
+  margin: 0 auto;
+
+  padding-top: 30px;
+}
+
+
+/* ==================================================
+   FOOTER TOP
+================================================== */
+
+.footer-top {
+  position: relative;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 26px;
+}
+
+.footer-policy {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+}
+
+.footer-policy li {
+  position: relative;
+
+  padding: 0 10px;
+}
+
+.footer-policy li:first-child {
+  padding-left: 0;
+}
+
+.footer-policy
+li:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  right: 0;
+
+  width: 1px;
+  height: 10px;
+
+  background: #ccc;
+
+  transform: translateY(-50%);
+}
+
+.footer-policy a {
+  color: #222;
+
+  font-size: 12px;
+}
+
+.footer-policy a.important {
+  color: #00a1b4;
+
+  font-weight: 600;
+}
+
+
+/* ==================================================
+   FAMILY SITE
+================================================== */
+
+.family-site {
+  position: relative;
+
+  width: 184px;
+}
+
+.family-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 184px;
+  height: 48px;
+
+  padding: 0 15px;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+
+  background: #fff;
+
+  color: #111;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.family-arrow {
+  font-size: 10px;
+
+  transition: transform 0.2s ease;
+}
+
+.family-site.open .family-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* ==================================================
+   FAMILY LIST
+================================================== */
+
+.family-list {
+  position: absolute;
+
+  left: 0;
+  bottom: 47px;
+
+  display: none;
+
+  width: 184px;
+
+  border: 1px solid #cfcfcf;
+
+  background: #fff;
+
+  z-index: 50;
+}
+
+.family-list li {
+  width: 100%;
+
+  border-bottom:
+    1px solid #e5e5e5;
+}
+
+.family-list li:last-child {
+  border-bottom: 0;
+}
+
+.family-list a {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 40px;
+
+  padding: 0 13px;
+
+  background: #fff;
+
+  color: #111;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.family-list a:hover {
+  background: #f5f5f5;
+
+  color: #00a1b4;
+}
+
+.family-list a span {
+  color: #777;
+
+  font-size: 16px;
+}
+
+
+/* ==================================================
+   FOOTER MIDDLE
+================================================== */
+
+.footer-middle {
+  width: 100%;
+}
+
+.footer-info-row {
+  display: flex;
+
+  align-items: flex-start;
+
+  margin-bottom: 16px;
+}
+
+.footer-label {
+  width: 135px;
+
+  color: #111;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  flex-shrink: 0;
+}
+
+.footer-info-content {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.footer-small-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+
+  background: #fff;
+
+  color: #111;
+
+  font-size: 12px;
+}
+
+.footer-text {
+  color: #666;
+
+  line-height: 1.8;
+}
+
+.footer-text p {
+  font-size: 12px;
+}
+
+.footer-text a {
+  color: #111;
+
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   FOOTER BOTTOM
+================================================== */
+
+.footer-bottom {
+  margin-top: 18px;
+}
+
+.footer-cert {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 18px;
+
+  gap: 70px;
+}
+
+.cert-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.cert-item img {
+  width: 48px;
+  height: 38px;
+
+  object-fit: contain;
+}
+
+.cert-item p {
+  color: #666;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer-copy-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+}
+
+.footer-copy {
+  color: #777;
+
+  font-size: 12px;
+}
+
+.footer-sns {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.footer-sns a {
+  display: block;
+}
+
+.footer-sns img {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+}
