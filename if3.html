@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 신입사원 입사점수를 외부로부터 입력받아
+        // 만약 90점이면 기획팀
+        // 80점이면 총무팀
+        // 나머지는 모두 영업팀으로 경고창에 출력하는 프로그램
+
+        let jumsu = prompt("입사점수를 입력하세요")
+        if(jumsu>=90){
+            alert("발령부서:기획부")
+        } else if(jumsu>=80){
+            alert("발령부서:총무부")
+        } else{
+            alert("발령부서:영업부")
+        }
+
+    </script>
+</body>
+</html>
