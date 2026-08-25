@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>배열과 for문</title>
+</head>
+<body>
+
+  <script>
+    // I.O.I 멤버를 기억하는 배열 변수
+    const member = [
+      "김세정",
+      "전소미",
+      "청하",
+      "주결경",
+      "김소혜",
+      "정채연",
+      "강미나",
+      "최유정",
+      "김도연",
+      "임나영",
+      "연정"
+    ];
+
+    // 전체 멤버를 한 줄로 출력
+    document.write(`I.O.I 멤버는 ${member}입니다`);
+
+    document.write(`<hr>`);
+
+
+    // for문을 이용하여 멤버를 한 명씩 출력
+    for(let i = 0; i < member.length; i++) {
+      document.write(`${member[i]}<br>`);
+    }
+
+    document.write(`<hr>`);
+
+
+    // 솔로로 데뷔한 멤버 출력
+    for(let i = 0; i < 3; i++) {
+      document.write(`멤버 중 솔로로 데뷔한 멤버는 ${member[i]}입니다<br>`);
+    }
+
+    document.write(`<hr>`);
+  </script>
+
+</body>
+</html>
