@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정재훈</title>
-    <style>
-        h1{
-            text-align: center;
-            color: #ff0000;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <h1>정재훈의 홈페이지에 오신것을 환영합니다</h1>
+    <script>
+        let memberComma = ["김세정,", "전소미,", "청하,", "주결경,", "김소혜,", "정채연,", "강미나,", "최유정,", "김도연,", "임나영,", "연정"]
+        
+        document.write("I.O.I 멤버는 ")
+        for(let i=0; i<memberComma.length; i++){
+            document.write(`${memberComma[i]}`)
+        }
+        document.write("입니다")
+    </script>
+    <hr>
+    <script>
+        let member = ["김세정", "전소미", "청하", "주결경", "김소혜", "정채연", "강미나", "최유정", "김도연", "임나영", "연정"]
+        for(let j=0; j<member.length; j++){
+            document.write(`${member[j]}<br>`)
+        }
+    </script>
+    <hr>
+    <script>
+        for(k=0;k<=2;k++){
+            document.write(`멤버 중 솔로로 데뷔한 멤버는 ${member[k]}입니다<br>`)
+        }
+    </script>
+    <hr>
 </body>
 </html>
