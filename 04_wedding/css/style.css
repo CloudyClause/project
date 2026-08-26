@@ -1,0 +1,1240 @@
+@charset "UTF-8";
+
+/* ========================================
+   Reset
+======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #333333;
+  background: #eeeeee;
+  word-break: keep-all;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ========================================
+   Main Layout
+======================================== */
+.wedding-wrap {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #faf8f5;
+}
+
+.section {
+  /*
+    공통 .section은 좌우 여백만 담당합니다.
+    상하 여백은 각 섹션의 역할에 따라 아래에서 개별 지정합니다.
+  */
+  padding: 0 24px;
+  text-align: center;
+}
+
+.section-label {
+  margin-bottom: 12px;
+  color: #c79a8b;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.section h2 {
+  font-family: "Noto Serif KR", serif;
+  margin-bottom: 36px;
+  color: #333333;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.section-description {
+  margin-top: -18px;
+  margin-bottom: 35px;
+  color: #888;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   Functional Section Rhythm
+   기능 중심 섹션은 제목/설명 간격을 소폭 압축
+======================================== */
+.contact-section h2,
+.rsvp-section h2,
+.location-section h2,
+.transport-section h2,
+.account-section h2,
+.guestbook-section h2,
+.share-section h2 {
+  margin-bottom: 30px;
+}
+
+.contact-section .section-description,
+.rsvp-section .section-description,
+.account-section .section-description,
+.guestbook-section .section-description {
+  margin-top: -12px;
+  margin-bottom: 28px;
+}
+
+/* ========================================
+   01. Main Visual
+======================================== */
+.main-visual {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background: #f5efeb;
+}
+
+.main-image-box {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.main-info {
+  padding: 35px 20px 70px;
+  text-align: center;
+}
+
+.main-small {
+  margin-bottom: 14px;
+  color: #a8897f;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.main-info h1 {
+  font-family: "Noto Serif KR", serif;
+  margin-bottom: 18px;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.main-info h1 span {
+  display: inline-block;
+  margin: 0 8px;
+  color: #c79a8b;
+  font-size: 14px;
+}
+
+.main-date {
+  margin-bottom: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.main-place {
+  color: #777;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.scroll-guide {
+  position: absolute;
+  right: 22px;
+  bottom: 23px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: rotate(90deg);
+  transform-origin: right bottom;
+}
+
+.scroll-guide span {
+  color: #aaa;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.scroll-line {
+  width: 34px;
+  height: 1px;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.scroll-line::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #999;
+  animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(100%); }
+}
+
+/* ========================================
+   02. Invitation
+======================================== */
+.invitation {
+  /* 감성 중심 영역: 기존 여백 유지 */
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background: #fff;
+}
+
+.invitation-text {
+  font-family: "Noto Serif KR", serif;
+  color: #555;
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+.invitation-text p + p {
+  margin-top: 28px;
+}
+
+.family-info {
+  position: relative;
+  margin-top: 48px;
+  padding-top: 38px;
+}
+
+.family-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 35px;
+  height: 1px;
+  background: #d8c6bd;
+  transform: translateX(-50%);
+}
+
+.family-info p {
+  margin: 12px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.family-info span {
+  color: #555;
+}
+
+.family-info strong {
+  margin-left: 8px;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ========================================
+   03. Countdown
+======================================== */
+.countdown-section {
+  /* 카운트다운은 강조감을 유지하되 약간 압축 */
+  padding-top: 82px;
+  padding-bottom: 82px;
+  background: #f7f0ec;
+}
+
+.d-day-text {
+  margin-top: -15px;
+  margin-bottom: 30px;
+  color: #b78374;
+  font-family: "Noto Serif KR", serif;
+  font-size: 17px;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.count-box {
+  padding: 18px 5px;
+  border: 1px solid rgba(199, 154, 139, 0.3);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.count-box strong {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "Noto Serif KR", serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.count-box span {
+  color: #999;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.count-change {
+  animation: countChange 0.35s ease;
+}
+
+@keyframes countChange {
+  0% {
+    opacity: 0.3;
+    transform: translateY(7px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wedding-finished {
+  display: none;
+  color: #777;
+  font-family: "Noto Serif KR", serif;
+  line-height: 1.9;
+}
+
+/* ========================================
+   04. Calendar
+======================================== */
+.wedding-day {
+  /* 달력 자체 높이가 있어 상하 여백을 소폭 압축 */
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: #fff;
+}
+
+.calendar {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.calendar-header,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-header {
+  padding-bottom: 13px;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-header span {
+  color: #aaa;
+  font-size: 11px;
+}
+
+.calendar-days {
+  row-gap: 7px;
+  padding-top: 12px;
+}
+
+.calendar-days span {
+  position: relative;
+  display: flex;
+  height: 37px;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.calendar-days .wedding-date {
+  color: #fff;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.wedding-date::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: #c79a8b;
+}
+
+.wedding-date::after {
+  content: "♥";
+  position: absolute;
+  top: -8px;
+  right: 3px;
+  color: #c79a8b;
+  font-size: 8px;
+}
+
+.wedding-info {
+  margin-top: 36px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.wedding-info p {
+  margin: 7px 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.wedding-info strong {
+  color: #333;
+  font-weight: 500;
+}
+
+/* ========================================
+   05. Gallery
+======================================== */
+.gallery-section {
+  /* 사진 감상 영역은 기존의 여유로운 호흡 유지 */
+  padding: 90px 0;
+  background: #faf8f5;
+}
+
+.gallery-section .section-label,
+.gallery-section h2 {
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.wedding-swiper {
+  width: 100%;
+  padding: 0 24px 38px;
+}
+
+.wedding-swiper .swiper-slide {
+  width: 80%;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.wedding-swiper img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.wedding-swiper .swiper-pagination {
+  bottom: 4px;
+}
+
+.wedding-swiper .swiper-pagination-bullet {
+  width: 5px;
+  height: 5px;
+  background: #aaa;
+}
+
+.wedding-swiper .swiper-pagination-bullet-active {
+  background: #c79a8b;
+}
+
+/* ========================================
+   Image Modal
+======================================== */
+.image-modal {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.image-modal.show {
+  display: flex;
+}
+
+.image-modal img {
+  width: auto;
+  max-width: 100%;
+  max-height: 86vh;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  background: transparent;
+  font-size: 34px;
+  font-weight: 200;
+}
+
+/* ========================================
+   06. Contact
+======================================== */
+.contact-section {
+  /* 기능 중심 영역: 터치 영역은 유지하고 바깥 여백만 압축 */
+  padding-top: 68px;
+  padding-bottom: 68px;
+  background: #fff;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-card {
+  padding: 23px 20px;
+  border: 1px solid #eee4de;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.contact-card > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.contact-card span {
+  color: #b68b7e;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.contact-card strong {
+  font-family: "Noto Serif KR", serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.contact-button {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  color: #fff;
+  background: #c79a8b;
+  font-size: 13px;
+}
+
+/* ========================================
+   07. RSVP
+======================================== */
+
+.rsvp-section {
+  /* 폼 자체가 길기 때문에 바깥 여백을 압축 */
+  padding-top: 68px;
+  padding-bottom: 68px;
+  background: #f7f0ec;
+}
+
+
+/* RSVP Form */
+#rsvp-form {
+  text-align: left;
+}
+
+
+/* Select */
+#rsvp-form select {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 15px;
+
+  border: 1px solid #e5e0dd;
+  border-radius: 3px;
+
+  outline: none;
+
+  color: #333;
+  background: #fff;
+
+  font-size: 13px;
+}
+
+
+/* ========================================
+   RSVP Radio 영역
+======================================== */
+
+.rsvp-fieldset {
+  margin-bottom: 20px;
+
+  border: 0;
+}
+
+.rsvp-fieldset legend {
+  margin-bottom: 9px;
+
+  color: #555;
+
+  font-size: 12px;
+}
+
+
+/* 두 버튼을 좌우로 배치 */
+.rsvp-radio-group {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 9px;
+}
+
+
+/* 실제 radio 버튼 label */
+.rsvp-radio {
+  position: relative;
+
+  cursor: pointer;
+}
+
+
+/*
+  기본 브라우저 radio는 숨기고
+  모바일 버튼 UI로 표현합니다.
+*/
+.rsvp-radio input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* 선택 버튼 */
+.rsvp-radio span {
+  display: flex;
+
+  width: 100%;
+  min-height: 48px;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ded5d0;
+  border-radius: 3px;
+
+  color: #777;
+  background: #fff;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+
+/* 선택된 RSVP 버튼 */
+.rsvp-radio input:checked + span {
+  border-color: #c79a8b;
+
+  color: #fff;
+  background: #c79a8b;
+}
+
+
+/* 키보드 접근성 */
+.rsvp-radio input:focus-visible + span {
+  outline: 2px solid #c79a8b;
+
+  outline-offset: 2px;
+}
+
+
+/* ========================================
+   참석자 상세 정보
+======================================== */
+
+#rsvp-attendance-detail {
+  overflow: hidden;
+
+  max-height: 400px;
+
+  opacity: 1;
+
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease,
+    margin 0.4s ease;
+}
+
+
+/* 불참 선택 시 사용 */
+#rsvp-attendance-detail.hide {
+  max-height: 0;
+
+  margin: 0;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   RSVP 제출 버튼
+======================================== */
+
+.rsvp-submit {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 7px;
+
+  border-radius: 3px;
+
+  color: #fff;
+  background: #c79a8b;
+
+  font-size: 13px;
+
+  transition:
+    opacity 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.rsvp-submit:disabled {
+  cursor: default;
+
+  opacity: 0.55;
+}
+
+
+/* 결과 메시지 */
+.rsvp-status {
+  min-height: 20px;
+
+  margin-top: 14px;
+
+  color: #8f6b61;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+/* ========================================
+   07. Location
+======================================== */
+.location-section {
+  /* 지도는 full-bleed를 유지하면서 상하 여백만 압축 */
+  padding: 70px 0;
+  background: #faf8f5;
+}
+
+.location-section > *:not(#map) {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.location-info {
+  margin-bottom: 25px !important;
+}
+
+.location-info strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Noto Serif KR", serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.location-info p {
+  color: #888;
+  font-size: 13px;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  background: #eee;
+}
+
+.map-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 18px !important;
+}
+
+.outline-button,
+.primary-button {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.outline-button {
+  border: 1px solid #c79a8b;
+  color: #a97769;
+  background: #fff;
+}
+
+.primary-button {
+  color: #fff;
+  background: #c79a8b;
+}
+
+/* ========================================
+   08. Transportation
+======================================== */
+.transport-section {
+  /* 정보 전달 중심 영역 */
+  padding-top: 62px;
+  padding-bottom: 62px;
+  background: #fff;
+}
+
+.transport-list {
+  border-top: 1px solid #eee;
+}
+
+.transport-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  padding: 21px 0;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.transport-item h3 {
+  color: #a97769;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.transport-item p {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   09. Account
+======================================== */
+.account-section {
+  /* 아코디언 자체 높이는 유지하고 바깥 여백만 압축 */
+  padding-top: 68px;
+  padding-bottom: 68px;
+  background: #f7f0ec;
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-item {
+  overflow: hidden;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.account-toggle {
+  display: flex;
+  width: 100%;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  color: #555;
+  background: #fff;
+  font-size: 13px;
+  text-align: left;
+}
+
+.account-arrow {
+  color: #b98d7f;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.account-item.active .account-arrow {
+  transform: rotate(45deg);
+}
+
+.account-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  border-top: 0 solid #eee;
+  transition:
+    max-height 0.4s ease,
+    padding 0.4s ease;
+}
+
+.account-item.active .account-content {
+  max-height: 180px;
+  padding: 20px 18px;
+  border-top-width: 1px;
+}
+
+.account-content p {
+  margin-bottom: 5px;
+  color: #999;
+  font-size: 11px;
+}
+
+.account-content strong {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.copy-account {
+  width: 100%;
+  height: 42px;
+  border-radius: 3px;
+  color: #a97769;
+  background: #f7f0ec;
+  font-size: 12px;
+}
+
+/* ========================================
+   10. Guestbook
+======================================== */
+.guestbook-section {
+  /* 입력 폼이 충분히 크므로 바깥 여백을 압축 */
+  padding-top: 68px;
+  padding-bottom: 68px;
+  background: #fff;
+}
+
+#guestbook-form {
+  text-align: left;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 12px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid #e5e0dd;
+  border-radius: 3px;
+  outline: none;
+  color: #333;
+  background: #fff;
+  font-size: 13px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input {
+  height: 50px;
+  padding: 0 15px;
+}
+
+.form-group textarea {
+  height: 125px;
+  padding: 14px 15px 28px;
+  resize: none;
+  line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #c79a8b;
+}
+
+.message-count {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  color: #aaa;
+  font-size: 10px;
+}
+
+.guestbook-submit {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 3px;
+  color: #fff;
+  background: #c79a8b;
+  font-size: 13px;
+}
+
+.guestbook-submit:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.guestbook-status {
+  min-height: 20px;
+  margin-top: 13px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.guestbook-list {
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  text-align: left;
+}
+
+.guestbook-card {
+  padding: 20px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.guestbook-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9px;
+}
+
+.guestbook-card strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.guestbook-date {
+  color: #aaa;
+  font-size: 10px;
+}
+
+.guestbook-card p {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.guestbook-empty {
+  padding: 30px 0;
+  color: #aaa;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ========================================
+   11. Share
+======================================== */
+.share-section {
+  /* 콘텐츠가 짧은 영역이므로 가장 적극적으로 압축 */
+  padding-top: 58px;
+  padding-bottom: 58px;
+  background: #faf8f5;
+}
+
+.share-button {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #c79a8b;
+  border-radius: 3px;
+  color: #9b6c60;
+  background: transparent;
+  font-size: 13px;
+}
+
+/* ========================================
+   Footer
+======================================== */
+.footer {
+  padding: 66px 24px;
+  color: #eee2dd;
+  background: #514642;
+  text-align: center;
+}
+
+.footer-names {
+  margin-bottom: 22px;
+  color: #fff;
+  font-family: "Noto Serif KR", serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.footer-names span {
+  margin: 0 5px;
+  color: #d6b2a7;
+  font-size: 11px;
+}
+
+.footer > p:not(.footer-names) {
+  color: #d9cdc8;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.footer small {
+  display: block;
+  margin-top: 30px;
+  color: #a99b95;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* ========================================
+   Scroll Reveal
+======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   Toast
+======================================== */
+.toast {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  bottom: 30px;
+  min-width: 230px;
+  max-width: calc(100% - 40px);
+  padding: 13px 18px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  color: #fff;
+  background: rgba(45, 42, 40, 0.9);
+  font-size: 12px;
+  text-align: center;
+  transform: translate(-50%, 15px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* ========================================
+   Small Mobile
+======================================== */
+@media (max-width: 360px) {
+  .section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  /*
+    Gallery / Location은 원래 좌우 full-bleed 구조이므로
+    작은 화면에서도 좌우 패딩을 다시 0으로 유지합니다.
+  */
+  .gallery-section,
+  .location-section {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .gallery-section .section-label,
+  .gallery-section h2 {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .wedding-swiper {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .location-section > *:not(#map) {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .countdown {
+    gap: 5px;
+  }
+
+  .count-box strong {
+    font-size: 21px;
+  }
+
+  .count-box span {
+    font-size: 7px;
+  }
+}
+
+/* ========================================
+   Reduced Motion Accessibility
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
