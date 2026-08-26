@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Global Weather</title>
+
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="app-shell" id="appShell">
+
+    <!-- ========================================
+         Header
+    ========================================= -->
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">GLOBAL WEATHER</p>
+        <h1>오늘의 날씨</h1>
+      </div>
+
+      <div class="header-actions">
+        <button
+          type="button"
+          class="icon-button"
+          id="unitButton"
+          aria-label="섭씨/화씨 전환"
+          title="섭씨/화씨 전환"
+        >
+          °C
+        </button>
+
+        <button
+          type="button"
+          class="icon-button"
+          id="locationButton"
+          aria-label="현재 위치 날씨"
+          title="현재 위치 날씨"
+        >
+          ◎
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================
+         Search
+    ========================================= -->
+    <section class="search-section" aria-label="도시 검색">
+      <form class="search-form" id="searchForm">
+        <input
+          type="search"
+          id="cityInput"
+          placeholder="도시를 한글 또는 영문으로 검색"
+          autocomplete="off"
+          aria-label="도시 검색"
+        />
+
+        <button type="submit" class="search-button">
+          검색
+        </button>
+      </form>
+
+      <!-- 검색 후보 -->
+      <div class="search-results is-hidden" id="searchResults"></div>
+
+      <!-- 최근 검색 -->
+      <div class="chip-section">
+        <div class="section-label-row">
+          <span class="mini-title">최근 검색</span>
+          <button type="button" class="text-button" id="clearRecentButton">
+            전체 삭제
+          </button>
+        </div>
+
+        <div class="chip-list" id="recentList">
+          <span class="empty-inline">최근 검색이 없습니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         Loading / Error
+    ========================================= -->
+    <section class="status-card is-hidden" id="statusCard" aria-live="polite">
+      <div class="loader is-hidden" id="loader"></div>
+      <p id="statusMessage"></p>
+    </section>
+
+    <!-- ========================================
+         Current Weather
+    ========================================= -->
+    <main id="weatherContent" class="weather-content is-hidden">
+
+      <section class="hero-card" id="heroCard">
+        <div class="hero-top">
+          <div>
+            <div class="city-line">
+              <h2 id="cityName">서울</h2>
+
+              <button
+                type="button"
+                class="favorite-button"
+                id="favoriteButton"
+                aria-label="즐겨찾기"
+                title="즐겨찾기"
+              >
+                ☆
+              </button>
+            </div>
+
+            <p class="country-name" id="countryName">대한민국</p>
+            <p class="local-time" id="localTime">현지 시간</p>
+          </div>
+
+          <img
+            id="weatherIcon"
+            class="weather-icon"
+            src=""
+            alt=""
+          />
+        </div>
+
+        <div class="temperature-row">
+          <strong class="temperature" id="currentTemp">--°</strong>
+
+          <div>
+            <p class="weather-description" id="weatherDescription">--</p>
+            <p class="feels-like">
+              체감 <span id="feelsLike">--°</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="minmax-row">
+          <span>최고 <strong id="todayMax">--°</strong></span>
+          <span>최저 <strong id="todayMin">--°</strong></span>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Weather Details
+      ========================================= -->
+      <section class="detail-grid" aria-label="상세 날씨">
+        <article class="detail-card">
+          <span class="detail-label">습도</span>
+          <strong id="humidity">--%</strong>
+        </article>
+
+        <article class="detail-card">
+          <span class="detail-label">풍속</span>
+          <strong id="windSpeed">-- m/s</strong>
+        </article>
+
+        <article class="detail-card">
+          <span class="detail-label">기압</span>
+          <strong id="pressure">-- hPa</strong>
+        </article>
+
+        <article class="detail-card">
+          <span class="detail-label">가시거리</span>
+          <strong id="visibility">-- km</strong>
+        </article>
+      </section>
+
+      <!-- ========================================
+           Sunrise / Sunset
+      ========================================= -->
+      <section class="two-column-section">
+        <article class="info-card">
+          <span class="info-kicker">SUNRISE</span>
+          <h3>일출</h3>
+          <strong id="sunrise">--:--</strong>
+        </article>
+
+        <article class="info-card">
+          <span class="info-kicker">SUNSET</span>
+          <h3>일몰</h3>
+          <strong id="sunset">--:--</strong>
+        </article>
+      </section>
+
+      <!-- ========================================
+           3-hour Forecast
+      ========================================= -->
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">FORECAST</p>
+            <h2>시간대별 날씨</h2>
+          </div>
+          <span class="section-note">3시간 간격</span>
+        </div>
+
+        <div class="hourly-list" id="hourlyList"></div>
+      </section>
+
+      <!-- ========================================
+           5-day Forecast
+      ========================================= -->
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">5 DAYS</p>
+            <h2>5일 날씨</h2>
+          </div>
+        </div>
+
+        <div class="daily-list" id="dailyList"></div>
+      </section>
+
+      <!-- ========================================
+           Air Quality
+      ========================================= -->
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">AIR QUALITY</p>
+            <h2>대기질</h2>
+          </div>
+
+          <span class="aqi-badge" id="aqiBadge">--</span>
+        </div>
+
+        <div class="air-grid">
+          <article class="air-card">
+            <span>PM2.5</span>
+            <strong id="pm25">--</strong>
+            <small>μg/m³</small>
+          </article>
+
+          <article class="air-card">
+            <span>PM10</span>
+            <strong id="pm10">--</strong>
+            <small>μg/m³</small>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========================================
+           Favorites
+      ========================================= -->
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">FAVORITES</p>
+            <h2>즐겨찾기 도시</h2>
+          </div>
+        </div>
+
+        <div class="favorite-list" id="favoriteList">
+          <p class="empty-message">즐겨찾기한 도시가 없습니다.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>Weather data by OpenWeather</p>
+    </footer>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
