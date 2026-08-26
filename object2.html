@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체데이터응용</title>
+</head>
+<body>
+    <script>
+                // --------------------------------
+        // 배열 -1
+        document.write("<hr>")
+        const book1info = ["책 제목","저자","가격","출간일","페이지 수","ISBN"]
+        const book1detail = [" 미드나잇 라이브러리"," 매트 헤이그"," 14,220원"," 2021-04-28"," 408"," 9791191056556(1191056554)"]
+        document.write(`${book1info[0]}:${book1detail[0]}<br>`)
+        document.write(`${book1info[1]}:${book1detail[1]}<br>`)
+        document.write(`${book1info[2]}:${book1detail[2]}<br>`)
+        document.write(`${book1info[3]}:${book1detail[3]}<br>`)
+        document.write(`${book1info[4]}:${book1detail[4]}<br>`)
+        document.write(`${book1info[5]}:${book1detail[5]}<br>`)
+
+        // ----------------------------
+        // 배열 -2 반복문
+        document.write("<hr>")
+        const book2info = ["책 제목","저자","가격","출간일","페이지 수","ISBN"]
+        const book2detail = [" 미드나잇 라이브러리"," 매트 헤이그"," 14,220원"," 2021-04-28"," 408"," 9791191056556(1191056554)"]
+        for(let j=0;j<book2info.length;j++){
+            document.write(`${book2info[j]}:${book2detail[j]}<br>`)
+        }
+
+        // ----------------------
+        // 객체 - 1
+        document.write("<hr>")
+        const book3 = {
+            title: " 미드나잇 라이브러리",
+            author: " 매트 헤이그",
+            price: " 14,220원",
+            dor: " 2021-04-28",
+            page: " 408",
+            isbn: " 9791191056556(1191056554)",
+        }
+        document.write(`책 제목 : ${book3.title}<br>`)
+        document.write(`저자 : ${book3.author}<br>`)
+        document.write(`가격 : ${book3.price}<br>`)
+        document.write(`출간일 : ${book3.dor}<br>`)
+        document.write(`페이지 수 : ${book3.page}<br>`)
+        document.write(`ISBN : ${book3.isbn}<br>`)
+
+        // -------------------
+        //  객체 -2 반복문
+        document.write("<hr>")
+        const book4 = {
+            "책 제목": " 미드나잇 라이브러리",
+            "저자": " 매트 헤이그",
+            "가격": " 14,220원",
+            "출간일": " 2021-04-28",
+            "페이지 수": " 408",
+            "ISBN": " 9791191056556(1191056554)",
+        }
+        for(let info in book4){
+            document.write(`${info} : ${book4[info]}<br>`)
+        }
+
+    </script>
+</body>
+</html>
