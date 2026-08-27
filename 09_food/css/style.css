@@ -1255,3 +1255,322 @@ select:focus-visible {
     width: 100%;
   }
 }
+
+
+/* =========================
+   Home View Mode Toggle
+========================== */
+
+.home-restaurants-heading {
+  align-items: center;
+}
+
+.home-view-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.view-mode-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.view-mode-button {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.view-mode-button.is-active {
+  background: var(--text);
+  color: #fff;
+}
+
+/* =========================
+   Home Text-only List View
+========================== */
+
+.home-restaurant-grid.is-list-view {
+  display: block;
+}
+
+.home-text-list-item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 126px;
+  padding: 0 14px 0 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.home-text-list-item:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.home-text-list-main {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  padding: 16px 8px 16px 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+
+.home-text-list-district {
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.home-text-list-name {
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-text-list-info {
+  overflow: hidden;
+  color: var(--text-sub);
+  font-size: 13px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-text-list-info b {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.home-text-list-hours {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.home-text-list-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding-bottom: 16px;
+}
+
+.home-text-detail-button,
+.home-text-favorite-button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.home-text-favorite-button.is-active {
+  color: var(--primary);
+}
+
+.home-text-detail-button:hover,
+.home-text-favorite-button:hover {
+  background: var(--background);
+}
+
+/* 텍스트 모드에서는 카드형 grid 규칙을 무효화 */
+@media (min-width: 700px) {
+  .home-restaurant-grid.is-list-view {
+    display: block;
+  }
+
+  .home-text-list-item {
+    min-height: 116px;
+  }
+}
+
+@media (max-width: 699px) {
+  .home-restaurants-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-view-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .view-mode-toggle {
+    flex: 0 0 auto;
+  }
+
+  .home-text-list-item {
+    min-height: 122px;
+    padding-right: 8px;
+  }
+
+  .home-text-list-name {
+    font-size: 16px;
+  }
+
+  .home-text-list-info {
+    font-size: 12px;
+  }
+
+  .home-text-list-actions {
+    gap: 0;
+  }
+}
+
+
+/* =========================================================
+   Final: Sticky restaurant controls
+========================================================= */
+
+/*
+  공통 제어바
+  - 검색창/필터 전체를 sticky로 만들지 않고
+  - 카운트 + 보기 전환만 작은 바 형태로 고정
+*/
+.restaurant-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.restaurant-control-info {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+}
+
+.restaurant-control-label {
+  color: var(--text-sub);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.restaurant-control-info strong {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.restaurant-control-info small {
+  width: 100%;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+/*
+  홈:
+  전체보기 상태에서만 sticky.
+  .home-restaurants-section 안에 있으므로
+  최근 본 맛집 영역까지 따라 내려가지 않고 섹션 끝에서 멈춥니다.
+*/
+.home-restaurant-control.is-sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 8px);
+  z-index: 85;
+  box-shadow: 0 8px 24px rgba(25, 31, 40, 0.09);
+  backdrop-filter: blur(12px);
+}
+
+/*
+  검색:
+  검색창과 지역 필터는 일반 스크롤.
+  결과 제어바만 항상 해당 검색 결과 영역에서 sticky.
+*/
+.find-result-control {
+  position: sticky;
+  top: calc(var(--header-height) + 8px);
+  z-index: 85;
+  margin-top: 20px;
+  box-shadow: 0 8px 24px rgba(25, 31, 40, 0.07);
+  backdrop-filter: blur(12px);
+}
+
+/*
+  기존 홈 전용 메타 UI는 최종 구조에서 사용하지 않음.
+  과거 CSS가 남아 있어도 레이아웃에 영향을 주지 않도록 함.
+*/
+.home-restaurant-meta,
+.home-data-count {
+  display: none;
+}
+
+/*
+  검색 결과의 텍스트형 리스트에서도
+  홈과 같은 텍스트 전용 템플릿을 재사용합니다.
+*/
+#restaurantList.is-list-view {
+  display: block;
+}
+
+#restaurantList.is-card-view {
+  display: grid;
+}
+
+@media (max-width: 699px) {
+  .restaurant-control-bar {
+    gap: 10px;
+    min-height: 58px;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+
+  .restaurant-control-info {
+    flex: 1 1 auto;
+  }
+
+  .restaurant-control-info small {
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .restaurant-control-bar .view-mode-toggle {
+    flex: 0 0 auto;
+  }
+
+  .restaurant-control-bar .view-mode-button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .home-restaurant-control.is-sticky,
+  .find-result-control {
+    top: calc(var(--header-height) + 4px);
+  }
+}

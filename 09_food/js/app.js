@@ -45,6 +45,10 @@ const state = {
   homeExpanded: false,
   homeInitialCount: 8,
 
+  // 홈 맛집 보기 모드
+  // card: 이미지 카드형 / list: 텍스트 전용 리스트형
+  homeViewMode: localStorage.getItem("busanFoodHomeViewMode") || "card",
+
   isLoading: false
 };
 
@@ -93,7 +97,10 @@ function cacheDom() {
 
   // 홈 맛집 목록
   dom.homeRestaurantList = document.getElementById("homeRestaurantList");
+  dom.homeRestaurantControl = document.getElementById("homeRestaurantControl");
   dom.homeShowAllButton = document.getElementById("homeShowAllButton");
+  dom.homeCardViewButton = document.getElementById("homeCardViewButton");
+  dom.homeListViewButton = document.getElementById("homeListViewButton");
   dom.homeLoadMoreWrap = document.getElementById("homeLoadMoreWrap");
   dom.homeLoadMoreButton = document.getElementById("homeLoadMoreButton");
   dom.homeRestaurantStatus = document.getElementById("homeRestaurantStatus");
@@ -101,6 +108,9 @@ function cacheDom() {
 
   dom.restaurantList = document.getElementById("restaurantList");
   dom.resultCount = document.getElementById("resultCount");
+  dom.findLoadedCount = document.getElementById("findLoadedCount");
+  dom.findCardViewButton = document.getElementById("findCardViewButton");
+  dom.findListViewButton = document.getElementById("findListViewButton");
   dom.loadMoreButton = document.getElementById("loadMoreButton");
 
   dom.recentHomeList = document.getElementById("recentHomeList");
@@ -178,6 +188,27 @@ function bindEvents() {
     state.recommendationIndex =
       (state.recommendationIndex + 1) % state.allRestaurants.length;
     renderRecommendation();
+  });
+
+  /*
+    홈 보기 모드 전환
+    - 카드형: 기존 이미지 카드
+    - 텍스트형: 이미지 없이 이름/주소/메뉴 중심의 압축 리스트
+  */
+  dom.homeCardViewButton.addEventListener("click", () => {
+    setRestaurantViewMode("card");
+  });
+
+  dom.homeListViewButton.addEventListener("click", () => {
+    setRestaurantViewMode("list");
+  });
+
+  dom.findCardViewButton.addEventListener("click", () => {
+    setRestaurantViewMode("card");
+  });
+
+  dom.findListViewButton.addEventListener("click", () => {
+    setRestaurantViewMode("list");
   });
 
   /*
@@ -696,6 +727,100 @@ function renderRecommendation() {
   - API를 다음 pageNo로 한 번 추가 호출
   - 새 데이터를 allRestaurants 뒤에 합침
 */
+function setRestaurantViewMode(mode) {
+  if (!["card", "list"].includes(mode)) return;
+
+  state.homeViewMode = mode;
+  localStorage.setItem("busanFoodHomeViewMode", mode);
+
+  // 홈과 검색 결과가 동일한 보기 모드를 공유합니다.
+  renderHomeRestaurants();
+  renderFindPage();
+}
+
+function updateRestaurantViewModeButtons() {
+  const isCard = state.homeViewMode === "card";
+
+  // 홈 토글
+  dom.homeCardViewButton.classList.toggle("is-active", isCard);
+  dom.homeListViewButton.classList.toggle("is-active", !isCard);
+  dom.homeCardViewButton.setAttribute("aria-pressed", String(isCard));
+  dom.homeListViewButton.setAttribute("aria-pressed", String(!isCard));
+
+  // 검색 결과 토글
+  dom.findCardViewButton.classList.toggle("is-active", isCard);
+  dom.findListViewButton.classList.toggle("is-active", !isCard);
+  dom.findCardViewButton.setAttribute("aria-pressed", String(isCard));
+  dom.findListViewButton.setAttribute("aria-pressed", String(!isCard));
+
+  // 실제 목록의 레이아웃 클래스
+  dom.homeRestaurantList.classList.toggle("is-card-view", isCard);
+  dom.homeRestaurantList.classList.toggle("is-list-view", !isCard);
+  dom.restaurantList.classList.toggle("is-card-view", isCard);
+  dom.restaurantList.classList.toggle("is-list-view", !isCard);
+}
+
+function homeTextListTemplate(restaurant) {
+  const favorite = isFavorite(restaurant.id);
+  const address = [restaurant.address1, restaurant.address2]
+    .filter(Boolean)
+    .join(" ");
+
+  return `
+    <article class="home-text-list-item">
+      <button
+        class="home-text-list-main detail-open-button"
+        type="button"
+        data-id="${escapeHtml(restaurant.id)}"
+      >
+        <span class="home-text-list-district">
+          ${escapeHtml(restaurant.district || "부산")}
+        </span>
+
+        <strong class="home-text-list-name">
+          ${escapeHtml(restaurant.name || "이름 정보 없음")}
+        </strong>
+
+        <span class="home-text-list-info">
+          <b>주소:</b> ${escapeHtml(address || "정보 없음")}
+        </span>
+
+        <span class="home-text-list-info">
+          <b>메뉴:</b> ${escapeHtml(restaurant.menu || "정보 없음")}
+        </span>
+
+        ${
+          restaurant.hours
+            ? `<span class="home-text-list-hours">${escapeHtml(restaurant.hours)}</span>`
+            : ""
+        }
+      </button>
+
+      <div class="home-text-list-actions">
+        <button
+          class="home-text-detail-button detail-open-button"
+          type="button"
+          data-id="${escapeHtml(restaurant.id)}"
+          aria-label="${escapeHtml(restaurant.name || "맛집")} 상세보기"
+          title="상세보기"
+        >
+          ⌕
+        </button>
+
+        <button
+          class="home-text-favorite-button ${favorite ? "is-active" : ""}"
+          type="button"
+          data-favorite-id="${escapeHtml(restaurant.id)}"
+          aria-label="${favorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}"
+          title="${favorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}"
+        >
+          ${favorite ? "♥" : "♡"}
+        </button>
+      </div>
+    </article>
+  `;
+}
+
 function renderHomeRestaurants() {
   const all = state.allRestaurants;
 
@@ -710,11 +835,14 @@ function renderHomeRestaurants() {
   dom.homeDataCount.textContent = `${all.length} / ${totalLabel}`;
 
   if (!all.length) {
+    updateRestaurantViewModeButtons();
+
     dom.homeRestaurantList.innerHTML = emptyState(
       "표시할 맛집이 없습니다.",
       "API 데이터 호출 상태를 확인해주세요."
     );
     dom.homeLoadMoreWrap.hidden = true;
+    dom.homeRestaurantControl.classList.remove("is-sticky");
     dom.homeShowAllButton.textContent = "전체보기";
     dom.homeShowAllButton.setAttribute("aria-expanded", "false");
     dom.homeRestaurantStatus.textContent = "불러온 맛집이 없습니다.";
@@ -727,8 +855,12 @@ function renderHomeRestaurants() {
     ? all
     : all.slice(0, state.homeInitialCount);
 
+  updateRestaurantViewModeButtons();
+
   dom.homeRestaurantList.innerHTML =
-    list.map(restaurantCardTemplate).join("");
+    state.homeViewMode === "list"
+      ? list.map(homeTextListTemplate).join("")
+      : list.map(restaurantCardTemplate).join("");
 
   bindRestaurantActionButtons(dom.homeRestaurantList);
 
@@ -738,6 +870,12 @@ function renderHomeRestaurants() {
   dom.homeShowAllButton.setAttribute(
     "aria-expanded",
     String(state.homeExpanded)
+  );
+
+  // 전체보기 상태에서만 홈 제어바를 sticky로 활성화합니다.
+  dom.homeRestaurantControl.classList.toggle(
+    "is-sticky",
+    state.homeExpanded
   );
 
   if (state.homeExpanded) {
@@ -761,17 +899,32 @@ function renderHomeRestaurants() {
 
 function renderFindPage() {
   const list = state.visibleRestaurants;
+  const totalLabel =
+    state.totalCount > 0 ? state.totalCount : state.allRestaurants.length;
+
+  updateRestaurantViewModeButtons();
+
+  // "검색 결과"는 현재까지 브라우저가 불러온 데이터 안에서 필터링된 개수입니다.
   dom.resultCount.textContent = String(list.length);
+
+  // 검색이 전체 API 데이터가 아니라 현재 누적 로드된 데이터에 대해 수행된다는 점을
+  // 사용자가 알 수 있도록 원본 로드 현황도 함께 표시합니다.
+  dom.findLoadedCount.textContent =
+    `${state.allRestaurants.length} / ${totalLabel}`;
 
   if (!list.length) {
     dom.restaurantList.innerHTML = emptyState(
       "검색 결과가 없습니다.",
-      "다른 맛집 이름이나 지역을 검색해보세요."
+      "다른 맛집 이름이나 지역을 검색하거나 더 많은 데이터를 불러와보세요."
     );
     return;
   }
 
-  dom.restaurantList.innerHTML = list.map(restaurantCardTemplate).join("");
+  dom.restaurantList.innerHTML =
+    state.homeViewMode === "list"
+      ? list.map(homeTextListTemplate).join("")
+      : list.map(restaurantCardTemplate).join("");
+
   bindRestaurantActionButtons(dom.restaurantList);
 }
 

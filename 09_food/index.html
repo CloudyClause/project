@@ -98,11 +98,12 @@
              - "더보기" 클릭 시 다음 API 페이지 추가 호출
         ========================== -->
         <section class="content-section home-restaurants-section" id="homeRestaurantsSection">
-          <div class="section-heading">
+          <div class="section-heading home-restaurants-heading">
             <div>
               <p class="section-kicker">BUSAN RESTAURANTS</p>
               <h2>부산 맛집 둘러보기</h2>
             </div>
+
             <button
               class="text-button"
               id="homeShowAllButton"
@@ -113,16 +114,42 @@
             </button>
           </div>
 
-          <div class="home-restaurant-meta">
-            <p id="homeRestaurantStatus">처음에는 8개의 맛집을 보여드립니다.</p>
-
-            <div class="home-data-count" aria-live="polite">
-              <span class="home-data-count-label">불러옴 / 전체 데이터</span>
+          <!--
+            홈 맛집 제어바
+            - 전체보기 활성화 시 이 섹션 안에서만 상단 sticky
+            - 불러온 데이터 / 전체 데이터
+            - 카드형 / 텍스트형 전환
+          -->
+          <div class="restaurant-control-bar home-restaurant-control" id="homeRestaurantControl">
+            <div class="restaurant-control-info">
+              <span class="restaurant-control-label">불러온 맛집</span>
               <strong id="homeDataCount">0 / 0</strong>
+              <small id="homeRestaurantStatus">처음에는 8개의 맛집을 보여드립니다.</small>
+            </div>
+
+            <div class="view-mode-toggle" role="group" aria-label="홈 맛집 보기 방식">
+              <button
+                class="view-mode-button is-active"
+                id="homeCardViewButton"
+                type="button"
+                data-view-mode="card"
+                aria-pressed="true"
+              >
+                카드형
+              </button>
+              <button
+                class="view-mode-button"
+                id="homeListViewButton"
+                type="button"
+                data-view-mode="list"
+                aria-pressed="false"
+              >
+                텍스트형
+              </button>
             </div>
           </div>
 
-          <div class="restaurant-grid home-restaurant-grid" id="homeRestaurantList"></div>
+          <div class="restaurant-grid home-restaurant-grid is-card-view" id="homeRestaurantList"></div>
 
           <div class="load-more-wrap home-load-more-wrap" id="homeLoadMoreWrap" hidden>
             <button class="primary-button" id="homeLoadMoreButton" type="button">
@@ -167,12 +194,42 @@
           <button class="outline-button" id="resetFilterButton" type="button">필터 초기화</button>
         </div>
 
-        <div class="result-meta">
-          <strong id="resultCount">0</strong>
-          <span>개의 맛집</span>
+        <!--
+          검색 결과 제어바
+          검색창/지역필터는 고정하지 않고,
+          결과 개수와 보기 방식만 상단에 따라오도록 구성
+        -->
+        <div class="restaurant-control-bar find-result-control" id="findResultControl">
+          <div class="restaurant-control-info">
+            <span class="restaurant-control-label">검색 결과</span>
+            <strong><span id="resultCount">0</span>개</strong>
+            <small>
+              불러온 데이터
+              <span id="findLoadedCount">0 / 0</span>
+            </small>
+          </div>
+
+          <div class="view-mode-toggle" role="group" aria-label="검색 결과 보기 방식">
+            <button
+              class="view-mode-button is-active"
+              id="findCardViewButton"
+              type="button"
+              aria-pressed="true"
+            >
+              카드형
+            </button>
+            <button
+              class="view-mode-button"
+              id="findListViewButton"
+              type="button"
+              aria-pressed="false"
+            >
+              텍스트형
+            </button>
+          </div>
         </div>
 
-        <div class="restaurant-grid" id="restaurantList"></div>
+        <div class="restaurant-grid is-card-view" id="restaurantList"></div>
 
         <div class="load-more-wrap">
           <button class="primary-button" id="loadMoreButton" type="button">더 불러오기</button>
