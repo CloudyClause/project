@@ -185,7 +185,7 @@ const STORAGE_KEYS = {
     "parkingMealV2RecentSearches",
 
   selectedRegion:
-    "parkingMealV2SelectedRegion"
+    "parkingMealV2SelectedRegion",
 
       /* 사용자 주차 선호 설정 */
   parkingPreferences:
