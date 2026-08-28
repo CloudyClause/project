@@ -1,0 +1,3761 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 모바일 환경 최적화 -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <!-- 검색엔진 기본 정보 -->
+  <meta
+    name="description"
+    content="부산광역시 착한가격업소, 위생등급지정업소, 공영주차장 공공데이터를 활용한 모바일 생활정보 앱"
+  >
+
+  <meta
+    name="theme-color"
+    content="#2563eb"
+  >
+
+  <title>주차한끼 - 부산 착한가격 음식점과 공영주차장</title>
+
+  <!-- ======================================================
+       CSS
+  ======================================================= -->
+  <link
+    rel="stylesheet"
+    href="./css/style.css"
+  >
+</head>
+
+<body>
+
+  <!-- ======================================================
+       App Wrapper
+  ======================================================= -->
+  <div
+    id="app"
+    class="app"
+  >
+
+
+    <!-- ======================================================
+         01. Splash Screen
+    ======================================================= -->
+    <section
+      id="splashScreen"
+      class="screen screen--splash is-active"
+      aria-label="주차한끼 시작 화면"
+    >
+      <div class="splash">
+
+        <div class="splash__content">
+
+          <!-- 서비스 심볼 -->
+          <div
+            class="splash__symbol"
+            aria-hidden="true"
+          >
+            <span class="splash__symbol-parking">
+              P
+            </span>
+
+            <span class="splash__symbol-food">
+              ●
+            </span>
+          </div>
+
+          <!-- 서비스명 -->
+          <h1 class="splash__title">
+            주차한끼
+          </h1>
+
+          <!-- 지역 서비스 표시 -->
+          <p class="splash__region">
+            부산광역시 생활정보 서비스
+          </p>
+
+          <!-- 슬로건 -->
+          <p class="splash__description">
+            부산에서 주차하기 좋은<br>
+            착한가격 음식점을 찾아보세요.
+          </p>
+
+        </div>
+
+
+        <!-- 로딩 -->
+        <div
+          class="splash__loading"
+          role="status"
+          aria-live="polite"
+        >
+          <span
+            class="loading-spinner"
+            aria-hidden="true"
+          ></span>
+
+          <span class="sr-only">
+            앱을 불러오는 중입니다.
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         Main App
+    ======================================================= -->
+    <div
+      id="mainApp"
+      class="main-app"
+      hidden
+    >
+
+
+      <!-- ======================================================
+           Header
+      ======================================================= -->
+      <header
+        id="appHeader"
+        class="app-header"
+      >
+        <div class="app-header__inner">
+
+
+          <!-- ----------------------------------------------
+               Default Header
+          ----------------------------------------------- -->
+          <div
+            id="defaultHeader"
+            class="app-header__default"
+          >
+
+            <!-- 로고 -->
+            <button
+              type="button"
+              class="app-logo"
+              data-screen-target="homeScreen"
+              aria-label="홈으로 이동"
+            >
+              <span
+                class="app-logo__symbol"
+                aria-hidden="true"
+              >
+                P
+              </span>
+
+              <span class="app-logo__content">
+
+                <strong class="app-logo__text">
+                  주차한끼
+                </strong>
+
+                <span class="app-logo__sub">
+                  BUSAN
+                </span>
+
+              </span>
+            </button>
+
+
+            <!-- 지역 버튼 -->
+            <button
+              type="button"
+              id="headerRegionButton"
+              class="header-region-button"
+              aria-label="부산 지역 선택"
+            >
+
+              <span
+                class="header-region-button__icon"
+                aria-hidden="true"
+              >
+                ●
+              </span>
+
+              <span class="header-region-button__content">
+
+                <span class="header-region-button__label">
+                  부산광역시
+                </span>
+
+                <strong
+                  id="headerRegionText"
+                  class="header-region-button__value"
+                >
+                  전체 지역
+                </strong>
+
+              </span>
+
+              <span
+                class="header-region-button__arrow"
+                aria-hidden="true"
+              >
+                ▾
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Detail Header
+          ----------------------------------------------- -->
+          <div
+            id="detailHeader"
+            class="app-header__detail"
+            hidden
+          >
+
+            <button
+              type="button"
+              id="detailBackButton"
+              class="icon-button icon-button--back"
+              aria-label="이전 화면으로 이동"
+            >
+              ←
+            </button>
+
+            <h2
+              id="detailHeaderTitle"
+              class="app-header__detail-title"
+            >
+              상세정보
+            </h2>
+
+            <div
+              class="app-header__detail-space"
+              aria-hidden="true"
+            ></div>
+
+          </div>
+
+        </div>
+      </header>
+
+
+      <!-- ======================================================
+           Main Content
+      ======================================================= -->
+      <main
+        id="mainContent"
+        class="main-content"
+      >
+
+
+        <!-- ==================================================
+             02. Home Screen
+        =================================================== -->
+        <section
+          id="homeScreen"
+          class="screen screen--home is-active"
+          aria-labelledby="homeTitle"
+        >
+
+
+          <!-- ----------------------------------------------
+               Home Hero
+          ----------------------------------------------- -->
+          <section class="home-hero">
+
+            <div class="home-hero__content">
+
+              <p class="home-hero__eyebrow">
+                부산 착한가격 생활정보
+              </p>
+
+              <h2
+                id="homeTitle"
+                class="home-hero__title"
+              >
+                부산에서 주차하기 좋은<br>
+                한 끼를 찾아보세요
+              </h2>
+
+              <p class="home-hero__description">
+                착한가격 음식점부터 위생등급,
+                자체주차와 주변 공영주차장까지
+                한 번에 확인하세요.
+              </p>
+
+
+              <!-- 부산 지역 선택 -->
+              <button
+                type="button"
+                id="homeRegionSelectButton"
+                class="home-region-card"
+              >
+
+                <span
+                  class="home-region-card__icon"
+                  aria-hidden="true"
+                >
+                  ●
+                </span>
+
+                <span class="home-region-card__content">
+
+                  <span class="home-region-card__label">
+                    현재 선택 지역
+                  </span>
+
+                  <strong
+                    id="homeSelectedRegion"
+                    class="home-region-card__value"
+                  >
+                    부산광역시 전체
+                  </strong>
+
+                </span>
+
+                <span
+                  class="home-region-card__action"
+                  aria-hidden="true"
+                >
+                  지역선택
+                </span>
+
+              </button>
+
+
+              <!-- 현재 위치 보조 기능 -->
+              <button
+                type="button"
+                id="nearMeButton"
+                class="near-me-button"
+              >
+                <span
+                  class="near-me-button__icon"
+                  aria-hidden="true"
+                >
+                  ◎
+                </span>
+
+                <span class="near-me-button__text">
+                  부산 안에서 내 위치 주변 보기
+                </span>
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Search Section
+          ----------------------------------------------- -->
+          <section class="home-section home-search-section">
+
+            <form
+              id="homeSearchForm"
+              class="search-form"
+              role="search"
+            >
+
+              <div class="search-box">
+
+                <span
+                  class="search-box__icon"
+                  aria-hidden="true"
+                >
+                  ⌕
+                </span>
+
+                <label
+                  for="homeSearchInput"
+                  class="sr-only"
+                >
+                  업소명 또는 동 검색
+                </label>
+
+                <input
+                  type="search"
+                  id="homeSearchInput"
+                  class="search-box__input"
+                  placeholder="업소명 또는 동을 검색하세요"
+                  autocomplete="off"
+                >
+
+                <button
+                  type="button"
+                  id="homeSearchClearButton"
+                  class="search-box__clear"
+                  aria-label="검색어 지우기"
+                  hidden
+                >
+                  ×
+                </button>
+
+              </div>
+
+            </form>
+
+
+            <!-- 최근 검색 -->
+            <div
+              id="recentSearchArea"
+              class="recent-search"
+              hidden
+            >
+
+              <div class="section-heading section-heading--small">
+
+                <h3 class="section-heading__title">
+                  최근 검색
+                </h3>
+
+                <button
+                  type="button"
+                  id="clearRecentSearchButton"
+                  class="text-button"
+                >
+                  전체 삭제
+                </button>
+
+              </div>
+
+              <div
+                id="recentSearchList"
+                class="recent-search__list"
+              >
+                <!-- JavaScript 반복 출력 -->
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Quick Filter Section
+          ----------------------------------------------- -->
+          <section
+            class="home-section"
+            aria-labelledby="quickFilterTitle"
+          >
+
+            <div class="section-heading">
+
+              <div>
+
+                <p class="section-heading__eyebrow">
+                  빠른 조건
+                </p>
+
+                <h3
+                  id="quickFilterTitle"
+                  class="section-heading__title"
+                >
+                  필요한 정보만 빠르게
+                </h3>
+
+              </div>
+
+            </div>
+
+
+            <div
+              id="quickFilterList"
+              class="filter-chip-list"
+            >
+
+              <!-- 위생등급 -->
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="hygiene"
+                data-filter-value="assigned"
+              >
+                위생등급 지정
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="hygieneGrade"
+                data-filter-value="매우우수"
+              >
+                매우우수
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="hygieneGrade"
+                data-filter-value="우수"
+              >
+                우수
+              </button>
+
+              <!-- 자체주차 -->
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="ownParking"
+                data-filter-value="true"
+              >
+                자체주차 가능
+              </button>
+
+              <!-- 공영주차장 -->
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="parkingDistance"
+                data-filter-value="300"
+              >
+                공영주차장 300m
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="realtimeParking"
+                data-filter-value="true"
+              >
+                실시간 주차정보
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="freeParking"
+                data-filter-value="true"
+              >
+                무료주차장
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-filter-type="openParking"
+                data-filter-value="true"
+              >
+                현재 운영중
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Selected Region Restaurants
+          ----------------------------------------------- -->
+          <section
+            class="home-section"
+            aria-labelledby="regionRestaurantTitle"
+          >
+
+            <div class="section-heading">
+
+              <div>
+
+                <p class="section-heading__eyebrow">
+                  선택 지역
+                </p>
+
+                <h3
+                  id="regionRestaurantTitle"
+                  class="section-heading__title"
+                >
+                  착한가격 음식점
+                </h3>
+
+              </div>
+
+              <button
+                type="button"
+                class="section-heading__more"
+                data-screen-target="searchScreen"
+              >
+                전체보기
+                <span aria-hidden="true">
+                  ›
+                </span>
+              </button>
+
+            </div>
+
+
+            <!-- Loading -->
+            <div
+              id="homeRestaurantLoading"
+              class="state-box state-box--loading"
+              role="status"
+            >
+
+              <span
+                class="loading-spinner"
+                aria-hidden="true"
+              ></span>
+
+              <p>
+                부산 착한가격 음식점을 불러오고 있습니다.
+              </p>
+
+            </div>
+
+
+            <!-- Restaurant List -->
+            <div
+              id="homeRestaurantList"
+              class="restaurant-card-list restaurant-card-list--horizontal"
+              hidden
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+
+            <!-- Empty -->
+            <div
+              id="homeRestaurantEmpty"
+              class="state-box state-box--empty"
+              hidden
+            >
+
+              <div
+                class="state-box__icon"
+                aria-hidden="true"
+              >
+                ⌕
+              </div>
+
+              <strong class="state-box__title">
+                선택한 지역의 음식점이 없습니다
+              </strong>
+
+              <p class="state-box__description">
+                다른 구 또는 동을 선택해보세요.
+              </p>
+
+              <button
+                type="button"
+                id="homeEmptyRegionButton"
+                class="button button--outline"
+              >
+                지역 다시 선택
+              </button>
+
+            </div>
+
+
+            <!-- Error -->
+            <div
+              id="homeRestaurantError"
+              class="state-box state-box--error"
+              hidden
+            >
+
+              <div
+                class="state-box__icon"
+                aria-hidden="true"
+              >
+                !
+              </div>
+
+              <strong class="state-box__title">
+                착한가격 음식점 정보를 불러오지 못했습니다
+              </strong>
+
+              <p class="state-box__description">
+                네트워크 상태를 확인한 후 다시 시도해주세요.
+              </p>
+
+              <button
+                type="button"
+                id="homeRestaurantRetryButton"
+                class="button button--outline"
+              >
+                다시 시도
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Parking Friendly Restaurants
+          ----------------------------------------------- -->
+          <section
+            class="home-section"
+            aria-labelledby="parkingFriendlyTitle"
+          >
+
+            <div class="section-heading">
+
+              <div>
+
+                <p class="section-heading__eyebrow">
+                  차로 방문한다면
+                </p>
+
+                <h3
+                  id="parkingFriendlyTitle"
+                  class="section-heading__title"
+                >
+                  주차하기 편한 음식점
+                </h3>
+
+              </div>
+
+            </div>
+
+            <div
+              id="parkingFriendlyList"
+              class="restaurant-card-list"
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Hygiene Grade Restaurants
+          ----------------------------------------------- -->
+          <section
+            class="home-section"
+            aria-labelledby="hygieneRestaurantTitle"
+          >
+
+            <div class="section-heading">
+
+              <div>
+
+                <p class="section-heading__eyebrow">
+                  위생등급 확인
+                </p>
+
+                <h3
+                  id="hygieneRestaurantTitle"
+                  class="section-heading__title"
+                >
+                  위생등급 지정 음식점
+                </h3>
+
+              </div>
+
+            </div>
+
+            <div
+              id="hygieneRestaurantList"
+              class="restaurant-card-list"
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Data Source Summary
+          ----------------------------------------------- -->
+          <section class="home-section">
+
+            <div class="data-source-summary">
+
+              <strong class="data-source-summary__title">
+                부산광역시 공공데이터를 활용합니다
+              </strong>
+
+              <p class="data-source-summary__description">
+                착한가격업소 · 위생등급지정업소 ·
+                공영주차장 정보를 결합하여 제공합니다.
+              </p>
+
+            </div>
+
+          </section>
+
+        </section>
+
+
+        <!-- ==================================================
+             03. Search / Region Screen
+        =================================================== -->
+        <section
+          id="searchScreen"
+          class="screen screen--search"
+          aria-labelledby="searchScreenTitle"
+          hidden
+        >
+
+          <h2
+            id="searchScreenTitle"
+            class="sr-only"
+          >
+            부산 착한가격 음식점 검색
+          </h2>
+
+
+          <!-- ----------------------------------------------
+               Search
+          ----------------------------------------------- -->
+          <div class="search-screen-header">
+
+            <form
+              id="searchForm"
+              class="search-form"
+              role="search"
+            >
+
+              <div class="search-box">
+
+                <span
+                  class="search-box__icon"
+                  aria-hidden="true"
+                >
+                  ⌕
+                </span>
+
+                <label
+                  for="searchInput"
+                  class="sr-only"
+                >
+                  업소명, 동 또는 주소 검색
+                </label>
+
+                <input
+                  type="search"
+                  id="searchInput"
+                  class="search-box__input"
+                  placeholder="업소명, 동 또는 주소를 검색하세요"
+                  autocomplete="off"
+                >
+
+                <button
+                  type="button"
+                  id="searchClearButton"
+                  class="search-box__clear"
+                  aria-label="검색어 지우기"
+                  hidden
+                >
+                  ×
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Selected Region
+          ----------------------------------------------- -->
+          <button
+            type="button"
+            id="searchRegionButton"
+            class="search-region-button"
+          >
+
+            <span
+              class="search-region-button__label"
+            >
+              지역
+            </span>
+
+            <strong
+              id="searchRegionText"
+              class="search-region-button__value"
+            >
+              부산광역시 전체
+            </strong>
+
+            <span
+              class="search-region-button__arrow"
+              aria-hidden="true"
+            >
+              ▾
+            </span>
+
+          </button>
+
+
+          <!-- ----------------------------------------------
+               Active Filters
+          ----------------------------------------------- -->
+          <div
+            id="activeFilterBar"
+            class="active-filter-bar"
+            hidden
+          >
+
+            <div
+              id="activeFilterList"
+              class="active-filter-list"
+            >
+              <!-- JavaScript 생성 -->
+            </div>
+
+            <button
+              type="button"
+              id="resetAllFilterButton"
+              class="text-button"
+            >
+              초기화
+            </button>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Toolbar
+          ----------------------------------------------- -->
+          <div class="search-toolbar">
+
+            <button
+              type="button"
+              id="openFilterButton"
+              class="toolbar-button"
+              aria-haspopup="dialog"
+            >
+              <span aria-hidden="true">
+                ☷
+              </span>
+
+              필터
+            </button>
+
+            <button
+              type="button"
+              id="openSortButton"
+              class="toolbar-button"
+              aria-haspopup="dialog"
+            >
+              <span aria-hidden="true">
+                ↕
+              </span>
+
+              정렬
+            </button>
+
+            <button
+              type="button"
+              id="searchMapViewButton"
+              class="toolbar-button"
+              data-screen-target="mapScreen"
+            >
+              <span aria-hidden="true">
+                ⌖
+              </span>
+
+              지도
+            </button>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Result Summary
+          ----------------------------------------------- -->
+          <div class="search-result-summary">
+
+            <p class="search-result-summary__text">
+
+              착한가격 음식점
+
+              <strong id="searchResultCount">
+                0
+              </strong>
+
+              곳
+
+            </p>
+
+            <p
+              id="currentSortLabel"
+              class="search-result-summary__sort"
+            >
+              추천순
+            </p>
+
+          </div>
+
+
+          <!-- Loading -->
+          <div
+            id="searchLoading"
+            class="state-box state-box--loading"
+            hidden
+          >
+
+            <span
+              class="loading-spinner"
+              aria-hidden="true"
+            ></span>
+
+            <p>
+              검색 결과를 불러오고 있습니다.
+            </p>
+
+          </div>
+
+
+          <!-- Result List -->
+          <div
+            id="searchResultList"
+            class="restaurant-card-list restaurant-card-list--vertical"
+          >
+            <!-- JavaScript 반복 출력 -->
+          </div>
+
+
+          <!-- Empty -->
+          <div
+            id="searchEmpty"
+            class="state-box state-box--empty"
+            hidden
+          >
+
+            <div
+              class="state-box__icon"
+              aria-hidden="true"
+            >
+              ⌕
+            </div>
+
+            <strong class="state-box__title">
+              검색 결과가 없습니다
+            </strong>
+
+            <p class="state-box__description">
+              업소명 또는 동 이름을 다시 확인하거나
+              필터 조건을 줄여보세요.
+            </p>
+
+            <button
+              type="button"
+              id="searchEmptyResetButton"
+              class="button button--outline"
+            >
+              필터 초기화
+            </button>
+
+          </div>
+
+
+          <!-- Error -->
+          <div
+            id="searchError"
+            class="state-box state-box--error"
+            hidden
+          >
+
+            <div
+              class="state-box__icon"
+              aria-hidden="true"
+            >
+              !
+            </div>
+
+            <strong class="state-box__title">
+              검색 정보를 불러오지 못했습니다
+            </strong>
+
+            <p class="state-box__description">
+              잠시 후 다시 시도해주세요.
+            </p>
+
+            <button
+              type="button"
+              id="searchRetryButton"
+              class="button button--outline"
+            >
+              다시 시도
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             04. Map Screen
+        =================================================== -->
+        <section
+          id="mapScreen"
+          class="screen screen--map"
+          aria-labelledby="mapScreenTitle"
+          hidden
+        >
+
+          <h2
+            id="mapScreenTitle"
+            class="sr-only"
+          >
+            부산 음식점과 공영주차장 지도
+          </h2>
+
+
+          <!-- ----------------------------------------------
+               Map Search Area
+          ----------------------------------------------- -->
+          <div class="map-search-area">
+
+            <form
+              id="mapSearchForm"
+              class="search-form search-form--map"
+              role="search"
+            >
+
+              <div class="search-box">
+
+                <span
+                  class="search-box__icon"
+                  aria-hidden="true"
+                >
+                  ⌕
+                </span>
+
+                <label
+                  for="mapSearchInput"
+                  class="sr-only"
+                >
+                  부산 업소명 또는 지역 검색
+                </label>
+
+                <input
+                  type="search"
+                  id="mapSearchInput"
+                  class="search-box__input"
+                  placeholder="업소명 또는 지역 검색"
+                  autocomplete="off"
+                >
+
+              </div>
+
+            </form>
+
+
+            <div
+              id="mapFilterList"
+              class="filter-chip-list filter-chip-list--map"
+            >
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-map-filter="region"
+              >
+                지역
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-map-filter="hygiene"
+              >
+                위생등급
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-map-filter="ownParking"
+              >
+                자체주차
+              </button>
+
+              <button
+                type="button"
+                class="filter-chip"
+                data-map-filter="realtimeParking"
+              >
+                실시간 주차
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Kakao Map
+          ----------------------------------------------- -->
+          <div class="map-container">
+
+            <div
+              id="kakaoMap"
+              class="kakao-map"
+              aria-label="카카오 지도"
+            ></div>
+
+
+            <!-- Loading -->
+            <div
+              id="mapLoading"
+              class="map-state map-state--loading"
+            >
+
+              <span
+                class="loading-spinner"
+                aria-hidden="true"
+              ></span>
+
+              <p>
+                부산 지도를 불러오는 중입니다.
+              </p>
+
+            </div>
+
+
+            <!-- Error -->
+            <div
+              id="mapError"
+              class="map-state map-state--error"
+              hidden
+            >
+
+              <strong>
+                지도를 불러오지 못했습니다
+              </strong>
+
+              <p>
+                Kakao Maps 설정과 네트워크 상태를 확인해주세요.
+              </p>
+
+              <button
+                type="button"
+                id="mapRetryButton"
+                class="button button--outline"
+              >
+                다시 시도
+              </button>
+
+            </div>
+
+
+            <!-- 현재 위치 -->
+            <button
+              type="button"
+              id="mapCurrentLocationButton"
+              class="map-control-button map-control-button--location"
+              aria-label="현재 위치로 이동"
+            >
+              ◎
+            </button>
+
+
+            <!-- 부산 전체 보기 -->
+            <button
+              type="button"
+              id="mapBusanButton"
+              class="map-control-button map-control-button--busan"
+              aria-label="부산 전체 보기"
+            >
+              부산
+            </button>
+
+
+            <!-- 재검색 -->
+            <button
+              type="button"
+              id="mapResearchButton"
+              class="map-research-button"
+              hidden
+            >
+              이 지역에서 다시 검색
+            </button>
+
+
+            <!-- 부산 외부 안내 -->
+            <div
+              id="outsideBusanMessage"
+              class="map-region-warning"
+              role="status"
+              hidden
+            >
+              주차한끼는 부산광역시 내 정보만 제공합니다.
+            </div>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Map Bottom Sheet
+          ----------------------------------------------- -->
+          <div
+            id="mapBottomSheet"
+            class="map-bottom-sheet"
+          >
+
+            <button
+              type="button"
+              id="mapBottomSheetHandle"
+              class="map-bottom-sheet__handle"
+              aria-label="목록 열기 또는 닫기"
+            >
+              <span></span>
+            </button>
+
+
+            <div class="map-bottom-sheet__header">
+
+              <div>
+
+                <strong class="map-bottom-sheet__title">
+                  부산 착한가격 음식점
+                </strong>
+
+                <span
+                  id="mapResultCount"
+                  class="map-bottom-sheet__count"
+                >
+                  0곳
+                </span>
+
+              </div>
+
+              <button
+                type="button"
+                id="mapListSortButton"
+                class="text-button"
+              >
+                주차장 가까운 순
+              </button>
+
+            </div>
+
+
+            <div
+              id="mapResultList"
+              class="map-result-list"
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             05. Restaurant Detail Screen
+        =================================================== -->
+        <section
+          id="restaurantDetailScreen"
+          class="screen screen--restaurant-detail"
+          aria-labelledby="restaurantDetailName"
+          hidden
+        >
+
+
+          <!-- ----------------------------------------------
+               Restaurant Image
+          ----------------------------------------------- -->
+          <div
+            id="restaurantDetailImageArea"
+            class="detail-visual"
+          >
+
+            <img
+              id="restaurantDetailImage"
+              class="detail-visual__image"
+              src=""
+              alt="음식점 이미지"
+              hidden
+            >
+
+            <div
+              id="restaurantImagePlaceholder"
+              class="detail-visual__placeholder"
+              hidden
+            >
+              음식점 이미지 없음
+            </div>
+
+          </div>
+
+
+          <!-- ----------------------------------------------
+               Restaurant Main Info
+          ----------------------------------------------- -->
+          <section class="detail-section restaurant-info-section">
+
+            <div class="restaurant-detail-heading">
+
+              <div class="restaurant-detail-heading__content">
+
+                <div
+                  id="restaurantBadgeList"
+                  class="badge-list"
+                >
+                  <!-- JavaScript 생성 -->
+                </div>
+
+                <h2
+                  id="restaurantDetailName"
+                  class="restaurant-detail-heading__title"
+                >
+                  음식점명
+                </h2>
+
+                <p
+                  id="restaurantDetailRegion"
+                  class="restaurant-detail-heading__region"
+                >
+                  부산광역시
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                id="restaurantFavoriteButton"
+                class="favorite-button"
+                aria-label="음식점 저장"
+                aria-pressed="false"
+              >
+                ♡
+              </button>
+
+            </div>
+
+
+            <!-- ------------------------------------------
+                 Business Information
+            ------------------------------------------- -->
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  이용 정보
+                </h3>
+
+              </div>
+
+
+              <dl class="detail-data-list">
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    영업시간
+                  </dt>
+
+                  <dd id="restaurantBusinessHours">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    자체주차
+                  </dt>
+
+                  <dd id="restaurantOwnParking">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    전화번호
+                  </dt>
+
+                  <dd id="restaurantPhone">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+              </dl>
+
+            </div>
+
+
+            <!-- ------------------------------------------
+                 Address
+            ------------------------------------------- -->
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  위치
+                </h3>
+
+              </div>
+
+
+              <div class="address-info">
+
+                <span
+                  class="address-info__icon"
+                  aria-hidden="true"
+                >
+                  ●
+                </span>
+
+                <p
+                  id="restaurantAddress"
+                  class="address-info__text"
+                >
+                  주소 정보 없음
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                id="restaurantMapButton"
+                class="button button--soft button--full"
+              >
+                지도에서 보기
+              </button>
+
+            </div>
+
+
+            <!-- ------------------------------------------
+                 Introduction
+            ------------------------------------------- -->
+            <div
+              id="restaurantIntroductionCard"
+              class="detail-info-card"
+            >
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  업소 소개
+                </h3>
+
+              </div>
+
+              <p
+                id="restaurantIntroduction"
+                class="restaurant-introduction"
+              >
+                소개 정보가 없습니다.
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Hygiene Grade
+          ----------------------------------------------- -->
+          <section
+            class="detail-section hygiene-detail-section"
+            aria-labelledby="hygieneDetailTitle"
+          >
+
+            <div class="section-heading">
+
+              <div>
+
+                <p class="section-heading__eyebrow">
+                  부산 위생등급
+                </p>
+
+                <h3
+                  id="hygieneDetailTitle"
+                  class="section-heading__title"
+                >
+                  위생등급 정보
+                </h3>
+
+              </div>
+
+            </div>
+
+
+            <!-- Match -->
+            <div
+              id="hygieneGradeCard"
+              class="hygiene-grade-card"
+            >
+
+              <div class="hygiene-grade-card__icon">
+                ✓
+              </div>
+
+              <div class="hygiene-grade-card__content">
+
+                <span class="hygiene-grade-card__label">
+                  위생등급
+                </span>
+
+                <strong
+                  id="restaurantHygieneGrade"
+                  class="hygiene-grade-card__grade"
+                >
+                  정보 확인 중
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- Hygiene API Error -->
+            <div
+              id="hygieneGradeError"
+              class="inline-info-message inline-info-message--warning"
+              hidden
+            >
+              위생등급 정보를 현재 확인할 수 없습니다.
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Nearby Parking
+          ----------------------------------------------- -->
+          <section
+            class="detail-section nearby-parking-section"
+            aria-labelledby="nearbyParkingTitle"
+          >
+
+            <div class="section-heading">
+
+              <div>
+
+                <p class="section-heading__eyebrow">
+                  자체주차가 어렵다면
+                </p>
+
+                <h3
+                  id="nearbyParkingTitle"
+                  class="section-heading__title"
+                >
+                  가까운 공영주차장
+                </h3>
+
+              </div>
+
+            </div>
+
+
+            <!-- Loading -->
+            <div
+              id="nearbyParkingLoading"
+              class="state-box state-box--loading"
+              hidden
+            >
+
+              <span
+                class="loading-spinner"
+                aria-hidden="true"
+              ></span>
+
+              <p>
+                주변 공영주차장을 찾고 있습니다.
+              </p>
+
+            </div>
+
+
+            <!-- List -->
+            <div
+              id="nearbyParkingList"
+              class="parking-card-list"
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+
+            <!-- Empty -->
+            <div
+              id="nearbyParkingEmpty"
+              class="state-box state-box--empty"
+              hidden
+            >
+
+              <strong class="state-box__title">
+                주변 공영주차장을 찾지 못했습니다
+              </strong>
+
+              <p class="state-box__description">
+                1km 이내 공영주차장 정보가 없습니다.
+              </p>
+
+            </div>
+
+
+            <!-- Error -->
+            <div
+              id="nearbyParkingError"
+              class="state-box state-box--error"
+              hidden
+            >
+
+              <strong class="state-box__title">
+                공영주차장 정보를 확인할 수 없습니다
+              </strong>
+
+              <p class="state-box__description">
+                잠시 후 다시 시도해주세요.
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Data Source
+          ----------------------------------------------- -->
+          <section class="detail-section detail-source-section">
+
+            <h3 class="detail-source-section__title">
+              데이터 출처
+            </h3>
+
+            <ul class="detail-source-list">
+
+              <li>
+                부산광역시 착한가격업소
+              </li>
+
+              <li>
+                부산광역시 위생등급지정업소정보서비스
+              </li>
+
+              <li>
+                부산광역시 공영주차장 정보 서비스
+              </li>
+
+            </ul>
+
+            <p class="detail-source-section__notice">
+              음식점 영업시간, 위생등급 및 주차장 정보는
+              실제 현장 상황과 다를 수 있습니다.
+            </p>
+
+          </section>
+
+        </section>
+
+
+        <!-- ==================================================
+             06. Parking Detail Screen
+        =================================================== -->
+        <section
+          id="parkingDetailScreen"
+          class="screen screen--parking-detail"
+          aria-labelledby="parkingDetailName"
+          hidden
+        >
+
+
+          <!-- ----------------------------------------------
+               Parking Main
+          ----------------------------------------------- -->
+          <section class="detail-section parking-main-section">
+
+            <div class="parking-detail-heading">
+
+              <div class="parking-detail-heading__content">
+
+                <div class="badge-list">
+
+                  <span
+                    id="parkingPublicBadge"
+                    class="badge badge--parking"
+                  >
+                    공영주차장
+                  </span>
+
+                  <span
+                    id="parkingOpenStatusBadge"
+                    class="badge badge--status"
+                  >
+                    운영정보 확인중
+                  </span>
+
+                </div>
+
+
+                <h2
+                  id="parkingDetailName"
+                  class="parking-detail-heading__title"
+                >
+                  주차장명
+                </h2>
+
+                <p
+                  id="parkingDetailAgency"
+                  class="parking-detail-heading__agency"
+                >
+                  관리기관 정보 없음
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                id="parkingFavoriteButton"
+                class="favorite-button"
+                aria-label="주차장 저장"
+                aria-pressed="false"
+              >
+                ♡
+              </button>
+
+            </div>
+
+
+            <!-- Restaurant Distance -->
+            <div class="parking-distance-summary">
+
+              <span
+                class="parking-distance-summary__icon"
+                aria-hidden="true"
+              >
+                ↔
+              </span>
+
+              <div>
+
+                <span class="parking-distance-summary__label">
+                  선택한 음식점까지
+                </span>
+
+                <strong
+                  id="parkingDistanceToRestaurant"
+                  class="parking-distance-summary__value"
+                >
+                  거리 정보 없음
+                </strong>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Realtime Parking
+          ----------------------------------------------- -->
+          <section class="detail-section">
+
+            <div class="realtime-parking-card">
+
+              <div class="realtime-parking-card__heading">
+
+                <span class="realtime-parking-card__label">
+                  실시간 주차정보
+                </span>
+
+                <span
+                  id="parkingRealtimeStatus"
+                  class="realtime-parking-card__status"
+                >
+                  확인 중
+                </span>
+
+              </div>
+
+
+              <div class="realtime-parking-card__data">
+
+                <div class="realtime-parking-card__item">
+
+                  <span class="realtime-parking-card__item-label">
+                    현재 주차 가능
+                  </span>
+
+                  <strong
+                    id="parkingAvailableSpaces"
+                    class="realtime-parking-card__available"
+                  >
+                    정보 없음
+                  </strong>
+
+                </div>
+
+
+                <div class="realtime-parking-card__divider"></div>
+
+
+                <div class="realtime-parking-card__item">
+
+                  <span class="realtime-parking-card__item-label">
+                    총 주차구획
+                  </span>
+
+                  <strong
+                    id="parkingTotalSpaces"
+                    class="realtime-parking-card__total"
+                  >
+                    정보 없음
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <p class="realtime-parking-card__notice">
+                실시간 주차면 정보가 제공되지 않는 주차장도 있습니다.
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Address
+          ----------------------------------------------- -->
+          <section class="detail-section">
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  위치
+                </h3>
+
+              </div>
+
+              <p
+                id="parkingDetailAddress"
+                class="detail-address"
+              >
+                주소 정보 없음
+              </p>
+
+              <p
+                id="parkingPhone"
+                class="detail-sub-info"
+              >
+                전화번호 정보 없음
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Parking Type
+          ----------------------------------------------- -->
+          <section class="detail-section">
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  주차장 정보
+                </h3>
+
+              </div>
+
+
+              <dl class="detail-data-list">
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    주차장 유형
+                  </dt>
+
+                  <dd id="parkingType">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    운영형태
+                  </dt>
+
+                  <dd id="parkingOperationType">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    운영요일
+                  </dt>
+
+                  <dd id="parkingOperatingDays">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    요금구분
+                  </dt>
+
+                  <dd id="parkingFeeType">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+              </dl>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Operating Hours
+          ----------------------------------------------- -->
+          <section class="detail-section">
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  운영시간
+                </h3>
+
+              </div>
+
+
+              <dl class="detail-data-list">
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    평일
+                  </dt>
+
+                  <dd id="parkingWeekdayHours">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    토요일
+                  </dt>
+
+                  <dd id="parkingSaturdayHours">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    공휴일
+                  </dt>
+
+                  <dd id="parkingHolidayHours">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+              </dl>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Parking Fee
+          ----------------------------------------------- -->
+          <section class="detail-section">
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  주차요금
+                </h3>
+
+              </div>
+
+
+              <dl class="detail-data-list">
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    기본요금
+                  </dt>
+
+                  <dd id="parkingBasicFee">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    추가요금
+                  </dt>
+
+                  <dd id="parkingExtraFee">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    1일 주차요금
+                  </dt>
+
+                  <dd id="parkingDailyFee">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    결제방법
+                  </dt>
+
+                  <dd id="parkingPaymentMethod">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+              </dl>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Estimated Fee
+          ----------------------------------------------- -->
+          <section class="detail-section estimated-fee-section">
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <div>
+
+                  <h3 class="detail-info-card__title">
+                    예상 주차요금
+                  </h3>
+
+                  <p class="detail-info-card__description">
+                    이용시간을 선택해주세요.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div
+                id="parkingTimeSelector"
+                class="time-selector"
+              >
+
+                <button
+                  type="button"
+                  class="time-selector__button"
+                  data-parking-minutes="30"
+                >
+                  30분
+                </button>
+
+                <button
+                  type="button"
+                  class="time-selector__button is-active"
+                  data-parking-minutes="60"
+                >
+                  1시간
+                </button>
+
+                <button
+                  type="button"
+                  class="time-selector__button"
+                  data-parking-minutes="120"
+                >
+                  2시간
+                </button>
+
+              </div>
+
+
+              <div class="estimated-fee">
+
+                <span class="estimated-fee__label">
+                  예상요금
+                </span>
+
+                <strong
+                  id="estimatedParkingFee"
+                  class="estimated-fee__price"
+                >
+                  계산할 수 없음
+                </strong>
+
+              </div>
+
+
+              <p class="estimated-fee__notice">
+                할인, 특기사항 및 현장 운영정책에 따라
+                실제 요금은 달라질 수 있습니다.
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Special Note
+          ----------------------------------------------- -->
+          <section
+            id="parkingSpecialNoteSection"
+            class="detail-section"
+          >
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  특기사항
+                </h3>
+
+              </div>
+
+              <p
+                id="parkingSpecialNote"
+                class="parking-special-note"
+              >
+                특기사항 정보 없음
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Data Date
+          ----------------------------------------------- -->
+          <section class="detail-section">
+
+            <div class="detail-info-card">
+
+              <div class="detail-info-card__header">
+
+                <h3 class="detail-info-card__title">
+                  데이터 정보
+                </h3>
+
+              </div>
+
+              <dl class="detail-data-list">
+
+                <div class="detail-data-list__item">
+
+                  <dt>
+                    데이터 기준일
+                  </dt>
+
+                  <dd id="parkingDataDate">
+                    정보 없음
+                  </dd>
+
+                </div>
+
+              </dl>
+
+            </div>
+
+          </section>
+
+
+          <!-- ----------------------------------------------
+               Fixed Directions
+          ----------------------------------------------- -->
+          <div class="detail-fixed-action">
+
+            <button
+              type="button"
+              id="parkingDirectionsButton"
+              class="button button--primary button--full"
+            >
+              이 주차장으로 길찾기
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             07. Saved Screen
+        =================================================== -->
+        <section
+          id="savedScreen"
+          class="screen screen--saved"
+          aria-labelledby="savedScreenTitle"
+          hidden
+        >
+
+          <div class="page-heading">
+
+            <p class="page-heading__eyebrow">
+              다시 찾기 쉽게
+            </p>
+
+            <h2
+              id="savedScreenTitle"
+              class="page-heading__title"
+            >
+              저장한 장소
+            </h2>
+
+          </div>
+
+
+          <!-- Saved Tabs -->
+          <div
+            class="segmented-control"
+            role="tablist"
+            aria-label="저장 목록 종류"
+          >
+
+            <button
+              type="button"
+              id="savedRestaurantTab"
+              class="segmented-control__button is-active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="savedRestaurantPanel"
+              data-saved-tab="restaurant"
+            >
+
+              음식점
+
+              <span
+                id="savedRestaurantCount"
+                class="segmented-control__count"
+              >
+                0
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              id="savedParkingTab"
+              class="segmented-control__button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="savedParkingPanel"
+              data-saved-tab="parking"
+            >
+
+              주차장
+
+              <span
+                id="savedParkingCount"
+                class="segmented-control__count"
+              >
+                0
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <!-- Saved Restaurants -->
+          <div
+            id="savedRestaurantPanel"
+            class="saved-panel"
+            role="tabpanel"
+            aria-labelledby="savedRestaurantTab"
+          >
+
+            <div
+              id="savedRestaurantList"
+              class="restaurant-card-list restaurant-card-list--vertical"
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+
+            <div
+              id="savedRestaurantEmpty"
+              class="state-box state-box--empty"
+            >
+
+              <div
+                class="state-box__icon"
+                aria-hidden="true"
+              >
+                ♡
+              </div>
+
+              <strong class="state-box__title">
+                저장한 음식점이 없습니다
+              </strong>
+
+              <p class="state-box__description">
+                부산의 착한가격 음식점을 저장해보세요.
+              </p>
+
+              <button
+                type="button"
+                class="button button--outline"
+                data-screen-target="homeScreen"
+              >
+                음식점 찾기
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Saved Parking -->
+          <div
+            id="savedParkingPanel"
+            class="saved-panel"
+            role="tabpanel"
+            aria-labelledby="savedParkingTab"
+            hidden
+          >
+
+            <div
+              id="savedParkingList"
+              class="parking-card-list"
+            >
+              <!-- JavaScript 반복 출력 -->
+            </div>
+
+
+            <div
+              id="savedParkingEmpty"
+              class="state-box state-box--empty"
+            >
+
+              <div
+                class="state-box__icon"
+                aria-hidden="true"
+              >
+                P
+              </div>
+
+              <strong class="state-box__title">
+                저장한 주차장이 없습니다
+              </strong>
+
+              <p class="state-box__description">
+                자주 이용하는 부산 공영주차장을 저장해보세요.
+              </p>
+
+              <button
+                type="button"
+                class="button button--outline"
+                data-screen-target="mapScreen"
+              >
+                지도에서 찾기
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+      </main>
+
+
+      <!-- ======================================================
+           Bottom Navigation
+      ======================================================= -->
+      <nav
+        id="bottomNavigation"
+        class="bottom-navigation"
+        aria-label="주요 메뉴"
+      >
+
+        <div class="bottom-navigation__inner">
+
+          <!-- Home -->
+          <button
+            type="button"
+            class="bottom-navigation__item is-active"
+            data-screen-target="homeScreen"
+            data-nav-name="home"
+            aria-current="page"
+          >
+
+            <span
+              class="bottom-navigation__icon"
+              aria-hidden="true"
+            >
+              ⌂
+            </span>
+
+            <span class="bottom-navigation__label">
+              홈
+            </span>
+
+          </button>
+
+
+          <!-- Map -->
+          <button
+            type="button"
+            class="bottom-navigation__item"
+            data-screen-target="mapScreen"
+            data-nav-name="map"
+          >
+
+            <span
+              class="bottom-navigation__icon"
+              aria-hidden="true"
+            >
+              ⌖
+            </span>
+
+            <span class="bottom-navigation__label">
+              지도
+            </span>
+
+          </button>
+
+
+          <!-- Saved -->
+          <button
+            type="button"
+            class="bottom-navigation__item"
+            data-screen-target="savedScreen"
+            data-nav-name="saved"
+          >
+
+            <span
+              class="bottom-navigation__icon"
+              aria-hidden="true"
+            >
+              ♡
+            </span>
+
+            <span class="bottom-navigation__label">
+              저장
+            </span>
+
+          </button>
+
+        </div>
+
+      </nav>
+
+
+      <!-- ======================================================
+           Region Modal
+      ======================================================= -->
+      <div
+        id="regionModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="regionModalTitle"
+        hidden
+      >
+
+        <div
+          class="modal__backdrop"
+          data-modal-close="regionModal"
+        ></div>
+
+        <div class="modal__panel modal__panel--bottom">
+
+
+          <!-- Header -->
+          <div class="modal__header">
+
+            <div>
+
+              <p class="modal__eyebrow">
+                부산광역시
+              </p>
+
+              <h2
+                id="regionModalTitle"
+                class="modal__title"
+              >
+                지역 선택
+              </h2>
+
+            </div>
+
+            <button
+              type="button"
+              class="icon-button"
+              data-modal-close="regionModal"
+              aria-label="지역 선택 닫기"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <!-- Content -->
+          <div class="modal__content">
+
+
+            <!-- District -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                구 · 군
+              </legend>
+
+              <div
+                id="districtButtonList"
+                class="region-button-list"
+              >
+                <!-- JavaScript 생성 -->
+
+                <button
+                  type="button"
+                  class="region-button is-active"
+                  data-district=""
+                >
+                  부산 전체
+                </button>
+
+              </div>
+
+            </fieldset>
+
+
+            <!-- Dong -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                동
+              </legend>
+
+              <div
+                id="dongButtonList"
+                class="region-button-list"
+              >
+
+                <button
+                  type="button"
+                  class="region-button is-active"
+                  data-dong=""
+                >
+                  전체
+                </button>
+
+                <!-- JavaScript 생성 -->
+
+              </div>
+
+            </fieldset>
+
+          </div>
+
+
+          <!-- Footer -->
+          <div class="modal__footer">
+
+            <button
+              type="button"
+              id="regionResetButton"
+              class="button button--outline"
+            >
+              전체
+            </button>
+
+            <button
+              type="button"
+              id="regionApplyButton"
+              class="button button--primary"
+            >
+              선택 완료
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ======================================================
+           Filter Modal
+      ======================================================= -->
+      <div
+        id="filterModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="filterModalTitle"
+        hidden
+      >
+
+        <div
+          class="modal__backdrop"
+          data-modal-close="filterModal"
+        ></div>
+
+
+        <div class="modal__panel modal__panel--bottom">
+
+
+          <div class="modal__header">
+
+            <h2
+              id="filterModalTitle"
+              class="modal__title"
+            >
+              필터
+            </h2>
+
+            <button
+              type="button"
+              class="icon-button"
+              data-modal-close="filterModal"
+              aria-label="필터 닫기"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <div class="modal__content">
+
+
+            <!-- ------------------------------------------
+                 Hygiene Grade
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                위생등급
+              </legend>
+
+              <div class="filter-option-list">
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="hygieneFilter"
+                    value=""
+                    checked
+                  >
+
+                  <span>
+                    전체
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="hygieneFilter"
+                    value="assigned"
+                  >
+
+                  <span>
+                    위생등급 지정
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="hygieneFilter"
+                    value="매우우수"
+                  >
+
+                  <span>
+                    매우우수
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="hygieneFilter"
+                    value="우수"
+                  >
+
+                  <span>
+                    우수
+                  </span>
+
+                </label>
+
+              </div>
+
+            </fieldset>
+
+
+            <!-- ------------------------------------------
+                 Own Parking
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                음식점 자체주차
+              </legend>
+
+              <div class="filter-option-list">
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="ownParkingFilter"
+                    value=""
+                    checked
+                  >
+
+                  <span>
+                    전체
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="ownParkingFilter"
+                    value="true"
+                  >
+
+                  <span>
+                    자체주차 가능
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="ownParkingFilter"
+                    value="false"
+                  >
+
+                  <span>
+                    자체주차 없음
+                  </span>
+
+                </label>
+
+              </div>
+
+            </fieldset>
+
+
+            <!-- ------------------------------------------
+                 Parking Distance
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                공영주차장 거리
+              </legend>
+
+              <div class="filter-option-list">
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="parkingDistanceFilter"
+                    value=""
+                    checked
+                  >
+
+                  <span>
+                    전체
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="parkingDistanceFilter"
+                    value="300"
+                  >
+
+                  <span>
+                    300m 이하
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="parkingDistanceFilter"
+                    value="500"
+                  >
+
+                  <span>
+                    500m 이하
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="radio"
+                    name="parkingDistanceFilter"
+                    value="1000"
+                  >
+
+                  <span>
+                    1km 이하
+                  </span>
+
+                </label>
+
+              </div>
+
+            </fieldset>
+
+
+            <!-- ------------------------------------------
+                 Realtime Parking
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                실시간 주차정보
+              </legend>
+
+              <label class="toggle-option">
+
+                <span class="toggle-option__label">
+                  실시간 주차면 정보가 있는 곳만
+                </span>
+
+                <input
+                  type="checkbox"
+                  id="realtimeParkingFilter"
+                >
+
+                <span
+                  class="toggle-option__switch"
+                  aria-hidden="true"
+                ></span>
+
+              </label>
+
+            </fieldset>
+
+
+            <!-- ------------------------------------------
+                 Free Parking
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                주차요금
+              </legend>
+
+              <label class="toggle-option">
+
+                <span class="toggle-option__label">
+                  무료 공영주차장이 있는 음식점
+                </span>
+
+                <input
+                  type="checkbox"
+                  id="freeParkingFilter"
+                >
+
+                <span
+                  class="toggle-option__switch"
+                  aria-hidden="true"
+                ></span>
+
+              </label>
+
+            </fieldset>
+
+
+            <!-- ------------------------------------------
+                 Open Parking
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                운영 상태
+              </legend>
+
+              <label class="toggle-option">
+
+                <span class="toggle-option__label">
+                  현재 운영 중인 주차장만
+                </span>
+
+                <input
+                  type="checkbox"
+                  id="openParkingFilter"
+                >
+
+                <span
+                  class="toggle-option__switch"
+                  aria-hidden="true"
+                ></span>
+
+              </label>
+
+            </fieldset>
+
+
+            <!-- ------------------------------------------
+                 Parking Type
+            ------------------------------------------- -->
+            <fieldset class="filter-group">
+
+              <legend class="filter-group__title">
+                주차장 유형
+              </legend>
+
+              <div class="filter-option-list">
+
+                <label class="filter-option">
+
+                  <input
+                    type="checkbox"
+                    name="parkingTypeFilter"
+                    value="노상"
+                  >
+
+                  <span>
+                    노상
+                  </span>
+
+                </label>
+
+
+                <label class="filter-option">
+
+                  <input
+                    type="checkbox"
+                    name="parkingTypeFilter"
+                    value="노외"
+                  >
+
+                  <span>
+                    노외
+                  </span>
+
+                </label>
+
+              </div>
+
+            </fieldset>
+
+          </div>
+
+
+          <!-- Footer -->
+          <div class="modal__footer">
+
+            <button
+              type="button"
+              id="filterResetButton"
+              class="button button--outline"
+            >
+              초기화
+            </button>
+
+            <button
+              type="button"
+              id="filterApplyButton"
+              class="button button--primary"
+            >
+              적용하기
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ======================================================
+           Sort Modal
+      ======================================================= -->
+      <div
+        id="sortModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="sortModalTitle"
+        hidden
+      >
+
+        <div
+          class="modal__backdrop"
+          data-modal-close="sortModal"
+        ></div>
+
+
+        <div class="modal__panel modal__panel--bottom">
+
+          <div class="modal__header">
+
+            <h2
+              id="sortModalTitle"
+              class="modal__title"
+            >
+              정렬
+            </h2>
+
+            <button
+              type="button"
+              class="icon-button"
+              data-modal-close="sortModal"
+              aria-label="정렬창 닫기"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <div class="sort-option-list">
+
+            <label class="sort-option">
+
+              <span>
+                추천순
+              </span>
+
+              <input
+                type="radio"
+                name="sortOption"
+                value="recommended"
+                checked
+              >
+
+            </label>
+
+
+            <label class="sort-option">
+
+              <span>
+                공영주차장 가까운 순
+              </span>
+
+              <input
+                type="radio"
+                name="sortOption"
+                value="parkingDistance"
+              >
+
+            </label>
+
+
+            <label class="sort-option">
+
+              <span>
+                실시간 주차면 많은 순
+              </span>
+
+              <input
+                type="radio"
+                name="sortOption"
+                value="availableParking"
+              >
+
+            </label>
+
+
+            <label class="sort-option">
+
+              <span>
+                업소명순
+              </span>
+
+              <input
+                type="radio"
+                name="sortOption"
+                value="name"
+              >
+
+            </label>
+
+
+            <label
+              id="distanceSortOption"
+              class="sort-option"
+              hidden
+            >
+
+              <span>
+                내 위치 가까운 순
+              </span>
+
+              <input
+                type="radio"
+                name="sortOption"
+                value="currentDistance"
+              >
+
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ======================================================
+           Location Outside Busan Modal
+      ======================================================= -->
+      <div
+        id="outsideBusanModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="outsideBusanModalTitle"
+        hidden
+      >
+
+        <div
+          class="modal__backdrop"
+          data-modal-close="outsideBusanModal"
+        ></div>
+
+        <div class="modal__panel modal__panel--center">
+
+          <div class="location-warning">
+
+            <div
+              class="location-warning__icon"
+              aria-hidden="true"
+            >
+              !
+            </div>
+
+            <h2
+              id="outsideBusanModalTitle"
+              class="location-warning__title"
+            >
+              부산광역시 전용 서비스입니다
+            </h2>
+
+            <p class="location-warning__description">
+              현재 위치가 부산광역시 밖에 있습니다.<br>
+              부산 지역을 선택하여 정보를 찾아보세요.
+            </p>
+
+            <button
+              type="button"
+              id="outsideBusanRegionButton"
+              class="button button--primary button--full"
+            >
+              부산 지역 선택
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ======================================================
+           Offline Message
+      ======================================================= -->
+      <div
+        id="networkOfflineMessage"
+        class="network-message"
+        role="alert"
+        hidden
+      >
+
+        <span aria-hidden="true">
+          !
+        </span>
+
+        <span>
+          인터넷 연결을 확인해주세요.
+        </span>
+
+      </div>
+
+
+      <!-- ======================================================
+           Toast
+      ======================================================= -->
+      <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        hidden
+      >
+
+        <span id="toastMessage">
+          저장되었습니다.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ======================================================
+       Restaurant Card Template
+       JavaScript 반복 출력용
+  ======================================================= -->
+  <template id="restaurantCardTemplate">
+
+    <article class="restaurant-card">
+
+      <!-- Main -->
+      <button
+        type="button"
+        class="restaurant-card__main"
+        data-action="open-restaurant"
+      >
+
+
+        <!-- Image -->
+        <div class="restaurant-card__image">
+
+          <img
+            class="restaurant-card__image-element"
+            src=""
+            alt=""
+            hidden
+          >
+
+          <div
+            class="restaurant-card__image-placeholder"
+            hidden
+          >
+            이미지 없음
+          </div>
+
+        </div>
+
+
+        <!-- Content -->
+        <div class="restaurant-card__content">
+
+          <!-- Badge -->
+          <div class="restaurant-card__badge-list">
+            <!-- JavaScript 생성 -->
+          </div>
+
+
+          <!-- Name -->
+          <h3 class="restaurant-card__name">
+            음식점명
+          </h3>
+
+
+          <!-- Region -->
+          <p class="restaurant-card__region">
+            부산광역시
+          </p>
+
+
+          <!-- Business Hours -->
+          <div class="restaurant-card__info-row">
+
+            <span
+              class="restaurant-card__info-label"
+            >
+              영업
+            </span>
+
+            <span
+              class="restaurant-card__business-hours"
+            >
+              영업시간 정보 없음
+            </span>
+
+          </div>
+
+
+          <!-- Own Parking -->
+          <div class="restaurant-card__info-row">
+
+            <span
+              class="restaurant-card__info-label"
+            >
+              주차
+            </span>
+
+            <span
+              class="restaurant-card__own-parking"
+            >
+              자체주차 정보 없음
+            </span>
+
+          </div>
+
+
+          <!-- Nearby Public Parking -->
+          <div class="restaurant-card__parking">
+
+            <span
+              class="restaurant-card__parking-icon"
+              aria-hidden="true"
+            >
+              P
+            </span>
+
+            <div class="restaurant-card__parking-content">
+
+              <span class="restaurant-card__parking-name">
+                주변 공영주차장 정보 없음
+              </span>
+
+              <span class="restaurant-card__parking-distance">
+                거리 정보 없음
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Realtime -->
+          <div
+            class="restaurant-card__realtime"
+            hidden
+          >
+
+            <span
+              class="restaurant-card__realtime-icon"
+              aria-hidden="true"
+            >
+              ●
+            </span>
+
+            <span
+              class="restaurant-card__realtime-text"
+            >
+              실시간 정보 없음
+            </span>
+
+          </div>
+
+        </div>
+
+      </button>
+
+
+      <!-- Favorite -->
+      <button
+        type="button"
+        class="restaurant-card__favorite"
+        data-action="toggle-restaurant-favorite"
+        aria-label="음식점 저장"
+        aria-pressed="false"
+      >
+        ♡
+      </button>
+
+    </article>
+
+  </template>
+
+
+  <!-- ======================================================
+       Parking Card Template
+  ======================================================= -->
+  <template id="parkingCardTemplate">
+
+    <article class="parking-card">
+
+      <!-- Main -->
+      <button
+        type="button"
+        class="parking-card__main"
+        data-action="open-parking"
+      >
+
+
+        <!-- Header -->
+        <div class="parking-card__header">
+
+          <div
+            class="parking-card__icon"
+            aria-hidden="true"
+          >
+            P
+          </div>
+
+          <div class="parking-card__heading">
+
+            <div class="parking-card__badges">
+              <!-- JavaScript 생성 -->
+            </div>
+
+            <h3 class="parking-card__name">
+              주차장명
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <!-- Main Summary -->
+        <div class="parking-card__summary">
+
+
+          <!-- Distance -->
+          <div class="parking-card__summary-item">
+
+            <span class="parking-card__summary-label">
+              음식점까지
+            </span>
+
+            <strong class="parking-card__distance">
+              거리 정보 없음
+            </strong>
+
+          </div>
+
+
+          <!-- Realtime -->
+          <div class="parking-card__summary-item">
+
+            <span class="parking-card__summary-label">
+              실시간 주차
+            </span>
+
+            <strong class="parking-card__available">
+              정보 없음
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- Parking Capacity -->
+        <div class="parking-card__capacity">
+
+          <span class="parking-card__capacity-current">
+            실시간 정보 없음
+          </span>
+
+          <span
+            class="parking-card__separator"
+            aria-hidden="true"
+          >
+            /
+          </span>
+
+          <span class="parking-card__capacity-total">
+            총 주차구획 정보 없음
+          </span>
+
+        </div>
+
+
+        <!-- Fee -->
+        <div class="parking-card__fee-row">
+
+          <span
+            class="parking-card__fee-icon"
+            aria-hidden="true"
+          >
+            ₩
+          </span>
+
+          <span class="parking-card__fee">
+            요금 정보 없음
+          </span>
+
+        </div>
+
+
+        <!-- Operating Hours -->
+        <div class="parking-card__meta">
+
+          <span class="parking-card__hours">
+            운영시간 정보 없음
+          </span>
+
+          <span
+            class="parking-card__separator"
+            aria-hidden="true"
+          >
+            ·
+          </span>
+
+          <span class="parking-card__type">
+            주차장 유형 정보 없음
+          </span>
+
+        </div>
+
+      </button>
+
+
+      <!-- Favorite -->
+      <button
+        type="button"
+        class="parking-card__favorite"
+        data-action="toggle-parking-favorite"
+        aria-label="주차장 저장"
+        aria-pressed="false"
+      >
+        ♡
+      </button>
+
+    </article>
+
+  </template>
+
+
+  <!-- ======================================================
+       Map Parking Popup Template
+  ======================================================= -->
+  <template id="mapParkingPopupTemplate">
+
+    <div class="map-parking-popup">
+
+      <strong class="map-parking-popup__name">
+        공영주차장
+      </strong>
+
+      <div class="map-parking-popup__realtime">
+
+        <span class="map-parking-popup__realtime-label">
+          실시간
+        </span>
+
+        <strong class="map-parking-popup__realtime-value">
+          정보 없음
+        </strong>
+
+      </div>
+
+      <p class="map-parking-popup__distance">
+        거리 정보 없음
+      </p>
+
+      <button
+        type="button"
+        class="map-parking-popup__button"
+      >
+        상세보기
+      </button>
+
+    </div>
+
+  </template>
+
+
+  <!-- ======================================================
+       Kakao Maps JavaScript SDK
+
+       ★ 실제 개발 시
+       YOUR_KAKAO_JAVASCRIPT_KEY 부분을
+       Kakao Developers의 JavaScript 키로 교체합니다.
+
+       libraries=services
+       → 주소 → 좌표 변환에 사용합니다.
+
+       autoload=false
+       → JavaScript에서 kakao.maps.load() 후 초기화합니다.
+  ======================================================= -->
+  <script
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=ff903ba5afd1fcd44c239001c7ce94a6&libraries=services&autoload=false"
+  ></script>
+
+
+  <!-- ======================================================
+       JavaScript
+  ======================================================= -->
+  <script src="./js/script.js"></script>
+
+</body>
+</html>

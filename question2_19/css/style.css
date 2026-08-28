@@ -1,0 +1,4111 @@
+/* =========================================================
+   주차한끼 Ver.2
+   부산광역시 공공데이터 기반 모바일 생활정보 앱
+   File : ./css/style.css
+========================================================= */
+
+
+/* =========================================================
+   01. Root Variables
+========================================================= */
+
+:root {
+  /* ---------------------------------
+     Main Colors
+  --------------------------------- */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-light: #eff6ff;
+  --color-primary-soft: #dbeafe;
+
+  --color-parking: #0f766e;
+  --color-parking-dark: #0d5f59;
+  --color-parking-light: #ecfdf5;
+
+  --color-hygiene: #16a34a;
+  --color-hygiene-dark: #15803d;
+  --color-hygiene-light: #f0fdf4;
+
+  --color-realtime: #f59e0b;
+  --color-realtime-dark: #d97706;
+  --color-realtime-light: #fffbeb;
+
+  --color-danger: #dc2626;
+  --color-danger-light: #fef2f2;
+
+  --color-warning: #ea580c;
+  --color-warning-light: #fff7ed;
+
+  /* ---------------------------------
+     Neutral
+  --------------------------------- */
+  --color-text: #111827;
+  --color-text-sub: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-text-light: #9ca3af;
+
+  --color-white: #ffffff;
+  --color-bg: #f5f7fa;
+  --color-bg-soft: #f8fafc;
+
+  --color-border: #e5e7eb;
+  --color-border-dark: #d1d5db;
+
+  /* ---------------------------------
+     Badge
+  --------------------------------- */
+  --badge-good-bg: #fff7ed;
+  --badge-good-color: #ea580c;
+
+  --badge-hygiene-bg: #f0fdf4;
+  --badge-hygiene-color: #15803d;
+
+  --badge-parking-bg: #ecfdf5;
+  --badge-parking-color: #0f766e;
+
+  --badge-status-bg: #f3f4f6;
+  --badge-status-color: #4b5563;
+
+  /* ---------------------------------
+     App Size
+  --------------------------------- */
+  --app-max-width: 430px;
+
+  --header-height: 64px;
+  --bottom-nav-height: 74px;
+
+  /* ---------------------------------
+     Radius
+  --------------------------------- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-round: 999px;
+
+  /* ---------------------------------
+     Shadow
+  --------------------------------- */
+  --shadow-xs:
+    0 1px 2px rgba(15, 23, 42, 0.04);
+
+  --shadow-sm:
+    0 4px 14px rgba(15, 23, 42, 0.06);
+
+  --shadow-md:
+    0 8px 24px rgba(15, 23, 42, 0.09);
+
+  --shadow-lg:
+    0 18px 44px rgba(15, 23, 42, 0.16);
+
+  /* ---------------------------------
+     Animation
+  --------------------------------- */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s ease;
+}
+
+
+/* =========================================================
+   02. Reset
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+
+  font-size: 16px;
+
+  -webkit-text-size-adjust: 100%;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+
+  margin: 0;
+
+  background: #edf1f5;
+
+  color: var(--color-text);
+
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  word-break: keep-all;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+}
+
+img {
+  display: block;
+
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul,
+ol,
+dl,
+dd,
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   03. Accessibility
+========================================================= */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   04. App Wrapper
+========================================================= */
+
+.app {
+  position: relative;
+
+  width: 100%;
+  max-width: var(--app-max-width);
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: 0 auto;
+
+  overflow-x: hidden;
+
+  background: var(--color-bg);
+
+  box-shadow:
+    0 0 40px rgba(15, 23, 42, 0.06);
+}
+
+.main-app {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  background: var(--color-bg);
+}
+
+.main-content {
+  width: 100%;
+
+  padding-top:
+    calc(
+      var(--header-height)
+      + env(safe-area-inset-top)
+    );
+
+  padding-bottom:
+    calc(
+      var(--bottom-nav-height)
+      + env(safe-area-inset-bottom)
+      + 16px
+    );
+}
+
+
+/* =========================================================
+   05. Common Screen
+========================================================= */
+
+.screen {
+  width: 100%;
+}
+
+.screen--home,
+.screen--search,
+.screen--saved,
+.screen--restaurant-detail,
+.screen--parking-detail {
+  min-height:
+    calc(
+      100vh
+      - var(--header-height)
+      - var(--bottom-nav-height)
+    );
+
+  min-height:
+    calc(
+      100svh
+      - var(--header-height)
+      - var(--bottom-nav-height)
+    );
+}
+
+
+/* =========================================================
+   06. Splash
+========================================================= */
+
+.screen--splash {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  width: 100%;
+  max-width: var(--app-max-width);
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: auto;
+
+  background:
+    linear-gradient(
+      155deg,
+      #eff6ff 0%,
+      #f8fafc 52%,
+      #ffffff 100%
+    );
+}
+
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding:
+    max(72px, env(safe-area-inset-top))
+    24px
+    max(44px, env(safe-area-inset-bottom));
+}
+
+.splash__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.splash__symbol {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 78px;
+  height: 78px;
+
+  margin-bottom: 22px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #3b82f6,
+      #1d4ed8
+    );
+
+  box-shadow:
+    0 16px 32px rgba(37, 99, 235, 0.24);
+}
+
+.splash__symbol-parking {
+  color: var(--color-white);
+
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.splash__symbol-food {
+  position: absolute;
+  right: 11px;
+  bottom: 11px;
+
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+
+  color: transparent;
+
+  background: var(--color-realtime);
+}
+
+.splash__title {
+  margin-bottom: 5px;
+
+  color: var(--color-text);
+
+  font-size: 31px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.splash__region {
+  margin-bottom: 16px;
+
+  color: var(--color-primary);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.splash__description {
+  color: var(--color-text-muted);
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.splash__loading {
+  min-height: 32px;
+}
+
+
+/* =========================================================
+   07. Loading Spinner
+========================================================= */
+
+.loading-spinner {
+  display: inline-block;
+
+  width: 22px;
+  height: 22px;
+
+  border: 2.5px solid #dbeafe;
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+
+  animation: spinnerRotate 0.75s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   08. Header
+========================================================= */
+
+.app-header {
+  position: fixed;
+  z-index: 800;
+  top: 0;
+  left: 50%;
+
+  width: 100%;
+  max-width: var(--app-max-width);
+  height:
+    calc(
+      var(--header-height)
+      + env(safe-area-inset-top)
+    );
+
+  transform: translateX(-50%);
+
+  border-bottom: 1px solid rgba(229, 231, 235, 0.92);
+
+  background: rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.app-header__inner {
+  display: flex;
+  align-items: flex-end;
+
+  width: 100%;
+  height: 100%;
+
+  padding:
+    env(safe-area-inset-top)
+    18px
+    0;
+}
+
+.app-header__default,
+.app-header__detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: var(--header-height);
+}
+
+
+/* =========================================================
+   09. App Logo
+========================================================= */
+
+.app-logo {
+  display: inline-flex;
+  align-items: center;
+
+  min-width: 0;
+
+  text-align: left;
+
+  gap: 9px;
+}
+
+.app-logo__symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: var(--color-primary);
+
+  color: var(--color-white);
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.app-logo__content {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.app-logo__text {
+  color: var(--color-text);
+
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.app-logo__sub {
+  margin-top: 1px;
+
+  color: var(--color-primary);
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+
+/* =========================================================
+   10. Header Region
+========================================================= */
+
+.header-region-button {
+  display: flex;
+  align-items: center;
+
+  max-width: 172px;
+
+  padding: 7px 10px;
+
+  border: 1px solid #edf0f4;
+  border-radius: 14px;
+
+  background: var(--color-bg-soft);
+
+  text-align: left;
+
+  gap: 7px;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.header-region-button:active {
+  border-color: #dbeafe;
+
+  background: var(--color-primary-light);
+}
+
+.header-region-button__icon {
+  color: var(--color-primary);
+
+  font-size: 8px;
+}
+
+.header-region-button__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.header-region-button__label {
+  color: var(--color-text-light);
+
+  font-size: 9px;
+}
+
+.header-region-button__value {
+  max-width: 100px;
+
+  overflow: hidden;
+
+  color: var(--color-text-sub);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-region-button__arrow {
+  color: var(--color-text-light);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   11. Detail Header
+========================================================= */
+
+.app-header__detail {
+  position: relative;
+}
+
+.app-header__detail-title {
+  position: absolute;
+  left: 50%;
+
+  max-width: 220px;
+
+  transform: translateX(-50%);
+
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 16px;
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-header__detail-space {
+  width: 40px;
+}
+
+
+/* =========================================================
+   12. Icon Button
+========================================================= */
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  color: var(--color-text);
+
+  font-size: 23px;
+
+  transition:
+    background var(--transition-fast);
+}
+
+.icon-button:active {
+  background: var(--color-bg-soft);
+}
+
+
+/* =========================================================
+   13. Home Hero
+========================================================= */
+
+.home-hero {
+  padding: 30px 20px 24px;
+
+  background:
+    linear-gradient(
+      160deg,
+      #eff6ff 0%,
+      #f8fbff 55%,
+      #ffffff 100%
+    );
+}
+
+.home-hero__eyebrow {
+  margin-bottom: 7px;
+
+  color: var(--color-primary);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.home-hero__title {
+  margin-bottom: 11px;
+
+  color: var(--color-text);
+
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.27;
+  letter-spacing: -1.2px;
+}
+
+.home-hero__description {
+  margin-bottom: 22px;
+
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   14. Home Region Card
+========================================================= */
+
+.home-region-card {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid #dbeafe;
+  border-radius: var(--radius-lg);
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow: var(--shadow-xs);
+
+  text-align: left;
+
+  gap: 12px;
+}
+
+.home-region-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+
+  font-size: 9px;
+}
+
+.home-region-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.home-region-card__label {
+  margin-bottom: 2px;
+
+  color: var(--color-text-light);
+
+  font-size: 10px;
+}
+
+.home-region-card__value {
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 14px;
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-region-card__action {
+  color: var(--color-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   15. Near Me Button
+========================================================= */
+
+.near-me-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 10px;
+  padding: 10px 12px;
+
+  border-radius: 13px;
+
+  color: var(--color-primary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  gap: 7px;
+
+  transition:
+    background var(--transition-fast);
+}
+
+.near-me-button:active {
+  background: rgba(219, 234, 254, 0.55);
+}
+
+.near-me-button__icon {
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   16. Home Section
+========================================================= */
+
+.home-section {
+  padding: 25px 20px;
+
+  border-bottom: 8px solid #f0f2f5;
+
+  background: var(--color-white);
+}
+
+.home-section:last-child {
+  border-bottom: 0;
+}
+
+.home-search-section {
+  padding-top: 20px;
+}
+
+
+/* =========================================================
+   17. Search Box
+========================================================= */
+
+.search-form {
+  width: 100%;
+}
+
+.search-box {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  padding: 0 13px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-xs);
+
+  gap: 9px;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.search-box:focus-within {
+  border-color: #93c5fd;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.search-box__icon {
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 22px;
+  line-height: 1;
+}
+
+.search-box__input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  color: var(--color-text);
+
+  font-size: 14px;
+}
+
+.search-box__input::placeholder {
+  color: var(--color-text-light);
+}
+
+.search-box__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: var(--color-text-muted);
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   18. Recent Search
+========================================================= */
+
+.recent-search {
+  margin-top: 20px;
+}
+
+.recent-search__list {
+  display: flex;
+
+  margin-top: 12px;
+
+  overflow-x: auto;
+
+  gap: 8px;
+
+  scrollbar-width: none;
+}
+
+.recent-search__list::-webkit-scrollbar {
+  display: none;
+}
+
+.recent-search__list button {
+  flex-shrink: 0;
+
+  padding: 8px 13px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+
+  background: var(--color-white);
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   19. Section Heading
+========================================================= */
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-bottom: 17px;
+
+  gap: 16px;
+}
+
+.section-heading--small {
+  align-items: center;
+
+  margin-bottom: 0;
+}
+
+.section-heading__eyebrow {
+  margin-bottom: 3px;
+
+  color: var(--color-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.section-heading__title {
+  color: var(--color-text);
+
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+}
+
+.section-heading--small .section-heading__title {
+  font-size: 14px;
+}
+
+.section-heading__more {
+  display: inline-flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+
+  gap: 4px;
+}
+
+.text-button {
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   20. Filter Chips
+========================================================= */
+
+.filter-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 36px;
+
+  padding: 0 13px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+
+  background: var(--color-white);
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.filter-chip.is-active {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary);
+
+  color: var(--color-white);
+}
+
+
+/* =========================================================
+   21. State Box
+========================================================= */
+
+.state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 180px;
+
+  padding: 26px 18px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-bg-soft);
+
+  text-align: center;
+}
+
+.state-box--loading {
+  min-height: 130px;
+
+  border: 0;
+
+  background: transparent;
+}
+
+.state-box--loading .loading-spinner {
+  margin-bottom: 12px;
+}
+
+.state-box--loading p {
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+}
+
+.state-box__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 13px;
+
+  border-radius: 16px;
+
+  background: #f3f4f6;
+
+  color: var(--color-text-muted);
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.state-box--error .state-box__icon {
+  background: var(--color-danger-light);
+
+  color: var(--color-danger);
+}
+
+.state-box__title {
+  margin-bottom: 6px;
+
+  color: var(--color-text);
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.state-box__description {
+  max-width: 275px;
+
+  margin-bottom: 16px;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   22. Common Button
+========================================================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+
+  padding: 0 18px;
+
+  border-radius: 13px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button--primary {
+  border: 1px solid var(--color-primary);
+
+  background: var(--color-primary);
+
+  color: var(--color-white);
+}
+
+.button--outline {
+  border: 1px solid var(--color-border-dark);
+
+  background: var(--color-white);
+
+  color: var(--color-text);
+}
+
+.button--soft {
+  border: 1px solid #dbeafe;
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+}
+
+.button--full {
+  width: 100%;
+}
+
+
+/* =========================================================
+   23. Restaurant Card List
+========================================================= */
+
+.restaurant-card-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.restaurant-card-list--horizontal {
+  flex-direction: row;
+
+  margin-right: -20px;
+  padding-right: 20px;
+
+  overflow-x: auto;
+
+  gap: 12px;
+
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.restaurant-card-list--horizontal::-webkit-scrollbar {
+  display: none;
+}
+
+.restaurant-card-list--horizontal .restaurant-card {
+  width: 304px;
+  min-width: 304px;
+
+  scroll-snap-align: start;
+}
+
+
+/* =========================================================
+   24. Restaurant Card
+========================================================= */
+
+.restaurant-card {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-xs);
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.restaurant-card:active {
+  transform: scale(0.995);
+}
+
+.restaurant-card__main {
+  display: flex;
+
+  width: 100%;
+
+  padding: 13px;
+
+  text-align: left;
+
+  gap: 13px;
+}
+
+.restaurant-card__image {
+  position: relative;
+
+  width: 94px;
+  min-width: 94px;
+  height: 122px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #f1f5f9;
+}
+
+.restaurant-card__image-element {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.restaurant-card__image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 8px;
+
+  color: var(--color-text-light);
+
+  font-size: 11px;
+
+  text-align: center;
+}
+
+.restaurant-card__content {
+  flex: 1;
+
+  min-width: 0;
+
+  padding-right: 26px;
+}
+
+.restaurant-card__badge-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  min-height: 20px;
+
+  margin-bottom: 6px;
+
+  gap: 5px;
+}
+
+.restaurant-card__name {
+  margin-bottom: 2px;
+
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurant-card__region {
+  margin-bottom: 8px;
+
+  overflow: hidden;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurant-card__info-row {
+  display: flex;
+  align-items: flex-start;
+
+  margin-top: 4px;
+
+  gap: 7px;
+}
+
+.restaurant-card__info-label {
+  width: 30px;
+
+  flex-shrink: 0;
+
+  color: var(--color-text-light);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.restaurant-card__business-hours,
+.restaurant-card__own-parking {
+  overflow: hidden;
+
+  color: var(--color-text-sub);
+
+  font-size: 11px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurant-card__parking {
+  display: flex;
+  align-items: center;
+
+  margin-top: 8px;
+
+  color: var(--color-parking);
+
+  gap: 7px;
+}
+
+.restaurant-card__parking-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  flex-shrink: 0;
+
+  border-radius: 7px;
+
+  background: var(--color-parking-light);
+
+  color: var(--color-parking);
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.restaurant-card__parking-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.restaurant-card__parking-name {
+  overflow: hidden;
+
+  color: var(--color-parking);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurant-card__parking-distance {
+  color: var(--color-text-light);
+
+  font-size: 9px;
+}
+
+.restaurant-card__realtime {
+  display: flex;
+  align-items: center;
+
+  margin-top: 6px;
+
+  color: var(--color-realtime-dark);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  gap: 5px;
+}
+
+.restaurant-card__realtime-icon {
+  color: var(--color-realtime);
+
+  font-size: 7px;
+}
+
+.restaurant-card__favorite {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  color: var(--color-text-muted);
+
+  font-size: 20px;
+}
+
+.restaurant-card__favorite.is-active {
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   25. Badge
+========================================================= */
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 24px;
+
+  padding: 0 9px;
+
+  border-radius: var(--radius-round);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.badge--good-price {
+  background: var(--badge-good-bg);
+
+  color: var(--badge-good-color);
+}
+
+.badge--hygiene {
+  background: var(--badge-hygiene-bg);
+
+  color: var(--badge-hygiene-color);
+}
+
+.badge--parking {
+  background: var(--badge-parking-bg);
+
+  color: var(--badge-parking-color);
+}
+
+.badge--status {
+  background: var(--badge-status-bg);
+
+  color: var(--badge-status-color);
+}
+
+.badge--status.is-open {
+  background: var(--color-hygiene-light);
+
+  color: var(--color-hygiene);
+}
+
+.badge--status.is-closed {
+  background: var(--color-danger-light);
+
+  color: var(--color-danger);
+}
+
+.badge--realtime {
+  background: var(--color-realtime-light);
+
+  color: var(--color-realtime-dark);
+}
+
+
+/* =========================================================
+   26. Data Source Summary
+========================================================= */
+
+.data-source-summary {
+  padding: 18px;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--color-bg-soft);
+}
+
+.data-source-summary__title {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.data-source-summary__description {
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   27. Search Screen
+========================================================= */
+
+.screen--search {
+  background: var(--color-white);
+}
+
+.search-screen-header {
+  padding: 18px 20px 12px;
+}
+
+.search-region-button {
+  display: flex;
+  align-items: center;
+
+  width: calc(100% - 40px);
+
+  margin: 0 20px 12px;
+  padding: 12px 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 13px;
+
+  background: var(--color-bg-soft);
+
+  text-align: left;
+
+  gap: 9px;
+}
+
+.search-region-button__label {
+  color: var(--color-text-light);
+
+  font-size: 10px;
+}
+
+.search-region-button__value {
+  flex: 1;
+
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-region-button__arrow {
+  color: var(--color-text-light);
+}
+
+
+/* =========================================================
+   28. Active Filter
+========================================================= */
+
+.active-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px 12px;
+
+  gap: 12px;
+}
+
+.active-filter-list {
+  display: flex;
+
+  flex: 1;
+
+  overflow-x: auto;
+
+  gap: 7px;
+
+  scrollbar-width: none;
+}
+
+.active-filter-list::-webkit-scrollbar {
+  display: none;
+}
+
+.active-filter-list button {
+  flex-shrink: 0;
+
+  padding: 7px 11px;
+
+  border-radius: var(--radius-round);
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   29. Search Toolbar
+========================================================= */
+
+.search-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  padding: 0 20px 14px;
+
+  gap: 8px;
+}
+
+.toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  background: var(--color-white);
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  gap: 6px;
+}
+
+
+/* =========================================================
+   30. Search Result Summary
+========================================================= */
+
+.search-result-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 20px;
+
+  border-top: 1px solid #f1f3f5;
+  border-bottom: 1px solid #f1f3f5;
+
+  background: var(--color-bg-soft);
+}
+
+.search-result-summary__text {
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+}
+
+.search-result-summary__text strong {
+  margin: 0 2px;
+
+  color: var(--color-text);
+
+  font-size: 13px;
+}
+
+.search-result-summary__sort {
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.screen--search .restaurant-card-list--vertical {
+  padding: 16px 20px 30px;
+}
+
+.screen--search > .state-box {
+  width: calc(100% - 40px);
+
+  margin: 20px;
+}
+
+
+/* =========================================================
+   31. Map Screen
+========================================================= */
+
+.screen--map {
+  position: relative;
+
+  height:
+    calc(
+      100vh
+      - var(--header-height)
+      - var(--bottom-nav-height)
+      - env(safe-area-inset-top)
+      - env(safe-area-inset-bottom)
+    );
+
+  height:
+    calc(
+      100svh
+      - var(--header-height)
+      - var(--bottom-nav-height)
+      - env(safe-area-inset-top)
+      - env(safe-area-inset-bottom)
+    );
+
+  overflow: hidden;
+
+  background: #e9edf2;
+}
+
+.map-search-area {
+  position: absolute;
+  z-index: 50;
+  top: 14px;
+  right: 14px;
+  left: 14px;
+
+  pointer-events: none;
+}
+
+.search-form--map,
+.filter-chip-list--map {
+  pointer-events: auto;
+}
+
+.search-form--map .search-box {
+  height: 46px;
+
+  box-shadow: var(--shadow-md);
+}
+
+.filter-chip-list--map {
+  flex-wrap: nowrap;
+
+  margin-top: 10px;
+
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.filter-chip-list--map::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip-list--map .filter-chip {
+  flex-shrink: 0;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* =========================================================
+   32. Kakao Map
+========================================================= */
+
+.map-container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+
+.kakao-map {
+  width: 100%;
+  height: 100%;
+
+  background: #e5e7eb;
+}
+
+.map-state {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(247, 249, 252, 0.94);
+
+  text-align: center;
+}
+
+.map-state .loading-spinner {
+  margin-bottom: 12px;
+}
+
+.map-state p {
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+}
+
+.map-state--error strong {
+  margin-bottom: 7px;
+
+  font-size: 15px;
+}
+
+.map-state--error p {
+  margin-bottom: 16px;
+}
+
+.map-control-button {
+  position: absolute;
+  z-index: 35;
+  right: 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 44px;
+  height: 44px;
+
+  padding: 0 10px;
+
+  border-radius: 14px;
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-md);
+
+  color: var(--color-primary);
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.map-control-button--location {
+  bottom: 220px;
+
+  width: 44px;
+  padding: 0;
+
+  font-size: 21px;
+}
+
+.map-control-button--busan {
+  bottom: 272px;
+}
+
+.map-research-button {
+  position: absolute;
+  z-index: 35;
+  top: 124px;
+  left: 50%;
+
+  min-height: 38px;
+
+  padding: 0 15px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid #dbeafe;
+  border-radius: var(--radius-round);
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-md);
+
+  color: var(--color-primary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.map-region-warning {
+  position: absolute;
+  z-index: 38;
+  top: 173px;
+  left: 50%;
+
+  width: calc(100% - 40px);
+
+  padding: 10px 13px;
+
+  transform: translateX(-50%);
+
+  border-radius: 12px;
+
+  background: rgba(17, 24, 39, 0.9);
+
+  color: var(--color-white);
+
+  font-size: 11px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   33. Map Bottom Sheet
+========================================================= */
+
+.map-bottom-sheet {
+  position: absolute;
+  z-index: 40;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 198px;
+
+  overflow: hidden;
+
+  border-radius: 22px 22px 0 0;
+
+  background: var(--color-white);
+
+  box-shadow:
+    0 -10px 30px rgba(15, 23, 42, 0.08);
+
+  transition:
+    height var(--transition-normal);
+}
+
+.map-bottom-sheet.is-expanded {
+  height: min(72%, 570px);
+}
+
+.map-bottom-sheet__handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 24px;
+}
+
+.map-bottom-sheet__handle span {
+  display: block;
+
+  width: 38px;
+  height: 4px;
+
+  border-radius: var(--radius-round);
+
+  background: #d1d5db;
+}
+
+.map-bottom-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 4px 18px 12px;
+
+  border-bottom: 1px solid #f1f3f5;
+
+  gap: 12px;
+}
+
+.map-bottom-sheet__title {
+  color: var(--color-text);
+
+  font-size: 14px;
+}
+
+.map-bottom-sheet__count {
+  margin-left: 4px;
+
+  color: var(--color-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.map-result-list {
+  height:
+    calc(
+      100%
+      - 62px
+    );
+
+  padding: 12px 16px 20px;
+
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   34. Detail Common
+========================================================= */
+
+.screen--restaurant-detail,
+.screen--parking-detail {
+  background: #f3f5f8;
+}
+
+.detail-section {
+  padding: 22px 20px;
+
+  border-bottom: 8px solid #eef1f5;
+
+  background: var(--color-white);
+}
+
+.detail-section:last-child {
+  border-bottom: 0;
+}
+
+.detail-info-card {
+  width: 100%;
+
+  padding: 17px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-white);
+}
+
+.detail-info-card + .detail-info-card {
+  margin-top: 12px;
+}
+
+.detail-info-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+
+  gap: 12px;
+}
+
+.detail-info-card__title {
+  color: var(--color-text);
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.detail-info-card__description {
+  margin-top: 3px;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   35. Restaurant Detail Visual
+========================================================= */
+
+.detail-visual {
+  position: relative;
+
+  width: 100%;
+  height: 230px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #eff6ff,
+      #f8fafc
+    );
+}
+
+.detail-visual__image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.detail-visual__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   36. Restaurant Detail Heading
+========================================================= */
+
+.restaurant-info-section {
+  padding-top: 20px;
+}
+
+.restaurant-detail-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+
+  gap: 16px;
+}
+
+.restaurant-detail-heading__content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.restaurant-detail-heading__content .badge-list {
+  margin-bottom: 10px;
+}
+
+.restaurant-detail-heading__title {
+  margin-bottom: 4px;
+
+  color: var(--color-text);
+
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.8px;
+}
+
+.restaurant-detail-heading__region {
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   37. Favorite Button
+========================================================= */
+
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+
+  background: var(--color-white);
+
+  color: var(--color-text-muted);
+
+  font-size: 23px;
+}
+
+.favorite-button.is-active {
+  border-color: #bfdbfe;
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   38. Detail Data List
+========================================================= */
+
+.detail-data-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-data-list__item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid #f1f3f5;
+
+  gap: 18px;
+}
+
+.detail-data-list__item:first-child {
+  padding-top: 0;
+}
+
+.detail-data-list__item:last-child {
+  padding-bottom: 0;
+
+  border-bottom: 0;
+}
+
+.detail-data-list__item dt {
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.detail-data-list__item dd {
+  max-width: 68%;
+
+  color: var(--color-text);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   39. Address
+========================================================= */
+
+.address-info {
+  display: flex;
+  align-items: flex-start;
+
+  margin-bottom: 14px;
+
+  gap: 10px;
+}
+
+.address-info__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+
+  font-size: 7px;
+}
+
+.address-info__text {
+  padding-top: 3px;
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.detail-address {
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.detail-sub-info {
+  margin-top: 6px;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   40. Restaurant Introduction
+========================================================= */
+
+.restaurant-introduction {
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   41. Hygiene Grade Card
+========================================================= */
+
+.hygiene-grade-card {
+  display: flex;
+  align-items: center;
+
+  padding: 17px;
+
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-lg);
+
+  background: var(--color-hygiene-light);
+
+  gap: 13px;
+}
+
+.hygiene-grade-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: var(--color-white);
+
+  color: var(--color-hygiene);
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.hygiene-grade-card__content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.hygiene-grade-card__label {
+  color: var(--color-hygiene-dark);
+
+  font-size: 10px;
+}
+
+.hygiene-grade-card__grade {
+  color: var(--color-hygiene-dark);
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   42. Inline Message
+========================================================= */
+
+.inline-info-message {
+  margin-top: 10px;
+
+  padding: 11px 13px;
+
+  border-radius: 12px;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.inline-info-message--warning {
+  background: var(--color-warning-light);
+
+  color: var(--color-warning);
+}
+
+
+/* =========================================================
+   43. Parking Card List
+========================================================= */
+
+.parking-card-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+}
+
+
+/* =========================================================
+   44. Parking Card
+========================================================= */
+
+.parking-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-xs);
+}
+
+.parking-card__main {
+  width: 100%;
+
+  padding: 15px;
+
+  text-align: left;
+}
+
+.parking-card__header {
+  display: flex;
+  align-items: flex-start;
+
+  padding-right: 28px;
+
+  gap: 11px;
+}
+
+.parking-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: var(--color-parking);
+
+  color: var(--color-white);
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.parking-card__heading {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.parking-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: 4px;
+
+  gap: 5px;
+}
+
+.parking-card__name {
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 14px;
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.parking-card__summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  margin-top: 14px;
+
+  padding: 12px 0;
+
+  border-top: 1px solid #f1f3f5;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.parking-card__summary-item {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 12px;
+
+  gap: 3px;
+}
+
+.parking-card__summary-item:first-child {
+  padding-left: 0;
+
+  border-right: 1px solid #f1f3f5;
+}
+
+.parking-card__summary-label {
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+.parking-card__distance,
+.parking-card__available {
+  color: var(--color-text);
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.parking-card__available {
+  color: var(--color-realtime-dark);
+}
+
+.parking-card__capacity {
+  display: flex;
+  align-items: center;
+
+  margin-top: 10px;
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+
+  gap: 5px;
+}
+
+.parking-card__capacity-current {
+  color: var(--color-realtime-dark);
+
+  font-weight: 700;
+}
+
+.parking-card__fee-row {
+  display: flex;
+  align-items: center;
+
+  margin-top: 8px;
+
+  color: var(--color-parking);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  gap: 6px;
+}
+
+.parking-card__fee-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 6px;
+
+  background: var(--color-parking-light);
+
+  font-size: 10px;
+}
+
+.parking-card__meta {
+  display: flex;
+  align-items: center;
+
+  margin-top: 9px;
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+
+  gap: 5px;
+}
+
+.parking-card__favorite {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 10px;
+
+  background: var(--color-white);
+
+  color: var(--color-text-muted);
+
+  font-size: 19px;
+}
+
+.parking-card__favorite.is-active {
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   45. Detail Source
+========================================================= */
+
+.detail-source-section {
+  padding-bottom: 32px;
+}
+
+.detail-source-section__title {
+  margin-bottom: 10px;
+
+  color: var(--color-text);
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.detail-source-list {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 13px;
+
+  gap: 4px;
+}
+
+.detail-source-list li {
+  position: relative;
+
+  padding-left: 11px;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.detail-source-list li::before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: var(--color-text-light);
+
+  content: "";
+}
+
+.detail-source-section__notice {
+  color: var(--color-text-light);
+
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   46. Parking Detail Heading
+========================================================= */
+
+.parking-main-section {
+  padding-top: 26px;
+}
+
+.parking-detail-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.parking-detail-heading__content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.parking-detail-heading .badge-list {
+  margin-bottom: 10px;
+}
+
+.parking-detail-heading__title {
+  margin-bottom: 5px;
+
+  color: var(--color-text);
+
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.parking-detail-heading__agency {
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   47. Parking Distance Summary
+========================================================= */
+
+.parking-distance-summary {
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--color-parking-light);
+
+  gap: 12px;
+}
+
+.parking-distance-summary__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 12px;
+
+  background: var(--color-white);
+
+  color: var(--color-parking);
+
+  font-size: 18px;
+}
+
+.parking-distance-summary > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.parking-distance-summary__label {
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+.parking-distance-summary__value {
+  color: var(--color-parking);
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   48. Realtime Parking Card
+========================================================= */
+
+.realtime-parking-card {
+  padding: 18px;
+
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-lg);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffbeb,
+      #fffdf7
+    );
+}
+
+.realtime-parking-card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+.realtime-parking-card__label {
+  color: var(--color-text);
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.realtime-parking-card__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 24px;
+
+  padding: 0 9px;
+
+  border-radius: var(--radius-round);
+
+  background: var(--color-white);
+
+  color: var(--color-realtime-dark);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.realtime-parking-card__data {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+}
+
+.realtime-parking-card__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.realtime-parking-card__item-label {
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+.realtime-parking-card__available {
+  color: var(--color-realtime-dark);
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.realtime-parking-card__total {
+  color: var(--color-text);
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.realtime-parking-card__divider {
+  width: 1px;
+  height: 42px;
+
+  margin: 0 18px;
+
+  background: #fde68a;
+}
+
+.realtime-parking-card__notice {
+  margin-top: 14px;
+
+  color: var(--color-text-light);
+
+  font-size: 10px;
+  line-height: 1.55;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   49. Parking Time Selector
+========================================================= */
+
+.time-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-bottom: 18px;
+
+  gap: 8px;
+}
+
+.time-selector__button {
+  height: 40px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  background: var(--color-white);
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.time-selector__button.is-active {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   50. Estimated Fee
+========================================================= */
+
+.estimated-fee {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding: 16px;
+
+  border-radius: 14px;
+
+  background: var(--color-bg-soft);
+
+  gap: 16px;
+}
+
+.estimated-fee__label {
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.estimated-fee__price {
+  color: var(--color-primary);
+
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.estimated-fee__notice {
+  margin-top: 10px;
+
+  color: var(--color-text-light);
+
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   51. Parking Special Note
+========================================================= */
+
+.parking-special-note {
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   52. Detail Fixed Action
+========================================================= */
+
+.detail-fixed-action {
+  position: sticky;
+  z-index: 20;
+
+  bottom:
+    calc(
+      var(--bottom-nav-height)
+      + env(safe-area-inset-bottom)
+    );
+
+  padding: 12px 20px;
+
+  border-top: 1px solid var(--color-border);
+
+  background: rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   53. Saved Screen
+========================================================= */
+
+.screen--saved {
+  padding: 24px 20px 32px;
+
+  background: var(--color-white);
+}
+
+.page-heading {
+  margin-bottom: 22px;
+}
+
+.page-heading__eyebrow {
+  margin-bottom: 3px;
+
+  color: var(--color-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.page-heading__title {
+  color: var(--color-text);
+
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+
+/* =========================================================
+   54. Segmented Control
+========================================================= */
+
+.segmented-control {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  margin-bottom: 20px;
+
+  padding: 4px;
+
+  border-radius: 14px;
+
+  background: #f3f4f6;
+}
+
+.segmented-control__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  border-radius: 11px;
+
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  gap: 6px;
+}
+
+.segmented-control__button.is-active {
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-xs);
+
+  color: var(--color-text);
+}
+
+.segmented-control__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 20px;
+  height: 20px;
+
+  padding: 0 6px;
+
+  border-radius: var(--radius-round);
+
+  background: #e5e7eb;
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+.segmented-control__button.is-active
+.segmented-control__count {
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+}
+
+.saved-panel {
+  width: 100%;
+}
+
+.saved-panel .state-box {
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   55. Bottom Navigation
+========================================================= */
+
+.bottom-navigation {
+  position: fixed;
+  z-index: 900;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+
+  width: 100%;
+  max-width: var(--app-max-width);
+
+  transform: translateX(-50%);
+
+  border-top: 1px solid rgba(229, 231, 235, 0.95);
+
+  background: rgba(255, 255, 255, 0.97);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.bottom-navigation__inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  height:
+    calc(
+      var(--bottom-nav-height)
+      + env(safe-area-inset-bottom)
+    );
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+}
+
+.bottom-navigation__item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-light);
+
+  gap: 3px;
+}
+
+.bottom-navigation__item.is-active {
+  color: var(--color-primary);
+}
+
+.bottom-navigation__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  font-size: 23px;
+  line-height: 1;
+}
+
+.bottom-navigation__label {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.bottom-navigation__item.is-active::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: 28px;
+  height: 3px;
+
+  transform: translateX(-50%);
+
+  border-radius: 0 0 4px 4px;
+
+  background: var(--color-primary);
+
+  content: "";
+}
+
+
+/* =========================================================
+   56. Modal
+========================================================= */
+
+.modal {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+
+  width: 100%;
+  max-width: var(--app-max-width);
+  height: 100vh;
+  height: 100svh;
+
+  margin: auto;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(17, 24, 39, 0.48);
+}
+
+.modal__panel {
+  position: absolute;
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-lg);
+}
+
+.modal__panel--bottom {
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  max-height: 86vh;
+  max-height: 86svh;
+
+  overflow: hidden;
+
+  border-radius: 24px 24px 0 0;
+}
+
+.modal__panel--center {
+  top: 50%;
+  left: 50%;
+
+  width: calc(100% - 40px);
+
+  transform: translate(-50%, -50%);
+
+  overflow: hidden;
+
+  border-radius: 22px;
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 62px;
+
+  padding: 12px 20px;
+
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.modal__eyebrow {
+  margin-bottom: 2px;
+
+  color: var(--color-primary);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.modal__title {
+  color: var(--color-text);
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.modal__content {
+  max-height:
+    calc(
+      86vh
+      - 126px
+    );
+
+  max-height:
+    calc(
+      86svh
+      - 126px
+    );
+
+  padding: 2px 20px 24px;
+
+  overflow-y: auto;
+}
+
+.modal__footer {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+
+  padding:
+    10px
+    20px
+    calc(
+      10px
+      + env(safe-area-inset-bottom)
+    );
+
+  border-top: 1px solid #f1f3f5;
+
+  background: var(--color-white);
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   57. Filter Group
+========================================================= */
+
+.filter-group {
+  padding: 22px 0;
+
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.filter-group:last-child {
+  border-bottom: 0;
+}
+
+.filter-group__title {
+  margin-bottom: 13px;
+
+  color: var(--color-text);
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   58. Region Buttons
+========================================================= */
+
+.region-button-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+}
+
+.region-button {
+  min-height: 38px;
+
+  padding: 0 8px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+
+  background: var(--color-white);
+
+  color: var(--color-text-sub);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.region-button.is-active {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   59. Filter Options
+========================================================= */
+
+.filter-option-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.filter-option {
+  position: relative;
+
+  cursor: pointer;
+}
+
+.filter-option input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.filter-option span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 36px;
+
+  padding: 0 13px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+
+  background: var(--color-white);
+
+  color: var(--color-text-sub);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.filter-option input:checked + span {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   60. Toggle
+========================================================= */
+
+.toggle-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 40px;
+
+  cursor: pointer;
+
+  gap: 16px;
+}
+
+.toggle-option__label {
+  color: var(--color-text-sub);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.toggle-option input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.toggle-option__switch {
+  position: relative;
+
+  width: 46px;
+  height: 26px;
+
+  flex-shrink: 0;
+
+  border-radius: var(--radius-round);
+
+  background: #d1d5db;
+
+  transition:
+    background var(--transition-fast);
+}
+
+.toggle-option__switch::before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: var(--color-white);
+
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.2);
+
+  content: "";
+
+  transition:
+    transform var(--transition-fast);
+}
+
+.toggle-option input:checked
++ .toggle-option__switch {
+  background: var(--color-primary);
+}
+
+.toggle-option input:checked
++ .toggle-option__switch::before {
+  transform: translateX(20px);
+}
+
+
+/* =========================================================
+   61. Sort Options
+========================================================= */
+
+.sort-option-list {
+  padding:
+    4px
+    20px
+    calc(
+      18px
+      + env(safe-area-inset-bottom)
+    );
+}
+
+.sort-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 54px;
+
+  border-bottom: 1px solid #f1f3f5;
+
+  cursor: pointer;
+}
+
+.sort-option:last-child {
+  border-bottom: 0;
+}
+
+.sort-option span {
+  color: var(--color-text-sub);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sort-option input {
+  width: 18px;
+  height: 18px;
+
+  accent-color: var(--color-primary);
+}
+
+
+/* =========================================================
+   62. Location Warning Modal
+========================================================= */
+
+.location-warning {
+  padding: 28px 22px 22px;
+
+  text-align: center;
+}
+
+.location-warning__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  margin: 0 auto 15px;
+
+  border-radius: 17px;
+
+  background: var(--color-warning-light);
+
+  color: var(--color-warning);
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.location-warning__title {
+  margin-bottom: 8px;
+
+  color: var(--color-text);
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.location-warning__description {
+  margin-bottom: 20px;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   63. Map Parking Popup
+========================================================= */
+
+.map-parking-popup {
+  min-width: 160px;
+
+  padding: 12px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+
+  background: var(--color-white);
+
+  box-shadow: var(--shadow-md);
+}
+
+.map-parking-popup__name {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--color-text);
+
+  font-size: 12px;
+}
+
+.map-parking-popup__realtime {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+}
+
+.map-parking-popup__realtime-label {
+  color: var(--color-text-muted);
+
+  font-size: 9px;
+}
+
+.map-parking-popup__realtime-value {
+  color: var(--color-realtime-dark);
+
+  font-size: 11px;
+}
+
+.map-parking-popup__distance {
+  margin-bottom: 9px;
+
+  color: var(--color-text-muted);
+
+  font-size: 9px;
+}
+
+.map-parking-popup__button {
+  width: 100%;
+  height: 32px;
+
+  border-radius: 9px;
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   64. Network Message
+========================================================= */
+
+.network-message {
+  position: fixed;
+  z-index: 5000;
+  top:
+    calc(
+      var(--header-height)
+      + env(safe-area-inset-top)
+      + 10px
+    );
+
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+
+  width:
+    calc(
+      min(
+        100%,
+        var(--app-max-width)
+      )
+      - 32px
+    );
+
+  min-height: 44px;
+
+  padding: 0 14px;
+
+  transform: translateX(-50%);
+
+  border-radius: 13px;
+
+  background: #111827;
+
+  box-shadow: var(--shadow-md);
+
+  color: var(--color-white);
+
+  font-size: 12px;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   65. Toast
+========================================================= */
+
+.toast {
+  position: fixed;
+  z-index: 6000;
+
+  bottom:
+    calc(
+      var(--bottom-nav-height)
+      + env(safe-area-inset-bottom)
+      + 18px
+    );
+
+  left: 50%;
+
+  max-width: calc(var(--app-max-width) - 40px);
+
+  padding: 11px 16px;
+
+  transform: translateX(-50%);
+
+  border-radius: var(--radius-round);
+
+  background: rgba(17, 24, 39, 0.94);
+
+  box-shadow: var(--shadow-md);
+
+  color: var(--color-white);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   66. Focus
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.18);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   67. Scrollbar
+========================================================= */
+
+.main-content,
+.modal__content,
+.map-result-list {
+  scrollbar-color:
+    #d1d5db
+    transparent;
+
+  scrollbar-width: thin;
+}
+
+.main-content::-webkit-scrollbar,
+.modal__content::-webkit-scrollbar,
+.map-result-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.main-content::-webkit-scrollbar-thumb,
+.modal__content::-webkit-scrollbar-thumb,
+.map-result-list::-webkit-scrollbar-thumb {
+  border-radius: var(--radius-round);
+
+  background: #d1d5db;
+}
+
+
+/* =========================================================
+   68. Large Screen
+========================================================= */
+
+@media (min-width: 431px) {
+
+  body {
+    background:
+      linear-gradient(
+        135deg,
+        #f1f5f9,
+        #e9eef5
+      );
+  }
+
+  .app {
+    border-right: 1px solid rgba(226, 232, 240, 0.8);
+    border-left: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+}
+
+
+/* =========================================================
+   69. Small Mobile
+========================================================= */
+
+@media (max-width: 359px) {
+
+  .app-header__inner {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .home-hero,
+  .home-section,
+  .detail-section,
+  .screen--saved,
+  .search-screen-header {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .home-hero__title {
+    font-size: 26px;
+  }
+
+  .search-toolbar {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .search-region-button {
+    width: calc(100% - 32px);
+
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .screen--search .restaurant-card-list--vertical {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .restaurant-card__image {
+    width: 82px;
+    min-width: 82px;
+  }
+
+  .restaurant-card__main {
+    gap: 10px;
+  }
+
+  .restaurant-detail-heading__title,
+  .parking-detail-heading__title {
+    font-size: 21px;
+  }
+
+  .modal__header,
+  .modal__content,
+  .modal__footer {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .region-button-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   70. Reduced Motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}

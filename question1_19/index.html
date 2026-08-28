@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- 모바일 웹앱 화면 대응 -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <!-- 모바일 브라우저 상단 테마 색상 -->
+  <meta name="theme-color" content="#F7F9FC" />
+
+  <title>Trip Planner</title>
+
+  <!-- ========================================
+       CSS
+       앞으로 CSS 파일은 css 폴더 내부에 위치
+  ======================================== -->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- ========================================
+       Lucide Icons
+       Ver.2부터 문자 아이콘 대신
+       통일된 Line Icon 스타일 사용
+  ======================================== -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       APP WRAPPER
+       모바일 앱 전체 프레임
+  ========================================================== -->
+  <div class="app" id="app">
+
+
+    <!-- =========================================================
+         01. SPLASH SCREEN
+         앱 최초 실행 화면
+    ========================================================== -->
+    <section
+      class="screen splash-screen active"
+      id="splashScreen"
+      data-screen="splash"
+      aria-label="Trip Planner 시작 화면"
+    >
+
+      <!-- 스플래시 전체 배경 이미지 -->
+      <div class="splash-background">
+        <img
+          src="./images/splash-bg.png"
+          alt=""
+          class="splash-background-image"
+        />
+      </div>
+
+      <!-- 중앙 콘텐츠 -->
+      <div class="splash-content">
+
+        <!-- Trip Planner 로고 -->
+        <div class="splash-logo-wrap">
+          <img
+            src="./images/trip-logo.png"
+            alt="Trip Planner 로고"
+            class="splash-logo"
+          />
+        </div>
+
+        <!-- 앱명 -->
+        <h1 class="splash-title">
+          Trip Planner
+        </h1>
+
+        <!-- 슬로건 -->
+        <p class="splash-slogan">
+          여행의 시작을 계획하다
+        </p>
+
+        <!-- 로딩 표시 -->
+        <div
+          class="splash-loading"
+          aria-label="앱을 불러오는 중"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         02. HOME SCREEN
+         앱의 새로운 메인 화면
+    ========================================================== -->
+    <section
+      class="screen home-screen"
+      id="homeScreen"
+      data-screen="home"
+    >
+
+      <!-- ========================================
+           HOME HEADER
+      ======================================== -->
+      <header class="home-header">
+
+        <div class="home-header-title">
+          <span class="brand-small">
+            TRIP PLANNER
+          </span>
+
+          <h1>
+            Trip Planner
+          </h1>
+        </div>
+
+        <!-- 설정 -->
+        <button
+          type="button"
+          class="header-icon-button"
+          id="settingsButton"
+          aria-label="설정"
+        >
+          <i data-lucide="settings"></i>
+        </button>
+
+      </header>
+
+
+      <!-- ========================================
+           HOME CONTENT
+      ======================================== -->
+      <main class="home-content">
+
+
+        <!-- ----------------------------------------
+             Greeting
+        ----------------------------------------- -->
+        <section class="home-greeting">
+
+          <p class="greeting-small">
+            안녕하세요 👋
+          </p>
+
+          <h2>
+            다음 여행은 어디인가요?
+          </h2>
+
+          <p class="greeting-description">
+            여행 일정부터 예산과 준비물까지
+            한곳에서 관리해보세요.
+          </p>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             SAMPLE TRIP
+        ----------------------------------------- -->
+        <section class="home-section sample-section">
+
+          <div class="section-heading">
+
+            <div>
+              <span class="section-label">
+                SAMPLE TRIP
+              </span>
+
+              <h2>
+                여행 계획 미리 둘러보기
+              </h2>
+            </div>
+
+          </div>
+
+
+          <!--
+            SAMPLE 여행 카드는 JavaScript에서
+            실제 Sample 객체 데이터를 기준으로 렌더링합니다.
+          -->
+          <div
+            class="sample-trip-container"
+            id="sampleTripContainer"
+          >
+
+            <!-- JS renderSampleTrip() -->
+
+          </div>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             MY TRIPS
+        ----------------------------------------- -->
+        <section class="home-section my-trip-section">
+
+          <div class="section-heading">
+
+            <div>
+              <span class="section-label">
+                MY TRIPS
+              </span>
+
+              <h2>
+                나의 여행
+              </h2>
+            </div>
+
+            <!-- 여행 개수 -->
+            <span
+              class="trip-count"
+              id="myTripCount"
+            >
+              0
+            </span>
+
+          </div>
+
+
+          <!-- 사용자 여행 목록 -->
+          <div
+            class="my-trip-list"
+            id="myTripList"
+          >
+
+            <!-- JS renderTrips() -->
+
+          </div>
+
+
+          <!-- 사용자 여행이 없을 경우 -->
+          <div
+            class="empty-state"
+            id="myTripEmptyState"
+          >
+
+            <div class="empty-state-icon">
+              <i data-lucide="plane"></i>
+            </div>
+
+            <h3>
+              아직 만든 여행이 없어요.
+            </h3>
+
+            <p>
+              나만의 첫 여행 계획을 만들어보세요.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             NEW TRIP CTA
+        ----------------------------------------- -->
+        <button
+          type="button"
+          class="primary-large-button"
+          id="newTripButton"
+        >
+          <i data-lucide="plus"></i>
+
+          <span>
+            새로운 여행 만들기
+          </span>
+        </button>
+
+      </main>
+
+    </section>
+
+
+    <!-- =========================================================
+         03. SETTINGS SCREEN
+    ========================================================== -->
+    <section
+      class="screen settings-screen"
+      id="settingsScreen"
+      data-screen="settings"
+    >
+
+      <!-- 공통 Header -->
+      <header class="sub-header">
+
+        <button
+          type="button"
+          class="header-icon-button"
+          data-back="home"
+          aria-label="뒤로가기"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <h1>
+          설정
+        </h1>
+
+        <div class="header-placeholder"></div>
+
+      </header>
+
+
+      <main class="settings-content">
+
+
+        <!-- 앱 설정 -->
+        <section class="settings-section">
+
+          <h2>
+            앱 설정
+          </h2>
+
+
+          <!-- 기본 여행 인원 -->
+          <div class="setting-card">
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                <i data-lucide="users"></i>
+              </div>
+
+              <div>
+                <strong>
+                  기본 여행 인원
+                </strong>
+
+                <p>
+                  새 여행 생성 시 기본 인원
+                </p>
+              </div>
+
+            </div>
+
+
+            <select
+              id="defaultTravelersSelect"
+              aria-label="기본 여행 인원"
+            >
+              <option value="1">1명</option>
+              <option value="2" selected>2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+            </select>
+
+          </div>
+
+
+          <!-- 통화 -->
+          <div class="setting-card">
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                <i data-lucide="circle-dollar-sign"></i>
+              </div>
+
+              <div>
+                <strong>
+                  통화
+                </strong>
+
+                <p>
+                  예산 및 지출 표시 기준
+                </p>
+              </div>
+
+            </div>
+
+            <select
+              id="currencySelect"
+              aria-label="통화 선택"
+            >
+              <option value="KRW" selected>
+                대한민국 원 ₩
+              </option>
+
+              <option value="USD">
+                미국 달러 $
+              </option>
+
+              <option value="JPY">
+                일본 엔 ¥
+              </option>
+
+              <option value="EUR">
+                유로 €
+              </option>
+            </select>
+
+          </div>
+
+        </section>
+
+
+        <!-- 데이터 관리 -->
+        <section class="settings-section">
+
+          <h2>
+            데이터 관리
+          </h2>
+
+
+          <!-- Sample 복원 -->
+          <button
+            type="button"
+            class="setting-action-card"
+            id="restoreSampleButton"
+          >
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                <i data-lucide="rotate-ccw"></i>
+              </div>
+
+              <div>
+                <strong>
+                  샘플 여행 다시 불러오기
+                </strong>
+
+                <p>
+                  삭제한 샘플 여행을 복구합니다.
+                </p>
+              </div>
+
+            </div>
+
+            <i data-lucide="chevron-right"></i>
+
+          </button>
+
+
+          <!-- 전체 데이터 삭제 -->
+          <button
+            type="button"
+            class="setting-action-card danger"
+            id="resetAllDataButton"
+          >
+
+            <div class="setting-info">
+
+              <div class="setting-icon">
+                <i data-lucide="trash-2"></i>
+              </div>
+
+              <div>
+                <strong>
+                  전체 여행 데이터 초기화
+                </strong>
+
+                <p>
+                  저장된 모든 여행을 삭제합니다.
+                </p>
+              </div>
+
+            </div>
+
+            <i data-lucide="chevron-right"></i>
+
+          </button>
+
+        </section>
+
+
+        <!-- 앱 정보 -->
+        <section class="settings-section">
+
+          <h2>
+            앱 정보
+          </h2>
+
+          <div class="app-info-card">
+
+            <img
+              src="./images/trip-logo.png"
+              alt="Trip Planner"
+              class="settings-logo"
+            />
+
+            <div>
+              <strong>
+                Trip Planner
+              </strong>
+
+              <p>
+                Version 2.0
+              </p>
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </section>
+
+
+    <!-- =========================================================
+         04. CREATE / EDIT TRIP
+    ========================================================== -->
+    <section
+      class="screen trip-form-screen"
+      id="tripFormScreen"
+      data-screen="trip-form"
+    >
+
+      <header class="sub-header">
+
+        <button
+          type="button"
+          class="header-icon-button"
+          id="tripFormBackButton"
+          aria-label="뒤로가기"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <h1 id="tripFormHeaderTitle">
+          새로운 여행
+        </h1>
+
+        <div class="header-placeholder"></div>
+
+      </header>
+
+
+      <main class="trip-form-content">
+
+        <form
+          id="tripForm"
+          class="trip-form"
+          novalidate
+        >
+
+          <!-- 수정 시 사용할 여행 ID -->
+          <input
+            type="hidden"
+            id="tripId"
+          />
+
+
+          <!-- 여행 제목 -->
+          <div class="form-group">
+
+            <label for="tripTitle">
+              여행 제목
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="tripTitle"
+              maxlength="40"
+              placeholder="예: 제주도 2박 3일 여행"
+              required
+            />
+
+            <p
+              class="form-error"
+              id="tripTitleError"
+            ></p>
+
+          </div>
+
+
+          <!-- 여행지 -->
+          <div class="form-group">
+
+            <label for="tripDestination">
+              여행지
+              <span class="required">*</span>
+            </label>
+
+            <div class="input-icon-wrap">
+
+              <i data-lucide="map-pin"></i>
+
+              <input
+                type="text"
+                id="tripDestination"
+                maxlength="40"
+                placeholder="예: 제주도"
+                required
+              />
+
+            </div>
+
+            <p
+              class="form-error"
+              id="tripDestinationError"
+            ></p>
+
+          </div>
+
+
+          <!-- 출발 / 종료 날짜 -->
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="tripStartDate">
+                출발일
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="date"
+                id="tripStartDate"
+                required
+              />
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="tripEndDate">
+                종료일
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="date"
+                id="tripEndDate"
+                required
+              />
+
+            </div>
+
+          </div>
+
+
+          <p
+            class="form-error"
+            id="tripDateError"
+          ></p>
+
+
+          <!-- 여행 기간 미리보기 -->
+          <div
+            class="trip-date-preview"
+            id="tripDatePreview"
+          >
+            날짜를 선택하면 여행 기간이 표시됩니다.
+          </div>
+
+
+          <!-- 여행 인원 -->
+          <div class="form-group">
+
+            <label for="tripTravelers">
+              여행 인원
+            </label>
+
+            <div class="input-unit-wrap">
+
+              <input
+                type="number"
+                id="tripTravelers"
+                min="1"
+                max="99"
+                value="2"
+              />
+
+              <span>
+                명
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- 여행 예산 -->
+          <div class="form-group">
+
+            <label for="tripBudget">
+              전체 예산
+            </label>
+
+            <div class="input-unit-wrap">
+
+              <input
+                type="number"
+                id="tripBudget"
+                min="0"
+                step="1000"
+                placeholder="0"
+              />
+
+              <span>
+                원
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- 여행 메모 -->
+          <div class="form-group">
+
+            <label for="tripMemo">
+              여행 메모
+            </label>
+
+            <textarea
+              id="tripMemo"
+              rows="5"
+              maxlength="300"
+              placeholder="여행 전에 기억할 내용을 작성해보세요."
+            ></textarea>
+
+          </div>
+
+
+          <!-- 저장 버튼 -->
+          <button
+            type="submit"
+            class="primary-large-button"
+            id="saveTripButton"
+          >
+            여행 만들기
+          </button>
+
+        </form>
+
+      </main>
+
+    </section>
+
+
+    <!-- =========================================================
+         05. TRIP DASHBOARD
+    ========================================================== -->
+    <section
+      class="screen dashboard-screen"
+      id="dashboardScreen"
+      data-screen="dashboard"
+    >
+
+      <!-- 여행 전용 Header -->
+      <header class="trip-header">
+
+        <button
+          type="button"
+          class="header-icon-button"
+          data-back="home"
+          aria-label="홈으로 돌아가기"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <h1 id="dashboardHeaderTitle">
+          여행
+        </h1>
+
+        <button
+          type="button"
+          class="header-icon-button"
+          id="editTripButton"
+          aria-label="여행 수정"
+        >
+          <i data-lucide="pencil"></i>
+        </button>
+
+      </header>
+
+
+      <main class="dashboard-content">
+
+
+        <!-- ----------------------------------------
+             HERO
+        ----------------------------------------- -->
+        <section
+          class="trip-hero"
+          id="dashboardHero"
+        >
+
+          <!-- JS에서 여행 정보 출력 -->
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             SUMMARY
+        ----------------------------------------- -->
+        <section
+          class="summary-grid"
+          id="dashboardSummary"
+        >
+
+          <!-- JS -->
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             TRAVEL PROGRESS
+        ----------------------------------------- -->
+        <section class="dashboard-card travel-progress-card">
+
+          <div class="card-heading">
+
+            <div>
+              <span class="section-label">
+                TRIP STATUS
+              </span>
+
+              <h2>
+                여행 준비 단계
+              </h2>
+            </div>
+
+          </div>
+
+
+          <div
+            class="travel-progress-step"
+            id="travelProgressStep"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             TODAY / NEXT SCHEDULE
+        ----------------------------------------- -->
+        <section class="dashboard-card">
+
+          <div class="card-heading">
+
+            <div>
+              <span class="section-label">
+                TODAY
+              </span>
+
+              <h2 id="todayScheduleHeading">
+                오늘의 일정
+              </h2>
+            </div>
+
+
+            <button
+              type="button"
+              class="text-button"
+              id="viewAllScheduleButton"
+            >
+              전체보기
+            </button>
+
+          </div>
+
+
+          <div
+            class="today-schedule-list"
+            id="todayScheduleList"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+
+          <!-- 다음 일정 강조 -->
+          <div
+            class="next-schedule-card"
+            id="nextScheduleCard"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             BUDGET MINI
+        ----------------------------------------- -->
+        <section class="dashboard-card">
+
+          <div class="card-heading">
+
+            <div>
+              <span class="section-label">
+                BUDGET
+              </span>
+
+              <h2>
+                여행 예산
+              </h2>
+            </div>
+
+
+            <button
+              type="button"
+              class="text-button"
+              id="dashboardBudgetButton"
+            >
+              자세히
+            </button>
+
+          </div>
+
+
+          <div
+            class="dashboard-budget"
+            id="dashboardBudget"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             MEMO
+        ----------------------------------------- -->
+        <section class="dashboard-card">
+
+          <div class="card-heading">
+
+            <div>
+              <span class="section-label">
+                MEMO
+              </span>
+
+              <h2>
+                여행 메모
+              </h2>
+            </div>
+
+          </div>
+
+
+          <p
+            class="dashboard-memo"
+            id="dashboardMemo"
+          ></p>
+
+        </section>
+
+
+        <!-- ----------------------------------------
+             TRIP COMPLETE CTA
+             여행 완료 시에만 JS로 노출
+        ----------------------------------------- -->
+        <section
+          class="trip-complete-banner hidden"
+          id="tripCompleteBanner"
+        >
+
+          <div>
+
+            <span>
+              TRIP COMPLETED
+            </span>
+
+            <h3>
+              여행을 완료했어요!
+            </h3>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="viewTripCompleteButton"
+          >
+            여행 결과 보기
+
+            <i data-lucide="arrow-right"></i>
+          </button>
+
+        </section>
+
+
+        <!-- 여행 삭제 -->
+        <button
+          type="button"
+          class="danger-outline-button"
+          id="deleteTripButton"
+        >
+          <i data-lucide="trash-2"></i>
+
+          이 여행 삭제
+        </button>
+
+      </main>
+
+
+      <!-- 하단 메뉴 -->
+      <nav
+        class="bottom-navigation"
+        aria-label="여행 메뉴"
+      >
+
+        <button
+          type="button"
+          class="bottom-nav-item active"
+          data-nav="dashboard"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="home"></i>
+          </span>
+
+          <span>
+            여행
+          </span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="itinerary"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="calendar-days"></i>
+          </span>
+
+          <span>
+            일정
+          </span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="budget"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="wallet-cards"></i>
+          </span>
+
+          <span>
+            예산
+          </span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="checklist"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="list-checks"></i>
+          </span>
+
+          <span>
+            준비
+          </span>
+        </button>
+
+      </nav>
+
+    </section>
+
+
+    <!-- =========================================================
+         06. ITINERARY SCREEN
+    ========================================================== -->
+    <section
+      class="screen itinerary-screen"
+      id="itineraryScreen"
+      data-screen="itinerary"
+    >
+
+      <header class="trip-header">
+
+        <button
+          type="button"
+          class="header-icon-button"
+          data-back="dashboard"
+          aria-label="뒤로가기"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <h1>
+          여행 일정
+        </h1>
+
+        <div class="header-placeholder"></div>
+
+      </header>
+
+
+      <main class="itinerary-content">
+
+
+        <!-- DAY Tabs -->
+        <div class="day-tab-scroll">
+
+          <div
+            class="day-tab-list"
+            id="dayTabList"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+        </div>
+
+
+        <!-- 선택 날짜 + 일정 추가 -->
+        <div class="content-heading">
+
+          <div>
+
+            <span class="section-label">
+              ITINERARY
+            </span>
+
+            <h2 id="selectedDayTitle">
+              DAY 1
+            </h2>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="small-primary-button"
+            id="addScheduleButton"
+          >
+            <i data-lucide="plus"></i>
+
+            일정 추가
+          </button>
+
+        </div>
+
+
+        <!-- Timeline -->
+        <div
+          class="schedule-timeline"
+          id="scheduleTimeline"
+        >
+
+          <!-- JS -->
+
+        </div>
+
+
+        <!-- 일정 없음 -->
+        <div
+          class="empty-state"
+          id="scheduleEmptyState"
+        >
+
+          <div class="empty-state-icon">
+            <i data-lucide="calendar-plus"></i>
+          </div>
+
+          <h3>
+            등록된 일정이 없어요.
+          </h3>
+
+          <p>
+            첫 번째 여행 일정을 추가해보세요.
+          </p>
+
+        </div>
+
+      </main>
+
+
+      <!-- 하단 메뉴 -->
+      <nav
+        class="bottom-navigation"
+        aria-label="여행 메뉴"
+      >
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="dashboard"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="home"></i>
+          </span>
+
+          <span>여행</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item active"
+          data-nav="itinerary"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="calendar-days"></i>
+          </span>
+
+          <span>일정</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="budget"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="wallet-cards"></i>
+          </span>
+
+          <span>예산</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="checklist"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="list-checks"></i>
+          </span>
+
+          <span>준비</span>
+        </button>
+
+      </nav>
+
+    </section>
+
+
+    <!-- =========================================================
+         07. BUDGET SCREEN
+    ========================================================== -->
+    <section
+      class="screen budget-screen"
+      id="budgetScreen"
+      data-screen="budget"
+    >
+
+      <header class="trip-header">
+
+        <button
+          type="button"
+          class="header-icon-button"
+          data-back="dashboard"
+          aria-label="뒤로가기"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <h1>
+          여행 예산
+        </h1>
+
+        <div class="header-placeholder"></div>
+
+      </header>
+
+
+      <main class="budget-content">
+
+
+        <!-- Budget Summary -->
+        <section
+          class="budget-summary-card"
+          id="budgetSummaryCard"
+        >
+
+          <!-- JS -->
+
+        </section>
+
+
+        <!-- Budget Progress -->
+        <section class="budget-progress-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-label">
+                BUDGET STATUS
+              </span>
+
+              <h2>
+                예산 사용률
+              </h2>
+
+            </div>
+
+
+            <strong
+              id="budgetProgressPercent"
+            >
+              0%
+            </strong>
+
+          </div>
+
+
+          <div class="progress-track">
+
+            <div
+              class="progress-bar"
+              id="budgetProgressBar"
+            ></div>
+
+          </div>
+
+
+          <p
+            class="progress-message"
+            id="budgetProgressMessage"
+          >
+            아직 사용한 예산이 없습니다.
+          </p>
+
+        </section>
+
+
+        <!-- Category Expense -->
+        <section class="budget-category-section">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-label">
+                CATEGORY
+              </span>
+
+              <h2>
+                카테고리별 지출
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="budget-category-list"
+            id="budgetCategoryList"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+        </section>
+
+
+        <!-- Expense List -->
+        <section class="expense-section">
+
+          <div class="content-heading">
+
+            <div>
+
+              <span class="section-label">
+                EXPENSES
+              </span>
+
+              <h2>
+                지출 내역
+              </h2>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="small-primary-button"
+              id="addExpenseButton"
+            >
+              <i data-lucide="plus"></i>
+
+              지출 추가
+            </button>
+
+          </div>
+
+
+          <div
+            class="expense-list"
+            id="expenseList"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+
+          <div
+            class="empty-state"
+            id="expenseEmptyState"
+          >
+
+            <div class="empty-state-icon">
+              <i data-lucide="wallet"></i>
+            </div>
+
+            <h3>
+              아직 지출 내역이 없어요.
+            </h3>
+
+            <p>
+              여행 중 사용할 비용을 기록해보세요.
+            </p>
+
+          </div>
+
+        </section>
+
+      </main>
+
+
+      <!-- 하단 메뉴 -->
+      <nav
+        class="bottom-navigation"
+        aria-label="여행 메뉴"
+      >
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="dashboard"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="home"></i>
+          </span>
+
+          <span>여행</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="itinerary"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="calendar-days"></i>
+          </span>
+
+          <span>일정</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item active"
+          data-nav="budget"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="wallet-cards"></i>
+          </span>
+
+          <span>예산</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="checklist"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="list-checks"></i>
+          </span>
+
+          <span>준비</span>
+        </button>
+
+      </nav>
+
+    </section>
+
+
+    <!-- =========================================================
+         08. CHECKLIST SCREEN
+    ========================================================== -->
+    <section
+      class="screen checklist-screen"
+      id="checklistScreen"
+      data-screen="checklist"
+    >
+
+      <header class="trip-header">
+
+        <button
+          type="button"
+          class="header-icon-button"
+          data-back="dashboard"
+          aria-label="뒤로가기"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <h1>
+          여행 준비
+        </h1>
+
+        <div class="header-placeholder"></div>
+
+      </header>
+
+
+      <main class="checklist-content">
+
+
+        <!-- Progress -->
+        <section class="check-progress-card">
+
+          <div class="card-heading">
+
+            <div>
+
+              <span class="section-label">
+                READY TO GO
+              </span>
+
+              <h2>
+                여행 준비
+              </h2>
+
+            </div>
+
+
+            <strong
+              id="checkProgressPercent"
+            >
+              0%
+            </strong>
+
+          </div>
+
+
+          <div class="progress-track">
+
+            <div
+              class="progress-bar"
+              id="checkProgressBar"
+            ></div>
+
+          </div>
+
+
+          <p
+            id="checkProgressDescription"
+          >
+            준비물을 추가해보세요.
+          </p>
+
+        </section>
+
+
+        <!-- Checklist -->
+        <section class="checklist-section">
+
+          <div class="content-heading">
+
+            <div>
+
+              <span class="section-label">
+                CHECKLIST
+              </span>
+
+              <h2>
+                준비물
+              </h2>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="small-primary-button"
+              id="addChecklistButton"
+            >
+              <i data-lucide="plus"></i>
+
+              준비물 추가
+            </button>
+
+          </div>
+
+
+          <div
+            class="checklist-list"
+            id="checklistList"
+          >
+
+            <!-- JS -->
+
+          </div>
+
+
+          <div
+            class="empty-state"
+            id="checklistEmptyState"
+          >
+
+            <div class="empty-state-icon">
+              <i data-lucide="clipboard-check"></i>
+            </div>
+
+            <h3>
+              아직 준비물이 없어요.
+            </h3>
+
+            <p>
+              여행에 필요한 준비물을 추가해보세요.
+            </p>
+
+          </div>
+
+        </section>
+
+      </main>
+
+
+      <!-- 하단 메뉴 -->
+      <nav
+        class="bottom-navigation"
+        aria-label="여행 메뉴"
+      >
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="dashboard"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="home"></i>
+          </span>
+
+          <span>여행</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="itinerary"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="calendar-days"></i>
+          </span>
+
+          <span>일정</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item"
+          data-nav="budget"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="wallet-cards"></i>
+          </span>
+
+          <span>예산</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="bottom-nav-item active"
+          data-nav="checklist"
+        >
+          <span class="bottom-nav-icon">
+            <i data-lucide="list-checks"></i>
+          </span>
+
+          <span>준비</span>
+        </button>
+
+      </nav>
+
+    </section>
+
+
+    <!-- =========================================================
+         09. TRIP COMPLETE SCREEN
+    ========================================================== -->
+    <section
+      class="screen trip-complete-screen"
+      id="tripCompleteScreen"
+      data-screen="trip-complete"
+    >
+
+      <main class="trip-complete-content">
+
+
+        <!-- 완료 아이콘 -->
+        <div class="complete-icon">
+
+          <img
+            src="./images/trip-logo.png"
+            alt=""
+          />
+
+        </div>
+
+
+        <span class="complete-label">
+          TRIP COMPLETED
+        </span>
+
+
+        <h1 id="completeTripTitle">
+          제주도 여행 완료!
+        </h1>
+
+
+        <p class="complete-description">
+          여행의 모든 일정을 마쳤어요.
+        </p>
+
+
+        <!-- 여행 요약 -->
+        <section
+          class="complete-summary-grid"
+          id="completeSummaryGrid"
+        >
+
+          <!-- JS -->
+
+        </section>
+
+
+        <!-- 완료 메세지 -->
+        <div class="complete-message">
+
+          <i data-lucide="sparkles"></i>
+
+          <p>
+            즐거운 여행이었나요?
+            <br />
+            다음 여행도 Trip Planner와 함께해보세요.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="primary-large-button"
+          id="completeHomeButton"
+        >
+          홈으로 돌아가기
+        </button>
+
+      </main>
+
+    </section>
+
+
+    <!-- =========================================================
+         SCHEDULE MODAL
+    ========================================================== -->
+    <div
+      class="modal-overlay hidden"
+      id="scheduleModal"
+    >
+
+      <section
+        class="modal-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="scheduleModalTitle"
+      >
+
+        <header class="modal-header">
+
+          <h2 id="scheduleModalTitle">
+            일정 추가
+          </h2>
+
+          <button
+            type="button"
+            class="modal-close-button"
+            data-close-modal="scheduleModal"
+            aria-label="닫기"
+          >
+            <i data-lucide="x"></i>
+          </button>
+
+        </header>
+
+
+        <form
+          class="modal-form"
+          id="scheduleForm"
+        >
+
+          <input
+            type="hidden"
+            id="scheduleId"
+          />
+
+
+          <div class="form-group">
+
+            <label for="scheduleDate">
+              날짜
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="date"
+              id="scheduleDate"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="scheduleTime">
+              시간
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="time"
+              id="scheduleTime"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="scheduleTitle">
+              일정명
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="scheduleTitle"
+              maxlength="50"
+              placeholder="예: 제주공항 도착"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="scheduleCategory">
+              카테고리
+            </label>
+
+            <select id="scheduleCategory">
+
+              <option value="관광">
+                관광
+              </option>
+
+              <option value="음식">
+                음식
+              </option>
+
+              <option value="카페">
+                카페
+              </option>
+
+              <option value="숙소">
+                숙소
+              </option>
+
+              <option value="교통">
+                교통
+              </option>
+
+              <option value="쇼핑">
+                쇼핑
+              </option>
+
+              <option value="기타">
+                기타
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="scheduleLocation">
+              장소
+            </label>
+
+            <input
+              type="text"
+              id="scheduleLocation"
+              maxlength="60"
+              placeholder="예: 제주국제공항"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="scheduleCost">
+              예상 비용
+            </label>
+
+            <div class="input-unit-wrap">
+
+              <input
+                type="number"
+                id="scheduleCost"
+                min="0"
+                step="1000"
+                placeholder="0"
+              />
+
+              <span>
+                원
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="scheduleMemo">
+              메모
+            </label>
+
+            <textarea
+              id="scheduleMemo"
+              rows="3"
+              maxlength="200"
+              placeholder="일정에 필요한 메모를 작성하세요."
+            ></textarea>
+
+          </div>
+
+
+          <div class="modal-button-group">
+
+            <button
+              type="button"
+              class="secondary-button"
+              data-close-modal="scheduleModal"
+            >
+              취소
+            </button>
+
+            <button
+              type="submit"
+              class="primary-button"
+              id="saveScheduleButton"
+            >
+              일정 추가
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </div>
+
+
+    <!-- =========================================================
+         EXPENSE MODAL
+    ========================================================== -->
+    <div
+      class="modal-overlay hidden"
+      id="expenseModal"
+    >
+
+      <section
+        class="modal-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="expenseModalTitle"
+      >
+
+        <header class="modal-header">
+
+          <h2 id="expenseModalTitle">
+            지출 추가
+          </h2>
+
+          <button
+            type="button"
+            class="modal-close-button"
+            data-close-modal="expenseModal"
+            aria-label="닫기"
+          >
+            <i data-lucide="x"></i>
+          </button>
+
+        </header>
+
+
+        <form
+          class="modal-form"
+          id="expenseForm"
+        >
+
+          <input
+            type="hidden"
+            id="expenseId"
+          />
+
+
+          <div class="form-group">
+
+            <label for="expenseDate">
+              날짜
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="date"
+              id="expenseDate"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="expenseTitle">
+              지출 항목
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="expenseTitle"
+              maxlength="50"
+              placeholder="예: 렌터카"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="expenseCategory">
+              카테고리
+            </label>
+
+            <select id="expenseCategory">
+
+              <option value="교통">
+                교통
+              </option>
+
+              <option value="숙박">
+                숙박
+              </option>
+
+              <option value="식비">
+                식비
+              </option>
+
+              <option value="관광">
+                관광
+              </option>
+
+              <option value="쇼핑">
+                쇼핑
+              </option>
+
+              <option value="기타">
+                기타
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="expenseAmount">
+              금액
+              <span class="required">*</span>
+            </label>
+
+            <div class="input-unit-wrap">
+
+              <input
+                type="number"
+                id="expenseAmount"
+                min="0"
+                step="1000"
+                placeholder="0"
+                required
+              />
+
+              <span>
+                원
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="modal-button-group">
+
+            <button
+              type="button"
+              class="secondary-button"
+              data-close-modal="expenseModal"
+            >
+              취소
+            </button>
+
+            <button
+              type="submit"
+              class="primary-button"
+              id="saveExpenseButton"
+            >
+              지출 추가
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </div>
+
+
+    <!-- =========================================================
+         CHECKLIST MODAL
+    ========================================================== -->
+    <div
+      class="modal-overlay hidden"
+      id="checklistModal"
+    >
+
+      <section
+        class="modal-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="checklistModalTitle"
+      >
+
+        <header class="modal-header">
+
+          <h2 id="checklistModalTitle">
+            준비물 추가
+          </h2>
+
+          <button
+            type="button"
+            class="modal-close-button"
+            data-close-modal="checklistModal"
+            aria-label="닫기"
+          >
+            <i data-lucide="x"></i>
+          </button>
+
+        </header>
+
+
+        <form
+          class="modal-form"
+          id="checklistForm"
+        >
+
+          <div class="form-group">
+
+            <label for="checklistTitle">
+              준비물
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="checklistTitle"
+              maxlength="50"
+              placeholder="예: 보조배터리"
+              required
+            />
+
+          </div>
+
+
+          <div class="modal-button-group">
+
+            <button
+              type="button"
+              class="secondary-button"
+              data-close-modal="checklistModal"
+            >
+              취소
+            </button>
+
+            <button
+              type="submit"
+              class="primary-button"
+              id="saveChecklistButton"
+            >
+              준비물 추가
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </div>
+
+
+    <!-- =========================================================
+         CONFIRM MODAL
+         전체 초기화 등 중요한 작업에 사용
+    ========================================================== -->
+    <div
+      class="modal-overlay hidden"
+      id="confirmModal"
+    >
+
+      <section
+        class="confirm-modal"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="confirmModalTitle"
+      >
+
+        <div class="confirm-icon">
+          <i data-lucide="triangle-alert"></i>
+        </div>
+
+
+        <h2 id="confirmModalTitle">
+          확인
+        </h2>
+
+
+        <p id="confirmModalMessage">
+          계속하시겠습니까?
+        </p>
+
+
+        <div class="modal-button-group">
+
+          <button
+            type="button"
+            class="secondary-button"
+            id="confirmCancelButton"
+          >
+            취소
+          </button>
+
+          <button
+            type="button"
+            class="danger-button"
+            id="confirmActionButton"
+          >
+            삭제
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- =========================================================
+         TOAST
+         저장 완료 / 오류 메시지 등
+    ========================================================== -->
+    <div
+      class="toast hidden"
+      id="toast"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+  </div>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       앞으로 JS 파일은 js 폴더 내부에 위치
+  ========================================================== -->
+  <script src="./js/script.js"></script>
+
+</body>
+</html>
